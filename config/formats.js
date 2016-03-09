@@ -789,11 +789,15 @@ exports.Formats = [
 			// Add here special typings, done for flavour mainly.
 
 			// Innate effects.
-			if (name === 'qtrx') {
-				if (!pokemon.illusion) {
-					pokemon.addVolatile('qtrxeffects');
+			if (name === 'eeveegeneral') {
+				this.add('detailschange', pokemon, pokemon.details); //run mega evo animation
+				this.add('-mega', pokemon, 'eevee', null);
+				for (let i = 0; i < pokemon.stats.length; i++) {
+					pokemon.stats[i] += 50;
 				}
-				pokemon.addVolatile('focusenergy');
+			}
+			if (name === 'galbia') {
+				this.setWeather('sandstorm');
 			}
 			if (name === 'trickster') {
 				let target = pokemon.battle[pokemon.side.id === 'p1' ? 'p2' : 'p1'].active[0];
@@ -807,12 +811,11 @@ exports.Formats = [
 				pokemon.setBoost(targetBoosts);
 				this.add('-swapboost', pokemon, target, '[from] move: Trickster\'s ability.');
 			}
-			if (name === 'eeveegeneral') {
-				this.add('detailschange', pokemon, pokemon.details); //run mega evo animation
-				this.add('-mega', pokemon, 'eevee', null);
-				for (let i = 0; i < pokemon.stats.length; i++) {
-					pokemon.stats[i] += 50;
+			if (name === 'qtrx') {
+				if (!pokemon.illusion) {
+					pokemon.addVolatile('qtrxeffects');
 				}
+				pokemon.addVolatile('focusenergy');
 			}
 
 			// Edgy switch-in sentences go here.
