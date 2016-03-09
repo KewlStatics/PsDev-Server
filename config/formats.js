@@ -845,6 +845,9 @@ exports.Formats = [
 			if (name === 'fx') {
 				this.add("c|+f(x)|love is 4 wawawawawawawalls");
 			}
+			if (name === 'galbia') {
+				this.add('c|@galbia|(dog)');
+			}
 			if (name === 'gangnamstyle') {
 				this.add("c|+Gangnam Style|Here I Come, Rougher Than The Rest of 'Em.");
 			}
@@ -965,9 +968,12 @@ exports.Formats = [
 		onBeforeMove: function (pokemon, target, move) {
 		},
 		// Add here salty tears, that is, custom faint phrases.
-		onFaint: function (pokemon) {
+		onFaint: function (pokemon, source, effect) {
 			let name = toId(pokemon.name);
 			let sentences = [];
+			if (source.name === 'galbia') {
+				this.add('c|@galbia|literally 2HKOged');
+			}
 			if (name === 'aelita') {
 				this.add('c|%Aelita|CODE: LYOKO. Tower deactivated...');
 			}
@@ -993,6 +999,9 @@ exports.Formats = [
 			}
 			if (name === 'fx') {
 				this.add("c|+f(x)|mirror, mirror");
+			}
+			if (name === 'galbia') {
+				this.add('c|@galbia|(dog)');
 			}
 			if (name === 'gangnamstyle') {
 				this.add("c|+Gangnam Style|The Great Emeralds power allows me to feel... ");
