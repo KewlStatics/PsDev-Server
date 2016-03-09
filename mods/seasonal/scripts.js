@@ -24,7 +24,7 @@ exports.BattleScripts = {
 				evs: {hp:252, atk:252, def:4}, nature: 'Adamant',
 			},
 			'boTTT': {
-				species: 'Regigigas', ability: ['Scrappy', 'Magic Guard'][this.random(2)], item: (variant ? 'Leftovers' : 'Chesto Berry'), gender: 'N', shiny: variant, 
+				species: 'Regigigas', ability: ['Scrappy', 'Magic Guard'][this.random(2)], item: (variant ? 'Leftovers' : 'Chesto Berry'), gender: 'N', shiny: variant,
 				moves: ['megakick', 'drainpunch', (variant ? 'aromatherapy' : 'rest')],
 				signatureMove: "Auto-Moderation",
 				evs: {hp:60, atk:252, spd:196}, nature: 'Adamant',

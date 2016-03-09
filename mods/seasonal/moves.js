@@ -12,7 +12,7 @@ exports.BattleMovedex = {
 		priority: 0,
 		flags: {protect: 1, reflectable: 1, mirror: 1, authentic: 1},
 		selfSwitch: true,
-		boosts: {atk: -1, spa: -1,},
+		boosts: {atk: -1, spa: -1},
 		status: 'psn',
 		volatileStatus: 'taunt',
 		secondary: false,
@@ -59,7 +59,7 @@ exports.BattleMovedex = {
 		name: "Auto-Moderation",
 		pp: 35,
 		priority: 3,
-		flags: { authentic: 1, mirror: 1 },
+		flags: {authentic: 1, mirror: 1},
 		onTryHit: function (target, source) {
 			this.attrLastMove('[still]');
 			this.add('-anim', source, "Luster Purge", target);
