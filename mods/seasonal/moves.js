@@ -3,7 +3,6 @@
 exports.BattleMovedex = {
 	// Eevee General
 	adminthings: {
-		num: -575,
 		accuracy: 100,
 		category: "Status",
 		id: "adminthings",
@@ -24,7 +23,6 @@ exports.BattleMovedex = {
 	},
 	// awu
 	ancestorsrage: {
-		num: -583,
 		accuracy: 100,
 		basePower: 80,
 		category: "Physical",
@@ -43,7 +41,6 @@ exports.BattleMovedex = {
 	},
 	// boTTT
 	automoderation: {
-		num: -919,
 		accuracy: true,
 		basePower: 40,
 		basePowerCallback: function (pokemon, target) {
@@ -89,7 +86,6 @@ exports.BattleMovedex = {
 	},
 	// Aelita
 	energyfield: {
-		num: -87,
 		accuracy: 100,
 		basePower: 150,
 		category: "Special",
@@ -116,7 +112,6 @@ exports.BattleMovedex = {
 	},
 	// bumbadadabum
 	freesoftware: {
-		num: -161,
 		accuracy: 95,
 		basePower: 110,
 		category: "Special",
@@ -137,7 +132,6 @@ exports.BattleMovedex = {
 	},
 	// Joim
 	gasterblaster: {
-		num: -63,
 		accuracy: 90,
 		basePower: 150,
 		category: "Special",
@@ -164,7 +158,6 @@ exports.BattleMovedex = {
 	},
 	// xfix
 	glitchdimension: {
-		num: -42,
 		accuracy: true,
 		basePower: 0,
 		category: "Status",
@@ -249,7 +242,6 @@ exports.BattleMovedex = {
 	},
 	// Hippopotas
 	hazardpass: {
-		num: -575,
 		accuracy: 100,
 		basePower: 0,
 		category: "Status",
@@ -271,7 +263,6 @@ exports.BattleMovedex = {
 	},
 	// qtrx
 	keyboardsmash: {
-		num: -96,
 		accuracy: true,
 		basePower: 0,
 		category: "Status",
@@ -316,7 +307,6 @@ exports.BattleMovedex = {
 	},
 	// Crestfall
 	lightofunruin: {
-		num: -617,
 		accuracy: 90,
 		basePower: 140,
 		category: "Special",
@@ -382,7 +372,6 @@ exports.BattleMovedex = {
 	},
 	// gangnam style
 	motherfathergentleman: {
-		num: -154,
 		accuracy: 80,
 		basePower: 70,
 		category: "Physical",
@@ -398,7 +387,6 @@ exports.BattleMovedex = {
 	},
 	// Level 51
 	nextlevelstrats: {
-		num: -376,
 		accuracy: true,
 		category: "Status",
 		id: "nextlevelstrats",
@@ -422,7 +410,6 @@ exports.BattleMovedex = {
 	},
 	// m00ns
 	oh: {
-		num: -568,
 		accuracy: 100,
 		category: "Status",
 		id: "oh",
@@ -438,7 +425,6 @@ exports.BattleMovedex = {
 	},
 	// AM
 	predator: {
-		num: -228,
 		accuracy: 100,
 		basePower: 40,
 		basePowerCallback: function (pokemon, target) {
@@ -497,7 +483,6 @@ exports.BattleMovedex = {
 	},
 	// Raseri
 	purifysoul: {
-		num: -105,
 		accuracy: true,
 		basePower: 0,
 		category: "Status",
@@ -515,7 +500,6 @@ exports.BattleMovedex = {
 	},
 	// Quite Quiet
 	retreat: {
-		num: -521,
 		accuracy: 100,
 		basePower: 70,
 		category: "Special",
@@ -535,7 +519,6 @@ exports.BattleMovedex = {
 	},
 	// Jasmine
 	reversetransform: {
-		num: -144,
 		accuracy: true,
 		category: "Status",
 		id: "reversetransform",
@@ -555,7 +538,6 @@ exports.BattleMovedex = {
 	},
 	// Trickster
 	sacredspearexplosion: {
-		num: -605,
 		accuracy: 100,
 		basePower: 80,
 		category: "Special",
@@ -612,7 +594,6 @@ exports.BattleMovedex = {
 	},
 	// Legitimate Username
 	shellfortress: {
-		num: -504,
 		accuracy: true,
 		basePower: 0,
 		category: "Status",
@@ -629,7 +610,6 @@ exports.BattleMovedex = {
 	},
 	// The Immortal
 	sleepwalk: {
-		num: -214,
 		accuracy: true,
 		basePower: 0,
 		category: "Status",
@@ -682,7 +662,6 @@ exports.BattleMovedex = {
 	},
 	// Bummer
 	speedpaint: {
-		num: -381,
 		accuracy: true,
 		category: "Status",
 		id: "speedpaint",
@@ -719,7 +698,6 @@ exports.BattleMovedex = {
 	},
 	// Lacuna
 	standingfull: {
-		num: -223,
 		accuracy: 100,
 		basePower: 75,
 		category: "Physical",
@@ -742,7 +720,6 @@ exports.BattleMovedex = {
 	},
 	// Solaris Fox
 	wonderbark: {
-		num: -289,
 		accuracy: true,
 		basePower: 0,
 		category: "Status",
