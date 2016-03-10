@@ -434,7 +434,7 @@ exports.BattleMovedex = {
 		priority: 0,
 		flags: {protect: 1, mirror: 1},
 		boosts: {atk: -1, spa: -1},
-		self: {boosts: {spd: 1}},
+		self: {boosts: {spe: 1}},
 		secondary: false,
 		target: "normal",
 		type: "Dark",
