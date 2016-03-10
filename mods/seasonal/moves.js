@@ -272,49 +272,75 @@ exports.BattleMovedex = {
 		type: "Dark",
 	},
 	// qtrx
-	keyboardsmash: {
+	hiddenpowernormal: {
 		accuracy: true,
 		basePower: 0,
 		category: "Status",
-		desc: "Raises the user's Attack by 1 stage.",
-		shortDesc: "Raises the user's Attack by 1.",
-		id: "keyboardsmash",
+		id: "hiddenpowernormal",
 		isNonstandard: true,
-		name: "KEYBOARD SMASH",
-		pp: 40,
+		isViable: true,
+		name: "Hidden Power Normal",
+		pp: 65,
 		priority: 0,
-		flags: {snatch: 1},
-		onPrepareHit: function (target, source, move) {
+		flags: { snatch: 1, authentic: 1 },
+		onModifyMove: function(move, source) {
+			if (source.template.isMega) {
+				move.name = "SUPER GLITCH";
+				if (this.p1.pokemon.filter(mon => !mon.fainted).length > 1 && this.p2.pokemon.filter(mon => !mon.fainted).length > 1) {
+					source.addVolatile('hiddenpowernormal');
+					move.forceSwitch = true;
+					move.selfSwitch = true;
+				}
+			} else {
+				move.name = "KEYBOARD SMASH";
+			}
+		},
+		onPrepareHit: function(target, source) {
 			this.attrLastMove('[still]');
 			this.add('-anim', source, "Fairy Lock", target);
 			this.add('-anim', target, "Fairy Lock", target); // DRAMATIC FLASHING
 		},
-		onHit: function (target, source) {
-			let gibberish = '';
-			let hits = 0;
-			let oldspa = source.stats.spa;
-			let hps = ['hiddenpowerbug', 'hiddenpowerdark', 'hiddenpowerdragon', 'hiddenpowerelectric', 'hiddenpowerfighting', 'hiddenpowerfire', 'hiddenpowerflying', 'hiddenpowerghost', 'hiddenpowergrass', 'hiddenpowerground', 'hiddenpowerice', 'hiddenpowerpoison', 'hiddenpowerpsychic', 'hiddenpowerrock', 'hiddenpowersteel', 'hiddenpowerwater'];
-			let hitcount = [3, 4, 4, 4, 4, 5, 5, 5, 6, 6, 7][this.random(11)];
-			this.add('c|@qtrx|/me slams face into keyboard!');
-			source.isDuringAttack = true; // Prevents the user from being kicked out in the middle of using Hidden Powers.
-			source.stats.spa = source.stats.atk;
-			for (let i = 0; i < hitcount; i++) {
-				if (target.hp !== 0) {
-					let len = 16 + this.random(35);
-					gibberish = '';
-					for (let j = 0; j < len; j++) gibberish += String.fromCharCode(48 + this.random(79));
-					this.add('-message', gibberish);
-					this.useMove(hps[this.random(16)], source, target);
-					hits++;
+		onHit: function(target, source) {
+			if (!source.template.isMega) {
+				let gibberish = '';
+				let hits = 0;
+				let hps = ['hiddenpowerbug', 'hiddenpowerdark', 'hiddenpowerdragon', 'hiddenpowerelectric', 'hiddenpowerfighting', 'hiddenpowerfire', 'hiddenpowerflying', 'hiddenpowerghost', 'hiddenpowergrass', 'hiddenpowerground', 'hiddenpowerice', 'hiddenpowerpoison', 'hiddenpowerpsychic', 'hiddenpowerrock', 'hiddenpowersteel', 'hiddenpowerwater'];
+				let hitcount = [3, 4, 4, 4, 4, 5, 5, 6, 6][this.random(9)];
+				this.add('c|@qtrx|/me slams face into keyboard!');
+				source.isDuringAttack = true; // Prevents the user from being kicked out in the middle of using Hidden Powers.
+				for (let i = 0; i < hitcount; i++) {
+					if (target.hp !== 0) {
+						let len = 16 + this.random(35);
+						gibberish = '';
+						for (let j = 0; j < len; j++) gibberish += String.fromCharCode(48 + this.random(79));
+						this.add('-message', gibberish);
+						this.useMove(hps[this.random(16)], source, target);
+						hits++;
+					}
 				}
+				this.add('-message', 'Hit ' + hits + ' times!');
+				source.isDuringAttack = false;
+			} else if (source.volatiles['hiddenpowernormal']) {
+				target.swapping = true;
+				source.swapping = true;
+			} else {
+				this.useMove("explosion", source, target);
 			}
-			this.add('-message', 'Hit ' + hits + ' times!');
-			source.stats.spa = oldspa;
-			source.isDuringAttack = false;
+		},
+		effect: {
+			duration: 1,
+			onAfterMoveSecondarySelf: function(source, target) {
+				if (source.swapping && target.swapping) {
+					this.add("raw|<div class=\"broadcast-blue\"><b>" + source.side.name + " will trade " + source.name + " for " + target.side.name + "'s " + target.name + ".</b></div>");
+					this.add('message', "Link standby... Please wait.");
+				} else {
+					this.add('message', "Trade cancelled.");
+				}
+			},
 		},
 		secondary: false,
 		target: "normal",
-		type: "Psychic",
+		type: "Normal",
 	},
 	// Crestfall
 	lightofunruin: {
