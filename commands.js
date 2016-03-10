@@ -56,7 +56,7 @@ exports.commands = {
 		let buffer = Object.keys(rankLists).sort((a, b) =>
 			(Config.groups[b] || {rank: 0}).rank - (Config.groups[a] || {rank: 0}).rank
 		).map(r =>
-			(Config.groups[r] ? Config.groups[r].name + "s (" + r + ")" : r) + ":\n" + rankLists[r].sortBy(toId).join(", ")
+			(Config.groups[r] ? Config.groups[r].name + "s (" + r + ")" : r) + ":\n" + rankLists[r].sort((a, b) => toId(a).localeCompare(toId(b))).join(", ")
 		);
 
 		if (!buffer.length) buffer = "This server has no global authority.";
@@ -68,18 +68,24 @@ exports.commands = {
 
 	me: function (target, room, user, connection) {
 		// By default, /me allows a blank message
-		if (target) target = this.canTalk(target);
+		if (!target) target = '';
+		target = this.canTalk('/me ' + target);
 		if (!target) return;
 
-		return '/me ' + target;
+		return target;
 	},
 
 	mee: function (target, room, user, connection) {
 		// By default, /mee allows a blank message
-		if (target) target = this.canTalk(target);
+		if (!target) target = '';
+		target = target.trim();
+		if (/[A-Za-z0-9]/.test(target.charAt(0))) {
+			return this.errorReply("To prevent confusion, /mee can't start with a letter or number.");
+		}
+		target = this.canTalk('/mee ' + target);
 		if (!target) return;
 
-		return '/mee ' + target;
+		return target;
 	},
 
 	avatar: function (target, room, user) {
@@ -271,6 +277,26 @@ exports.commands = {
 		this.parse('/unblockchallenges');
 	},
 	backhelp: ["/back - Unblocks challenges and/or private messages, if either are blocked."],
+
+	rank: function (target, room, user) {
+		if (!target) target = user.name;
+
+		Ladders.visualizeAll(target).then(values => {
+			let buffer = '<div class="ladder"><table>';
+			buffer += '<tr><td colspan="8">User: <strong>' + Tools.escapeHTML(target) + '</strong></td></tr>';
+
+			let ratings = values.join('');
+			if (!ratings) {
+				buffer += '<tr><td colspan="8"><em>This user has not played any ladder games yet.</em></td></tr>';
+			} else {
+				buffer += '<tr><th>Format</th><th><abbr title="Elo rating">Elo</abbr></th><th>W</th><th>L</th><th>Total</th>';
+				buffer += ratings;
+			}
+			buffer += '</table></div>';
+
+			this.sendReply('|raw|' + buffer);
+		});
+	},
 
 	makeprivatechatroom: 'makechatroom',
 	makechatroom: function (target, room, user, connection, cmd) {
@@ -1112,16 +1138,16 @@ exports.commands = {
 		let muteDuration = ((cmd === 'hm' || cmd === 'hourmute') ? HOURMUTE_LENGTH : MUTE_LENGTH);
 		if (!this.can('mute', targetUser, room)) return false;
 		let canBeMutedFurther = ((room.getMuteTime(targetUser) || 0) <= (muteDuration * 5 / 6));
-		if ((room.isMuted(targetUser) && !canBeMutedFurther) || targetUser.locked || !targetUser.connected) {
-			let problem = " but was already " + (!targetUser.connected ? "offline" : targetUser.locked ? "locked" : "muted");
+		if ((room.isMuted(targetUser) && !canBeMutedFurther) || targetUser.locked) {
+			let problem = " but was already " + (targetUser.locked ? "locked" : "muted");
 			if (!target) {
 				return this.privateModCommand("(" + targetUser.name + " would be muted by " + user.name + problem + ".)");
 			}
 			return this.addModCommand("" + targetUser.name + " would be muted by " + user.name + problem + "." + (target ? " (" + target + ")" : ""));
 		}
 
-		if (targetUser in room.users) targetUser.popup("|modal|" + user.name + " has muted you in " + room.id + " for " + muteDuration.duration() + ". " + target);
-		this.addModCommand("" + targetUser.name + " was muted by " + user.name + " for " + muteDuration.duration() + "." + (target ? " (" + target + ")" : ""));
+		if (targetUser in room.users) targetUser.popup("|modal|" + user.name + " has muted you in " + room.id + " for " + Tools.toDurationString(muteDuration) + ". " + target);
+		this.addModCommand("" + targetUser.name + " was muted by " + user.name + " for " + Tools.toDurationString(muteDuration) + "." + (target ? " (" + target + ")" : ""));
 		if (targetUser.autoconfirmed && targetUser.autoconfirmed !== targetUser.userid) this.privateModCommand("(" + targetUser.name + "'s ac account: " + targetUser.autoconfirmed + ")");
 		let userid = targetUser.getLastId();
 		this.add('|unlink|' + userid);
@@ -1816,8 +1842,8 @@ exports.commands = {
 				let bracketIndex = line.indexOf(']');
 				let parenIndex = line.indexOf(')');
 				if (bracketIndex < 0) return Tools.escapeHTML(line);
-				let time = line.slice(1, bracketIndex);
-				let timestamp = new Date(time).format('{yyyy}-{MM}-{dd} {hh}:{mm}{tt}');
+				const time = line.slice(1, bracketIndex);
+				let timestamp = Tools.toTimeStamp(new Date(time), {hour12: true});
 				parenIndex = line.indexOf(')');
 				let roomid = line.slice(bracketIndex + 3, parenIndex);
 				if (!hideIps && Config.modloglink) {
@@ -2372,7 +2398,8 @@ exports.commands = {
 
 	savereplay: function (target, room, user, connection) {
 		if (!room || !room.battle) return;
-		let data = room.getLog(0).join("\n"); // spectator log (no exact HP)
+		let logidx = Tools.getFormat(room.battle.format).team ? 3 : 0; // retrieve spectator log (0) if there are set privacy concerns
+		let data = room.getLog(logidx).join("\n");
 		let datahash = crypto.createHash('md5').update(data.replace(/[^(\x20-\x7F)]+/g, '')).digest('hex');
 		let players = room.battle.playerNames;
 		LoginServer.request('prepreplay', {
