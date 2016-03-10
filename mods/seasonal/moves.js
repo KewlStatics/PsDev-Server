@@ -282,8 +282,8 @@ exports.BattleMovedex = {
 		name: "Hidden Power Normal",
 		pp: 65,
 		priority: 0,
-		flags: { snatch: 1, authentic: 1 },
-		onModifyMove: function(move, source) {
+		flags: {snatch: 1, authentic: 1},
+		onModifyMove: function (move, source) {
 			if (source.template.isMega) {
 				move.name = "SUPER GLITCH";
 				if (this.p1.pokemon.filter(mon => !mon.fainted).length > 1 && this.p2.pokemon.filter(mon => !mon.fainted).length > 1) {
@@ -295,12 +295,12 @@ exports.BattleMovedex = {
 				move.name = "KEYBOARD SMASH";
 			}
 		},
-		onPrepareHit: function(target, source) {
+		onPrepareHit: function (target, source) {
 			this.attrLastMove('[still]');
 			this.add('-anim', source, "Fairy Lock", target);
 			this.add('-anim', target, "Fairy Lock", target); // DRAMATIC FLASHING
 		},
-		onHit: function(target, source) {
+		onHit: function (target, source) {
 			if (!source.template.isMega) {
 				let gibberish = '';
 				let hits = 0;
@@ -329,7 +329,7 @@ exports.BattleMovedex = {
 		},
 		effect: {
 			duration: 1,
-			onAfterMoveSecondarySelf: function(source, target) {
+			onAfterMoveSecondarySelf: function (source, target) {
 				if (source.swapping && target.swapping) {
 					this.add("raw|<div class=\"broadcast-blue\"><b>" + source.side.name + " will trade " + source.name + " for " + target.side.name + "'s " + target.name + ".</b></div>");
 					this.add('message', "Link standby... Please wait.");
