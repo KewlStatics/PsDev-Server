@@ -601,7 +601,7 @@ exports.Formats = [
 					this.attrLastMove('[still]');
 					this.add('-anim', source, "Meteor Mash", target);
 					this.add('-message', 'This is so embarrasing!');
-				}
+				};
 			}
 		},
 	},
