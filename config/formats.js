@@ -784,6 +784,8 @@ exports.Formats = [
 				if (name === 'crestfall' && pokemon.getAbility().id !== 'simple') {
 					pokemon.setAbility('simple');
 				}
+			} else {
+				pokemon.canMegaEvo = this.canMegaEvo(pokemon); // Bypass one mega limit.
 			}
 
 			// Add here special typings, done for flavour mainly.
@@ -816,6 +818,7 @@ exports.Formats = [
 					pokemon.addVolatile('qtrxeffects');
 				}
 				pokemon.addVolatile('focusenergy');
+				pokemon.addVolatile('telekinesis');
 			}
 
 			// Edgy switch-in sentences go here.
@@ -1032,7 +1035,7 @@ exports.Formats = [
 				this.add('c|%m00ns|o-oh');
 			}
 			if (name === 'qtrx') {
-				sentences = ['Keyboard not found; press **Ctrl + W** to continue...', 'hfowurfbiEU;DHBRFEr92he', 'At least my name ain\t asgdf...'];
+				sentences = ['Keyboard not found; press **Ctrl + W** to continue...', 'hfowurfbiEU;DHBRFEr92he', 'At least my name ain\'t asgdf...'];
 				this.add('c|@qtrx|' + sentences[this.random(3)]);
 			}
 			if (name === 'quitequiet') {
@@ -1117,6 +1120,46 @@ exports.Formats = [
 							this.useMove('trickroom', pokemon);
 						} else {
 							this.useMove('wonderroom', pokemon);
+						}
+					}
+				}
+			}
+			// Deal with swapping from qtrx's mega signature move.
+			let swapmon1, swapmon2;
+			let swapped = false;
+			for (let i = 1; i < 6 && !swapped; i++) {
+				swapmon1 = battle.sides[0].pokemon[i];
+				if (swapmon1.swapping && swapmon1.hp > 0) {
+					swapmon1.swapping = false;
+					for (let j = 1; j < 6; j++) {
+						swapmon2 = battle.sides[1].pokemon[j];
+						if (swapmon2.swapping && swapmon2.hp > 0) {
+							swapmon2.swapping = false;
+
+							this.add('message', "Link standby... Please wait.");
+							swapmon1.side = battle.sides[1];
+							swapmon1.fullname = swapmon1.side.id + ': ' + swapmon1.name;
+							swapmon1.id = swapmon1.fullname;
+							swapmon2.side = battle.sides[0];
+							swapmon2.fullname = swapmon2.side.id + ': ' + swapmon2.name;
+							swapmon2.id = swapmon2.fullname;
+							let oldpos = swapmon1.position;
+							swapmon1.position = swapmon2.position;
+							swapmon2.position = oldpos;
+							battle.sides[0].pokemon[i] = swapmon2;
+							battle.sides[1].pokemon[j] = swapmon1;
+
+							this.add("c|\u2605" + swapmon1.side.name + "|Bye-bye, " + swapmon2.name + "!");
+							this.add("c|\u2605" + swapmon2.side.name + "|Bye-bye, " + swapmon1.name + "!");
+							this.add('-anim', swapmon1.side.active, "Luster Purge", swapmon2.side.active);
+							this.add('-anim', swapmon2.side.active, "Aura Sphere", swapmon2.side.active);
+							this.add('message', swapmon2.side.name + " received " + swapmon2.name + "! Take good care of " + swapmon2.name + "!");
+							this.add('-anim', swapmon2.side.active, "Luster Purge", swapmon1.side.active);
+							this.add('-anim', swapmon1.side.active, "Aura Sphere", swapmon1.side.active);
+							this.add('message', swapmon1.side.name + " received " + swapmon1.name + "! Take good care of " + swapmon1.name + "!");
+
+							swapped = true;
+							break;
 						}
 					}
 				}

@@ -114,10 +114,10 @@ exports.BattleScripts = {
 				evs: {hp:52, def:232, spd:224}, ivs: {atk:0}, nature: 'Bold',
 			},
 			'qtrx': {
-				species: 'Missingno.', ability: 'Levitate', item: 'Focus Sash', gender: 'M',
+				species: 'Unown', ability: 'Sturdy', item: 'Keyboard', gender: 'M',
 				moves: [],
-				signatureMove: "KEYBOARD SMASH",
-				evs: {hp:252, def:4, spa:252}, ivs: {atk:0, spe:0}, nature: 'Quiet',
+				signatureMove: "Hidden Power Normal",
+				evs: {hp:252, def:4, spa:252}, ivs: {spe: 0}, nature: 'Quiet',
 			},
 			'Quite Quiet': {
 				species: 'Heliolisk', ability: 'Regenerator', item: 'Life Orb', gender: 'F',
