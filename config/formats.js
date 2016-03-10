@@ -874,7 +874,7 @@ exports.Formats = [
 		onFaint: function (pokemon, source, effect) {
 			let name = toId(pokemon.name);
 			let sentences = [];
-			if (source.name === 'galbia') {
+			if (name === 'galbia') {
 				this.add('c|@galbia|literally 2HKOged');
 			}
 			if (name === 'aelita') {
