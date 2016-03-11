@@ -824,7 +824,7 @@ exports.Formats = [
 				this.add("c|@qtrx|omg DONT call me '" + sentences[this.random(8)] + "' pls respect my name its very special!!1!");
 			}
 			if (name === 'quitequiet') {
-				this.add("c|%Quite Quiet|I'll give it a shot.");
+				this.add("c|@Quite Quiet|I'll give it a shot.");
 			}
 			if (name === 'raseri') {
 				this.add('c|%Raseri|gg');
@@ -936,7 +936,7 @@ exports.Formats = [
 				this.add('c|@qtrx|' + sentences[this.random(3)]);
 			}
 			if (name === 'quitequiet') {
-				this.add('c|%Quite Quiet|Well, I tried at least.');
+				this.add('c|@Quite Quiet|Well, I tried at least.');
 			}
 			if (name === 'raseri') {
 				this.add('c|%Raseri|you killed a mush :(');

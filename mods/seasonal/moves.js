@@ -545,7 +545,7 @@ exports.BattleMovedex = {
 	// Quite Quiet
 	retreat: {
 		accuracy: 100,
-		basePower: 70,
+		basePower: 60,
 		category: "Special",
 		id: "retreat",
 		isNonstandard: true,
