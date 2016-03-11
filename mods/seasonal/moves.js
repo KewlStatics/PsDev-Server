@@ -585,7 +585,7 @@ exports.BattleMovedex = {
 	// Trickster
 	sacredspearexplosion: {
 		accuracy: 100,
-		basePower: 80,
+		basePower: 100,
 		category: "Special",
 		desc: "No additional effect.",
 		shortDesc: "No additional effect. Hits adjacent foes.",
