@@ -785,16 +785,17 @@ exports.BattleMovedex = {
 		volatileStatus: 'flinch',
 		onPrepareHit: function (target, source, move) {
 			this.attrLastMove('[still]');
+			this.add('-anim', source, "Cosmic Power", target);
 			this.add('-anim', source, "Hyper Voice", source);
 		},
 		onHit: function (pokemon, source) {
 			this.add('-message', 'You hear a sound echo across the universe. Things seem different now.');
-			let newMoves = ['hyperbeam', 'flamethrower', 'freezedry', 'thunderbolt', 'scald', 'gigadrain', 'bugbuzz',
+			let newMoves = ['boomburst', 'flamethrower', 'freezedry', 'thunderbolt', 'steameruption', 'gigadrain', 'bugbuzz',
 				'darkpulse', 'psychic', 'shadowball', 'flashcannon', 'dragonpulse', 'moonblast', 'focusblast', 'aeroblast',
 				'earthpower', 'sludgebomb', 'paleowave', 'bodyslam', 'flareblitz', 'iciclecrash', 'volttackle', 'waterfall',
 				'leafblade', 'xscissor', 'knockoff', 'shadowforce', 'ironhead', 'outrage', 'playrough', 'closecombat',
-				'bravebird', 'earthquake', 'stoneedge', 'extremespeed', 'stealthrock', 'spikes', 'stickyweb', 'quiverdance',
-				'shellsmash', 'dragondance', 'recover', 'toxic', 'willowisp',
+				'bravebird', 'earthquake', 'stoneedge', 'extremespeed', 'stealthrock', 'spikes', 'toxicspikes', 'stickyweb',
+				'quiverdance', 'shellsmash', 'dragondance', 'recover', 'toxic', 'willowisp', 'leechseed',
 			].randomize();
 			for (let i = 0; i < pokemon.moveset.length; i++) {
 				let moveData = Tools.getMove(newMoves[i]);
@@ -811,10 +812,6 @@ exports.BattleMovedex = {
 				pokemon.baseMoveset[i] = moveBuffer;
 				pokemon.moves[i] = toId(moveData.name);
 			}
-			source.side.hasUsedWonderBark = true;
-		},
-		onAfterMove: function (pokemon) {
-			pokemon.deductPP('wonderbark', 99);
 		},
 		secondary: false,
 		target: "normal",
