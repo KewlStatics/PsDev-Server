@@ -874,9 +874,12 @@ exports.Formats = [
 		onFaint: function (pokemon, source, effect) {
 			let name = toId(pokemon.name);
 			let sentences = [];
-			if (name === 'galbia') {
+			// This message is different from others, as it triggers when
+			// opponent faints
+			if (source && source.name === 'galbia') {
 				this.add('c|@galbia|literally 2HKOged');
 			}
+			// Actual faint phrases
 			if (name === 'aelita') {
 				this.add('c|%Aelita|CODE: LYOKO. Tower deactivated...');
 			}
