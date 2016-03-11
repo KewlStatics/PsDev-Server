@@ -759,12 +759,14 @@ exports.BattleMovedex = {
 		priority: 0,
 		flags: {contact: 1, protect: 1, mirror: 1, punch: 1},
 		onHit: function (target, source) {
-			if (target.lastDamage > 0 && source.lastAttackedBy && source.lastAttackedBy.thisTurn && source.lastAttackedBy.pokemon === target) {
-				if (this.random(100) < 30) {
+			if (!target.hasAbility('shielddust')) {
+				if (target.lastDamage > 0 && source.lastAttackedBy && source.lastAttackedBy.thisTurn && source.lastAttackedBy.pokemon === target) {
+					if (this.random(100) < 30) {
+						target.addVolatile('confusion');
+					}
+				} else {
 					target.addVolatile('confusion');
 				}
-			} else {
-				target.addVolatile('confusion');
 			}
 		},
 		target: "normal",
