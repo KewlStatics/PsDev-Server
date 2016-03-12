@@ -13,10 +13,10 @@ exports.BattleMovedex = {
 		flags: {protect: 1, reflectable: 1, mirror: 1, authentic: 1},
 		selfSwitch: true,
 		boosts: {atk: -1, spa: -1},
-		status: 'psn',
-		volatileStatus: 'taunt',
 		secondary: false,
 		onHit: function (target, source) {
+			target.trySetStatus('psn', source);  // Doesn't use the status property to prevent the move
+			target.addVolatile('taunt', source); // from failing before executing all actions.
 			this.add("c|~Eevee General|Sorry but I have to go! Please submit your request in <<adminrequests>> and we'll look at it soon.");
 		},
 		target: "normal",
@@ -923,7 +923,7 @@ exports.BattleMovedex = {
 	// Quite Quiet
 	retreat: {
 		accuracy: 100,
-		basePower: 70,
+		basePower: 60,
 		category: "Special",
 		id: "retreat",
 		isNonstandard: true,
@@ -995,7 +995,7 @@ exports.BattleMovedex = {
 	// Trickster
 	sacredspearexplosion: {
 		accuracy: 100,
-		basePower: 80,
+		basePower: 100,
 		category: "Special",
 		desc: "No additional effect.",
 		shortDesc: "No additional effect. Hits adjacent foes.",
@@ -1173,12 +1173,14 @@ exports.BattleMovedex = {
 			this.add('-anim', source, "Splash", source);
 		},
 		onHit: function (target, source) {
-			if (target.lastDamage > 0 && source.lastAttackedBy && source.lastAttackedBy.thisTurn && source.lastAttackedBy.pokemon === target) {
-				if (this.random(100) < 30) {
+			if (!target.hasAbility('shielddust')) {
+				if (target.lastDamage > 0 && source.lastAttackedBy && source.lastAttackedBy.thisTurn && source.lastAttackedBy.pokemon === target) {
+					if (this.random(100) < 30) {
+						target.addVolatile('confusion');
+					}
+				} else {
 					target.addVolatile('confusion');
 				}
-			} else {
-				target.addVolatile('confusion');
 			}
 		},
 		target: "normal",
@@ -1199,16 +1201,17 @@ exports.BattleMovedex = {
 		volatileStatus: 'flinch',
 		onPrepareHit: function (target, source, move) {
 			this.attrLastMove('[still]');
+			this.add('-anim', source, "Cosmic Power", target);
 			this.add('-anim', source, "Hyper Voice", source);
 		},
 		onHit: function (pokemon, source) {
 			this.add('-message', 'You hear a sound echo across the universe. Things seem different now.');
-			let newMoves = ['hyperbeam', 'flamethrower', 'freezedry', 'thunderbolt', 'scald', 'gigadrain', 'bugbuzz',
+			let newMoves = ['boomburst', 'flamethrower', 'freezedry', 'thunderbolt', 'steameruption', 'gigadrain', 'bugbuzz',
 				'darkpulse', 'psychic', 'shadowball', 'flashcannon', 'dragonpulse', 'moonblast', 'focusblast', 'aeroblast',
 				'earthpower', 'sludgebomb', 'paleowave', 'bodyslam', 'flareblitz', 'iciclecrash', 'volttackle', 'waterfall',
 				'leafblade', 'xscissor', 'knockoff', 'shadowforce', 'ironhead', 'outrage', 'playrough', 'closecombat',
-				'bravebird', 'earthquake', 'stoneedge', 'extremespeed', 'stealthrock', 'spikes', 'stickyweb', 'quiverdance',
-				'shellsmash', 'dragondance', 'recover', 'toxic', 'willowisp',
+				'bravebird', 'earthquake', 'stoneedge', 'extremespeed', 'stealthrock', 'spikes', 'toxicspikes', 'stickyweb',
+				'quiverdance', 'shellsmash', 'dragondance', 'recover', 'toxic', 'willowisp', 'leechseed',
 			].randomize();
 			for (let i = 0; i < pokemon.moveset.length; i++) {
 				let moveData = Tools.getMove(newMoves[i]);
@@ -1225,10 +1228,6 @@ exports.BattleMovedex = {
 				pokemon.baseMoveset[i] = moveBuffer;
 				pokemon.moves[i] = toId(moveData.name);
 			}
-			source.side.hasUsedWonderBark = true;
-		},
-		onAfterMove: function (pokemon) {
-			pokemon.deductPP('wonderbark', 99);
 		},
 		secondary: false,
 		target: "normal",
