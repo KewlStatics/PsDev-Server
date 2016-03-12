@@ -745,20 +745,51 @@ exports.Formats = [
 			let sentences = [];
 			let sentence = '';
 
+			if (name === 'ace') {
+				// TODO
+			}
 			if (name === 'aelita') {
 				this.add('c|%Aelita|Transfer, Aelita. Scanner, Aelita. Virtualization!');
 			}
 			if (name === 'ajhockeystar') {
 				this.add('c|+ajhockeystar|Here comes the greatest hockey player alive!');
 			}
+			if (name === 'albacore') {
+				// TODO
+			}
 			if (name === 'am') {
 				this.add('c|+AM|Lucky and Bad');
+			}
+			if (name === 'andrewgoncel') {
+				// TODO
+			}
+			if (name === 'antemortem') {
+				this.add('c|@antemortem|I Am Here To Oppress Users');
+			}
+			if (name === 'anty') {
+				// TODO
+			}
+			if (name === 'articuno') {
+				sentences = ['Don\'t hurt me, I\'m a gril!', '/me quivers **violently**', 'Don\'t make me use my ban whip...'];
+				this.add('c|%Articuno|' + sentences[this.random(3)]);
+			}
+			if (name === 'ascriptmaster') {
+				this.add("c|@Ascriptmaster|Good luck, I'm behind 7 proxies");
+			}
+			if (name === 'astara') {
+				this.add('c|%Ast☆arA|I\'d rather take a nap, I hope you won\'t be a petilil shit, Eat some rare candies and get on my level.');
+			}
+			if (name === 'atomicllamas') {
+				// TODO
 			}
 			if (name === 'aurora') {
 				this.add('c|@Aurora|Best of luck to all competitors!');
 			}
 			if (name === 'awu') {
 				this.add('c|+awu|Fite me irl bruh.');
+			}
+			if (name === 'beotrump') {
+				this.add('c|@Beowulf|Grovel peasant, you are in the presence of the RNGesus');
 			}
 			if (name === 'biggie') {
 				sentences = ["Now I'm in the limelight cause I rhyme tight", "HAPPY FEET! WOMBO COMBO!", "You finna mess around and get dunked on"].randomize();
@@ -767,21 +798,52 @@ exports.Formats = [
 			if (name === 'blastchance') {
 				this.add("c|+Blast Chance|MAN BALAMAR");
 			}
+			if (name === 'blitzamirin') {
+				this.add('c|@Blitzamirin|How Can Mirrors Be Real If Our Eyes Aren\'t Real? ╰( ~ ◕ ᗜ ◕ ~ )੭━☆ﾟ.*･｡ﾟ');
+			}
+			if (name === 'bottt') {
+				// TODO
+			}
 			if (name === 'bumbadadabum') {
 				this.add('c|@bumbadadabum|Time for card games on motorcycles!');
 			}
 			if (name === 'bummer') {
 				this.add("c|&Bummer|Oh hi.");
 			}
+			if (name === 'chaos') {
+				this.add("c|~chaos|I always win");
+			}
+			if (name === 'coolstorybrobat') {
+				sentence = [
+					"Time to GET SLAYED", "BRUH!", "Ahem! Gentlemen...", "I spent 6 months training in the mountains for this day!",
+					"Shoutout to all the pear...",
+				][this.random(5)];
+				this.add('c|@CoolStoryBrobat|' + sentence);
+			}
 			if (name === 'crestfall') {
 				this.add('c|%Crestfall|To say that we\'re in love is dangerous');
+			}
+			if (name === 'duck') {
+				// TODO
 			}
 			if (name === 'eeveegeneral') {
 				sentences = ['yo', 'anyone seen goku?'];
 				this.add('c|~Eevee General|' + sentences[this.random(2)]);
 			}
+			if (name === 'eyan') {
+				// TODO
+			}
+			if (name === 'feliburn') {
+				this.add('c|%Feliburn|Come on!');
+			}
 			if (name === 'flyingkebab') {
 				this.add("c|+Flying Kebab|I'm ready for ya. Bring it on!");
+			}
+			if (name === 'formerhope') {
+				this.add('c|@Former Hope|/me enters battle');
+			}
+			if (name === 'freeroamer') {
+				// TODO
 			}
 			if (name === 'fx') {
 				this.add("c|+f(x)|love is 4 wawawawawawawalls");
@@ -789,8 +851,14 @@ exports.Formats = [
 			if (name === 'galbia') {
 				this.add('c|@galbia|(dog)');
 			}
-			if (name === 'gangnamstyle') {
+			if (name === 'gangnamstyle') { // don't delete
 				this.add("c|+Gangnam Style|Here I Come, Rougher Than The Rest of 'Em.");
+			}
+			if (name === 'geoffbruedly') {
+				// TODO
+			}
+			if (name === 'grimauxiliatrix') {
+				// TODO
 			}
 			if (name === 'hashtag') {
 				this.add("c|#Hashtag|hey opponent, you get 5 hashtag points if you forfeit right now ;}");
@@ -798,31 +866,37 @@ exports.Formats = [
 			if (name === 'haund') {
 				this.add('c|+Haund|le balanced normal flying bird has arrived');
 			}
+			if (name === 'himynamesl') {
+				// TODO
+			}
 			if (name === 'hippopotas') {
 				this.add('-message', '@Hippopotas\'s Sand Stream whipped up a sandstorm!');
+			}
+			if (name === 'hollywood') {
+				this.add('c|&hollywood|Kappa');
 			}
 			if (name === 'ih8ih8sn0w') {
 				this.add('c|+ih8ih8sn0w|*sips tea*');
 			}
+			if (name === 'imanalt') {
+				this.add('c|@imanalt|muh bulk');
+			}
+			if (name === 'imas234') {
+				// TODO
+			}
+			if (name === 'innovamania') {
+				sentences = ['Don\'t take this seriously', 'These Black Glasses sure look cool', 'Ready for some fun?( ͡° ͜ʖ ͡°)', '( ͡° ͜ʖ ͡°'];
+				this.add('c|@innovamania|' + sentences[this.random(4)]);
+			}
 			if (name === 'jasmine') {
 				this.add("c|+Jasmine|I'm still relevant!");
 			}
+			if (name === 'jdarden') {
+				this.add('c|&jdarden|Did someone call for some BALK?');
+			}
 			if (name === 'joim') {
-				let dice = this.random(10);
-				// Revisiting classics.
+				let dice = this.random(8);
 				if (dice === 1) {
-					this.add('c|~Joim|░░░░░░░░▄▄▄▀▀▀▄▄███▄');
-					this.add('c|~Joim|░░░░░▄▀▀░░░░░░░▐░▀██▌');
-					this.add('c|~Joim|░░░▄▀░░░░▄▄███░▌▀▀░▀█');
-					this.add('c|~Joim|░░▄█░░▄▀▀▒▒▒▒▒▄▐░░░░█▌');
-					this.add('c|~Joim|░▐█▀▄▀▄▄▄▄▀▀▀▀▌░░░░░▐█▄');
-					this.add('c|~Joim|░▌▄▄▀▀░░░░░░░░▌░░░░▄███████▄');
-					this.add('c|~Joim|░░░░░░░░░░░░░▐░░░░▐███████████▄');
-					this.add('c|~Joim|░░blessed by░▐░░░░▐█████████████▄');
-					this.add('c|~Joim|░░le toucan░░░▀▄░░░▐██████████████▄');
-					this.add('c|~Joim|░░░░░░ of ░░░░░░▀▄▄████████████████▄');
-					this.add('c|~Joim|░░░░░luck░░░░░░░░░░░█▀██████');
-				} else if (dice === 2) {
 					this.add('c|~Joim|░░░░░░░░░░░░▄▐');
 					this.add('c|~Joim|░░░░░░▄▄▄░░▄██▄');
 					this.add('c|~Joim|░░░░░▐▀█▀▌░░░░▀█▄');
@@ -845,6 +919,7 @@ exports.Formats = [
 						"Gen 1 OU is a true skill metagame.", "Finally a good reason to punch a teenager in the face!",
 						"So here we are again, it's always such a pleasure.", "My ex-wife still misses me, BUT HER AIM IS GETTING BETTER!",
 						"A man chooses, a slave obeys.", "You're gonna have a bad time.", "Would you kindly let me win?",
+						"I'm sorry, but I only enjoy vintage memes from the early 00's.",
 					].randomize();
 					sentence = sentences[0];
 					this.add('c|~Joim|' + sentence);
@@ -852,6 +927,9 @@ exports.Formats = [
 			}
 			if (name === 'lacuna') {
 				this.add('c|%Lacuna|Introducing 7 time Grand Champion, Lacuna, to the battle!');
+			}
+			if (name === 'layell') {
+				this.add('c|@Layell|Enter stage left');
 			}
 			if (name === 'legitimateusername') {
 				this.add('c|@LegitimateUsername|``And believe me I am still alive.``');
@@ -866,14 +944,33 @@ exports.Formats = [
 			if (name === 'lj') {
 				this.add('c|%LJDarkrai|Powerfulll');
 			}
-			if (name === 'macle') {
-				this.add("c|+macle|Follow the Frog Blog - https://gonefroggin.wordpress.com/");
-			}
-			if (name === 'MattL') {
-				this.add('c|+MattL|If you strike me down, I shall become more powerful than you can possibly imagine.');
+			if (name === 'lyto') {
+				sentences = ["This is divine retribution!", "I will handle this myself!", "Let battle commence!"].randomize();
+				this.add('c|@Lyto|' + sentences[0]);
 			}
 			if (name === 'm00ns') {
 				this.add('c|%m00ns|oh');
+			}
+			if (name === 'macle') {
+				this.add("c|+macle|Follow the Frog Blog");
+			}
+			if (name === 'manu11') {
+				// TODO
+			}
+			if (name === 'marshmallon') {
+				// TODO
+			}
+			if  (name === 'mattl') {
+				this.add('c|+MattL|If you strike me down, I shall become more powerful than you can possibly imagine.');
+			}
+			if (name === 'mcmeghan') {
+				// TODO
+			}
+			if (name === 'mizuhime') {
+				// TODO
+			}
+			if (name === 'phable') {
+				// TODO
 			}
 			if (name === 'pluviometer') {
 				this.add('c|+pluviometer|p^2laceholder');
@@ -888,14 +985,63 @@ exports.Formats = [
 			if (name === 'raseri') {
 				this.add('c|%Raseri|gg');
 			}
+			if (name === 'raven') {
+				// TODO
+			}
+			if (name === 'rekeri') {
+				this.add('c|@rekeri|Get Rekeri\'d :]');
+			}
+			if (name === 'rosiethevenusaur') {
+				sentences = ['!dt party', 'Are you Wifi whitelisted?', 'Read the roomintro!'];
+				this.add('c|@RosieTheVenusaur|' + sentences[this.random(3)]);
+			}
+			if (name === 'sam') {
+				// TODO
+			}
+			if (name === 'scotteh') {
+				this.add('c|@Scotteh|─────▄▄████▀█▄');
+				this.add('c|@Scotteh|───▄██████████████████▄');
+				this.add('c|@Scotteh|─▄█████.▼.▼.▼.▼.▼.▼.▼');
+			}
 			if (name === 'scpinion') {
 				this.add('c|%scpinion|/me welcomes funbro');
+			}
+			if (name === 'shrang') {
+				// TODO
+			}
+			if (name === 'sigilyph') {
+				// TODO
+			}
+			if (name === 'sirdonovan') {
+				this.add('c|&sirDonovan|Oh, a battle? Let me finish my tea and crumpets');
+			}
+			if (name === 'skitty') {
+				this.add('c|@Skitty|\\_$-_-$_/');
 			}
 			if (name === 'solarisfox') {
 				this.add('raw|<div class="chat chatmessage-solarisfox"><small>%</small><b><font color="#2D8F1E"><span class="username" data-name="SolarisFox">SolarisFox</span>:</font></b> <em><marquee behavior="alternate" scrollamount=3 scrolldelay="60" width="108">[Intense vibrating]</marquee></em></div>');
 			}
 			if (name === 'spacebass') {
 				this.add('c|%SpaceBass|The most interesting ball of toxins you\'ll ever have to meet');
+			}
+			if (name === 'spy') {
+				sentences = ['curry consumer', 'try to keep up', 'fucking try to knock me down', 'Sometimes I slather myself in vasoline and pretend I\'m a slug', 'I\'m really feeling it!'];
+				this.add('c|@Spy|' + sentences[this.random(5)]);
+			}
+			if (name === 'steamroll') {
+				if (!pokemon.isLead) {
+					sentences = ['You\'re in for it now!', 'Welcome to a new world of pain!', 'This is going to be **__fun__**...', 'Awesome! Imma deck you in the shnoz!'];
+					this.add('c|@Steamroll|' + sentences[this.random(4)]);
+				} else {
+					pokemon.isLead = false;
+				}
+			}
+			if (name === 'sweep') {
+				this.add('c|&Sweep|xD');
+			}
+			if (name === 'temporaryanonymous') {
+				sentences = ['Hey, hey, can I gently scramble your insides (just for laughs)? ``hahahaha``', 'check em', 'If you strike me down, I shall become more powerful than you can possibly imagine! I have a strong deathrattle effect and I cannot be silenced!'];
+				this.add('c|@Temporaryanonymous|' + sentences[this.random(3)]);
 			}
 			if (name === 'theimmortal') {
 				this.add('c|~The Immortal|Give me my robe, put on my crown!');
@@ -906,6 +1052,16 @@ exports.Formats = [
 			if (name === 'trickster') {
 				sentences = ["heh….watch out before you get cut on my edge", "AaAaAaAAaAaAAa"];
 				this.add('c|@Trickster|' + sentences[this.random(2)]);
+			}
+			if (name === 'urkerab') {
+				// TODO
+			}
+			if (name === 'uselesstrainer') {
+				sentences = ['huehuehuehue', 'PIZA', 'SPAGUETI', 'RAVIOLI RAVIOLI GIVE ME THE FORMUOLI', 'get ready for PUN-ishment'];
+				this.add('c|%useless trainer|' + sentences[this.random(5)]);
+			}
+			if (name === 'winry') {
+				// TODO
 			}
 			if (name === 'xfix') {
 				if (this.random(2)) {
@@ -927,8 +1083,22 @@ exports.Formats = [
 					this.add("c|+xfix|//starthunt 1 + 1 | 2 | 2 + 2 | 4 | Opponent's status soon (answer with three letters) | FNT :)");
 				}
 			}
-			if (name === 'xshiba') {
+			if (name === 'xshiba') { // dd
 				this.add("c|+xShiba|LINDA IS INDA");
+			}
+			if (name === 'zarel') {
+				this.add('c|~Zarel|Your mom');
+			}
+			if (name === 'zebraiken') {
+				pokemon.phraseIndex = this.random(3);
+				//  Zeb's faint and entry phrases correspond to each other.
+				if (pokemon.phraseIndex === 2) {
+					this.add('c|@Zebraiken|bzzt n_n');
+				} else if (pokemon.phraseIndex === 1) {
+					this.add('c|@Zebraiken|bzzt *_*');
+				} else {
+					this.add('c|@Zebraiken|bzzt o_o');
+				}
 			}
 		},
 		// Here we deal with some special mechanics due to custom sets and moves.
