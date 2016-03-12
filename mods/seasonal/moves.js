@@ -22,6 +22,50 @@ exports.BattleMovedex = {
 		target: "normal",
 		type: "Normal",
 	},
+	// Aurora
+	aerialfury: {
+		accuracy: 100,
+		basePower: 100,
+		category: "Physical",
+		id: "aerialfury",
+		isNonstandard: true,
+		name: "Aerial Fury",
+		pp: 10,
+		priority: 0,
+		flags: {contact: 1, protect: 1, mirror: 1},
+		secondary: false,
+		onTryHit: function (target, source) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Defog", source);
+			this.add('-anim', source, "Bounce", target);
+		},
+		target: "normal",
+		type: "Flying",
+	},
+	// spacebass
+	armyofmushrooms: {
+		accuracy: true,
+		basePower: 0,
+		categoty: "Status",
+		id: "armyofmushrooms",
+		isNonstandard: true,
+		isViable: true,
+		name: "Army of Mushrooms",
+		pp: 10,
+		priority: 1,
+		flags: {snatch: 1},
+		beforeTurnCallback: function (pokemon) {
+			this.boost({def: 1, spd: 1}, pokemon, pokemon, 'mushroom army');
+		},
+		onHit: function (pokemon) {
+			this.useMove("spore", pokemon);
+			this.useMove("leechseed", pokemon);
+			this.useMove("powder", pokemon);
+		},
+		secondary: false,
+		target: "self",
+		type: "Grass",
+	},
 	// awu
 	ancestorsrage: {
 		accuracy: 100,
@@ -37,6 +81,10 @@ exports.BattleMovedex = {
 		secondary: {
 			chance: 30,
 			volatileStatus: 'confusion',
+		},
+		onTryHit: function (target, source) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Psystrike", target);
 		},
 		target: "normal",
 		type: "Fairy",
@@ -69,6 +117,69 @@ exports.BattleMovedex = {
 		target: "normal",
 		type: "Ghost",
 	},
+	// LJ
+	chaoswheel: {
+		accuracy: true,
+		basePower: 100,
+		category: "Physical",
+		id: "chaoswheel",
+		isViable: true,
+		isNonstandard: true,
+		name: "Chaos Wheel",
+		pp: 15,
+		priority: 0,
+		flags: {contact: 1, mirror: 1},
+		onTryHit: function (target, source) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Shadow Force", target);
+		},
+		secondary: false,
+		target: "normal",
+		type: "Ghost",
+	},
+	// Blast Chance
+	doesntthisjustwin: {
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		id: "doesntthisjustwin",
+		isViable: true,
+		isNonstandard: true,
+		name: "Doesn\'t this just win?",
+		pp: 10,
+		priority: 0,
+		flags: {},
+		sleepUsable: true,
+		onTryHit: function (pokemon) {
+			if (pokemon.status !== 'slp') return false;
+		},
+		onHit: function (pokemon) {
+			for (let j = 0; j < 2; j++) {
+				let moves = [];
+				for (let i = 0; i < pokemon.moveset.length; i++) {
+					let move = pokemon.moveset[i].id;
+					let noSleepTalk = {
+						assist:1, belch:1, bide:1, chatter:1, copycat:1, focuspunch:1, mefirst:1, metronome:1, mimic:1, mirrormove:1, naturepower:1, sketch:1, sleeptalk:1, uproar:1, doesntthisjustwin:1,
+					};
+					if (move && !(noSleepTalk[move] || this.getMove(move).flags['charge'])) {
+						moves.push(move);
+					}
+				}
+				let randomMove = '';
+				if (moves.length) randomMove = moves[this.random(moves.length)];
+				if (!randomMove) {
+					return false;
+				}
+				if (randomMove === "rest" && pokemon.hp < pokemon.maxhp) {
+					pokemon.cureStatus();
+				}
+				this.useMove(randomMove, pokemon);
+			}
+		},
+		secondary: false,
+		target: "self",
+		type: "Psychic",
+	},
 	// galbia
 	dog: {
 		accuracy: 80,
@@ -84,9 +195,45 @@ exports.BattleMovedex = {
 			if (this.isWeather('sandstorm')) move.accuracy = true;
 		},
 		ignoreImmunity: true,
+		onTryHit: function (target, source) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Outrage", target);
+		},
 		secondary: false,
 		target: "normal",
 		type: "Normal",
+	},
+	// TONE114
+	desolationpulse: {
+		accuracy: 90,
+		basePower: 50,
+		category: "Special",
+		id: "desolationpulse",
+		name: "Desolation Pulse",
+		pp: 5,
+		priority: 0,
+		isViable: true,
+		isNonstandard: true,
+		flags: {pulse: 1, protect: 1, mirror: 1},
+		onTryHit: function (target, source) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Dark Pulse", source);
+			this.add('-anim', source, "Origin Pulse", target);
+		},
+		onHit: function (target, pokemon) {
+			pokemon.addVolatile('desolationpulse');
+		},
+		effect: {
+			duration: 1,
+			onAfterMoveSecondarySelf: function (pokemon, target, move) {
+				if (!target || target.fainted || target.hp <= 0) this.boost({spa:1, spd:1, spe:1}, pokemon, pokemon, move);
+				pokemon.removeVolatile('desolationpulse');
+			},
+		},
+		willCrit: true,
+		secondary: false,
+		target: "normal",
+		type: "Water",
 	},
 	// Aelita
 	energyfield: {
@@ -107,6 +254,12 @@ exports.BattleMovedex = {
 				move.accuracy = 50;
 			}
 		},
+		onTryHit: function (target, source) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Parabolic Charge", source);
+			this.add('-anim', source, "Parabolic Charge", source);
+			this.add('-anim', source, "Ion Deluge", target);
+		},
 		self: {boosts:{spa:-1, spd:-1, spe:-1}},
 		secondary: {
 			chance: 40,
@@ -114,6 +267,29 @@ exports.BattleMovedex = {
 		},
 		target: "normal",
 		type: "Electric",
+	},
+	// MattL
+	evaporatingsurge: {
+		accuracy: 85,
+		basePower: 110,
+		category: "Physical",
+		id: "evaporatingsurge",
+		isNonstandard: true,
+		isViable: true,
+		name: "Evaporating Surge",
+		pp: 5,
+		priority: 0,
+		flags: {protect: 1, mirror: 1},
+		onEffectiveness: function (typeMod, type) {
+			if (type === 'Water') return 1;
+		},
+		onTryHit: function (target, source) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Bolt Strike", target);
+		},
+		secondary: false,
+		target: "allAdjacentFoes",
+		type: "Water",
 	},
 	// bumbadadabum
 	freesoftware: {
@@ -128,6 +304,10 @@ exports.BattleMovedex = {
 		priority: 0,
 		flags: {protect: 1, mirror: 1},
 		secondary: {chance: 30, status: 'par'},
+		onTryHit: function (target, source) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Electro Ball", source);
+		},
 		onHit: function (target, source) {
 			this.add('c|@bumbadadabum|I\'d just like to interject for a moment. What you\'re referring to as Linux, is in fact, GNU/Linux, or as I\'ve recently taken to calling it, GNU plus Linux. Linux is not an operating system unto itself, but rather another free component of a fully functioning GNU system made useful by the GNU corelibs, shell utilities and vital system components comprising a full OS as defined by POSIX.');
 			this.add('c|@bumbadadabum|Many computer users run a modified version of the GNU system every day, without realizing it. Through a peculiar turn of events, the version of GNU which is widely used today is often called Linux, and many of its users are not aware that it is basically the GNU system, developed by the GNU Project.');
@@ -135,6 +315,62 @@ exports.BattleMovedex = {
 		},
 		target: "normal",
 		type: "Electric",
+	},
+	// flying kebab
+	frozenkebabskewers: {
+		accuracy: 100,
+		basePower: 25,
+		category: "Physical",
+		id: "frozenkebabskewers",
+		isViable: true,
+		isNonstandard: true,
+		name: "Frozen Kebab Skewers",
+		pp: 10,
+		priority: 0,
+		flags: {contact: 1, protect: 1, mirror: 1},
+		multihit: [2, 5],
+		onTryHit: function (target, source) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Icicle Spear", target);
+		},
+		secondary: {
+			chance: 10,
+			onHit: function (target, source) {
+				if (this.random(2) === 0) {
+					this.boost({atk: 1}, source, source);
+				} else {
+					this.boost({spe: 1}, source, source);
+				}
+			},
+		},
+		onAfterMove: function (source) {
+			if (this.random(10) === 3) {
+				this.boost({spd: 1}, source, source);
+			}
+		},
+		target: "normal",
+		type: "Ice",
+	},
+	// biggie
+	foodrush: {
+		accuracy: 90,
+		basePower: 100,
+		category: "Physical",
+		id: "foodrush",
+		isNonstandard: true,
+		isViable: true,
+		name: "Food Rush",
+		pp: 10,
+		priority: -6,
+		flags: {contact: 1, protect: 1, mirror: 1},
+		forceSwitch: true,
+		onTryHit: function (target, source) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Brave Bird", target);
+		},
+		self: {boosts: {evasion: -1}},
+		target: "normal",
+		type: "Normal",
 	},
 	// Joim
 	gasterblaster: {
@@ -230,6 +466,7 @@ exports.BattleMovedex = {
 		target: "self",
 		type: "Normal",
 	},
+	// xShiba
 	goindalikelinda: {
 		accuracy: true,
 		basePower: 0,
@@ -248,6 +485,52 @@ exports.BattleMovedex = {
 		secondary: false,
 		target: "self",
 		type: "Flying",
+	},
+	// Hashtag
+	gottagostrats: {
+		accuracy: 95,
+		basePower: 100,
+		category: "Physical",
+		id: "gottagostrats",
+		isNonstandard: true,
+		isViable: true,
+		name: "GOTTA GO STRATS",
+		pp: 10,
+		priority: 0,
+		flags: {contact: 1, protect: 1, mirror: 1},
+		onPrepareHit: function (target, source) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Last Resort", target);
+		},
+		onHit: function (target, pokemon) {
+			pokemon.addVolatile('fellstinger');
+		},
+		secondary: false,
+		target: "normal",
+		type: "Normal",
+	},
+	// pluviometer
+	grammarhammer: {
+		accuracy: 100,
+		basePower: 104, // Pixilate
+		category: "Special",
+		id: "grammarhammer",
+		isNonstandard: true,
+		isViable: true,
+		name: "Grammar Hammer",
+		pp: 15,
+		priority: 0,
+		flags: {contact: 1, protect: 1, mirror: 1, defrost: 1},
+		onPrepareHit: function (target, source) {
+			this.attrLastMove('[still]');
+			this.add('-anim', target, "Fusion Flare", target);
+		},
+		secondary: {
+			chance: 100,
+			status: 'brn',
+		},
+		target: "normal",
+		type: "Fairy",
 	},
 	// Hippopotas
 	hazardpass: {
@@ -342,6 +625,34 @@ exports.BattleMovedex = {
 		target: "normal",
 		type: "Normal",
 	},
+	// ih8ih8sn0w
+	imprisonform: {
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		id: "imprisonform",
+		isNonstandard: true,
+		isViable: true,
+		name: "Imprisonform",
+		pp: 5,
+		noPPBoosts: true,
+		priority: 0,
+		flags: {},
+		onPrepareHit: function (target, source) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Heal Block", source);
+			this.add('-anim', target, "Heal Block", target);
+		},
+		onHit: function (target, source) {
+			if (!source.transformInto(target, source)) {
+				return false;
+			}
+		},
+		self: {volatileStatus: 'Imprison'},
+		secondary: false,
+		target: "normal",
+		type: "Dark",
+	},
 	// Crestfall
 	lightofunruin: {
 		accuracy: 90,
@@ -358,6 +669,10 @@ exports.BattleMovedex = {
 		drain: [1, 2],
 		self: {boosts: {def: -1, spd: -1}},
 		secondary: false,
+		onTryHit: function (target, source) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Light Of Ruin", target);
+		},
 		target: "normal",
 		type: "Fairy",
 	},
@@ -422,6 +737,11 @@ exports.BattleMovedex = {
 		flags: {contact: 1, protect: 1, mirror: 1},
 		multihit: 3,
 		secondary: false,
+		onTryHit: function (target, source) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Agility", source);
+			this.add('-anim', source, "Sky Drop", source);
+		},
 		target: "normal",
 		type: "Dark",
 	},
@@ -464,6 +784,29 @@ exports.BattleMovedex = {
 		secondary: false,
 		target: "normal",
 		type: "Dark",
+	},
+	// ajhockeystar
+	ohcanada: {
+		accuracy: 75,
+		category: "Status",
+		id: "ohcanada",
+		isNonstandard: true,
+		isViable: true,
+		name: "OH CANADA",
+		pp: 35,
+		priority: 0,
+		flags: {reflectable: 1, protect: 1, mirror: 1},
+		secondary: false,
+		onTryHit: function (target, source) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Icy Wind", target);
+			this.add('-anim', source, "Haze", source);
+		},
+		onHit: function (target) {
+			target.setStatus('frz');
+		},
+		target: 'normal',
+		type: "Ice",
 	},
 	// AM
 	predator: {
@@ -524,6 +867,37 @@ exports.BattleMovedex = {
 		target: "normal",
 		type: "Dark",
 	},
+	// Haund
+	psychokinesis: {
+		accuracy: 100,
+		basePower: 90,
+		category: "Special",
+		id: "psychokinesis",
+		isNonstandard: true,
+		isViable: true,
+		name: "Psychokinesis",
+		pp: 10,
+		priority: 0,
+		flags: {contact: 1, protect: 1, mirror: 1},
+		secondary: false,
+		onTryHit: function (target, source) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Aura Sphere", target);
+		},
+		onHit: function (target, source) {
+			for (let boost in target.boosts) {
+				if (target.boosts[boost] > 0) {
+					source.boosts[boost] += target.boosts[boost];
+					if (source.boosts[boost] > 6) source.boosts[boost] = 6;
+					target.boosts[boost] = 0;
+					this.add('-setboost', source, boost, source.boosts[boost]);
+					this.add('-setboost', target, boost, target.boosts[boost]);
+				}
+			}
+		},
+		target: "normal",
+		type: "Fighting",
+	},
 	// Raseri
 	purifysoul: {
 		accuracy: true,
@@ -539,6 +913,10 @@ exports.BattleMovedex = {
 		heal: [1, 2],
 		boosts: {spa:1, spd:1},
 		secondary: false,
+		onTryHit: function (target, source) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Dazzling Gleam", source);
+		},
 		target: "self",
 		type: "Normal",
 	},
@@ -560,6 +938,10 @@ exports.BattleMovedex = {
 		selfSwitch: true,
 		secondary: false,
 		target: "normal",
+		onTryHit: function (target, source) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Volt Switch", target);
+		},
 		type: "Electric",
 	},
 	// Jasmine
@@ -579,8 +961,36 @@ exports.BattleMovedex = {
 			}
 			target.canMegaEvo = false;
 		},
-		target: "nomral",
+		target: "normal",
 		type: "Normal",
+	},
+	// macle
+	ribbit: {
+		accuracy: true,
+		basePower: 90,
+		category: "Physical",
+		id: "ribbit",
+		isNonstandard: true,
+		isViable: true,
+		name: "Ribbit",
+		pp: 40,
+		priority: 0,
+		flags: {protect: 1, mirror: 1, sound: 1},
+		onTryHit: function (target, source) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Boomburst", target);
+		},
+		onHit: function (pokemon) {
+			let oldAbility = pokemon.setAbility('soundproof');
+			if (oldAbility) {
+				this.add('-endability', pokemon, oldAbility, '[from] move: Ribbit');
+				this.add('-ability', pokemon, 'Soundproof', '[from] move: Ribbit');
+				return;
+			}
+			this.add("c|+macle|Follow the Frog Blog - http://gonefroggin.wordpress.com");
+		},
+		target: "normal",
+		type: "Water",
 	},
 	// Trickster
 	sacredspearexplosion: {
@@ -758,6 +1168,10 @@ exports.BattleMovedex = {
 		pp: 10,
 		priority: 0,
 		flags: {contact: 1, protect: 1, mirror: 1, punch: 1},
+		onTryHit: function (target, source) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Splash", source);
+		},
 		onHit: function (target, source) {
 			if (target.lastDamage > 0 && source.lastAttackedBy && source.lastAttackedBy.thisTurn && source.lastAttackedBy.pokemon === target) {
 				if (this.random(100) < 30) {
