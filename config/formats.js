@@ -1193,7 +1193,7 @@ exports.Formats = [
 					move.category = 'Special';
 				} else if (move.category === 'Special') {
 					move.category = 'Physical';
-				};
+				}
 			}
 			// This is to make signature moves work when transformed.
 			if (move.id === 'transform') {
