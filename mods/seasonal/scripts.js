@@ -4,19 +4,19 @@ exports.BattleScripts = {
 	randomSeasonalMeleeTeam: function (side) {
 		let team = [];
 		let variant = (this.random(2) === 1);
-		let sets = {/*
+		let sets = {
 			'Aelita': {
 				species: 'Porygon-Z', ability: 'Protean', item: 'Life Orb', gender: 'N',
 				moves: [['boomburst', 'moonblast'][this.random(2)], 'quiverdance', 'chatter'],
 				signatureMove: "Energy Field",
 				evs: {hp:4, spa:252, spe:252}, nature: 'Modest',
-			},*/
+			},
 			'ajhockeystar': {
 				species: 'Mienshao', ability: 'Magic Guard', item: 'Life Orb', gender: 'M',
 				moves: ['knockoff', 'boltstrike', 'highjumpkick'],
 				signatureMove: 'OH CANADA',
 				evs: {hp:4, atk:252, spe:252}, nature: 'Jolly',
-			},/*
+			},
 			'AM': {
 				species: 'Tyranitar', ability: 'Adaptability', item: (variant ? 'Lum Berry' : 'Choice Scarf'), gender: 'M',
 				moves: (variant ? ['earthquake', 'diamondstorm', 'swordsdance', 'meanlook'] : ['knockoff', 'diamondstorm', 'earthquake']),
@@ -76,13 +76,13 @@ exports.BattleScripts = {
 				moves: ['extremespeed', 'swordsdance', ['milkdrink', 'knockoff', 'encore'][this.random(3)]],
 				signatureMove: "Admin Things",
 				evs: {hp:252, def:4, spe: 252}, nature: 'Jolly',
-			},*/
+			},
 			'Flying Kebab': {
 				species: 'Cloyster', ability: 'Skill Link', item: 'White Herb', gender: 'M',
 				moves: ['watershuriken', 'bulletseed', 'shellsmash'],
 				signatureMove: "Frozen Kebab Skewers",
 				evs: {atk:252, spd:4, spe:252}, nature: 'Jolly',
-			},/*
+			},
 			'f(x)': {
 				species: 'Rotom-Heat', ability: 'Levitate', item: 'Leftovers', shiny: true, gender: 'F',
 				moves: ['voltswitch', 'fusionflare', 'thunderbolt'],
@@ -106,7 +106,7 @@ exports.BattleScripts = {
 				moves: ['earthquake', 'explosion', 'u-turn'],
 				signatureMove: "GOTTA GO STRATS",
 				evs: {hp:4, atk:252, spe:252}, nature: 'Adamant',
-			},*/
+			},
 			'Haund': {
 				species: 'Swellow', ability: 'Guts', item: 'Toxic Orb', gender: 'M',
 				moves: ['boomburst', 'heatwave', 'ominouswind'],
@@ -125,7 +125,7 @@ exports.BattleScripts = {
 				signatureMove: "Imprisonform",
 				evs: {atk:252, spd:4, spe:252}, nature: 'Jolly',
 
-			},/*
+			},
 			'Jasmine': {
 				species: 'Mew', ability: 'Speed Boost', item: 'Focus Sash', gender: 'F',
 				moves: ['taunt', 'explosion', 'protect'],
@@ -179,13 +179,13 @@ exports.BattleScripts = {
 				moves: ['counter', 'mirrorcoat', 'encore'],
 				signatureMove: "oh",
 				evs: {hp:52, def:232, spd:224}, ivs: {atk:0}, nature: 'Bold',
-			},*/
+			},
 			'pluviometer': {
 				species: 'Mismagius', ability: 'Levitate', item: 'Life Orb',
 				moves: ['painsplit', 'earthpower', 'shadowball'],
 				signatureMove: "Grammar Hammer",
 				evs: {hp:4, spa:252, spe:252}, ivs: {atk:0}, nature: 'Timid',
-			},/*
+			},
 			'qtrx': {
 				species: 'Unown', ability: 'Sturdy', item: 'Keyboard', gender: 'M',
 				moves: [],
@@ -252,7 +252,7 @@ exports.BattleScripts = {
 				moves: ['dragonascent', 'sacredfire', 'roost'],
 				signatureMove: "Go Inda Like Linda",
 				evs: {hp:248, atk:252, spe:8}, nature: 'Adamant',
-			},*/
+			},
 		};
 
 		// Generate the team randomly.
