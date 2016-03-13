@@ -17,7 +17,7 @@ exports.BattleMovedex = {
 		onHit: function (target, source) {
 			target.trySetStatus('psn', source);  // Doesn't use the status property to prevent the move
 			target.addVolatile('taunt', source); // from failing before executing all actions.
-			this.add("c|~Eevee General|Sorry but I have to go! Please submit your request in <<adminrequests>> and we'll look at it soon.");
+			if (source.name === 'Eevee General') this.add("c|~Eevee General|Sorry but I have to go! Please submit your request in <<adminrequests>> and we'll look at it soon.");
 		},
 		target: "normal",
 		type: "Normal",
@@ -117,6 +117,104 @@ exports.BattleMovedex = {
 		target: "normal",
 		type: "Ghost",
 	},
+	// Ace
+	bignarstie: {
+		accuracy: 100,
+		basePower: 85,
+		category: "Physical",
+		id: "bignarstie",
+		isNonstandard: true,
+		isViable: true,
+		name: "Big Narstie",
+		pp: 15,
+		priority: 0,
+		flags: {contact: 1, protect: 1, mirror: 1},
+		onTryHit: function (target, source) {
+			if (source.name === 'Ace') {
+				this.add('c|@Ace|AAAUAUUUGOGOOHOOHOHOHOHOHOHOHOOHOH');
+			}
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Dragon Rush", target);
+		},
+		secondary: {
+			chance: 30,
+			status: 'par',
+		},
+		target: "normal",
+		type: "Dragon",
+	},
+	// atomicllamas
+	bitchycomment: {
+		accuracy: 100,
+		basePower: 70,
+		category: "Special",
+		id: "bitchycomment",
+		isNonstandard: true,
+		isViable: true,
+		name: "Bitchy Comment",
+		pp: 15,
+		priority: 0,
+		flags: {protect: 1, mirror: 1, sound: 1},
+		onTryHit: function (target, source) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Taunt", source);
+		},
+		secondary: {
+			chance: 50,
+			status: 'brn', 
+		},
+		target: "normal",
+		type: "Psychic",
+	},
+	// Teremiare
+	brokenmirror: {
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		id: "brokenmirror",
+		isViable: true,
+		isNonstandard: true,
+		name: "Broken Mirror",
+		pp: 10,
+		priority: 4,
+		flags: {},
+		stallingMove: true,
+		volatileStatus: 'brokenmirror',
+		onTryHit: function (pokemon) {
+			return !!this.willAct() && this.runEvent('StallMove', pokemon);
+		},
+		onHit: function (pokemon) {
+			pokemon.addVolatile('stall');
+		},
+		effect: {
+			duration: 1,
+			onStart: function (target) {
+				this.add('-singleturn', target, 'Protect');
+			},
+			onTryHitPriority: 3,
+			onTryHit: function (target, source, move) {
+				if (!move.flags['protect'] || move.category === 'Status') return;
+				this.add('-activate', target, 'Protect');
+				let lockedmove = source.getVolatile('lockedmove');
+				if (lockedmove) {
+					// Outrage counter is reset
+					if (source.volatiles['lockedmove'].duration === 2) {
+						delete source.volatiles['lockedmove'];
+					}
+				}
+				let sourceBoosts = {};
+				for (let i in source.boosts) {
+					source.boosts[i] = -source.boosts[i];
+				}
+				source.setBoost(sourceBoosts);
+				this.add('-invertboost', source, '[from] move: Broken Mirror');
+				return null;
+			},
+		},
+		secondary: false,
+		target: "self",
+		type: "Dark",
+	},
 	// LJ
 	chaoswheel: {
 		accuracy: true,
@@ -136,6 +234,31 @@ exports.BattleMovedex = {
 		secondary: false,
 		target: "normal",
 		type: "Ghost",
+	},
+	// Vexen IV
+	debilitate: {
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		id: "debilitate",
+		isViable: true,
+		isNonstandard: true,
+		name: "Debilitate",
+		pp: 30,
+		priority: 0,
+		flags: {protect: 1, reflectable: 1, mirror: 1},
+		onTryHit: function (target, source) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Night Shade", target);
+		},
+		boosts: {
+			def: -1,
+			spd: -1,
+			spe: -1,
+		},
+		secondary: false,
+		target: "allAdjacentFoes",
+		type: "Dark",
 	},
 	// Blast Chance
 	doesntthisjustwin: {
@@ -268,6 +391,46 @@ exports.BattleMovedex = {
 		target: "normal",
 		type: "Electric",
 	},
+	// Giagantic
+	eternalashes: {
+		accuracy: 100,
+		basePower: 0,
+		category: "Status",
+		id: "eternalashes",
+		isNonstandard: true,
+		isViable: true,
+		name: "Eternal Ashes",
+		pp: 10,
+		priority: 0,
+		flags: {reflectable: 1, protect: 1, powder: 1, mirror: 1, defrost: 1},
+		onTryHit: function (target) {
+			this.attrLastMove('[still]');
+			this.add('-anim', target, "Spore", target);
+			if (!target.runStatusImmunity('powder')) {
+				this.add('-immune', target, '[msg]');
+				return null;
+			}
+		},
+		onHit: function (target) {
+			target.trySetStatus('brn');
+		},
+		secondary: {
+			chance: 100,
+			volatileStatus: 'eternalashes',
+		},
+		effect: {
+			onStart: function (pokemon) {
+				this.add('-start', pokemon, 'Eternal Ashes');
+			},
+			onBasePowerPriority: 99,
+			onBasePower: function () {
+				this.add('-message', 'Eternal Ashes weakened the power of moves!');
+				return this.chainModify(0.65);
+			},
+		},
+		target: "normal",
+		type: "Fire",
+	},
 	// MattL
 	evaporatingsurge: {
 		accuracy: 85,
@@ -309,9 +472,11 @@ exports.BattleMovedex = {
 			this.add('-anim', source, "Electro Ball", source);
 		},
 		onHit: function (target, source) {
-			this.add('c|@bumbadadabum|I\'d just like to interject for a moment. What you\'re referring to as Linux, is in fact, GNU/Linux, or as I\'ve recently taken to calling it, GNU plus Linux. Linux is not an operating system unto itself, but rather another free component of a fully functioning GNU system made useful by the GNU corelibs, shell utilities and vital system components comprising a full OS as defined by POSIX.');
-			this.add('c|@bumbadadabum|Many computer users run a modified version of the GNU system every day, without realizing it. Through a peculiar turn of events, the version of GNU which is widely used today is often called Linux, and many of its users are not aware that it is basically the GNU system, developed by the GNU Project.');
-			this.add('c|@bumbadadabum|There really is a Linux, and these people are using it, but it is just a part of the system they use. Linux is the kernel: the program in the system that allocates the machine\'s resources to the other programs that you run. The kernel is an essential part of an operating system, but useless by itself; it can only function in the context of a complete operating system. Linux is normally used in combination with the GNU operating system: the whole system is basically GNU with Linux added, or GNU/Linux. All the so-called Linux distributions are really distributions of GNU/Linux!');
+			if (source.name === 'bumbadadabum') {
+				this.add('c|@bumbadadabum|I\'d just like to interject for a moment. What you\'re referring to as Linux, is in fact, GNU/Linux, or as I\'ve recently taken to calling it, GNU plus Linux. Linux is not an operating system unto itself, but rather another free component of a fully functioning GNU system made useful by the GNU corelibs, shell utilities and vital system components comprising a full OS as defined by POSIX.');
+				this.add('c|@bumbadadabum|Many computer users run a modified version of the GNU system every day, without realizing it. Through a peculiar turn of events, the version of GNU which is widely used today is often called Linux, and many of its users are not aware that it is basically the GNU system, developed by the GNU Project.');
+				this.add('c|@bumbadadabum|There really is a Linux, and these people are using it, but it is just a part of the system they use. Linux is the kernel: the program in the system that allocates the machine\'s resources to the other programs that you run. The kernel is an essential part of an operating system, but useless by itself; it can only function in the context of a complete operating system. Linux is normally used in combination with the GNU operating system: the whole system is basically GNU with Linux added, or GNU/Linux. All the so-called Linux distributions are really distributions of GNU/Linux!');
+			}
 		},
 		target: "normal",
 		type: "Electric",
@@ -371,6 +536,35 @@ exports.BattleMovedex = {
 		self: {boosts: {evasion: -1}},
 		target: "normal",
 		type: "Normal",
+	},
+	// Sigilyph
+	gammarayburst: {
+		accuracy: 90,
+		basePower: 300,
+		category: "Special",
+		id: "gammarayburst",
+		isNonstandard: true,
+		isViable: true,
+		name: "Gamma Ray Burst",
+		pp: 5,
+		priority: 0,
+		flags: { protect: 1,mirror: 1 },
+		onEffectiveness: function (typeMod) {
+			if (typeMod < 0) return 0;
+		},
+		onPrepareHit: function (target, source) {
+			if (toId(source.name) === 'sigilyph') {
+				this.add('c|@Sigilyph|**SOOOOGOOOOLOOOOPH**');
+			}
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Geomancy", source);
+			this.add('-anim', source, "Explosion", source);
+			this.add('-anim', source, "Hyper Beam", target);
+		},
+		selfdestruct: true,
+		secondary: false,
+		target: "allAdjacent",
+		type: "Psychic",
 	},
 	// Joim
 	gasterblaster: {
@@ -532,6 +726,68 @@ exports.BattleMovedex = {
 		target: "normal",
 		type: "Fairy",
 	},
+	// Anttya
+	hax: {
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		id: "hax",
+		isNonstandard: true,
+		isViable: true,
+		name: "Hax",
+		pp: 10,
+		priority: 0,
+		flags: {},
+		onPrepareHit: function (target, source) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Taunt", target);
+		},
+		onModifyMove: function (move) {
+			let rand = this.random(10);
+			if (rand < 1) {
+				move.onHit = function (pokemon) {
+					this.damage(this.getDamage(pokemon, pokemon, 40), pokemon, pokemon, {
+						id: 'confused',
+						effectType: 'Move',
+						type: '???',
+					});
+				}
+			} else if (rand < 3) {
+				move.boosts = {
+					spa: 2,
+					spd: 2,
+					spe: 2,
+				};
+			} else {
+				move.target = "normal";
+				if (rand < 5) {
+					move.onPrepareHit = function (target, source) {
+						this.attrLastMove('[still]');
+						this.add('-anim', source, "Fairy Lock", target);
+					};
+					move.onHit = function (target, source) {
+						source.trySetStatus('par');
+						source.addVolatile('confusion');
+						target.trySetStatus('par');
+						target.addVolatile('confusion');
+					}
+				} else {
+					move.accuracy = 90;
+					move.basePower = 80;
+					move.category = "Special";
+					move.flags = {protect: 1};
+					move.willCrit = true;
+					move.onPrepareHit = function (target, source) {
+						this.attrLastMove('[still]');
+						this.add('-anim', source, "Mist Ball", target);
+					};
+				}
+			}
+		},
+		secondary: false,
+		target: "self",
+		type: "Normal",
+	},
 	// Hippopotas
 	hazardpass: {
 		accuracy: 100,
@@ -589,7 +845,7 @@ exports.BattleMovedex = {
 				let hits = 0;
 				let hps = ['hiddenpowerbug', 'hiddenpowerdark', 'hiddenpowerdragon', 'hiddenpowerelectric', 'hiddenpowerfighting', 'hiddenpowerfire', 'hiddenpowerflying', 'hiddenpowerghost', 'hiddenpowergrass', 'hiddenpowerground', 'hiddenpowerice', 'hiddenpowerpoison', 'hiddenpowerpsychic', 'hiddenpowerrock', 'hiddenpowersteel', 'hiddenpowerwater'];
 				let hitcount = [3, 4, 4, 4, 4, 5, 5, 6, 6][this.random(9)];
-				this.add('c|@qtrx|/me slams face into keyboard!');
+				if (source.name === 'qtrx') this.add('c|@qtrx|/me slams face into keyboard!');
 				source.isDuringAttack = true; // Prevents the user from being kicked out in the middle of using Hidden Powers.
 				for (let i = 0; i < hitcount; i++) {
 					if (target.hp !== 0) {
@@ -723,6 +979,71 @@ exports.BattleMovedex = {
 		secondary: false,
 		target: "self",
 		type: "Psychic",
+	},
+	// Death on Wings
+	monoflying: {
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		id: "monoflying",
+		isNonstandard: true,
+		name: "Mono Flying",
+		pp: 20,
+		priority: 0,
+		flags: {mirror: 1},
+		onHit: function (target, source) {
+			if (this.pseudoWeather['monoflying']) {
+				this.removePseudoWeather('monoflying', source);
+			} else {
+				this.addPseudoWeather('monoflying', source);
+			}
+		},
+		effect: {
+			duration: 5,
+			onStart: function () {
+				this.add('message', 'All active Pokemon became pure Flying-type!');
+				// Only aesthetic; actual implementation below
+				for (let s in this.sides) {
+					const thisSide = this.sides[s];
+					for (let p in thisSide.active) {
+						const pokemon = thisSide.active[p];
+						if (pokemon.types == 'Flying' || !pokemon.hp) continue; // coerce with ==
+						pokemon.setType('Flying', true);
+						this.add('-start', pokemon, 'typechange', 'Flying');
+					}
+				}
+			},
+			onResidualOrder: 90,
+			onUpdate: function (pokemon) {
+				if (pokemon.types == 'Flying' || !pokemon.hp) return;
+				pokemon.setType('Flying', true);
+				this.add('-start', pokemon, 'typechange', 'Flying');
+			},
+			onSwitchIn: function (pokemon) {
+				if (pokemon.types == 'Flying' || !pokemon.hp) return;
+				pokemon.setType('Flying', true);
+				this.add('-start', pokemon, 'typechange', 'Flying');
+			},
+			onEnd: function () {
+				this.add('message', 'Active Pokemon are no longer forced to be pure Flying-type.');
+				for (let s in this.sides) {
+					const thisSide = this.sides[s];
+					for (let p in thisSide.active) {
+						const pokemon = thisSide.active[p];
+						if (pokemon.template.types == 'Flying' || !pokemon.hp) continue;
+						pokemon.setType(pokemon.template.types, true);
+						this.add('-end', pokemon, 'typechange');
+					}
+				}
+			},
+		},
+		secondary: false,
+		onTryHit: function (target, source) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Defog", source);
+		},
+		target: "self",
+		type: "Flying",
 	},
 	// gangnam style
 	motherfathergentleman: {
@@ -920,6 +1241,30 @@ exports.BattleMovedex = {
 		target: "self",
 		type: "Normal",
 	},
+	// DMT
+	reallybigswordsdance: {
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "Raises the user's Attack by 2 stages.",
+		shortDesc: "Raises the user's Attack by 2.",
+		id: "reallybigswordsdance",
+		isNonstandard: true,
+		isViable: true,
+		name: "Really Big Swords Dance",
+		pp: 20,
+		priority: 0,
+		flags: {snatch: 1},
+		boosts: {atk: 5},
+		secondary: false,
+		onTryHit: function (target, source) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Swords Dance", source);
+			this.add('-anim', source, "Swords Dance", source);
+		},
+		target: "self",
+		type: "Normal",
+	},
 	// Quite Quiet
 	retreat: {
 		accuracy: 100,
@@ -987,7 +1332,7 @@ exports.BattleMovedex = {
 				this.add('-ability', pokemon, 'Soundproof', '[from] move: Ribbit');
 				return;
 			}
-			this.add("c|+macle|Follow the Frog Blog - http://gonefroggin.wordpress.com");
+			if (source.name === 'macle') this.add("c|+macle|Follow the Frog Blog - http://gonefroggin.wordpress.com");
 		},
 		target: "normal",
 		type: "Water",
@@ -1111,7 +1456,7 @@ exports.BattleMovedex = {
 				}
 			}
 			if (activate) pokemon.setBoost(boosts);
-			if (!pokemon.informed) {
+			if (!pokemon.informed && source.name === 'The Immortal') {
 				this.add('c|~The Immortal|I don\'t really sleep walk...');
 				pokemon.informed = true;
 			}
@@ -1185,6 +1530,128 @@ exports.BattleMovedex = {
 		},
 		target: "normal",
 		type: "Fighting",
+	},
+	// manu 11
+	surskitenergy: {
+		accuracy: 95,
+		basePower: 130,
+		category: "Special",
+		id: "surskitenergy",
+		isViable: true,
+		isNonstandard: true,
+		name: "Surskit Energy",
+		pp: 5,
+		priority: 0,
+		flags: {protect: 1, mirror: 1},
+		onEffectiveness: function (typeMod, type) {
+			return typeMod + this.getEffectiveness('Bug', type);
+		},
+		onPrepareHit: function (target, source) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Rototiller", target);
+			this.add('-anim', source, "Origin Pulse", target);
+		},
+		secondary: {
+			chance: 100,
+			sideCondition: 'stickyweb',
+		},
+		target: "normal",
+		type: "Water",
+	},
+	// Dream Eater Gengar
+	sweetdreams: {
+		accuracy: 90,
+		basePower: 0,
+		category: "Status",
+		id: "sweetdreams",
+		isViable: true,
+		isNonstandard: true,
+		name: "Sweet Dreams",
+		pp: 25,
+		priority: 0,
+		flags: {reflectable: 1, protect: 1, mirror: 1},
+		onPrepareHit: function (target, source) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Dark Void", target);
+		},
+		onHit: function (target, source) {
+			// TODO: Clarify the logic of the move with OP
+			let highcost = false;
+			if (target.status !== 'slp') {
+				if (!target.trySetStatus("slp", source)) return false;
+				highcost = true;
+			} else if (target.volatiles["nightmare"] && target.volatiles["sweetdreams"]) {
+				return false;
+			}
+			this.directDamage(this.modify(source.maxhp, (highcost? 0.5 : 0.25)), source, source);
+			target.addVolatile("nightmare");
+			target.addVolatile("sweetdreams", source);
+		},
+		effect: {
+			onStart: function (pokemon) {
+				if (pokemon.status !== 'slp') {
+					return false;
+				}
+				this.add('-start', pokemon, 'Sweet Dreams');
+			},
+			onResidualOrder: 8,
+			onResidual: function (pokemon) {
+				let target = this.effectData.source.side.active[pokemon.volatiles['sweetdreams'].sourcePosition];
+				if (!target || target.fainted || target.hp <= 0) {
+					return;
+				}
+				let damage = this.damage(pokemon.maxhp / 8, pokemon, target);
+				if (damage) {
+					this.heal(damage, target, pokemon);
+				}
+			},
+			onUpdate: function (pokemon) {
+				if (pokemon.status !== 'slp') {
+					pokemon.removeVolatile('sweetdreams');
+					this.add('-end', pokemon, 'Sweet Dreams', '[silent]');
+				}
+			},
+		},
+		secondary: {
+			chance: 100,
+			self: {
+				boosts: {def: -1, spd: -1},
+			},
+		},
+		target: "normal",
+		type: "Ghost",
+	},
+	// Vapo
+	wetwork: {
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		id: "wetwork",
+		isViable: true,
+		isNonstandard: true,
+		name: "Wetwork",
+		pp: 10,
+		priority: -7,
+		flags: {heal: 1, mirror: 1},
+		onPrepareHit: function (target, source) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Water Pulse", target);
+		},
+		onHit: function (target, source) {
+			let moved = false;
+			if (!this.pseudoWeather['trickroom']) {
+				this.addPseudoWeather('trickroom', source);
+				moved = true;
+			}
+			if (source.maxhp !== source.hp) {
+				this.heal(this.modify(target.maxhp, 0.5), target, source);
+				moved = true;
+			}
+			if (!moved) return false;
+		},
+		secondary: false,
+		target: "self",
+		type: "Water",
 	},
 	// Solaris Fox
 	wonderbark: {
