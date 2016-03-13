@@ -1324,7 +1324,7 @@ exports.Formats = [
 					this.add('-message', 'The sandstorm subsided.');
 				}
 			}
-			
+
 			// Transform
 			if (pokemon.originalName) pokemon.name = pokemon.originalName;
 		},
