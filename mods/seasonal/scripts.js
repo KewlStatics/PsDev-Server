@@ -5,12 +5,12 @@ exports.BattleScripts = {
 		let team = [];
 		let variant = (this.random(2) === 1);
 		let sets = {
-			/*'Ace': {
-				species: '', ability: '', item: '', gender: '',
-				moves: [],
-				signatureMove: '',
-				evs: {}, nature: '',
-			},*/
+			'Ace': {
+				species: 'Salamence', ability: 'Tinted Lens', item: 'Salamencite', gender: 'Male',
+				moves: ['dragonascent', 'closecombat', 'outrage'],
+				signatureMove: 'Big Narstie',
+				evs: {hp:80, atk:252, spd:176}, nature: 'Adamant',
+			},
 			'Aelita': {
 				species: 'Porygon-Z', ability: 'Protean', item: 'Life Orb', gender: 'N',
 				moves: [['boomburst', 'moonblast'][this.random(2)], 'quiverdance', 'chatter'],
@@ -47,18 +47,18 @@ exports.BattleScripts = {
 				signatureMove: '',
 				evs: {}, nature: '',
 			},*/
+			'Anttya': {
+				species: 'Altaria', ability: 'Aerilate', item: 'Leftovers', gender: 'F',
+				moves: ['roost', 'triattack', 'searingshot'],
+				signatureMove: "Hax",
+				evs: {spa:252, spd:4, spe:252}, nature: 'Modest',
+			},
 			/*'Anty': {
 				species: '', ability: '', item: '', gender: '',
 				moves: [],
 				signatureMove: '',
 				evs: {}, nature: '',
 			},*/
-			'Aurora': {
-				species: 'Landorus', ability: 'Sand Force', item: 'Life Orb', gender: 'F',
-				moves: ['earthquake', 'rockslide', 'rockpolish'],
-				signatureMove: "Aerial Fury",
-				evs: {atk: 252, def: 4, spe: 252}, nature: 'Jolly',
-			},
 			/*'Articuno': {
 				species: 'Articuno', ability: 'Magic Guard', item: 'Sitrus Berry', gender: 'F',
 				moves: ['roost', 'calmmind', ['psychic', 'airslash', 'icebeam', 'thunderwave'][this.random(4)]],
@@ -77,18 +77,18 @@ exports.BattleScripts = {
 				signatureMove: '',
 				evs: {}, nature: '',
 			},*/
-			/*'atomicllamas': {
-				species: '', ability: '', item: '', gender: '',
-				moves: [],
-				signatureMove: '',
-				evs: {}, nature: '',
-			},*/
-			/*'aurora': {
-				species: '', ability: '', item: '', gender: '',
-				moves: [],
-				signatureMove: '',
-				evs: {}, nature: '',
-			},*/
+			'atomicllamas': {
+				species: 'Jynx', ability: 'Snow Warning', item: 'Focus Sash', gender: 'M',
+				moves: ['lovelykiss', 'blizzard', 'aurasphere'],
+				signatureMove: 'Bitchy Comment',
+				evs: {spa: 252, spd: 4, spe: 252}, nature: 'Timid',
+			},
+			'Aurora': {
+				species: 'Landorus', ability: 'Sand Force', item: 'Life Orb', gender: 'F',
+				moves: ['earthquake', 'rockslide', 'rockpolish'],
+				signatureMove: "Aerial Fury",
+				evs: {atk: 252, def: 4, spe: 252}, nature: 'Jolly',
+			},
 			'awu': {
 				species: 'Mawile', ability: 'Adaptability', item: 'Expert Belt', gender: 'F',
 				moves: ['meteormash', 'bulletpunch', 'uturn'],
@@ -121,7 +121,7 @@ exports.BattleScripts = {
 			},*/
 			'boTTT': {
 				species: 'Regigigas', ability: ['Scrappy', 'Magic Guard'][this.random(2)], item: (variant ? 'Leftovers' : 'Chesto Berry'), gender: 'N', shiny: variant,
-				moves: ['megapunch', 'drainpunch', (variant ? 'aromatherapy' : 'rest')],
+				moves: ['megapunch', 'skyuppercut', (variant ? 'aromatherapy' : 'rest')],
 				signatureMove: "Auto-Moderation",
 				evs: {hp:60, atk:252, spd:196}, nature: 'Adamant',
 			},
@@ -153,7 +153,25 @@ exports.BattleScripts = {
 				species: 'Diancie', ability: 'Shield Dust', item: 'Diancite',
 				moves: ['shellsmash', 'diamondstorm', 'earthpower'],
 				signatureMove: "Light of Unruin",
-				evs: {hp:252, spd: 68, spe:188}, nature: 'Timid',
+				evs: {hp:252, spd:68, spe:188}, nature: 'Timid',
+			},
+			/*'Death on Wings': {
+				species: 'Arceus-Flying', ability: 'Mountaineer', item: 'Sky Plate', gender: 'M',
+				moves: ['dragonascent', 'wildcharge', 'uturn'],
+				signatureMove: "Mono Flying",
+				evs: {hp:4, atk:252, spe:252}, nature: 'Adamant',
+			},*/ // Temporarily disabled due to base species (Ho-oh) conflict
+			'DMT': {
+				species: 'Shedinja', ability: 'Wonder Guard', item: 'Focus Sash',
+				moves: ['protect', 'shadowsneak', 'xscissor'],
+				signatureMove: "Really Big Swords Dance",
+				evs: {atk:252, spa:4, spe:252}, nature: 'Adamant',
+			},
+			'Dream Eater Gengar': {
+				species: 'Gengar', ability: 'Levitate', item: 'Gengarite', gender: 'M',
+				moves: ['focusblast', 'hex', 'sludgewave'],
+				signatureMove: "Sweet Dreams",
+				evs: {hp:8, spa:248, spe:252}, nature: 'Timid',
 			},
 			/*'Duck': {
 				species: '', ability: '', item: '', gender: '',
@@ -215,6 +233,12 @@ exports.BattleScripts = {
 				signatureMove: '',
 				evs: {}, nature: '',
 			},*/
+			'Giagantic': {
+				species: 'Moltres', ability: 'Pressure', item: 'Leftovers', shiny: true,
+				moves: ['fierydance', 'oblivionwing', 'roost'],
+				signatureMove: "Eternal Ashes",
+				evs: {hp:248, spd:244, spe:16}, nature: 'Bold',
+			},
 			/*'Grim Auxiliatrix': {
 				species: '', ability: '', item: '', gender: '',
 				moves: [],
@@ -341,12 +365,12 @@ exports.BattleScripts = {
 				signatureMove: "Ribbit",
 				evs: {atk:252, spa:252, spe:252}, nature: 'Lonely',
 			},
-			/*'manu11': {
-				species: '', ability: '', item: '', gender: '',
-				moves: [],
-				signatureMove: '',
-				evs: {}, nature: '',
-			},*/
+			'manu 11': {
+				species: 'Surskit', ability: 'Swift Swim', item: 'Life Orb', gender: 'M',
+				moves: ['quiverdance', 'icebeam', 'spore'],
+				signatureMove: 'Surskit Energy',
+				evs: {def:4, spa:252, spe:252}, nature: 'Timid',
+			},
 			/*'Marshmallon': {
 				species: '', ability: '', item: '', gender: '',
 				moves: [],
@@ -443,12 +467,12 @@ exports.BattleScripts = {
 				signatureMove: '',
 				evs: {}, nature: '',
 			},*/
-			/*'Sigilyph': {
-				species: '', ability: '', item: '', gender: '',
-				moves: [],
-				signatureMove: '',
-				evs: {}, nature: '',
-			},*/
+			'Sigilyph': {
+				species: 'Sigilyph', ability: 'Magic Guard', item: 'Life Orb', gender: 'M', shiny: true,
+				moves: ['aeroblast', 'blueflare', 'nightdaze'],
+				signatureMove: 'Gamma Ray Burst',
+				evs: {spa:252, spd:4, spe:252}, ivs: {atk:0}, nature: 'Timid',
+			},
 			/*'sirDonovan': {
 				species: '', ability: '', item: '', gender: '',
 				moves: [],
@@ -497,6 +521,12 @@ exports.BattleScripts = {
 				signatureMove: '',
 				evs: {}, nature: '',
 			},*/
+			'Teremiare': {
+				species: 'Zorua', ability: 'Multiscale', item: 'Red Card', gender: ['M', 'F', 'N'][this.random(3)], shiny: true,
+				moves: ['darkpulse', 'foulplay', ['batonpass', 'partingshot'][this.random(2)]],
+				signatureMove: "Broken Mirror",
+				evs: {hp:252, spa:4, spe:252}, ivs: {atk:0}, nature: 'Timid',
+			},
 			'The Immortal': {
 				species: 'Blastoise', ability: 'Magic Bounce', item: 'Blastoisinite', gender: 'M',
 				moves: ['shellsmash', 'steameruption', 'dragontail'],
@@ -521,6 +551,18 @@ exports.BattleScripts = {
 				signatureMove: '',
 				evs: {}, nature: '',
 			},*/
+			'Vapo': {
+				species: 'Vaporeon', ability: 'Primordial Sea', item: 'Splash Plate', gender: 'M',
+				moves: ['scald', 'waterspout', 'icebeam'],
+				signatureMove: "Wetwork",
+				evs: {hp:252, def:4, spa:252}, ivs: {spe:0}, nature: 'Quiet',
+			},
+			'Vexen IV': {
+				species: 'Politoed', ability: 'Sap Sipper', item: 'Life Orb', gender: 'M',
+				moves: ['scald', 'gigadrain', 'thunderbolt'],
+				signatureMove: "Debilitate",
+				evs: {hp:248, def:8, spa:252}, nature: 'Modest',
+			},
 			/*'Winry': {
 				species: '', ability: '', item: '', gender: '',
 				moves: [],
