@@ -1,4 +1,4 @@
-"use strict";
+﻿"use strict";
 
 exports.BattleScripts = {
 	randomSeasonalMeleeTeam: function (side) {
