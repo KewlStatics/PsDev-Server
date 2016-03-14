@@ -23,6 +23,7 @@ exports.BattleStatuses = {
 			if (thisSide.foe.active.length) {
 				const opponent = thisSide.foe.active[0];
 				if (opponent.hp && opponent.status === 'slp') {
+					this.add('-ability', pokemon, 'Bad Dreams');
 					this.damage(opponent.maxhp / 8, opponent, pokemon, "Bad Dreams");
 				}
 			}
@@ -32,7 +33,7 @@ exports.BattleStatuses = {
 	coinflip: {
 		effectType: 'Ability',
 		onStart: function (target, source) {
-			this.add('message', source.name + ' flips a coin!');
+			this.add('-ability', source, 'Coin Flip');
 			const pool = ['atk', 'def', 'spa', 'spd', 'spe'].sample(2), boost1 = pool[0], boost2 = pool[1];
 			source.boosts[boost1] = 6;
 			this.add('-setboost', source, boost1, source.boosts[boost1]);
@@ -87,6 +88,7 @@ exports.BattleStatuses = {
 		effectType: 'Ability',
 		onStart: function (target, source) {
 			this.useMove('Topsy-Turvy', source);
+			this.add('-ability', source, 'Flipside');
 			this.add('message', source.name + '\'s Flipside has reversed type matchups against it!');
 		},
 		onEffectiveness: function (typeMod, target, type, move) {
@@ -104,10 +106,46 @@ exports.BattleStatuses = {
 			this.heal(this.modify(pokemon.maxhp, 0.15), pokemon, pokemon, "Gonna Make You Sweat");
 		},
 	},
+	// Winry
+	hellacute: {
+		effectType: 'Ability',
+		onModifyDef: function () {
+			return this.chainModify(3.2);
+		},
+		onModifySpD: function () {
+			return this.chainModify(3.2);
+		},
+		onModifyAtk: function () {
+			return this.chainModify(1.7);
+		},
+		onModifySpA: function () {
+			return this.chainModify(1.7);
+		},
+		onAfterDamage: function (damage, target, source, move) {
+			if (move) {
+				this.add('-ability', target, 'Hella Cute');
+				this.boost({def: -1, spd: -1}, source, target, move);
+			}
+		},
+		onModifyMove: function (move) {
+			if (move.ohko) {
+				move.onMoveFail = function (target, source) {
+					this.attrLastMove('[still]');
+					this.add('-anim', source, "Explosion", target);
+					this.damage(source.maxhp, source, source);
+				};
+			}
+		},
+		onAnyAccuracy: function (accuracy, target, source, move) {
+			if (move.ohko) return 50;
+			return accuracy;
+		},
+	},
 	// Haund
 	prodigy: {
 		effectType: 'Ability',
 		onStart: function (target, source) {
+			this.add('-ability', source, 'Prodigy');
 			this.addPseudoWeather('prodigyweather', source, "Prodigy");
 		},
 		onSwitchOut: function (pokemon) {
@@ -149,7 +187,38 @@ exports.BattleStatuses = {
 			source.addVolatile('baddreamsinnate');
 		},
 		onSwitchOut: function (pokemon) {
-			pokemon.heal(2 * pokemon.maxhp / 3);
+			pokemon.heal(this.modify(pokemon.maxhp, 0.5));
+		},
+	},
+	// SpecsMegaBeedrill
+	weed: {
+		effectType: 'Ability',
+		onStart: function (target, source) {
+			this.add('-ability', source, 'Weed');
+			this.add('-anim', source, 'Geomancy', source);
+			this.add('-message', source.name + " is high on Weed!");
+		},
+		onModifySpe: function () {
+			return this.chainModify(2.2);
+		},
+		onModifyAtk: function () {
+			return this.chainModify(3);
+		},
+		onModifySpA: function () {
+			return this.chainModify(3);
+		},
+	},
+	// Snobalt
+	whitemagic: {
+		effectType: 'Ability',
+		name: 'White Magic',
+		onTryHit: function (target, source, move) {
+			if (target !== source && move.type === 'Fairy') {
+				if (!this.boost({spe:1})) {
+					this.add('-immune', target, '[msg]', '[from] ability: White Magic');
+				}
+				return null;
+			}
 		},
 	},
 
@@ -157,8 +226,8 @@ exports.BattleStatuses = {
 	prodigyweather: {
 		effectType: 'Pseudoweather',
 		duration: 0,
-		onStart: function (battle, source, effect) {
-			this.add('message', source.name + "'s " + effect + " has inverted categories of attacking moves on the battlefield!");
+		onStart: function () {
+			this.add('message', "Categories of attacking moves on the battlefield have become inverted!");
 		},
 		onModifyMove: function (move) {
 			if (move.category === 'Physical') {

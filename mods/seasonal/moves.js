@@ -1,4 +1,4 @@
-"use strict";
+﻿"use strict";
 
 exports.BattleMovedex = {
 	// Eevee General
@@ -32,7 +32,7 @@ exports.BattleMovedex = {
 		name: "Aerial Fury",
 		pp: 10,
 		priority: 0,
-		flags: {contact: 1, protect: 1, mirror: 1},
+		flags: {contact: 1, protect: 1, mirror: 1, gravity: 1},
 		secondary: false,
 		onTryHit: function (target, source) {
 			this.attrLastMove('[still]');
@@ -116,6 +116,34 @@ exports.BattleMovedex = {
 		secondary: false,
 		target: "normal",
 		type: "Ghost",
+	},
+	// Fireburn
+	barnall: {
+		accuracy: 90,
+		basePower: 75,
+		category: "Physical",
+		id: "barnall",
+		isNonstandard: true,
+		isViable: true,
+		name: "BARN ALL",
+		pp: 5,
+		noPPBoosts: true,
+		priority: 0,
+		flags: {protect: 1, mirror: 1, defrost: 1},
+		onTryHit: function (target, source) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Overheat", target);
+		},
+		onBasePower: function (basePower, pokemon, target) {
+			if (target.status === 'brn') {
+				return this.chainModify(2);
+			}
+		},
+		// Implementation for ignoring Flash Fire is in Omega-Xis's Flash Fire innate
+		// That ability does not otherwise appear in this format
+		secondary: false,
+		target: "normal",
+		type: "Fire",
 	},
 	// Ace
 	bignarstie: {
@@ -215,6 +243,30 @@ exports.BattleMovedex = {
 		target: "self",
 		type: "Dark",
 	},
+	// Snobalt
+	capbust: {
+		accuracy: 100,
+		basePower: 90,
+		category: "Special",
+		defensiveCategory: "Physical",
+		id: "capbust",
+		isViable: true,
+		isNonstandard: true,
+		name: "Cap Bust",
+		pp: 15,
+		priority: 0,
+		flags: {protect: 1, mirror: 1},
+		onTryHit: function (target, source) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Psyshock", target);
+		},
+		onEffectiveness: function (typeMod, type) {
+			if (type === 'Fairy') return 1;
+		},
+		secondary: false,
+		target: "normal",
+		type: "Fighting",
+	},
 	// LJ
 	chaoswheel: {
 		accuracy: true,
@@ -306,7 +358,7 @@ exports.BattleMovedex = {
 	// galbia
 	dog: {
 		accuracy: 80,
-		basePower: 110,
+		basePower: 130,
 		category: "Physical",
 		id: "dog",
 		isNonstandard: true,
@@ -454,6 +506,29 @@ exports.BattleMovedex = {
 		target: "allAdjacentFoes",
 		type: "Water",
 	},
+	// Winry
+	fighttothedeath: {
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		id: "fighttothedeath",
+		isNonstandard: true,
+		isViable: true,
+		name: "Fight to the Death",
+		pp: 3,
+		noPPBoosts: true,
+		priority: 0,
+		flags: {protect: 1, mirror: 1},
+		onTryHit: function () {
+			this.attrLastMove('[still]');
+		},
+		onHit: function (target, source) {
+			this.useMove(['Guillotine', 'Fissure', 'Sheer Cold', 'Horn Drill'][this.random(4)], source);
+		},
+		secondary: false,
+		target: "normal",
+		type: "Fighting",
+	},
 	// bumbadadabum
 	freesoftware: {
 		accuracy: 95,
@@ -557,9 +632,8 @@ exports.BattleMovedex = {
 				this.add('c|@Sigilyph|**SOOOOGOOOOLOOOOPH**');
 			}
 			this.attrLastMove('[still]');
-			this.add('-anim', source, "Geomancy", source);
 			this.add('-anim', source, "Explosion", source);
-			this.add('-anim', source, "Hyper Beam", target);
+			this.add('-anim', source, "Light of Ruin", target);
 		},
 		selfdestruct: true,
 		secondary: false,
@@ -674,7 +748,7 @@ exports.BattleMovedex = {
 		flags: {snatch: 1},
 		boosts: {
 			spe: 2,
-			atk: 2,
+			atk: 4,
 		},
 		secondary: false,
 		target: "self",
@@ -857,7 +931,7 @@ exports.BattleMovedex = {
 						hits++;
 					}
 				}
-				this.add('-message', 'Hit ' + hits + ' times!');
+				this.add('-message', 'Hit ' + hits + (hits === 1 ? 'time!' : ' times!'));
 				source.isDuringAttack = false;
 			} else if (source.volatiles['hiddenpowernormal']) {
 				target.swapping = true;
@@ -880,6 +954,47 @@ exports.BattleMovedex = {
 		secondary: false,
 		target: "normal",
 		type: "Normal",
+	},
+	// SpecsMegaBeedrill
+	highfive: {
+		accuracy: 100,
+		basePower: 30,
+		category: "Special",
+		id: "highfive",
+		isViable: true,
+		isNonstandard: true,
+		name: "High Five",
+		pp: 35,
+		priority: 0,
+		flags: {contact: 1, protect: 1, mirror: 1},
+		multihit: 5,
+		onTryHit: function (target, source) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Pin Missile", target);
+		},
+		target: "normal",
+		type: "Bug",
+	},
+	// urkerab
+	holyorders: {
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		id: "holyorders",
+		isNonstandard: true,
+		isViable: true,
+		name: "Holy Orders",
+		pp: 10,
+		priority: 0,
+		flags: {},
+		onHit: function (target, source) {
+			this.useMove("healorder", source);
+			this.useMove("defendorder", source);
+			this.useMove("attackorder", source);
+		},
+		secondary: false,
+		target: "self",
+		type: "Fighting",
 	},
 	// ih8ih8sn0w
 	imprisonform: {
@@ -908,6 +1023,32 @@ exports.BattleMovedex = {
 		secondary: false,
 		target: "normal",
 		type: "Dark",
+	},
+	// Alaitz
+	kissblast: {
+		accuracy: 95,
+		basePower: 100,
+		category: "Special",
+		id: "kissblast",
+		isNonstandard: true,
+		isViable: true,
+		name: "Kiss Blast",
+		pp: 10,
+		priority: 0,
+		flags: {contact: 1, protect: 1, mirror: 1, heal: 1},
+		drain: [3, 4],
+		onPrepareHit: function (target, source) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Fairy Lock", target);
+			this.add('-anim', source, "Giga Impact", target);
+		},
+		self: {boosts: {spa: 1}},
+		secondary: {
+			chance: 100,
+			volatileStatus: 'leechseed',
+		},
+		target: "normal",
+		type: "Fairy",
 	},
 	// Crestfall
 	lightofunruin: {
@@ -990,7 +1131,7 @@ exports.BattleMovedex = {
 		name: "Mono Flying",
 		pp: 20,
 		priority: 0,
-		flags: {mirror: 1},
+		flags: {mirror: 1, gravity: 1},
 		onHit: function (target, source) {
 			if (this.pseudoWeather['monoflying']) {
 				this.removePseudoWeather('monoflying', source);
@@ -1066,6 +1207,32 @@ exports.BattleMovedex = {
 		target: "normal",
 		type: "Dark",
 	},
+	// Overneat
+	neattokick: {
+		accuracy: 90,
+		basePower: 130,
+		category: "Physical",
+		id: "neattokick",
+		isViable: true,
+		name: "Neatto Kick",
+		pp: 10,
+		priority: 0,
+		flags: {contact: 1, protect: 1, mirror: 1, gravity: 1},
+		hasCustomRecoil: true,
+		onTryHit: function (target, source) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "High Jump Kick", target);
+		},
+		onMoveFail: function (target, source) {
+			this.damage(source.maxhp / 2, source, source, 'highjumpkick');
+		},
+		secondary: {
+			chance: 50,
+			status: 'par',
+		},
+		target: "normal",
+		type: "Fighting",
+	},
 	// Level 51
 	nextlevelstrats: {
 		accuracy: true,
@@ -1076,7 +1243,7 @@ exports.BattleMovedex = {
 		pp: 5,
 		noPPBoosts: true,
 		priority: 0,
-		flags: {contact: 1, protect: 1, mirror: 1},
+		flags: {protect: 1, mirror: 1},
 		boosts: {spe: 1},
 		onTryHit: function (pokemon) {
 			if (pokemon.level >= 200) return false;
@@ -1089,6 +1256,41 @@ exports.BattleMovedex = {
 		secondary: false,
 		target: "self",
 		type: "Normal",
+	},
+	// Golui
+	notfriezaenough: {
+		accuracy: 100,
+		basePower: 120,
+		category: "Special",
+		id: "notfriezaenough",
+		isViable: true,
+		isNonstandard: true,
+		name: "Not Frieza Enough",
+		pp: 5,
+		priority: 0,
+		flags: {protect: 1, mirror: 1},
+		onEffectiveness: function (typeMod, type) {
+			if (type === 'Water') return 1;
+		},
+		onTryHit: function (target, source) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Sheer Cold", target);
+		},
+		onHit: function () {
+			this.setWeather('Hail');
+		},
+		secondary: {
+			chance: 10,
+			status: 'frz',
+		},
+		self: {
+			boosts: {
+				spa: -1,
+				spd: -1,
+			},
+		},
+		target: "normal",
+		type: "Ice",
 	},
 	// m00ns
 	oh: {
@@ -1108,7 +1310,7 @@ exports.BattleMovedex = {
 	},
 	// ajhockeystar
 	ohcanada: {
-		accuracy: 75,
+		accuracy: 55,
 		category: "Status",
 		id: "ohcanada",
 		isNonstandard: true,
@@ -1123,11 +1325,50 @@ exports.BattleMovedex = {
 			this.add('-anim', source, "Icy Wind", target);
 			this.add('-anim', source, "Haze", source);
 		},
-		onHit: function (target) {
-			target.setStatus('frz');
+		onHit: function (target, source) {
+			if (target.setStatus('frz')) {
+				this.add('-message', source.name + " has become trapped in sticky maple syrup!");
+				this.boost({spe: -2}, source, source);
+			}
+		},
+		onMoveFail: function (target, source) {
+			this.add('-message', source.name + " has become trapped in sticky maple syrup!");
+			this.boost({spe: -1}, source, source);
 		},
 		target: 'normal',
 		type: "Ice",
+	},
+	// Andy
+	pilfer: {
+		accuracy: true,
+		basePower: 70,
+		category: "Physical",
+		id: "pilfer",
+		isNonstandard: true,
+		name: "Pilfer",
+		pp: 15,
+		priority: 1,
+		flags: {protect: 1, authentic: 1},
+		onTryHit: function (target, pokemon) {
+			let decision = this.willMove(target);
+			if (decision) {
+				let noMeFirst = {
+					mefirst:1, speedpaint:1,
+				};
+				let move = this.getMoveCopy(decision.move.id);
+				if (move.category === 'Status' && !noMeFirst[move]) {
+					this.useMove(move, pokemon);
+					this.attrLastMove('[still]');
+					this.add('-anim', pokemon, "Night Slash", target);
+					return;
+				}
+			}
+			return false;
+		},
+		secondary: false,
+		pressureTarget: "foeSide",
+		target: "normal",
+		type: "Dark",
 	},
 	// AM
 	predator: {
@@ -1355,7 +1596,7 @@ exports.BattleMovedex = {
 			this.attrLastMove('[still]');
 			this.add('-anim', source, "Megahorn", target);
 			this.add('-anim', target, "Explosion", source);
-			this.add('-formechange', target, target.species, ''); //resets sprite after explosion
+			this.add('-formechange', target, target.template.species, ''); //resets sprite after explosion
 		},
 		onEffectiveness: function (typeMod, type, move) {
 			return typeMod + this.getEffectiveness('Steel', type);
@@ -1479,23 +1720,15 @@ exports.BattleMovedex = {
 			let decision = this.willMove(target);
 			if (decision) {
 				let noMeFirst = {
-					chatter:1, counter:1, covet:1, focuspunch:1, mefirst:1, metalburst:1, mirrorcoat:1, struggle:1, thief:1, speedpaint: 1,
+					chatter:1, counter:1, covet:1, focuspunch:1, mefirst:1, metalburst:1, mirrorcoat:1, struggle:1, thief:1, speedpaint:1, pilfer:1,
 				};
 				let move = this.getMoveCopy(decision.move.id);
 				if (!noMeFirst[move]) {
-					pokemon.addVolatile('mefirst');
 					this.useMove(move, pokemon, target);
 					return null;
 				}
 			}
 			return false;
-		},
-		effect: {
-			duration: 1,
-			onBasePowerPriority: 4,
-			onBasePower: function (basePower) {
-				return this.chainModify(1);
-			},
 		},
 		secondary: false,
 		pressureTarget: "foeSide",
@@ -1621,6 +1854,62 @@ exports.BattleMovedex = {
 		target: "normal",
 		type: "Ghost",
 	},
+	// imas234
+	sweg: {
+		accuracy: 100,
+		basePower: 90,
+		category: "Special",
+		id: "sweg",
+		isViable: true,
+		isNonstandard: true,
+		name: "Sweg",
+		pp: 10,
+		priority: 0,
+		flags: {protect: 1, mirror: 1},
+		onPrepareHit: function (target, source) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Roar of Time", target);
+		},
+		onHit: function (target, source) {
+			this.boost({atk:2}, target, source);
+			target.addVolatile('confusion', source);
+		},
+		secondary: {
+			chance: 30,
+			status: 'par',
+		},
+		target: "normal",
+		type: "Dragon",
+	},
+	// Iyarito
+	tomalawey: {
+		accuracy: true,
+		basePower: 0,
+		id: "tomalawey",
+		isViable: true,
+		isNonstandard: true,
+		name: "Tomala wey",
+		pp: 5,
+		noPPBoosts: true,
+		priority: 4,
+		flags: {},
+		stallingMove: true,
+		volatileStatus: 'protect',
+		onPrepareHit: function (pokemon) {
+			return !!this.willAct() && this.runEvent('StallMove', pokemon);
+		},
+		onHit: function (pokemon) {
+			pokemon.addVolatile('stall');
+		},
+		boosts: {
+			spa: 1,
+			spd: 1,
+			spe: 1,
+		},
+		secondary: false,
+		target: "self",
+		type: "Ground",
+	},
 	// Vapo
 	wetwork: {
 		accuracy: true,
@@ -1699,5 +1988,29 @@ exports.BattleMovedex = {
 		secondary: false,
 		target: "normal",
 		type: "Dark",
+	},
+	// Frysinger
+	zapconfirmed: {
+		accuracy: 100,
+		basePower: 15,
+		category: "Special",
+		id: "zapconfirmed",
+		isViable: true,
+		isNonstandard: true,
+		name: "ZAP Confirmed",
+		pp: 10,
+		priority: 0,
+		flags: {protect: 1, mirror: 1},
+		multihit: 7,
+		onTryHit: function (target, source) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Charge Beam", target);
+		},
+		secondary: {
+			chance: 30,
+			status: 'par',
+		},
+		target: "normal",
+		type: "Electric",
 	},
 };
