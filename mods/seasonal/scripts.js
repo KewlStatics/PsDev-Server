@@ -23,6 +23,12 @@ exports.BattleScripts = {
 				signatureMove: 'OH CANADA',
 				evs: {hp:4, atk:252, spe:252}, nature: 'Jolly',
 			},
+			'Alaitz': {
+				species: 'Floette-Eternal', ability: 'Adaptability', item: 'Life Orb', gender: 'F', shiny: true,
+				moves: ['technoblast', 'fireblast', 'focusblast'],
+				signatureMove: 'Kiss Blast',
+				evs: {spa:252, spd:4, spe:252}, nature: 'Timid',
+			},
 			/*'Albacore': {
 				species: '', ability: '', item: '', gender: '',
 				moves: [],
@@ -33,14 +39,14 @@ exports.BattleScripts = {
 				species: 'Tyranitar', ability: 'Adaptability', item: (variant ? 'Lum Berry' : 'Choice Scarf'), gender: 'M',
 				moves: (variant ? ['earthquake', 'diamondstorm', 'swordsdance', 'meanlook'] : ['knockoff', 'diamondstorm', 'earthquake']),
 				signatureMove: "Predator",
-				evs: {atk:252, def:4, spe: 252}, nature: 'Jolly',
+				evs: {atk:252, def:4, spe:252}, nature: 'Jolly',
 			},
-			/*'Andrew Goncel': {
-				species: '', ability: '', item: '', gender: '',
-				moves: [],
-				signatureMove: 'Energy Field',
-				evs: {}, nature: '',
-			},*/
+			'Andy': {
+				species: 'Absol', ability: 'Justified', item: 'Absolite', gender: 'M',
+				moves: ['suckerpunch', 'swordsdance', 'uturn'],
+				signatureMove: 'Pilfer',
+				evs: {hp:252, atk:252, spe:4}, nature: 'Adamant',
+			},
 			/*'Antemortem': {
 				species: '', ability: '', item: '', gender: '',
 				moves: [],
@@ -155,12 +161,12 @@ exports.BattleScripts = {
 				signatureMove: "Light of Unruin",
 				evs: {hp:252, spd:68, spe:188}, nature: 'Timid',
 			},
-			/*'Death on Wings': {
-				species: 'Arceus-Flying', ability: 'Mountaineer', item: 'Sky Plate', gender: 'M',
+			'Death on Wings': {
+				species: 'Tornadus-Therian', ability: 'Regenerator', item: 'Life Orb', gender: 'M',
 				moves: ['dragonascent', 'wildcharge', 'uturn'],
 				signatureMove: "Mono Flying",
 				evs: {hp:4, atk:252, spe:252}, nature: 'Adamant',
-			},*/ // Temporarily disabled due to base species (Ho-oh) conflict
+			}, // Temporarily disabled due to base species (Ho-oh) conflict
 			'DMT': {
 				species: 'Shedinja', ability: 'Wonder Guard', item: 'Focus Sash',
 				moves: ['protect', 'shadowsneak', 'xscissor'],
@@ -191,6 +197,12 @@ exports.BattleScripts = {
 				signatureMove: '',
 				evs: {}, nature: '',
 			},*/
+			'Fireburn': {
+				species: 'Ho-oh', ability: 'Flame Body', item: 'Flame Plate', gender: 'M', shiny: true,
+				moves: ['sacredfire', 'bravebird', 'recover'],
+				signatureMove: "BARN ALL",
+				evs: {atk: 252, spd: 4, spe: 252}, nature: 'Adamant',
+			},
 			'Flying Kebab': {
 				species: 'Cloyster', ability: 'Skill Link', item: 'White Herb', gender: 'M',
 				moves: ['watershuriken', 'bulletseed', 'shellsmash'],
@@ -209,6 +221,12 @@ exports.BattleScripts = {
 				signatureMove: '',
 				evs: {}, nature: '',
 			},*/
+			'Frysinger': {
+				species: 'Raikou', ability: 'Funhouse', item: 'Zap Plate', gender: 'N',
+				moves: ['voltswitch', 'frostbreath', 'aurasphere'],
+				signatureMove: "ZAP Confirmed",
+				evs: {spa:252, spd:4, spe:252}, nature: 'Timid',
+			},
 			'f(x)': {
 				species: 'Rotom-Heat', ability: 'Levitate', item: 'Leftovers', shiny: true, gender: 'F',
 				moves: ['voltswitch', 'fusionflare', 'thunderbolt'],
@@ -238,6 +256,12 @@ exports.BattleScripts = {
 				moves: ['fierydance', 'oblivionwing', 'roost'],
 				signatureMove: "Eternal Ashes",
 				evs: {hp:248, spd:244, spe:16}, nature: 'Bold',
+			},
+			'Golui': {
+				species: 'Cryogonal', ability: 'Special Snowflake', item: 'Life Orb',
+				moves: ['quiverdance', 'recover', 'secretsword'],
+				signatureMove: "Not Frieza Enough",
+				evs: {spa:252, spd:4, spe:252}, nature: 'Modest',
 			},
 			/*'Grim Auxiliatrix': {
 				species: '', ability: '', item: '', gender: '',
@@ -287,12 +311,18 @@ exports.BattleScripts = {
 				signatureMove: '',
 				evs: {}, nature: '',
 			},*/
-			/*'imas234': {
-				species: '', ability: '', item: '', gender: '',
-				moves: [],
-				signatureMove: '',
-				evs: {}, nature: '',
-			},*/
+			'imas234': {
+				species: 'Kyurem', ability: 'Sheer Force', item: 'Life Orb', gender: 'M',
+				moves: ['icebeam', 'earthpower', ['agility', 'substitute'][this.random(2)]],
+				signatureMove: 'Sweg',
+				evs: {def:4, spa:252, spe:252}, nature: 'Timid',
+			},
+			'Iyarito': {
+				species: 'Gastly', ability: 'Magic Guard', item: 'Life Orb', gender: 'M', shiny: true,
+				moves: ['sludgebomb', 'shadowball', 'dazzlinggleam'],
+				signatureMove: 'Tomala wey',
+				evs: {spa:200, spd:80, spe:228}, nature: 'Timid',
+			},
 			/*'innovamania': {
 				species: '', ability: '', item: '', gender: '',
 				moves: [],
@@ -395,6 +425,12 @@ exports.BattleScripts = {
 				signatureMove: '',
 				evs: {}, nature: '',
 			},*/
+			'Overneat': {
+				species: 'Blaziken', ability: 'Speed Boost', item: 'Blazikenite', gender: 'M',
+				moves: ['protect', 'stoneedge', 'flareblitz'],
+				signatureMove: "Neatto Kick",
+				evs: {atk:252, def: 4, spe:252}, nature: 'Jolly',
+			},
 			/*'Phable': {
 				species: '', ability: '', item: '', gender: '',
 				moves: [],
@@ -485,6 +521,12 @@ exports.BattleScripts = {
 				signatureMove: '',
 				evs: {}, nature: '',
 			},*/
+			'Snobalt': {
+				species: 'Voodoom', ability: 'Mountaineer', item: 'Life Orb', gender: 'M',
+				moves: ['paleowave', 'darkpulse', 'nastyplot'],
+				signatureMove: 'Cap Bust',
+				evs: {def:4, spa:252, spe: 252}, nature: 'Timid',
+			},
 			'SolarisFox': {
 				species: 'Delphox', ability: 'Klutz', item: ['Choice Scarf', 'Choice Band', 'Choice Specs', 'Assault Vest', 'Lagging Tail', 'Flame Orb', 'Toxic Orb'].randomize()[0], gender: 'M',
 				moves: ['trick', 'lavaplume', 'psyshock'],
@@ -495,7 +537,13 @@ exports.BattleScripts = {
 				species: 'Foongus', ability: 'Prankster', item: 'Eviolite', gender: 'M',
 				moves: ['batonpass', 'ingrain', 'substitute'],
 				signatureMove: "Army of Mushrooms",
-				evs: {hp:252, def:128, spd:252}, nature: 'Sassy',
+				evs: {hp:252, def:128, spd:128}, nature: 'Sassy',
+			},
+			'SpecsMegaBeedrill': {
+				species: 'Weedle', ability: 'Shield Dust', item: 'Focus Sash', gender: 'M',
+				moves: ['blueflare', 'earthpower', 'sludgewave'],
+				signatureMove: "High Five",
+				evs: {def:4, spa:252, spe:252}, nature: 'Timid',
 			},
 			/*'Spy': {
 				species: '', ability: '', item: '', gender: '',
@@ -545,12 +593,12 @@ exports.BattleScripts = {
 				signatureMove: "Sacred Spear Explosion",
 				evs: {hp:252, def:4, spe:252}, nature: 'Timid',
 			},
-			/*'urkerab': {
-				species: '', ability: '', item: '', gender: '',
-				moves: [],
-				signatureMove: '',
-				evs: {}, nature: '',
-			},*/
+			'urkerab': {
+				species: 'Skuntank', ability: 'Sniper', item: 'Razor Claw', gender: 'M',
+				moves: ['nightslash', 'drillrun', 'crosspoison'],
+				signatureMove: 'Holy Orders',
+				evs: {hp:248, atk:228, def:24, spd:8}, nature: 'Careful',
+			},
 			'Vapo': {
 				species: 'Vaporeon', ability: 'Primordial Sea', item: 'Splash Plate', gender: 'M',
 				moves: ['scald', 'waterspout', 'icebeam'],
@@ -563,12 +611,12 @@ exports.BattleScripts = {
 				signatureMove: "Debilitate",
 				evs: {hp:248, def:8, spa:252}, nature: 'Modest',
 			},
-			/*'Winry': {
-				species: '', ability: '', item: '', gender: '',
-				moves: [],
-				signatureMove: '',
-				evs: {}, nature: '',
-			},*/
+			'Winry': {
+				species: 'Buizel', ability: 'Water Veil', item: 'Life Orb', gender: 'F', shiny: true,
+				moves: ['watershuriken', ['highjumpkick', 'iciclecrash'][this.random(2)], 'waterfall'],
+				signatureMove: 'Fight to the Death',
+				evs: {atk:252, def:4, spe:252}, nature: 'Jolly',
+			},
 			'xfix': {
 				species: 'Xatu', ability: 'Magic Bounce', item: 'Focus Sash', gender: 'M',
 				moves: ['substitute', 'thunderwave', 'roost'],

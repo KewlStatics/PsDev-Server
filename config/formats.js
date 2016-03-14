@@ -657,8 +657,17 @@ exports.Formats = [
 		onUpdate: function (pokemon) {
 			let name = toId(pokemon.name);
 			if (pokemon.template.isMega) {
+				if (name === 'andy' && pokemon.getAbility().id === 'magicbounce') {
+					pokemon.setAbility('adaptability');
+					this.add('-ability', pokemon, 'Adaptability');
+				}
 				if (name === 'crestfall' && pokemon.getAbility().id === 'magicbounce') {
 					pokemon.setAbility('simple');
+					this.add('-ability', pokemon, 'Simple');
+				}
+				if (name === 'overneat' && pokemon.getAbility().id === 'speedboost') {
+					pokemon.setAbility('noguard');
+					this.add('-ability', pokemon, 'No Guard');
 				}
 				if (name === 'theimmortal' && pokemon.getAbility().id === 'megalauncher') {
 					pokemon.setAbility('cloudnine');
@@ -679,8 +688,17 @@ exports.Formats = [
 			// This happens when the mega switches in, as opposed to mega-evolving on the turn.
 			//let oldAbility = pokemon.ability; //TODO
 			if (pokemon.template.isMega) {
+				if (name === 'andy' && pokemon.getAbility().id === 'magicbounce') {
+					pokemon.setAbility('adaptability');
+					this.add('-ability', pokemon, 'Adaptability');
+				}
 				if (name === 'crestfall' && pokemon.getAbility().id === 'magicbounce') {
 					pokemon.setAbility('simple');
+					this.add('-ability', pokemon, 'Simple');
+				}
+				if (name === 'overneat' && pokemon.getAbility().id === 'speedboost') {
+					pokemon.setAbility('noguard');
+					this.add('-ability', pokemon, 'No Guard');
 				}
 				if (name === 'theimmortal' && pokemon.getAbility().id === 'megalauncher') {
 					pokemon.setAbility('cloudnine');
@@ -723,6 +741,9 @@ exports.Formats = [
 			if (name === 'sigilyph') {
 				pokemon.addVolatile('samuraijack', pokemon);
 			}
+			if (name === 'specsmegabeedrill') {
+				pokemon.addVolatile('weed', pokemon);
+			}
 			if (name === 'trickster') {
 				let target = pokemon.battle[pokemon.side.id === 'p1' ? 'p2' : 'p1'].active[0];
 				let targetBoosts = {};
@@ -741,11 +762,21 @@ exports.Formats = [
 			if (name === 'raseri') {
 				this.useMove('hypnosis', pokemon);
 			}
+			if (name === 'snobalt') {
+				pokemon.addVolatile('whitemagic', pokemon);
+			}
 			if (name === 'spacebass') {
 				pokemon.addVolatile('spacebassinnate', pokemon);
 			}
 			if (name === 'teremiare') {
 				pokemon.addVolatile('coinflip', pokemon);
+			}
+			if (name === 'urkerab') {
+				pokemon.addVolatile('focusenergy', pokemon);
+				this.useMove('magnetrise', pokemon);
+			}
+			if (name === 'winry') {
+				pokemon.addVolatile('hellacute', pokemon);
 			}
 
 			// Edgy switch-in sentences go here.
@@ -762,14 +793,17 @@ exports.Formats = [
 			if (name === 'ajhockeystar') {
 				this.add('c|+ajhockeystar|Here comes the greatest hockey player alive!');
 			}
+			if (name === 'alaitz') {
+				this.add('c|+Alaitz|Bye Cutie :*');
+			}
 			if (name === 'albacore') {
 				// TODO
 			}
 			if (name === 'am') {
 				this.add('c|+AM|Lucky and Bad');
 			}
-			if (name === 'andrewgoncel') {
-				// TODO
+			if (name === 'andy') {
+				this.add('c|%AndrewGoncel|:I');
 			}
 			if (name === 'antemortem') {
 				this.add('c|@antemortem|I Am Here To Oppress Users');
@@ -856,6 +890,9 @@ exports.Formats = [
 			if (name === 'feliburn') {
 				this.add('c|%Feliburn|Come on!');
 			}
+			if (name === 'fireburn') {
+				this.add('c|+Fireburn|:V');
+			}
 			if (name === 'flyingkebab') {
 				this.add("c|+Flying Kebab|I'm ready for ya. Bring it on!");
 			}
@@ -864,6 +901,9 @@ exports.Formats = [
 			}
 			if (name === 'freeroamer') {
 				// TODO
+			}
+			if (name === 'frysinger') {
+				this.add("c|+Frysinger|Nice boosts kid.");
 			}
 			if (name === 'fx') {
 				this.add("c|+f(x)|love is 4 wawawawawawawalls");
@@ -879,6 +919,9 @@ exports.Formats = [
 			}
 			if (name === 'giagantic') {
 				this.add("c|+Giagantic|e.e");
+			}
+			if (name === 'golui') {
+				this.add("c|+Golui|Golly gee");
 			}
 			if (name === 'grimauxiliatrix') {
 				// TODO
@@ -905,11 +948,14 @@ exports.Formats = [
 				this.add('c|@imanalt|muh bulk');
 			}
 			if (name === 'imas234') {
-				// TODO
+				this.add('c|@imas234|hlo');
 			}
 			if (name === 'innovamania') {
 				sentences = ['Don\'t take this seriously', 'These Black Glasses sure look cool', 'Ready for some fun?( ͡° ͜ʖ ͡°)', '( ͡° ͜ʖ ͡°'];
 				this.add('c|@innovamania|' + sentences[this.random(4)]);
+			}
+			if (name === 'iyarito') {
+				this.add('c|+Iyarito|Welp');
 			}
 			if (name === 'jasmine') {
 				this.add("c|+Jasmine|I'm still relevant!");
@@ -992,6 +1038,9 @@ exports.Formats = [
 			if (name === 'mizuhime') {
 				// TODO
 			}
+			if (name === 'overneat') {
+				this.add('c|+Overneat|tsk, tsk, is going to be funny');
+			}
 			if (name === 'phable') {
 				// TODO
 			}
@@ -1041,11 +1090,17 @@ exports.Formats = [
 			if (name === 'skitty') {
 				this.add('c|@Skitty|\\_$-_-$_/');
 			}
+			if (name === 'snobalt') {
+				this.add('c|+Snobalt|By the power vested in me from the great Lord Tomohawk...');
+			}
 			if (name === 'solarisfox') {
 				this.add('raw|<div class="chat chatmessage-solarisfox"><small>%</small><b><font color="#2D8F1E"><span class="username" data-name="SolarisFox">SolarisFox</span>:</font></b> <em><marquee behavior="alternate" scrollamount=3 scrolldelay="60" width="108">[Intense vibrating]</marquee></em></div>');
 			}
 			if (name === 'spacebass') {
 				this.add('c|%SpaceBass|The most interesting ball of toxins you\'ll ever have to meet');
+			}
+			if (name === 'specsmegabeedrill') {
+				this.add('c|+SpecsMegaBeedrill|(◕‿◕✿)');
 			}
 			if (name === 'spy') {
 				sentences = ['curry consumer', 'try to keep up', 'fucking try to knock me down', 'Sometimes I slather myself in vasoline and pretend I\'m a slug', 'I\'m really feeling it!'];
@@ -1080,7 +1135,7 @@ exports.Formats = [
 				this.add('c|@Trickster|' + sentences[this.random(2)]);
 			}
 			if (name === 'urkerab') {
-				// TODO
+				this.add('j|urkerab');
 			}
 			if (name === 'uselesstrainer') {
 				sentences = ['huehuehuehue', 'PIZA', 'SPAGUETI', 'RAVIOLI RAVIOLI GIVE ME THE FORMUOLI', 'get ready for PUN-ishment'];
@@ -1093,7 +1148,7 @@ exports.Formats = [
 				this.add('c|+Vexen IV|The Arcana is the means by which all is revealed.');
 			}
 			if (name === 'winry') {
-				// TODO
+				this.add('c|@Winry|fight me irl');
 			}
 			if (name === 'xfix') {
 				if (this.random(2)) {
@@ -1155,8 +1210,14 @@ exports.Formats = [
 			if (name === 'ajhockeystar') {
 				this.add('c|+ajhockeystar|You may have beaten me in battle, but never in hockey.');
 			}
+			if (name === 'alaitz') {
+				this.add('c|+Alaitz|You won\'t be kissed again! ;;');
+			}
 			if (name === 'am') {
 				this.add('c|+AM|RIP');
+			}
+			if (name === 'andy') {
+				this.add('c|%AndrewGoncel|wow r00d! :c');
 			}
 			if (name === 'anttya') {
 				this.add('c|+Anttya|Can\'t beat hax ¯\\_(ツ)_/¯');
@@ -1200,8 +1261,14 @@ exports.Formats = [
 				this.add("c|~Eevee General|bye room");
 				this.add("c|!Eevee General|" + sentences[this.random(3)]);
 			}
+			if (name === 'fireburn') {
+				this.add('c|+Fireburn|>:Y');
+			}
 			if (name === 'flyingkebab') {
 				this.add("c|+Flying Kebab|" + ["I\'ll see you in hell!", "/me vanishes to the depths of hell"][this.random(2)]);
+			}
+			if (name === 'frysinger') {
+				this.add("c|+Frysinger|/me teleports away from the battle and eats a senzu bean");
 			}
 			if (name === 'fx') {
 				this.add("c|+f(x)|mirror, mirror");
@@ -1215,6 +1282,9 @@ exports.Formats = [
 			if (name === 'giagantic') {
 				this.add("c|+Giagantic|x.x");
 			}
+			if (name === 'golui') {
+				this.add("c|+Golui|Freeze in hell");
+			}
 			if (name === 'hashtag') {
 				this.add("c|#Hashtag|fukn immigrants,,, slash me spits");
 			}
@@ -1226,6 +1296,12 @@ exports.Formats = [
 			}
 			if (name === 'ih8ih8sn0w') {
 				this.add('c|+ih8ih8sn0w|nice hax :(');
+			}
+			if (name === 'imas234') {
+				this.add('c|@imas234|bg no re');
+			}
+			if (name === 'iyarito') {
+				this.add('c|+Iyarito|Owwnn ;_;');
 			}
 			if (name === 'jasmine') {
 				this.add("raw|<div class=\"broadcast-red\"><b>The server is restarting soon.</b><br />Please finish your battles quickly. No new battles can be started until the server resets in a few minutes.</div>");
@@ -1258,6 +1334,9 @@ exports.Formats = [
 			if (name === 'm00ns') {
 				this.add('c|%m00ns|o-oh');
 			}
+			if (name === 'overneat') {
+				this.add('c|+Overneat|Ugh! I failed you Iya-sama');
+			}
 			if (name === 'pluviometer') {
 				this.add('c|+pluviometer|GP 2/2');
 			}
@@ -1280,8 +1359,14 @@ exports.Formats = [
 			if (name === 'solarisfox') {
 				this.add('c|%SolarisFox|So long, and thanks for all the fish.');
 			}
+			if (name === 'snobalt') {
+				this.add('c|+Snobalt|Blasphemy!');
+			}
 			if (name === 'spacebass') {
 				this.add('c|%SpaceBass|Of whales and woe.');
+			}
+			if (name === 'specsmegabeedrill') {
+				this.add('c|+SpecsMegaBeedrill|Tryhard.');
 			}
 			if (name === 'teremiare') {
 				this.add('c|+Teremiare|sigh...');
@@ -1295,11 +1380,17 @@ exports.Formats = [
 			if (name === 'trickster') {
 				this.add('c|@Trickster|UPLOADING VIRUS.EXE \u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588] 99% COMPLETE');
 			}
+			if (name === 'urkerab') {
+				this.add('l|urkerab');
+			}
 			if (name === 'vapo') {
 				this.add('c|%Vapo|( ; _> ;)');
 			}
 			if (name === 'vexeniv') {
 				this.add('c|+Vexen IV|brb burning my dread');
+			}
+			if (name === 'winry') {
+				this.add('c|@Winry|I AM NOT A WEEB');
 			}
 			if (name === 'xfix') {
 				const foe = pokemon.side.foe.active[0];
