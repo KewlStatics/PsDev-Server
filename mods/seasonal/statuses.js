@@ -1,4 +1,4 @@
-﻿"use strict";
+"use strict";
 
 exports.BattleStatuses = {
 	// Innate abilities
@@ -42,6 +42,17 @@ exports.BattleStatuses = {
 				const opponent = foes[0];
 				opponent.boosts[boost2] = 6;
 				this.add('-setboost', opponent, boost2, opponent.boosts[boost2]);
+			}
+		},
+	},
+	// nv
+	cuteness: {
+		effectType: 'Ability',
+		onStart: function (target, source) {
+			this.add('-ability', source, 'Cuteness');
+			const foes = source.side.foe.active;
+			if (foes.length && foes[0].hp) {
+				this.boost({atk:-1, def:-1, spa:-1, spd:-1, spe:-1, evasion:-1}, foes[0], source, source);
 			}
 		},
 	},
@@ -141,6 +152,21 @@ exports.BattleStatuses = {
 			return accuracy;
 		},
 	},
+	// Scyther NO Swiping
+	mountaineerinnate: {
+		effectType: 'Ability',
+		onDamage: function (damage, target, source, effect) {
+			if (effect && effect.id === 'stealthrock') {
+				return false;
+			}
+		},
+		onTryHit: function (target, source, move) {
+			if (move.type === 'Rock' && !target.activeTurns) {
+				this.add('-immune', target, '[msg]', '[from] ability: Mountaineer');
+				return null;
+			}
+		},
+	},
 	// Haund
 	prodigy: {
 		effectType: 'Ability',
@@ -223,6 +249,33 @@ exports.BattleStatuses = {
 	},
 
 	// Weathers
+	hail: {
+		inherit: true,
+		onStart: function (battle, source, effect) {
+			if (effect && effect.effectType === 'Ability') {
+				if (effect.id === 'holyhail') this.effectData.duration = 0;
+				this.add('-weather', 'Hail', '[from] ability: ' + effect, '[of] ' + source);
+			} else {
+				this.add('-weather', 'Hail');
+			}
+		},
+		durationCallback: function (source) {
+			if (!source) return 5;
+			if (source.getAbility() === 'Holy Hail') return 0;
+			if (source.hasItem('icyrock')) return 8;
+			return 5;
+		},
+		onWeatherModifyDamage: function (damage, attacker, defender, move) {
+			if (attacker.getAbility() === 'Holy Hail' && move.type === 'Ice') {
+				return this.chainModify(1.5);
+			}
+		},
+		onModifySpD: function (spd, pokemon) {
+			if (pokemon.getAbility() === 'Holy Hail' && pokemon.hasType('Ice') && this.isWeather('hail')) {
+				return this.modify(spd, 1.5);
+			}
+		},
+	},
 	prodigyweather: {
 		effectType: 'Pseudoweather',
 		duration: 0,

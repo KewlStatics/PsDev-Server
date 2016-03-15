@@ -1,4 +1,4 @@
-﻿"use strict";
+"use strict";
 
 exports.BattleMovedex = {
 	// Eevee General
@@ -173,8 +173,8 @@ exports.BattleMovedex = {
 	},
 	// atomicllamas
 	bitchycomment: {
-		accuracy: 100,
-		basePower: 70,
+		accuracy: 95,
+		basePower: 100,
 		category: "Special",
 		id: "bitchycomment",
 		isNonstandard: true,
@@ -182,7 +182,7 @@ exports.BattleMovedex = {
 		name: "Bitchy Comment",
 		pp: 15,
 		priority: 0,
-		flags: {protect: 1, mirror: 1, sound: 1},
+		flags: {protect: 1, mirror: 1, sound: 1, authentic: 1},
 		onTryHit: function (target, source) {
 			this.attrLastMove('[still]');
 			this.add('-anim', source, "Taunt", source);
@@ -377,6 +377,25 @@ exports.BattleMovedex = {
 		secondary: false,
 		target: "normal",
 		type: "Normal",
+	},
+	// Mizuhime
+	doublelaser: {
+		accuracy: 90,
+		basePower: 90,
+		category: "Special",
+		id: "doublelaser",
+		name: "Double Laser",
+		pp: 40,
+		priority: 0,
+		flags: {pulse: 1, protect: 1, mirror: 1},
+		multihit: 2,
+		onTryHit: function (target, source) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Water Pulse", target);
+		},
+		secondary: false,
+		target: "normal",
+		type: "Water",
 	},
 	// TONE114
 	desolationpulse: {
@@ -632,6 +651,7 @@ exports.BattleMovedex = {
 				this.add('c|@Sigilyph|**SOOOOGOOOOLOOOOPH**');
 			}
 			this.attrLastMove('[still]');
+			this.add('-anim', source, "Cosmic Power", source);
 			this.add('-anim', source, "Explosion", source);
 			this.add('-anim', source, "Light of Ruin", target);
 		},
@@ -799,6 +819,87 @@ exports.BattleMovedex = {
 		},
 		target: "normal",
 		type: "Fairy",
+	},
+	// Snowy
+	hailwhitequeen: {
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		id: "hailwhitequeen",
+		isNonstandard: true,
+		isViable: true,
+		name: "Hail Whitequeen",
+		pp: 5,
+		priority: 4,
+		flags: {},
+		stallingMove: true,
+		volatileStatus: 'hailwhitequeen',
+		onTryHit: function (pokemon) {
+			return !!this.willAct() && this.runEvent('StallMove', pokemon);
+		},
+		onHit: function (pokemon) {
+			pokemon.addVolatile('stall');
+		},
+		effect: {
+			duration: 1,
+			onStart: function (target) {
+				this.add('-singleturn', target, 'Protect');
+			},
+			onTryHitPriority: 3,
+			onTryHit: function (target, source, move) {
+				if (!move.flags['protect'] || move.category === 'Status') return;
+				this.add('-activate', target, 'Protect');
+				let lockedmove = source.getVolatile('lockedmove');
+				if (lockedmove) {
+					// Outrage counter is reset
+					if (source.volatiles['lockedmove'].duration === 2) {
+						delete source.volatiles['lockedmove'];
+					}
+				}
+				if (move.flags['contact'] && move.category === 'Physical') {
+					for (let i = 0; i < source.side.pokemon.length; i++) {
+						let pokemon = source.side.pokemon[i];
+						if (pokemon.status === 'frz') return null;
+					}
+					source.trySetStatus('frz');
+				}
+				return null;
+			},
+		},
+		secondary: false,
+		target: "self",
+		type: "Ice",
+	},
+	// nv
+	hamsterdance: {
+		accuracy: 100,
+		basePower: 0,
+		category: "Status",
+		id: "hamsterdance",
+		isNonstandard: true,
+		isViable: true,
+		name: "Hamster Dance",
+		pp: 30,
+		priority: 0,
+		flags: {authentic: 1, protect: 1, mirror: 1},
+		onPrepareHit: function (target, source) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Dragon Dance", source);
+		},
+		onHit: function () {
+			this.add('-clearallboost');
+			for (let i = 0; i < this.sides.length; i++) {
+				for (let j = 0; j < this.sides[i].active.length; j++) {
+					if (this.sides[i].active[j] && this.sides[i].active[j].isActive) this.sides[i].active[j].clearBoosts();
+				}
+			}
+		},
+		secondary: {
+			chance: 100,
+			volatileStatus: 'confusion',
+		},
+		target: "normal",
+		type: "Normal",
 	},
 	// Anttya
 	hax: {
@@ -1121,6 +1222,29 @@ exports.BattleMovedex = {
 		target: "self",
 		type: "Psychic",
 	},
+	// Jetpack
+	"malicioushypnosis": {
+		accuracy: 100,
+		basePower: 90,
+		category: "Special",
+		id: "psychic",
+		isViable: true,
+		isNonstandard: true,
+		name: "Psychic",
+		pp: 5,
+		priority: 0,
+		flags: {protect: 1, mirror: 1},
+		onPrepareHit: function (target, source) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Hypnosis", target);
+		},
+		secondary: {
+			chance: 35,
+			status: 'slp',
+		},
+		target: "normal",
+		type: "Psychic",
+	},
 	// Death on Wings
 	monoflying: {
 		accuracy: true,
@@ -1370,6 +1494,41 @@ exports.BattleMovedex = {
 		target: "normal",
 		type: "Dark",
 	},
+	// Megazard
+	playdead: {
+		accuracy: 100,
+		basePower: 0,
+		category: "Status",
+		id: "playdead",
+		isNonstandard: true,
+		name: "Play Dead",
+		pp: 25,
+		priority: -3,
+		flags: {},
+		onTryHit: function (target, source) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Grudge", target);
+		},
+		volatileStatus: 'playdead',
+		effect: {
+			duration: 3,
+			onStart: function (pokemon) {
+				this.add('-start', pokemon, 'Play Dead');
+				this.add('message', 'Playing Dead causes its moves to all turn into Ghost-type!');
+			},
+			onModifyMove: function (move) {
+				if (move.id !== 'struggle') {
+					move.type = 'Ghost';
+				}
+			},
+			onEnd: function (pokemon) {
+				this.add('-end', pokemon, 'Play Dead');
+			},
+		},
+		secondary: false,
+		target: "normal",
+		type: "Fairy",
+	},
 	// AM
 	predator: {
 		accuracy: 100,
@@ -1459,6 +1618,61 @@ exports.BattleMovedex = {
 		},
 		target: "normal",
 		type: "Fighting",
+	},
+	// Zero Lux Given
+	punray: {
+		accuracy: 100,
+		basePower: 80,
+		category: "Physical",
+		id: "punray",
+		isNonstandard: true,
+		isViable: true,
+		name: "Pun Ray",
+		pp: 20,
+		priority: 0,
+		flags: {protect: 1, mirror: 1, distance: 1},
+		secondary: {
+			chance: 100,
+			volatileStatus: 'confusion',
+		},
+		target: "any",
+		type: "Flying",
+	},
+	// Pikachuun
+	pureskill: {
+		accuracy: true,
+		basePower: 0,
+		category: "Special",
+		id: "pureskill",
+		isViable: true,
+		name: "Pure Skill",
+		pp: 5,
+		priority: 0,
+		flags: {protect: 1, mirror: 1},
+		onModifyMove: function (move) {
+			move.type = "???";
+			const rand = this.random(20);
+			if (rand < 9) {
+				move.damageCallback = function (source, target) {
+					return Math.max(target.hp / 2, target.maxhp / 4);
+				}
+			} else if (rand < 11) {
+				move.onHit = function (target, source) {
+					this.attrLastMove('[still]');
+					this.add('-anim', source, "Explosion", target);
+					this.damage(source.maxhp, source, source);
+					if (toId(source.name) === 'pikachuun') {
+						this.add('c|+Pikachuun|i\'ve been outskilled');
+					}
+					return true;
+				}
+			} else {
+				move.basePower = 255;
+			}
+		},
+		secondary: false,
+		target: "normal",
+		type: "Normal",
 	},
 	// Raseri
 	purifysoul: {
@@ -1561,7 +1775,7 @@ exports.BattleMovedex = {
 		name: "Ribbit",
 		pp: 40,
 		priority: 0,
-		flags: {protect: 1, mirror: 1, sound: 1},
+		flags: {protect: 1, mirror: 1, sound: 1, authentic: 1},
 		onTryHit: function (target, source) {
 			this.attrLastMove('[still]');
 			this.add('-anim', source, "Boomburst", target);
@@ -1575,6 +1789,28 @@ exports.BattleMovedex = {
 			}
 			if (source.name === 'macle') this.add("c|+macle|Follow the Frog Blog - http://gonefroggin.wordpress.com");
 		},
+		target: "normal",
+		type: "Water",
+	},
+	// Starmei
+	rkoouttanowhere: {
+		accuracy: 100,
+		basePower: 0,
+		damageCallback: function (pokemon) {
+			return (this.random(50, 151) * pokemon.level) / 100;
+		},
+		category: "Special",
+		id: "rkoouttanowhere",
+		isNonstandard: true,
+		name: "RKO Outta Nowhere",
+		pp: 35,
+		priority: 0,
+		flags: {protect: 1, mirror: 1},
+		onTryHit: function (target, source) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Surf", target);
+		},
+		secondary: false,
 		target: "normal",
 		type: "Water",
 	},
@@ -1604,6 +1840,58 @@ exports.BattleMovedex = {
 		secondary: {chance: 30, status: 'brn'},
 		target: "allAdjacentFoes",
 		type: "Fairy",
+	},
+	// Freeroamer
+	screwthismatchup: {
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		id: "screwthismatchup",
+		isNonstandard: true,
+		isViable: true,
+		name: "Screw This Matchup",
+		pp: 5,
+		priority: 0,
+		flags: {},
+		boosts: {atk: 2},
+		secondary: false,
+		onTryHit: function (target, source) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Cosmic Power", source);
+		},
+		onHit: function (target, source) {
+			if (!source.types[1] || source.types[0] !== 'Fighting' || source.species !== 'Lucario') return true;
+			const foes = source.side.foe.active;
+			if (foes.length && foes[0].hp) {
+				const opponent = foes[0], mytype = source.types[1];
+				if (opponent.types[0] === source.types[1]) {
+					source.setType('Fighting');
+					this.add('-start', source, 'typechange', 'Fighting');
+				} else if (opponent.types[0] === 'Fighting') {
+					opponent.types[0] = mytype;
+					if (opponent.types[1] !== mytype) {
+						this.add('message', opponent.name + '\'s primary typing became ' + source.types[1] + '!');
+					} else {
+						opponent.setType(mytype);
+						this.add('-start', opponent, 'typechange', mytype);
+					}
+					source.setType('Fighting');
+					this.add('-start', source, 'typechange', 'Fighting');
+				} else {
+					opponent.types[0] = mytype;
+					source.types[1] = opponent.types[0];
+					if (opponent.types[1] !== mytype) {
+						this.add('message', opponent.name + '\'s primary typing (' + opponent.types[0] + ') was exchanged with ' + source.name + '\'s secondary typing (' + mytype + ')!');
+					} else {
+						opponent.setType(mytype);
+						this.add('-start', opponent, 'typechange', mytype);
+						this.add('message', source.name + '\'s secondary typing became ' + source.types[1] + '!');
+					}
+				}
+			}
+		},
+		target: "self",
+		type: "Normal",
 	},
 	// f(x)
 	shakethatbrass: {
@@ -1705,6 +1993,58 @@ exports.BattleMovedex = {
 		secondary: false,
 		target: "self",
 		type: "Normal",
+	},
+	// Scyther NO Swiping
+	sniperswipes: {
+		accuracy: 100,
+		basePower: 50,
+		category: "Physical",
+		id: "sniperswipes",
+		isNonstandard: true,
+		name: "Sniper Swipes",
+		pp: 10,
+		priority: 0,
+		flags: {contact: 1, protect: 1, mirror: 1},
+		onTryHit: function (target, source) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "X-Scissor", target);
+		},
+		onAfterMove: function (source) {
+			if (toId(source.name) === 'scythernoswiping') {
+				this.add('c|+Scyther NO Swiping|Oh baby a triple!!!');
+			}
+		},
+		onEffectiveness: function (typeMod) {
+			return -typeMod;
+		},
+		multihit: 3,
+		target: "normal",
+		type: "Bug",
+	},
+	// HiMyNamesL
+	solarstorm: {
+		accuracy: 100,
+		basePower: 120,
+		category: "Special",
+		id: "solarstorm",
+		name: "Solar Storm",
+		pp: 10,
+		priority: 0,
+		flags: {protect: 1, mirror: 1},
+		onTryHit: function (target, source) {
+			this.attrLastMove('[still]');
+			this.add('-prepare', source, 'Solar Beam', target);
+			this.add('-anim', source, 'Solar Beam', target);
+		},
+		onBasePowerPriority: 4,
+		onBasePower: function () {
+			if (this.isWeather(['raindance', 'primordialsea', 'sandstorm', 'hail'])) {
+				return this.chainModify(0.5);
+			}
+		},
+		secondary: false,
+		target: "normal",
+		type: "Grass",
 	},
 	// Bummer
 	speedpaint: {
@@ -1953,7 +2293,7 @@ exports.BattleMovedex = {
 		pp: 1,
 		noPPBoosts: true,
 		priority: 3,
-		flags: {reflectable: 1, sound: 1},
+		flags: {reflectable: 1, sound: 1, authentic: 1},
 		volatileStatus: 'flinch',
 		onPrepareHit: function (target, source, move) {
 			this.attrLastMove('[still]');

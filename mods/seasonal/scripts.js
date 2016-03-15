@@ -215,12 +215,12 @@ exports.BattleScripts = {
 				signatureMove: '',
 				evs: {}, nature: '',
 			},*/
-			/*'Freeroamer': {
-				species: '', ability: '', item: '', gender: '',
-				moves: [],
-				signatureMove: '',
-				evs: {}, nature: '',
-			},*/
+			'Freeroamer': {
+				species: 'Lucario', ability: 'Justified', item: 'Lucarionite', gender: 'M',
+				moves: ['crunch', 'jumpkick', 'extremespeed'],
+				signatureMove: 'Screw This Matchup',
+				evs: {atk:252, spd:4, spe:252}, nature: 'Jolly',
+			},
 			'Frysinger': {
 				species: 'Raikou', ability: 'Funhouse', item: 'Zap Plate', gender: 'N',
 				moves: ['voltswitch', 'frostbreath', 'aurasphere'],
@@ -281,12 +281,12 @@ exports.BattleScripts = {
 				signatureMove: "Psychokinesis",
 				evs: {atk:252, def:4, spe:252}, nature: 'Jolly',
 			},
-			/*'HiMyNamesL': {
-				species: '', ability: '', item: '', gender: '',
-				moves: [],
-				signatureMove: '',
-				evs: {}, nature: '',
-			},*/
+			'HiMyNamesL': {
+				species: 'Darmanitan-Zen', ability: 'Analytic', item: 'Life Orb', gender: 'M',
+				moves: ['voltswitch', 'flamethrower', 'psychic'],
+				signatureMove: 'Solar Storm',
+				evs: {hp:252, def:4, spa:252}, ivs: {atk:0, spe:0}, nature: 'Quiet',
+			},
 			'Hippopotas': {
 				species: 'Hippopotas', ability: 'Regenerator', item: 'Eviolite', gender: 'M',
 				moves: ['protect', 'stealthrock', 'spikes', 'toxicspikes', 'stickyweb'],
@@ -341,6 +341,12 @@ exports.BattleScripts = {
 				signatureMove: '',
 				evs: {}, nature: '',
 			},*/
+			'Jetpack': {
+				species: 'Alakazam', ability: 'Magic Guard', item: 'Alakazite', gender: 'M',
+				moves: ['substitute', 'shadowball', 'focusblast'],
+				signatureMove: "Malicious Hypnosis",
+				evs: {hp:4, spa:252, spe:252}, nature: 'Timid',
+			},
 			'Joim': {
 				species: 'Zapdos', ability: 'Tinted Lens', item: 'Life Orb', gender: 'M', shiny: true,
 				moves: ['thunderbolt', 'hurricane', 'quiverdance'],
@@ -411,7 +417,7 @@ exports.BattleScripts = {
 				species: 'Swampert', ability: 'Gravitational Field', item: 'Swampertite', gender: 'M',
 				moves: ['raindance', 'earthquake', 'icepunch'],
 				signatureMove: "Evaporating Surge",
-				evs: {atk:252, def: 4, spe:252}, nature: 'Adamant',
+				evs: {atk:252, def:4, spe:252}, nature: 'Adamant',
 			},
 			/*'McMeghan': {
 				species: '', ability: '', item: '', gender: '',
@@ -419,17 +425,29 @@ exports.BattleScripts = {
 				signatureMove: '',
 				evs: {}, nature: '',
 			},*/
-			/*'Mizuhime': {
-				species: '', ability: '', item: '', gender: '',
-				moves: [],
-				signatureMove: '',
-				evs: {}, nature: '',
-			},*/
+			'Megazard': {
+				species: 'Furfrou', ability: 'Serene Grace', item: 'Leftovers', gender: 'M',
+				moves: ['chargebeam', 'batonpass', 'ancientpower'],
+				signatureMove: 'Play Dead',
+				evs: {hp:252, spa:4, spe:252}, nature: 'Timid',
+			},
+			'Mizuhime': {
+				species: 'Kingdra', ability: 'Torrent', item: 'Mystic Water', gender: 'F', shiny: true,
+				moves: ['spacialrend', 'thunder', 'sheercold'],
+				signatureMove: 'Double Laser',
+				evs: {hp:4, spa:252, spe:252}, nature: 'Timid',
+			},
+			'nv': {
+				species: 'Larvitar', ability: 'Solid Rock', item: 'Eviolite', gender: 'M',
+				moves: ['precipiceblades', 'diamondstorm', 'megahorn'],
+				signatureMove: 'Hamster Dance',
+				evs: {hp:252, atk:252, spe:4}, nature: 'Adamant',
+			},
 			'Overneat': {
 				species: 'Blaziken', ability: 'Speed Boost', item: 'Blazikenite', gender: 'M',
 				moves: ['protect', 'stoneedge', 'flareblitz'],
 				signatureMove: "Neatto Kick",
-				evs: {atk:252, def: 4, spe:252}, nature: 'Jolly',
+				evs: {atk:252, def:4, spe:252}, nature: 'Adamant',
 			},
 			/*'Phable': {
 				species: '', ability: '', item: '', gender: '',
@@ -437,6 +455,12 @@ exports.BattleScripts = {
 				signatureMove: '',
 				evs: {}, nature: '',
 			},*/
+			'Pikachuun': {
+				species: 'Pikachu', ability: 'Magic Guard', item: 'Light Ball',
+				moves: ['thunderbolt', 'lightofruin', 'icebeam'],
+				signatureMove: "Pure Skill",
+				evs: {def:4, spa:252, spe:252}, nature: 'Modest',
+			},
 			'pluviometer': {
 				species: 'Mismagius', ability: 'Levitate', item: 'Life Orb',
 				moves: ['painsplit', 'earthpower', 'shadowball'],
@@ -497,6 +521,12 @@ exports.BattleScripts = {
 				signatureMove: "LOL! Room",
 				evs: {hp:248, def:136, spd:124}, ivs: {spe:0}, nature: 'Relaxed',
 			},
+			'scythernoswiping': {
+				species: 'Scyther', ability: 'Technician', item: 'Razor Claw', gender: 'M',
+				moves: ['leafblade', 'honeclaws', 'metalclaw', 'slash', 'dragonclaw', 'xscissor', 'nightslash', 'shadowclaw', 'furyswipes', 'falseswipe', 'cut', 'furycutter'],
+				signatureMove: "Sniper Swipes",
+				evs: {atk:252, def:4, spe:252}, nature: 'Jolly',
+			},
 			/*'shrang': {
 				species: '', ability: '', item: '', gender: '',
 				moves: [],
@@ -525,7 +555,13 @@ exports.BattleScripts = {
 				species: 'Voodoom', ability: 'Mountaineer', item: 'Life Orb', gender: 'M',
 				moves: ['paleowave', 'darkpulse', 'nastyplot'],
 				signatureMove: 'Cap Bust',
-				evs: {def:4, spa:252, spe: 252}, nature: 'Timid',
+				evs: {def:4, spa:252, spe:252}, nature: 'Timid',
+			},
+			'Snowy': {
+				species: 'Snover', ability: 'Holy Hail', item: 'Focus Sash', gender: 'F',
+				moves: ['blizzard', 'gigadrain', 'leechseed'],
+				signatureMove: 'Hail Whitequeen',
+				evs: {spa:252, spd:4, spe:252}, nature: 'Modest',
 			},
 			'SolarisFox': {
 				species: 'Delphox', ability: 'Klutz', item: ['Choice Scarf', 'Choice Band', 'Choice Specs', 'Assault Vest', 'Lagging Tail', 'Flame Orb', 'Toxic Orb'].randomize()[0], gender: 'M',
@@ -551,6 +587,12 @@ exports.BattleScripts = {
 				signatureMove: '',
 				evs: {}, nature: '',
 			},*/
+			'Starmei': {
+				species: 'Staryu', ability: 'Parental Bond', item: 'Leftovers', shiny: true,
+				moves: ['cosmicpower', 'recover', 'nuzzle'],
+				signatureMove: "RKO Outta Nowhere",
+				evs: {hp:248, def:4, spe:252}, nature: 'Timid',
+			},
 			/*'Steamroll': {
 				species: '', ability: '', item: '', gender: '',
 				moves: [],
@@ -641,6 +683,12 @@ exports.BattleScripts = {
 				signatureMove: '',
 				evs: {}, nature: '',
 			},*/
+			'Zero Lux Given': {
+				species: 'Luxray', ability: 'Guts', item: 'Flame Orb', gender: 'M',
+				moves: ['fusionbolt', 'facade', 'iciclespear'],
+				signatureMove: "Pun Ray",
+				evs: {atk:252, def:4, spe:252}, ivs: {spa:0}, nature: 'Adamant',
+			},
 		};
 
 		/**
