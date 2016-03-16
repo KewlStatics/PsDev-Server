@@ -665,6 +665,10 @@ exports.Formats = [
 					pokemon.setAbility('simple');
 					this.add('-ability', pokemon, 'Simple');
 				}
+				if (name === 'dreameatergengar' && pokemon.getAbility().id === 'shadowtag') {
+					pokemon.setAbility('infiltrator');
+					this.add('-ability', pokemon, 'Infiltrator');
+				}
 				if (name === 'overneat' && pokemon.getAbility().id === 'speedboost') {
 					pokemon.setAbility('noguard');
 					this.add('-ability', pokemon, 'No Guard');
@@ -695,6 +699,10 @@ exports.Formats = [
 				if (name === 'crestfall' && pokemon.getAbility().id === 'magicbounce') {
 					pokemon.setAbility('simple');
 					this.add('-ability', pokemon, 'Simple');
+				}
+				if (name === 'dreameatergengar' && pokemon.getAbility().id === 'shadowtag') {
+					pokemon.setAbility('infiltrator');
+					this.add('-ability', pokemon, 'Infiltrator');
 				}
 				if (name === 'overneat' && pokemon.getAbility().id === 'speedboost') {
 					pokemon.setAbility('noguard');
