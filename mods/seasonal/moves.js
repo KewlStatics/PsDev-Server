@@ -58,7 +58,7 @@ exports.BattleMovedex = {
 			this.boost({def: 1, spd: 1}, pokemon, pokemon, 'mushroom army');
 		},
 		onHit: function (pokemon) {
-			this.useMove("spore", pokemon);
+			this.useMove("sleeppowder", pokemon);
 			this.useMove("leechseed", pokemon);
 			this.useMove("powder", pokemon);
 		},
@@ -2334,7 +2334,7 @@ exports.BattleMovedex = {
 	// Frysinger
 	zapconfirmed: {
 		accuracy: 100,
-		basePower: 15,
+		basePower: 25,
 		category: "Special",
 		id: "zapconfirmed",
 		isViable: true,
@@ -2343,7 +2343,7 @@ exports.BattleMovedex = {
 		pp: 10,
 		priority: 0,
 		flags: {protect: 1, mirror: 1},
-		multihit: 7,
+		multihit: 4,
 		onTryHit: function (target, source) {
 			this.attrLastMove('[still]');
 			this.add('-anim', source, "Charge Beam", target);
