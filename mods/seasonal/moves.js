@@ -58,7 +58,7 @@ exports.BattleMovedex = {
 			this.boost({def: 1, spd: 1}, pokemon, pokemon, 'mushroom army');
 		},
 		onHit: function (pokemon) {
-			this.useMove("spore", pokemon);
+			this.useMove("sleeppowder", pokemon);
 			this.useMove("leechseed", pokemon);
 			this.useMove("powder", pokemon);
 		},
@@ -321,7 +321,8 @@ exports.BattleMovedex = {
 		isViable: true,
 		isNonstandard: true,
 		name: "Doesn\'t this just win?",
-		pp: 10,
+		pp: 5,
+		noPPBoosts: true,
 		priority: 0,
 		flags: {},
 		sleepUsable: true,
@@ -380,8 +381,8 @@ exports.BattleMovedex = {
 	},
 	// Mizuhime
 	doublelaser: {
-		accuracy: 90,
-		basePower: 90,
+		accuracy: 95,
+		basePower: 75,
 		category: "Special",
 		id: "doublelaser",
 		name: "Double Laser",
@@ -1227,10 +1228,10 @@ exports.BattleMovedex = {
 		accuracy: 100,
 		basePower: 90,
 		category: "Special",
-		id: "psychic",
+		id: "malicioushypnosis",
 		isViable: true,
 		isNonstandard: true,
-		name: "Psychic",
+		name: "Malicious Hypnosis",
 		pp: 5,
 		priority: 0,
 		flags: {protect: 1, mirror: 1},
@@ -1280,12 +1281,12 @@ exports.BattleMovedex = {
 			},
 			onResidualOrder: 90,
 			onUpdate: function (pokemon) {
-				if (pokemon.types === 'Flying' || !pokemon.hp) return;
+				if ((pokemon.types[0] === 'Flying' && !pokemon.types[1]) || !pokemon.hp) return;
 				pokemon.setType('Flying', true);
 				this.add('-start', pokemon, 'typechange', 'Flying');
 			},
 			onSwitchIn: function (pokemon) {
-				if (pokemon.types === 'Flying' || !pokemon.hp) return;
+				if ((pokemon.types[0] === 'Flying' && !pokemon.types[1]) || !pokemon.hp) return;
 				pokemon.setType('Flying', true);
 				this.add('-start', pokemon, 'typechange', 'Flying');
 			},
@@ -1295,7 +1296,7 @@ exports.BattleMovedex = {
 					const thisSide = this.sides[s];
 					for (let p in thisSide.active) {
 						const pokemon = thisSide.active[p];
-						if (pokemon.template.types === 'Flying' || !pokemon.hp) continue;
+						if ((pokemon.types[0] === 'Flying' && !pokemon.types[1]) || !pokemon.hp) continue;
 						pokemon.setType(pokemon.template.types, true);
 						this.add('-end', pokemon, 'typechange');
 					}
@@ -1606,14 +1607,19 @@ exports.BattleMovedex = {
 			this.add('-anim', source, "Aura Sphere", target);
 		},
 		onHit: function (target, source) {
+			var stolen = false;
 			for (let boost in target.boosts) {
 				if (target.boosts[boost] > 0) {
+					stolen = true;
 					source.boosts[boost] += target.boosts[boost];
 					if (source.boosts[boost] > 6) source.boosts[boost] = 6;
 					target.boosts[boost] = 0;
 					this.add('-setboost', source, boost, source.boosts[boost]);
 					this.add('-setboost', target, boost, target.boosts[boost]);
 				}
+			}
+			if (stolen) {
+				this.add('-message', "Psychokinesis stole some boosts!");
 			}
 		},
 		target: "normal",
@@ -1883,7 +1889,7 @@ exports.BattleMovedex = {
 					opponent.types[0] = mytype;
 					source.types[1] = opponent.types[0];
 					if (opponent.types[1] !== mytype) {
-						this.add('message', opponent.name + '\'s primary typing (' + opponent.types[0] + ') was exchanged with ' + source.name + '\'s secondary typing (' + mytype + ')!');
+						this.add('message', opponent.name + '\'s primary typing (' + source.types[1] + ') was exchanged with ' + source.name + '\'s secondary typing (' + mytype + ')!');
 					} else {
 						opponent.setType(mytype);
 						this.add('-start', opponent, 'typechange', mytype);
@@ -2334,7 +2340,7 @@ exports.BattleMovedex = {
 	// Frysinger
 	zapconfirmed: {
 		accuracy: 100,
-		basePower: 15,
+		basePower: 25,
 		category: "Special",
 		id: "zapconfirmed",
 		isViable: true,
@@ -2343,7 +2349,7 @@ exports.BattleMovedex = {
 		pp: 10,
 		priority: 0,
 		flags: {protect: 1, mirror: 1},
-		multihit: 7,
+		multihit: 4,
 		onTryHit: function (target, source) {
 			this.attrLastMove('[still]');
 			this.add('-anim', source, "Charge Beam", target);

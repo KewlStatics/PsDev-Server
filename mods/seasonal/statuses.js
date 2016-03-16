@@ -14,7 +14,7 @@ exports.BattleStatuses = {
 			}
 		},
 	},
-	// atomicllamas, manu 11, SpaceBass
+	// atomicllamas, manu 11
 	baddreamsinnate: {
 		effectType: 'Ability',
 		onResidual: function (pokemon) {
@@ -133,7 +133,7 @@ exports.BattleStatuses = {
 			return this.chainModify(1.7);
 		},
 		onAfterDamage: function (damage, target, source, move) {
-			if (move) {
+			if (move && target.volatiles['hellacute']) {
 				this.add('-ability', target, 'Hella Cute');
 				this.boost({def: -1, spd: -1}, source, target, move);
 			}
@@ -209,11 +209,8 @@ exports.BattleStatuses = {
 	// SpaceBass
 	spacebassinnate: {
 		effectType: 'Ability',
-		onStart: function (target, source) {
-			source.addVolatile('baddreamsinnate');
-		},
 		onSwitchOut: function (pokemon) {
-			pokemon.heal(this.modify(pokemon.maxhp, 0.5));
+			pokemon.heal(this.modify(pokemon.maxhp, 0.4));
 		},
 	},
 	// SpecsMegaBeedrill
