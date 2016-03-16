@@ -1889,7 +1889,7 @@ exports.BattleMovedex = {
 					opponent.types[0] = mytype;
 					source.types[1] = opponent.types[0];
 					if (opponent.types[1] !== mytype) {
-						this.add('message', opponent.name + '\'s primary typing (' + opponent.types[0] + ') was exchanged with ' + source.name + '\'s secondary typing (' + mytype + ')!');
+						this.add('message', opponent.name + '\'s primary typing (' + source.types[1] + ') was exchanged with ' + source.name + '\'s secondary typing (' + mytype + ')!');
 					} else {
 						opponent.setType(mytype);
 						this.add('-start', opponent, 'typechange', mytype);
