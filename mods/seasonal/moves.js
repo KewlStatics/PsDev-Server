@@ -321,7 +321,8 @@ exports.BattleMovedex = {
 		isViable: true,
 		isNonstandard: true,
 		name: "Doesn\'t this just win?",
-		pp: 10,
+		pp: 5,
+		noPPBoosts: true,
 		priority: 0,
 		flags: {},
 		sleepUsable: true,
@@ -1606,14 +1607,19 @@ exports.BattleMovedex = {
 			this.add('-anim', source, "Aura Sphere", target);
 		},
 		onHit: function (target, source) {
+			var stolen = false;
 			for (let boost in target.boosts) {
 				if (target.boosts[boost] > 0) {
+					stolen = true;
 					source.boosts[boost] += target.boosts[boost];
 					if (source.boosts[boost] > 6) source.boosts[boost] = 6;
 					target.boosts[boost] = 0;
 					this.add('-setboost', source, boost, source.boosts[boost]);
 					this.add('-setboost', target, boost, target.boosts[boost]);
 				}
+			}
+			if (stolen) {
+				this.add('-message', "Psychokinesis stole some boosts!");
 			}
 		},
 		target: "normal",
