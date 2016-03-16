@@ -1228,9 +1228,6 @@ exports.Formats = [
 				this.add('c|+Zero Lux Given|This should be an electrifying battle!');
 			}
 		},
-		// Here we deal with some special mechanics due to custom sets and moves.
-		onBeforeMove: function (pokemon, target, move) {
-		},
 		// Add here salty tears, that is, custom faint phrases.
 		onFaint: function (pokemon, source, effect) {
 			let name = toId(pokemon.name);

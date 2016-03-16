@@ -189,7 +189,7 @@ exports.BattleMovedex = {
 		},
 		secondary: {
 			chance: 50,
-			status: 'brn', 
+			status: 'brn',
 		},
 		target: "normal",
 		type: "Psychic",
@@ -642,7 +642,7 @@ exports.BattleMovedex = {
 		name: "Gamma Ray Burst",
 		pp: 5,
 		priority: 0,
-		flags: { protect: 1,mirror: 1 },
+		flags: {protect: 1, mirror: 1},
 		onEffectiveness: function (typeMod) {
 			if (typeMod < 0) return 0;
 		},
@@ -926,7 +926,7 @@ exports.BattleMovedex = {
 						effectType: 'Move',
 						type: '???',
 					});
-				}
+				};
 			} else if (rand < 3) {
 				move.boosts = {
 					spa: 2,
@@ -945,7 +945,7 @@ exports.BattleMovedex = {
 						source.addVolatile('confusion');
 						target.trySetStatus('par');
 						target.addVolatile('confusion');
-					}
+					};
 				} else {
 					move.accuracy = 90;
 					move.basePower = 80;
@@ -1272,7 +1272,7 @@ exports.BattleMovedex = {
 					const thisSide = this.sides[s];
 					for (let p in thisSide.active) {
 						const pokemon = thisSide.active[p];
-						if (pokemon.types == 'Flying' || !pokemon.hp) continue; // coerce with ==
+						if (pokemon.types === 'Flying' || !pokemon.hp) continue; // coerce with ==
 						pokemon.setType('Flying', true);
 						this.add('-start', pokemon, 'typechange', 'Flying');
 					}
@@ -1280,12 +1280,12 @@ exports.BattleMovedex = {
 			},
 			onResidualOrder: 90,
 			onUpdate: function (pokemon) {
-				if (pokemon.types == 'Flying' || !pokemon.hp) return;
+				if (pokemon.types === 'Flying' || !pokemon.hp) return;
 				pokemon.setType('Flying', true);
 				this.add('-start', pokemon, 'typechange', 'Flying');
 			},
 			onSwitchIn: function (pokemon) {
-				if (pokemon.types == 'Flying' || !pokemon.hp) return;
+				if (pokemon.types === 'Flying' || !pokemon.hp) return;
 				pokemon.setType('Flying', true);
 				this.add('-start', pokemon, 'typechange', 'Flying');
 			},
@@ -1295,7 +1295,7 @@ exports.BattleMovedex = {
 					const thisSide = this.sides[s];
 					for (let p in thisSide.active) {
 						const pokemon = thisSide.active[p];
-						if (pokemon.template.types == 'Flying' || !pokemon.hp) continue;
+						if (pokemon.template.types === 'Flying' || !pokemon.hp) continue;
 						pokemon.setType(pokemon.template.types, true);
 						this.add('-end', pokemon, 'typechange');
 					}
@@ -1655,7 +1655,7 @@ exports.BattleMovedex = {
 			if (rand < 9) {
 				move.damageCallback = function (source, target) {
 					return Math.max(target.hp / 2, target.maxhp / 4);
-				}
+				};
 			} else if (rand < 11) {
 				move.onHit = function (target, source) {
 					this.attrLastMove('[still]');
@@ -1665,7 +1665,7 @@ exports.BattleMovedex = {
 						this.add('c|+Pikachuun|i\'ve been outskilled');
 					}
 					return true;
-				}
+				};
 			} else {
 				move.basePower = 255;
 			}
@@ -1780,14 +1780,16 @@ exports.BattleMovedex = {
 			this.attrLastMove('[still]');
 			this.add('-anim', source, "Boomburst", target);
 		},
-		onHit: function (pokemon) {
+		onHit: function (pokemon, source) {
 			let oldAbility = pokemon.setAbility('soundproof');
 			if (oldAbility) {
 				this.add('-endability', pokemon, oldAbility, '[from] move: Ribbit');
 				this.add('-ability', pokemon, 'Soundproof', '[from] move: Ribbit');
 				return;
 			}
-			if (source.name === 'macle') this.add("c|+macle|Follow the Frog Blog - http://gonefroggin.wordpress.com");
+			if (source.name === 'macle') {
+				this.add("c|+macle|Follow the Frog Blog");
+			}
 		},
 		target: "normal",
 		type: "Water",
@@ -1958,7 +1960,7 @@ exports.BattleMovedex = {
 			this.attrLastMove('[still]');
 			this.add('-anim', source, "Healing Wish", target);
 		},
-		onHit: function (pokemon) {
+		onHit: function (pokemon, source) {
 			if (pokemon.status !== 'slp') {
 				if (pokemon.hp >= pokemon.maxhp) return false;
 				if (!pokemon.setStatus('slp')) return false;
@@ -2156,7 +2158,7 @@ exports.BattleMovedex = {
 			} else if (target.volatiles["nightmare"] && target.volatiles["sweetdreams"]) {
 				return false;
 			}
-			this.directDamage(this.modify(source.maxhp, (highcost? 0.5 : 0.25)), source, source);
+			this.directDamage(this.modify(source.maxhp, (highcost ? 0.5 : 0.25)), source, source);
 			target.addVolatile("nightmare");
 			target.addVolatile("sweetdreams", source);
 		},

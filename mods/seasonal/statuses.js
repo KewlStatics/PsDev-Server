@@ -291,6 +291,6 @@ exports.BattleStatuses = {
 		},
 		onEnd: function () {
 			this.add('message', "Categories of attacking moves on the battlefield have returned to normal!");
-		}
+		},
 	},
 };
