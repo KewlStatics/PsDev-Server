@@ -381,8 +381,8 @@ exports.BattleMovedex = {
 	},
 	// Mizuhime
 	doublelaser: {
-		accuracy: 90,
-		basePower: 90,
+		accuracy: 95,
+		basePower: 75,
 		category: "Special",
 		id: "doublelaser",
 		name: "Double Laser",
