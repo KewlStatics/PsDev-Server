@@ -1227,10 +1227,10 @@ exports.BattleMovedex = {
 		accuracy: 100,
 		basePower: 90,
 		category: "Special",
-		id: "psychic",
+		id: "malicioushypnosis",
 		isViable: true,
 		isNonstandard: true,
-		name: "Psychic",
+		name: "Malicious Hypnosis",
 		pp: 5,
 		priority: 0,
 		flags: {protect: 1, mirror: 1},
@@ -1280,12 +1280,12 @@ exports.BattleMovedex = {
 			},
 			onResidualOrder: 90,
 			onUpdate: function (pokemon) {
-				if (pokemon.types === 'Flying' || !pokemon.hp) return;
+				if ((pokemon.types[0] === 'Flying' && !pokemon.types[1]) || !pokemon.hp) return;
 				pokemon.setType('Flying', true);
 				this.add('-start', pokemon, 'typechange', 'Flying');
 			},
 			onSwitchIn: function (pokemon) {
-				if (pokemon.types === 'Flying' || !pokemon.hp) return;
+				if ((pokemon.types[0] === 'Flying' && !pokemon.types[1]) || !pokemon.hp) return;
 				pokemon.setType('Flying', true);
 				this.add('-start', pokemon, 'typechange', 'Flying');
 			},
@@ -1295,7 +1295,7 @@ exports.BattleMovedex = {
 					const thisSide = this.sides[s];
 					for (let p in thisSide.active) {
 						const pokemon = thisSide.active[p];
-						if (pokemon.template.types === 'Flying' || !pokemon.hp) continue;
+						if ((pokemon.types[0] === 'Flying' && !pokemon.types[1]) || !pokemon.hp) continue;
 						pokemon.setType(pokemon.template.types, true);
 						this.add('-end', pokemon, 'typechange');
 					}
