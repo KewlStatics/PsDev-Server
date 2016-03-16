@@ -738,6 +738,18 @@ exports.Formats = [
 			if (name === 'manu11') {
 				pokemon.addVolatile('arachnophobia', pokemon);
 			}
+			if (name === 'mizuhime') {
+				this.setWeather('raindance');
+			}
+			if (name === 'nv') {
+				pokemon.addVolatile('cuteness', pokemon);
+			}
+			if (name === 'pikachuun') {
+				this.boost({spe: 1}, pokemon, pokemon, 'Reisen Cosplay');
+			}
+			if (name === 'scythernoswiping') {
+				pokemon.addVolatile('mountaineerinnate', pokemon);
+			}
 			if (name === 'sigilyph') {
 				pokemon.addVolatile('samuraijack', pokemon);
 			}
@@ -768,6 +780,9 @@ exports.Formats = [
 			if (name === 'spacebass') {
 				pokemon.addVolatile('spacebassinnate', pokemon);
 			}
+			if (name === 'starmei') {
+				this.useMove('cosmicpower', pokemon);
+			}
 			if (name === 'teremiare') {
 				pokemon.addVolatile('coinflip', pokemon);
 			}
@@ -794,7 +809,7 @@ exports.Formats = [
 				this.add('c|+ajhockeystar|Here comes the greatest hockey player alive!');
 			}
 			if (name === 'alaitz') {
-				this.add('c|+Alaitz|Bye Cutie :*');
+				this.add('c|%Alaitz|Bye Cutie :*');
 			}
 			if (name === 'albacore') {
 				// TODO
@@ -900,7 +915,7 @@ exports.Formats = [
 				this.add('c|@Former Hope|/me enters battle');
 			}
 			if (name === 'freeroamer') {
-				// TODO
+				this.add('c|%Freeroamer|lol this is a wrap');
 			}
 			if (name === 'frysinger') {
 				this.add("c|+Frysinger|Nice boosts kid.");
@@ -933,7 +948,7 @@ exports.Formats = [
 				this.add('c|+Haund|le balanced normal flying bird has arrived');
 			}
 			if (name === 'himynamesl') {
-				// TODO
+				this.add('c|@HiMyNamesL|There’s no such thing as winning or losing. There is won and there is lost, there is victory and defeat. There are absolutes. Everything in between is still left to fight for.');
 			}
 			if (name === 'hippopotas') {
 				this.add('-message', '@Hippopotas\'s Sand Stream whipped up a sandstorm!');
@@ -962,6 +977,9 @@ exports.Formats = [
 			}
 			if (name === 'jdarden') {
 				this.add('c|&jdarden|Did someone call for some BALK?');
+			}
+			if (name === 'jetpack') {
+				this.add('c|+Jetpack|You\'ve met with a terrible fate, haven\'t you?');
 			}
 			if (name === 'joim') {
 				let dice = this.random(8);
@@ -1035,14 +1053,24 @@ exports.Formats = [
 			if (name === 'mcmeghan') {
 				// TODO
 			}
+			if (name === 'megazard') {
+				this.add('c|+Megazard|New tricks');
+			}
 			if (name === 'mizuhime') {
-				// TODO
+				this.add('c|+Mizuhime|Thou Shalt Double Laser From The Edge');
+			}
+			if (name === 'nv') {
+				this.add('c|+nv|Who tf is nv?');
 			}
 			if (name === 'overneat') {
 				this.add('c|+Overneat|tsk, tsk, is going to be funny');
 			}
 			if (name === 'phable') {
 				// TODO
+			}
+			if (name === 'pikachuun') {
+				sentences = ['Reisen is best waifu', 'Hey look I coded myself into the game', 'sup (\'.w.\')'];
+				this.add('c|+Pikachuun|' + sentences[this.random(3)]);
 			}
 			if (name === 'pluviometer') {
 				this.add('c|+pluviometer|p^2laceholder');
@@ -1055,7 +1083,7 @@ exports.Formats = [
 				this.add("c|@Quite Quiet|I'll give it a shot.");
 			}
 			if (name === 'raseri') {
-				this.add('c|%Raseri|gg');
+				this.add('c|&Raseri|gg');
 			}
 			if (name === 'raven') {
 				// TODO
@@ -1078,6 +1106,9 @@ exports.Formats = [
 			if (name === 'scpinion') {
 				this.add('c|%scpinion|/me welcomes funbro');
 			}
+			if (name === 'scythernoswiping') {
+				this.add('c|+Scyther NO Swiping|/me prepares to swipe victory');
+			}
 			if (name === 'shrang') {
 				// TODO
 			}
@@ -1093,6 +1124,9 @@ exports.Formats = [
 			if (name === 'snobalt') {
 				this.add('c|+Snobalt|By the power vested in me from the great Lord Tomohawk...');
 			}
+			if (name === 'snowy') {
+				this.add('c|+Snowy|Why do a lot of black people call each other monica?');
+			}
 			if (name === 'solarisfox') {
 				this.add('raw|<div class="chat chatmessage-solarisfox"><small>%</small><b><font color="#2D8F1E"><span class="username" data-name="SolarisFox">SolarisFox</span>:</font></b> <em><marquee behavior="alternate" scrollamount=3 scrolldelay="60" width="108">[Intense vibrating]</marquee></em></div>');
 			}
@@ -1105,6 +1139,9 @@ exports.Formats = [
 			if (name === 'spy') {
 				sentences = ['curry consumer', 'try to keep up', 'fucking try to knock me down', 'Sometimes I slather myself in vasoline and pretend I\'m a slug', 'I\'m really feeling it!'];
 				this.add('c|@Spy|' + sentences[this.random(5)]);
+			}
+			if (name === 'starmei') {
+				this.add('c|+Starmei|Starmei wins again');
 			}
 			if (name === 'steamroll') {
 				if (!pokemon.isLead) {
@@ -1187,6 +1224,9 @@ exports.Formats = [
 					this.add('c|@Zebraiken|bzzt o_o');
 				}
 			}
+			if (name === 'zeroluxgiven') {
+				this.add('c|+Zero Lux Given|This should be an electrifying battle!');
+			}
 		},
 		// Here we deal with some special mechanics due to custom sets and moves.
 		onBeforeMove: function (pokemon, target, move) {
@@ -1211,7 +1251,7 @@ exports.Formats = [
 				this.add('c|+ajhockeystar|You may have beaten me in battle, but never in hockey.');
 			}
 			if (name === 'alaitz') {
-				this.add('c|+Alaitz|You won\'t be kissed again! ;;');
+				this.add('c|%Alaitz|You won\'t be kissed again! ;;');
 			}
 			if (name === 'am') {
 				this.add('c|+AM|RIP');
@@ -1267,6 +1307,9 @@ exports.Formats = [
 			if (name === 'flyingkebab') {
 				this.add("c|+Flying Kebab|" + ["I\'ll see you in hell!", "/me vanishes to the depths of hell"][this.random(2)]);
 			}
+			if (name === 'freeroamer') {
+				this.add('c|%Freeroamer|how do people get these matchups...');
+			}
 			if (name === 'frysinger') {
 				this.add("c|+Frysinger|/me teleports away from the battle and eats a senzu bean");
 			}
@@ -1291,6 +1334,9 @@ exports.Formats = [
 			if (name === 'haund') {
 				this.add('c|+Haund|omg noob team report');
 			}
+			if (name === 'himynamesl') {
+				this.add('c|@HiMyNamesL|hey ' + pokemon.side.name + ', get good');
+			}
 			if (name === 'hippopotas') {
 				this.add('-message', 'The sandstorm subsided.');
 			}
@@ -1305,6 +1351,9 @@ exports.Formats = [
 			}
 			if (name === 'jasmine') {
 				this.add("raw|<div class=\"broadcast-red\"><b>The server is restarting soon.</b><br />Please finish your battles quickly. No new battles can be started until the server resets in a few minutes.</div>");
+			}
+			if (name === 'jetpack') {
+				this.add('c|+Jetpack|You shouldn\'t of done that. ;_;');
 			}
 			if (name === 'joim') {
 				sentences = ['AVENGE ME, KIDS! AVEEEENGEEE MEEEEEE!!', 'OBEY!', '``This was a triumph, I\'m making a note here: HUGE SUCCESS.``', '``Remember when you tried to kill me twice? Oh how we laughed and laughed! Except I wasn\'t laughing.``', '``I\'m not even angry, I\'m being so sincere right now, even though you broke my heart and killed me. And tore me to pieces. And threw every piece into a fire.``'];
@@ -1331,11 +1380,24 @@ exports.Formats = [
 			if (name === 'MattL') {
 				this.add('c|+MattL|Forgive me. I feel it again... the call from the light.');
 			}
+			if (name === 'megazard') {
+				this.add('c|+Megazard|Old dog');
+			}
+			if (name === 'mizuhime') {
+				this.add('c|+Mizuhime|I got Gimped.');
+			}
 			if (name === 'm00ns') {
 				this.add('c|%m00ns|o-oh');
 			}
+			if (name === 'nv') {
+				this.add('c|+nv|Too cute for this game ;~;');
+			}
 			if (name === 'overneat') {
 				this.add('c|+Overneat|Ugh! I failed you Iya-sama');
+			}
+			if (name === 'pikachuun') {
+				sentences = ['press f to pay respects ;_;7', 'this wouldn\'t have happened in my version', 'wait we were battling?'];
+				this.add('c|+Pikachuun|' + sentences[this.random(3)]);
 			}
 			if (name === 'pluviometer') {
 				this.add('c|+pluviometer|GP 2/2');
@@ -1348,10 +1410,13 @@ exports.Formats = [
 				this.add('c|@Quite Quiet|Well, I tried at least.');
 			}
 			if (name === 'raseri') {
-				this.add('c|%Raseri|you killed a mush :(');
+				this.add('c|&Raseri|you killed a mush :(');
 			}
 			if (name === 'scpinion') {
 				this.add("c|%scpinion|guys, I don't even know how to pronounce scpinion");
+			}
+			if (name === 'scythernoswiping') {
+				this.add('c|+Scyther NO Swiping|Aww man!');
 			}
 			if (name === 'sigilyph') {
 				this.add('c|@Sigilyph|FROM THE BACK FROM THE BACK FROM THE BACK FROM THE BACK **ANDD**');
@@ -1362,11 +1427,17 @@ exports.Formats = [
 			if (name === 'snobalt') {
 				this.add('c|+Snobalt|Blasphemy!');
 			}
+			if (name === 'snowy') {
+				this.add('c|+Snowy|i never understood this i always hear them be like "yo whats up monica" "u tryna blaze monica"');
+			}
 			if (name === 'spacebass') {
 				this.add('c|%SpaceBass|Of whales and woe.');
 			}
 			if (name === 'specsmegabeedrill') {
 				this.add('c|+SpecsMegaBeedrill|Tryhard.');
+			}
+			if (name === 'starmei') {
+				this.add('c|+Starmei|//message AM, must be nice being this lucky');
 			}
 			if (name === 'teremiare') {
 				this.add('c|+Teremiare|sigh...');
@@ -1404,6 +1475,9 @@ exports.Formats = [
 			}
 			if (name === 'xshiba') {
 				this.add("c|+xShiba|Lol that feeling when you just win but get haxed..");
+			}
+			if (name === 'zeroluxgiven') {
+				this.add('c|+Zero Lux Given|I\'ve been beaten, what a shock!');
 			}
 		},
 		// Special switch-out events for some mons.

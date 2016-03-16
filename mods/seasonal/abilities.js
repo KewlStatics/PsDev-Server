@@ -20,6 +20,34 @@ exports.BattleAbilities = {
 		name: "Gravitational Field",
 		rating: 4,
 	},
+	// Snowy
+	holyhail: {
+		onStart: function () {
+			this.setWeather('hail');
+		},
+		onAnySetWeather: function (target, source, weather) {
+			if (weather.id !== 'hail') {
+				this.add('message', 'The Holy Hail resisted the attempt to change the weather!');
+				return false;
+			}
+		},
+		onImmunity: function (type) {
+			if (type === 'hail') return false;
+		},
+		onModifySpe: function () {
+			if (this.isWeather(['hail'])) {
+				return this.chainModify(2);
+			}
+		},
+		onWeather: function (target, source, effect) {
+			if (effect.id === 'hail') {
+				this.heal(target.maxhp / 16);
+			}
+		},
+		id: "holyhail",
+		name: "Holy Hail",
+		rating: 5,
+	},
 	// Golui
 	specialsnowflake: {
 		onStart: function (source) {
