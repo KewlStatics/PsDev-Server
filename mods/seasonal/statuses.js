@@ -133,7 +133,7 @@ exports.BattleStatuses = {
 			return this.chainModify(1.7);
 		},
 		onAfterDamage: function (damage, target, source, move) {
-			if (move) {
+			if (move && target.volatiles['hellacute']) {
 				this.add('-ability', target, 'Hella Cute');
 				this.boost({def: -1, spd: -1}, source, target, move);
 			}
