@@ -48,6 +48,41 @@ exports.BattleAbilities = {
 		name: "Holy Hail",
 		rating: 5,
 	},
+	// Sunfished	
+	killjoy: {
+		onStart: function (pokemon) {
+			this.add('-ability', pokemon, 'Killjoy');
+			this.addPseudoWeather('killjoy', pokemon, "Killjoy");
+		},
+		onEnd: function (pokemon) {
+			const foes = pokemon.side.foe.active;
+			if (this.pseudoWeather['killjoy'] && !(foes.length && foes[0].hasAbility('killjoy'))) {
+				this.removePseudoWeather('killjoy', pokemon);
+			}
+		},
+		effect: {
+			onStart: function () {
+				this.add('message', 'All status moves will gain priority and cause recharge in the user!');
+			},
+			onModifyPriority: function (priority, pokemon, target, move) {
+				if (move && move.category === 'Status') return priority + 1;
+			},
+			onModifyMove: function (move) {
+				if (move.category === 'Status') {
+					move.flags.recharge = 1;
+					move.onAfterMove = function (source) {
+						source.addVolatile('mustrecharge', source);
+					};
+				}
+			},
+			onEnd: function () {
+				this.add('message', 'The priority of status moves have returned to normal.');
+			},
+		},
+		id: "killjoy",
+		name: "Killjoy",
+		rating: 2,
+	},
 	// Golui
 	specialsnowflake: {
 		onStart: function (source) {

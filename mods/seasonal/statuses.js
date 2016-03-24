@@ -2,6 +2,13 @@
 
 exports.BattleStatuses = {
 	// Innate abilities
+	// Lemonade
+	adaptabilityinnate: {
+		effectType: 'Ability',
+		onModifyMove: function (move) {
+			move.stab = 2;
+		},
+	},
 	// manu 11
 	arachnophobia: {
 		effectType: 'Ability',
@@ -11,6 +18,34 @@ exports.BattleStatuses = {
 		onModifyDamage: function (damage, source, target, move) {
 			if (move.typeMod < 0) {
 				return this.chainModify(2);
+			}
+		},
+	},
+	// ascriptmaster
+	ascriptinnate: {
+		effectType: 'Ability',
+		onStart: function (target, source) {
+			this.add('-start', source, 'typechange', 'Electric');
+			this.useMove('magnetrise', source);
+		},
+		onModifyMove: function (move) {
+			let modifyanim = true;
+			if (move.id === 'thunderbolt') {
+				move.name = 'Spectrum Shock';
+			} else if (move.id === 'mysticalfire') {
+				move.name = 'Spectrum Blaze';
+			} else if (move.id === 'aurorabeam') {
+				move.name = 'Spectrum Impact';
+			} else if (move.id === 'psyshock') {
+				move.name = 'Spectrum Flash';
+			} else {
+				modifyanim = false;
+			}
+			if (modifyanim) {
+				move.onPrepareHit = function (target, source) {
+					this.attrLastMove('[still]');
+					this.add('-anim', source, 'Swift', target);
+				};
 			}
 		},
 	},
@@ -45,13 +80,56 @@ exports.BattleStatuses = {
 			}
 		},
 	},
+	// Bondie
+	crabstance: {
+		effectType: 'Ability',
+		name: 'Crab Stance',
+		onAfterDamage: function (damage, target, source, effect) {
+			if (effect && effect.category in {Physical: 1, Special: 1}) {
+				this.boost({def:1, spd:1}, target, target);
+			}
+		},
+		onAfterMoveSecondarySelf: function (source, target, move) {
+			if (move && move.category !== 'Status') {
+				this.boost({atk:1, spa:1}, source, source);
+			}
+		},
+	},
+	// Clefairy
+	coldsteel: {
+		effectType: 'Ability',
+		name: 'Coldsteel',
+		duration: 3,
+		onStart: function (pokemon) {
+			this.boost({spe:1}, pokemon, pokemon);
+			pokemon.addType('Dark');
+			this.add('-start', pokemon, 'typeadd', 'Dark', '[from] ability: Coldsteel');
+		},
+		onEnd: function (pokemon) {
+			this.heal(this.modify(pokemon.maxhp, 0.25));
+			pokemon.addType('Steel');
+			this.add('-start', pokemon, 'typeadd', 'Steel', '[from] ability: Coldsteel');
+		},
+	},
+	// Former Hope
+	cursedbodyinnate: {
+		effectType: 'Ability',
+		onAfterDamage: function (damage, target, source, move) {
+			if (!source || source.volatiles['disable']) return;
+			if (source !== target && move && move.effectType === 'Move') {
+				if (this.random(10) < 3) {
+					source.addVolatile('disable');
+				}
+			}
+		},
+	},
 	// nv
 	cuteness: {
 		effectType: 'Ability',
 		onStart: function (target, source) {
-			this.add('-ability', source, 'Cuteness');
 			const foes = source.side.foe.active;
 			if (foes.length && foes[0].hp) {
+				this.add('-ability', source, 'Cuteness');
 				this.boost({atk:-1, def:-1, spa:-1, spd:-1, spe:-1, evasion:-1}, foes[0], source, source);
 			}
 		},
@@ -66,6 +144,12 @@ exports.BattleStatuses = {
 			if (this.getWeather().id === 'deltastream' && !(weather.id in {desolateland: 1, primordialsea: 1, deltastream: 1})) return false;
 		},
 		onSwitchOut: function (pokemon) {
+			pokemon.removeVolatile('deltastreaminnate');
+		},
+		onFaint: function (pokemon) {
+			pokemon.removeVolatile('deltastreaminnate');
+		},
+		onEnd: function (pokemon) {
 			if (this.getWeather().id === 'deltastream') {
 				if (pokemon.side.foe.active.length) {
 					const opponent = pokemon.side.foe.active[0];
@@ -79,18 +163,13 @@ exports.BattleStatuses = {
 				}
 			}
 		},
-		onFaint: function (pokemon) {
-			if (this.getWeather().id === 'deltastream') {
-				if (pokemon.side.foe.active.length) {
-					const opponent = pokemon.side.foe.active[0];
-					if (opponent.hasAbility('deltastream') || (opponent.volatiles['deltastreaminnate'])) {
-						this.weatherData.source = opponent;
-					} else {
-						this.clearWeather();
-					}
-				} else {
-					this.clearWeather();
-				}
+	},
+	// Duck
+	firstblood: {
+		effectType: 'Ability',
+		onModifyDamage: function (damage, source, target, move) {
+			if (move.crit) {
+				return this.chainModify(1.5);
 			}
 		},
 	},
@@ -102,19 +181,15 @@ exports.BattleStatuses = {
 			this.add('-ability', source, 'Flipside');
 			this.add('message', source.name + '\'s Flipside has reversed type matchups against it!');
 		},
-		onEffectiveness: function (typeMod, target, type, move) {
-			// The effectiveness of Retreat isn't reverted
-			if (move && move.id === 'retreat') return;
-			if (move && !this.getImmunity(move, type)) return 1;
-			return -typeMod;
-		},
+		// Actual implementation in formats.js
 	},
 	// Gangnam Style
 	gonnamakeyousweat: {
 		effectType: 'Ability',
+		name: 'Gonna Make You Sweat',
 		onResidual: function (pokemon) {
 			if (!pokemon.hp) return;
-			this.heal(this.modify(pokemon.maxhp, 0.15), pokemon, pokemon, "Gonna Make You Sweat");
+			this.heal(this.modify(pokemon.maxhp, 0.15));
 		},
 	},
 	// Winry
@@ -132,10 +207,10 @@ exports.BattleStatuses = {
 		onModifySpA: function () {
 			return this.chainModify(1.7);
 		},
-		onAfterDamage: function (damage, target, source, move) {
-			if (move && target.volatiles['hellacute']) {
+		onAfterDamage: function (damage, target, source, effect) {
+			if (effect && (effect.category in {Physical: 1, Special: 1}) && source && source.hp) {
 				this.add('-ability', target, 'Hella Cute');
-				this.boost({def: -1, spd: -1}, source, target, move);
+				this.boost({def: -1, spd: -1}, source, target, effect);
 			}
 		},
 		onModifyMove: function (move) {
@@ -148,8 +223,19 @@ exports.BattleStatuses = {
 			}
 		},
 		onAnyAccuracy: function (accuracy, target, source, move) {
-			if (move.ohko) return 50;
+			if (source.volatiles['hellacute'] && move.ohko) return 50;
 			return accuracy;
+		},
+	},
+	// unfixable
+	ironbarbsinnate: {
+		effectType: 'Ability',
+		name: 'Iron Barbs',
+		onAfterDamageOrder: 1,
+		onAfterDamage: function (damage, target, source, move) {
+			if (source && source !== target && move && move.flags['contact']) {
+				this.damage(source.maxhp / 8, source, target, null, true);
+			}
 		},
 	},
 	// Scyther NO Swiping
@@ -167,6 +253,13 @@ exports.BattleStatuses = {
 			}
 		},
 	},
+	// uselesstrainer
+	ninja: {
+		effectType: 'Ability',
+		onModifyPriority: function (priority) {
+			return priority + 0.2;
+		},
+	},
 	// Haund
 	prodigy: {
 		effectType: 'Ability',
@@ -175,16 +268,17 @@ exports.BattleStatuses = {
 			this.addPseudoWeather('prodigyweather', source, "Prodigy");
 		},
 		onSwitchOut: function (pokemon) {
-			const foes = pokemon.side.foe.active;
-			if (this.pseudoWeather['prodigyweather'] && !(foes.length && foes[0].volatiles['prodigy'])) {
-				this.removePseudoWeather('prodigyweather', pokemon);
-			}
+			pokemon.removeVolatile('prodigy');
 		},
 		onFaint: function (pokemon) {
+			pokemon.removeVolatile('prodigy');
+		},
+		onEnd: function (pokemon) {
 			const foes = pokemon.side.foe.active;
 			if (this.pseudoWeather['prodigyweather'] && !(foes.length && foes[0].volatiles['prodigy'])) {
 				this.removePseudoWeather('prodigyweather', pokemon);
 			}
+			
 		},
 	},
 	// qtrx
@@ -206,6 +300,23 @@ exports.BattleStatuses = {
 			this.useMove(((this.random(2) === 1) ? 'trickroom' : 'wonderroom'), pokemon);
 		},
 	},
+	// bludz
+	shielddustinnate: {
+		effectType: 'Ability',
+		onModifySecondaries: function (secondaries) {
+			return secondaries.filter(effect => !!effect.self);
+		},
+	},
+	// rssp1
+	speedboostinnate: {
+		effectType: 'Ability',
+		name: 'Speed Boost',
+		onResidual: function (pokemon) {
+			if (pokemon.activeTurns) {
+				this.boost({spe: 1});
+			}
+		},
+	},
 	// SpaceBass
 	spacebassinnate: {
 		effectType: 'Ability',
@@ -222,7 +333,7 @@ exports.BattleStatuses = {
 			this.add('-message', source.name + " is high on Weed!");
 		},
 		onModifySpe: function () {
-			return this.chainModify(2.2);
+			return this.chainModify(2);
 		},
 		onModifyAtk: function () {
 			return this.chainModify(3);
@@ -277,7 +388,7 @@ exports.BattleStatuses = {
 		effectType: 'Pseudoweather',
 		duration: 0,
 		onStart: function () {
-			this.add('message', "Categories of attacking moves on the battlefield have become inverted!");
+			this.add('message', "Physical and special move categories on the battlefield have become inverted!");
 		},
 		onModifyMove: function (move) {
 			if (move.category === 'Physical') {
@@ -287,7 +398,7 @@ exports.BattleStatuses = {
 			}
 		},
 		onEnd: function () {
-			this.add('message', "Categories of attacking moves on the battlefield have returned to normal!");
+			this.add('message', "Physical and special move categories on the battlefield have returned to normal!");
 		},
 	},
 };
