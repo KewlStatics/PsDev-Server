@@ -1245,7 +1245,7 @@ exports.BattleMovedex = {
 		onTryHit: function (target, source, move) {
 			this.attrLastMove('[still]');
 			this.add('-anim', source, "Discharge", target);
-		};
+		},
 		secondary: false,
 		target: "allAdjacent",
 		type: "Electric",
@@ -2469,6 +2469,61 @@ exports.BattleMovedex = {
 		target: "normal",
 		type: "Dark",
 	},
+	// Layell
+	pixelprotection: {
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		id: "pixelprotection",
+		isViable: true,
+		isNonstandard: true,
+		name: "Pixel Protection",
+		pp: 10,
+		priority: 4,
+		flags: {},
+		stallingMove: true,
+		volatileStatus: 'protect',
+		self: {boosts: {def:3, spd:2}},
+		onPrepareHit: function (pokemon) {
+			return !!this.willAct() && this.runEvent('StallMove', pokemon);
+		},
+		onTryHit: function (pokemon) {
+			if (pokemon.volatiles['pixels']) {
+				this.add('-hint', "Pixel Protection only works once per outing.");
+				return false;
+			}
+			this.attrLastMove('[still]');
+			this.add('-anim', pokemon, "Moonblast", pokemon);
+			return !!this.willAct() && this.runEvent('StallMove', pokemon);
+		},
+		onHit: function (pokemon) {
+			if (pokemon.volatiles['pixels']) return false;
+			pokemon.addVolatile('pixels');
+			pokemon.addVolatile('stall');
+		},
+		effect: {
+			duration: 1,
+			onStart: function (target) {
+				this.add('-singleturn', target, 'Protect');
+			},
+			onTryHitPriority: 3,
+			onTryHit: function (target, source, move) {
+				if (!move.flags['protect']) return;
+				this.add('-activate', target, 'Protect');
+				let lockedmove = source.getVolatile('lockedmove');
+				if (lockedmove) {
+					// Outrage counter is reset
+					if (source.volatiles['lockedmove'].duration === 2) {
+						delete source.volatiles['lockedmove'];
+					}
+				}
+				return null;
+			},
+		},
+		secondary: false,
+		target: "self",
+		type: "Normal",
+	},
 	// Megazard
 	playdead: {
 		accuracy: 100,
@@ -3402,16 +3457,16 @@ exports.BattleMovedex = {
 			this.add('-message', '*@Temporaryanonymous teleports behind you*');
 			this.attrLastMove('[still]');
 			this.add('-anim', source, "Shadow Force", target);
-		};
+		},
 		onHit: function (pokemon) {
 			if (pokemon.hp <= 0 || pokemon.fainted) {
 				this.add('c|@Temporaryanonymous|YOU ARE ALREADY DEAD *unsheathes glorious cursed nippon steel katana and cuts you in half with it* heh......nothing personnel.........kid......................');
 			}
-		};
+		},
 		onMoveFail: function (target, source, move) {
 			this.add('-message', '*@Temporaryanonymous teleports behind you*');
 			this.add('c|@Temporaryanonymous|YOU ARE ALREADY DEAD *misses* Tch......not bad.........kid......................');
-		};
+		},
 		secondary: false,
 		self: {boosts: {accuracy: -1}},
 		target: "normal",
@@ -3900,6 +3955,26 @@ exports.BattleMovedex = {
 		},
 		target: "normal",
 		type: "Ground",
+	},
+	// jdarden
+	wyvernswind: {
+		accuracy: 90,
+		basePower: 80,
+		category: "Special",
+		id: "wyvernswind",
+		isViable: true,
+		isNonstandard: true,
+		name: "Wyvern's Wind",
+		pp: 10,
+		priority: -6,
+		flags: {contact: 1, protect: 1, mirror: 1, sound: 1, authentic: 1},
+		forceSwitch: true,
+		onTryHit: function (target, source, move) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Boomburst", target);
+		},
+		target: "normal",
+		type: "Flying",
 	},
 	// Frysinger
 	zapconfirmed: {

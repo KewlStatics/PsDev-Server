@@ -63,7 +63,7 @@ exports.BattleScripts = {
 				species: 'Clefable', ability: (variant === 1 ? 'Sheer Force' : 'Multiscale'), item: (variant === 1 ? 'Life Orb' : 'Leftovers'), gender: 'M',
 				moves: ['earthpower', 'cosmicpower', 'recover', 'gigadrain'],
 				signatureMove: "Postmortem",
-				evs: {hp:252, spa:252, def:4}, nature: 'Modest'
+				evs: {hp:252, spa:252, def:4}, nature: 'Modest',
 			},
 			'Anttya': {
 				species: 'Altaria', ability: 'Aerilate', item: 'Leftovers', gender: 'F',
@@ -411,10 +411,10 @@ exports.BattleScripts = {
 				evs: {spa:200, spd:80, spe:228}, nature: 'Timid',
 			},
 			'innovamania': {
-				species: '', ability: '', item: '', gender: '',
-				moves: [],
-				signatureMove: '',
-				evs: {}, nature: '',
+				species: 'Arceus', ability: 'Pick Up', item: 'Black Glasses', gender: 'M',
+				moves: [['holdhands', 'trickortreat'][this.random(2)], ['swordsdance', 'agility'][this.random(2)], 'celebrate'],
+				signatureMove: "Rage Quit",
+				evs: {hp:4, atk:252, spe:252}, nature: 'Jolly',
 			},
 			'Jasmine': {
 				species: 'Mew', ability: 'Speed Boost', item: 'Focus Sash', gender: 'F',
@@ -422,12 +422,12 @@ exports.BattleScripts = {
 				signatureMove: "Reverse Transform",
 				evs: {hp:84, atk:84, def:84, spa:84, spd:84, spe:84}, nature: 'Quirky',
 			},
-			/*'jdarden': {
-				species: '', ability: '', item: '', gender: '',
-				moves: [],
-				signatureMove: '',
-				evs: {}, nature: '',
-			},*/
+			'jdarden': {
+				species: 'Dragonair', ability: 'Fur Coat', item: 'Eviolite', gender: 'M',
+				moves: ['rest', 'sleeptalk', 'quiverdance'], name: 'jdarden',
+				signatureMove: "Wyvern's Wind",
+				evs: {hp:252, def:4, spd:252}, nature: 'Calm',
+			},
 			'Jetpack': {
 				species: 'Alakazam', ability: 'Magic Guard', item: 'Alakazite', gender: 'M',
 				moves: ['substitute', 'shadowball', 'focusblast'],
@@ -455,12 +455,12 @@ exports.BattleScripts = {
 			'Kid Wizard': {
 
 			},
-			/*'layell': {
-				species: '', ability: '', item: '', gender: '',
-				moves: [],
-				signatureMove: '',
-				evs: {}, nature: '',
-			},*/
+			'layell': {
+				species: 'Sneasel', ability: 'Technician', item: "King's Rock", gender: 'M',
+				moves: ['iceshard', 'iciclespear', ['machpunch', 'pursuit', 'knockoff'][this.random(3)]],
+				bsignatureMove: "Pixel Protection",
+				evs: {hp:4, atk:252, spe:252}, nature: 'Adamant',
+			},
 			'LegitimateUsername': {
 				species: 'Shuckle', ability: 'Unaware', item: 'Leftovers', gender: 'M',
 				moves: ['leechseed', 'rest', 'foulplay'],
@@ -636,7 +636,7 @@ exports.BattleScripts = {
 				species: 'Suicune', ability: 'Fur Coat', item: 'Leftovers', gender: 'M',
 				moves: ['icebeam', 'steameruption', 'recover', 'nastyplot'],
 				signatureMove: "Geomagnetic Storm",
-				evs: {def:252, spa:4, spe:252}, nature: 'Bold'
+				evs: {def:252, spa:4, spe:252}, nature: 'Bold',
 			},
 			'scpinion': {
 				species: 'Slowbro', ability: 'Unaware', item: 'Slowbronite',
@@ -672,7 +672,7 @@ exports.BattleScripts = {
 				species: 'Audino', ability: 'Intimidate', item: 'Audinite', gender: 'M',
 				moves: ['acupressure', 'recover', ['taunt', 'cosmicpower', 'magiccoat'][this.random(3)]],
 				signatureMove: "Ultimate Dismissal",
-				evs: {hp:252, def:252, spd:4}, nature: 'Bold'
+				evs: {hp:252, def:252, spd:4}, nature: 'Bold',
 			},
 			'Snobalt': {
 				species: 'Voodoom', ability: 'Mountaineer', item: 'Life Orb', gender: 'M',
@@ -720,7 +720,7 @@ exports.BattleScripts = {
 				species: 'Hydreigon', ability: 'Mega Launcher', item: 'Life Orb', gender: 'M',
 				moves: ['dragonpulse', 'darkpulse', 'aurasphere', 'originpulse', 'shiftgear'],
 				signatureMove: "Mineral Pulse",
-				evs: {hp:4, spa:252, spe:252}, nature: 'Timid'
+				evs: {hp:4, spa:252, spe:252}, nature: 'Timid',
 			},
 			'Starmei': {
 				species: 'Staryu', ability: 'Parental Bond', item: 'Leftovers', shiny: true,
@@ -753,7 +753,7 @@ exports.BattleScripts = {
 				species: 'Doublade', ability: 'Tough Claws', item: 'Eviolite', gender: 'M',
 				moves: ['swordsdance', ['xscissor', 'sacredsword', 'knockoff'][this.random(3)], 'geargrind'],
 				signatureMove: "SPOOPY EDGE CUT",
-				evs: {hp:252, atk:252, def:4}, nature: 'Adamant'
+				evs: {hp:252, atk:252, def:4}, nature: 'Adamant',
 			},
 			'Teremiare': {
 				species: 'Zorua', ability: 'Multiscale', item: 'Red Card', gender: ['M', 'F', 'N'][this.random(3)], shiny: true,

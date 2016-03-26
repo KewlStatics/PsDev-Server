@@ -1082,7 +1082,7 @@ exports.Formats = [
 				this.add("c|+Jasmine|I'm still relevant!");
 			}
 			if (name === 'jdarden') {
-				this.add('c|&jdarden|Did someone call for some BALK?');
+				this.add('c|+jdarden|Did someone call for some BALK?');
 			}
 			if (name === 'jetpack') {
 				this.add('c|+Jetpack|You\'ve met with a terrible fate, haven\'t you?');
@@ -1566,6 +1566,9 @@ exports.Formats = [
 			if (name === 'jasmine') {
 				this.add("raw|<div class=\"broadcast-red\"><b>The server is restarting soon.</b><br />Please finish your battles quickly. No new battles can be started until the server resets in a few minutes.</div>");
 			}
+			if (name === 'jdarden') {
+				this.add('c|+jdarden|;-;7');
+			}
 			if (name === 'jetpack') {
 				this.add('c|+Jetpack|You shouldn\'t of done that. ;_;');
 			}
@@ -1577,6 +1580,9 @@ exports.Formats = [
 				this.add('c|+Kalalokki|(•_•)');
 				this.add('c|+Kalalokki|( •_•)>⌐■-■');
 				this.add('c|+Kalalokki|(x_x)');
+			}
+			if (name === 'layell') {
+				this.add('c|@Layell|' + ['Alas poor me', 'Goodnight sweet prince'][this.random(2)]);
 			}
 			if (name === 'legitimateusername') {
 				this.add('c|@LegitimateUsername|``This isn\'t brave. It\'s murder. What did I ever do to you?``');
