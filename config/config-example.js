@@ -174,10 +174,9 @@ exports.customavatars = {
 	//'userid': 'customavatar.png'
 };
 
-// Tournament announcements
-// When tournaments are created in rooms listed below, they will be announced in
-// the server's main tournament room (either the specified tourroom or by default
-// the room 'tournaments')
+// tourroom - specify a room to receive tournament announcements (defaults to
+// the room 'tournaments').
+// tourannouncements - announcements are only allowed in these rooms
 exports.tourroom = '';
 exports.tourannouncements = [/* roomids */];
 
