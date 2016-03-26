@@ -1064,7 +1064,7 @@ exports.BattleMovedex = {
 	exception: {
 		accuracy: true,
 		basePower: 110,
-		category: "Special"
+		category: "Special",
 		id: "exception",
 		isViable: true,
 		isNonstandard: true,
