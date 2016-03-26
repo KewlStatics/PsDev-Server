@@ -1088,7 +1088,7 @@ exports.Formats = [
 				this.add('c|+ih8ih8sn0w|*sips tea*');
 			}
 			if (name === 'imanalt') {
-				this.add('c|@imanalt|muh bulk');
+				this.add('c|+imanalt|muh bulk');
 			}
 			if (name === 'imas234') {
 				this.add('c|@imas234|hlo');
@@ -1303,6 +1303,9 @@ exports.Formats = [
 			}
 			if (name === 'sweep') {
 				this.add('c|&Sweep|(ninjacat)(beer)');
+			}
+			if (name === 'talkingtree') {
+				this.add('c|+talkingtree|I am Groot n_n');
 			}
 			if (name === 'temporaryanonymous') {
 				sentences = ['Hey, hey, can I gently scramble your insides (just for laughs)? ``hahahaha``', 'check em', 'If you strike me down, I shall become more powerful than you can possibly imagine! I have a strong deathrattle effect and I cannot be silenced!'];
@@ -1585,6 +1588,9 @@ exports.Formats = [
 			if (name === 'ih8ih8sn0w') {
 				this.add('c|+ih8ih8sn0w|nice hax :(');
 			}
+			if (name === 'imanalt') {
+				this.add('c|+imanalt|bshax imo');
+			}
 			if (name === 'imas234') {
 				this.add('c|@imas234|bg no re');
 			}
@@ -1690,6 +1696,9 @@ exports.Formats = [
 			if (name === 'raven') {
 				this.add('c|@Raven|I failed the challenge, and for that, I must lose a life. At least I had one to lose in the first place, nerd.');
 			}
+			if (name === 'rekeri') {
+				this.add('c|@rekeri|lucky af :[');
+			}
 			if (name === 'rssp1') {
 				this.add('c|+rssp1|Witness the power of the almighty Rufflet!');
 			}
@@ -1751,6 +1760,9 @@ exports.Formats = [
 			}
 			if (name === 'sweep') {
 				this.add('c|&Sweep|You offended :C');
+			}
+			if (name === 'talkingtree') {
+				this.add('c|+talkingtree|I am Groot u_u');
 			}
 			if (name === 'temporaryanonymous') {
 				sentences = [';_;7', 'This kills the tempo', 'I\'m kill. rip.', 'S-senpai! Y-you\'re being too rough! >.<;;;;;;;;;;;;;;;;;', 'A-at least you checked my dubs right?', 'B-but that\'s impossible! This can\'t be! AAAAAAAAAAAAAAAAAAAAAAAAAAAAAHHHHHHHHHHHHHHHHGH'];

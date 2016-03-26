@@ -1260,6 +1260,24 @@ exports.BattleMovedex = {
 		target: "normal",
 		type: "Normal",
 	},
+	// Imanalt
+	freegenvbh: {
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		id: "freegenvbh",
+		name: "FREE GENV BH",
+		pp: 20,
+		priority: 0,
+		flags: {},
+		onTryHit: function (target, pokemon) {
+			this.useMove('earthquake', source, target);
+			return null;
+		},
+		secondary: false,
+		target: "normal",
+		type: "Normal",
+	},
 	// Sigilyph
 	gammarayburst: {
 		accuracy: 90,
@@ -1949,6 +1967,26 @@ exports.BattleMovedex = {
 		target: "normal",
 		type: "Dark",
 	},
+	// talkingtree
+	iwantyouback: {
+		accuracy: 100,
+		basePower: 96
+		category: "Physical",
+		id: "iwantyouback",
+		isViable: true,
+		isNonstandard: true,
+		name: "I Want You Back",
+		pp: 10,
+		priority: 0,
+		flags: {contact: 1, protect: 1, mirror: 1, heal: 1},
+		onHit: function (pokemon) {
+			pokemon.side.addSideCondition('stealthrock');
+		}
+		drain: [3, 4],
+		secondary: false,
+		target: "normal",
+		type: "Rock",
+	},
 	// Alaitz
 	kissblast: {
 		accuracy: 100,
@@ -2003,6 +2041,21 @@ exports.BattleMovedex = {
 		secondary: false,
 		target: 'normal',
 		type: 'Fairy',
+	},
+	// Rekeri
+	landbeforetime: {
+		accuracy: 90,
+		basePower: 125,
+		category: "Physical",
+		id: "landbeforetime",
+		isViable: true,
+		name: "Land Before Time",
+		pp: 15,
+		priority: 0,
+		flags: {contact: 1, protect: 1, mirror: 1},
+		secondary: {chance:35, volatileStatus:'flinch'},
+		target: "normal",
+		type: "Rock",
 	},
 	// Crestfall
 	lightofunruin: {

@@ -605,12 +605,12 @@ exports.BattleScripts = {
 				signatureMove: 'Buckfast Buzz',
 				evs: {hp:248, spa:252, spd:8}, nature: 'Modest',
 			},
-			/*'Rekeri': {
-				species: '', ability: '', item: '', gender: '',
-				moves: [],
-				signatureMove: '',
-				evs: {}, nature: '',
-			},*/
+			'Rekeri': {
+				species: 'Tyrantrum', ability: 'Speed Boost', item: 'Life Orb', gender: 'M',
+				moves: ['outrage', 'extremespeed', 'stoneedge', 'closecombat'],
+				signatureMove: "Land Before Time",
+				evs: {hp:252, atk:252, def:4}, nature: 'Adamant'
+			},
 			'RosieTheVenusaur': {
 				species: 'Venusaur', ability: 'Moxie', item: 'Leftovers', gender: 'F',
 				moves: [['fusionflare', 'sacredfire'][this.random(2)], 'extremespeed', 'knockoff', 'closecombat'],
@@ -751,7 +751,10 @@ exports.BattleScripts = {
 				evs: {spa:252, spd:4, spe:252}, nature: 'Modest',
 			},
 			'talkingtree': {
-
+				species: 'Trevenant', ability: 'Harvest', item: ['sitrusberry','custapberry '][this.random(2)], gender: 'M',
+				moves: ['woodhammer', 'shadowforce', ['shadowsneak', 'leechseed', 'refresh', 'poweruppunch'][this.random(3)]],
+				signatureMove: 'I Want You Back',
+				evs: {hp: 252, atk:156, def:32, spd: 72}, ivs: {spa:1, spe:9}, nature: 'Brave',
 			},
 			'TemporaryAnonymous': {
 				species: 'Doublade', ability: 'Tough Claws', item: 'Eviolite', gender: 'M',
