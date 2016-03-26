@@ -331,6 +331,26 @@ exports.BattleMovedex = {
 		target: "normal",
 		type: "Psychic",
 	},
+	// HeaLnDeaL
+	boobersoblivion: {
+		accuracy: 100,
+		basePower: 80,
+		category: "Special",
+		id: "boobersoblivion",
+		isViable: true,
+		isNonstandard: true,
+		name: "Boober's Oblivion",
+		pp: 10,
+		priority: 0,
+		flags: {protect: 1, mirror: 1, distance: 1, heal: 1},
+		drain: [3, 4],
+		secondary: {
+			chance: 30,
+			status: 'brn',
+		},
+		target: "any",
+		type: "Flying",
+	},
 	// CoolStoryBrobat
 	bravebat: {
 		accuracy: 100,
@@ -1190,7 +1210,6 @@ exports.BattleMovedex = {
 		pp: 10,
 		priority: 0,
 		flags: {protect: 1, mirror: 1},
-		secondary: false,
 		secondary: {
 			chance: 30,
 			volatileStatus: 'confusion',
@@ -2625,6 +2644,31 @@ exports.BattleMovedex = {
 		pressureTarget: "foeSide",
 		target: "normal",
 		type: "Dark",
+	},
+	// sparktrain
+	pillfrenzy: {
+		num: 331,
+		accuracy: 100,
+		basePower: 50,
+		category: "Physical",
+		id: "pillfrenzy",
+		isViable: true,
+		name: "Pill Frenzy",
+		pp: 30,
+		priority: 0,
+		flags: {bullet: 1, protect: 1, mirror: 1},
+		multihit: [2, 5],
+		secondary: {
+			chance: 100,
+			self: {
+				boosts: {
+					spe: 1,
+					evasion: -1,
+				},
+			},
+		},
+		target: "normal",
+		type: "Water",
 	},
 	// Layell
 	pixelprotection: {

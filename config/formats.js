@@ -1077,6 +1077,9 @@ exports.Formats = [
 			if (name === 'haund') {
 				this.add('c|%Haund|le balanced normal flying bird has arrived');
 			}
+			if (name === 'healndeal') {
+				this.add('c|+HeaLnDeaL|screw clerics');
+			}
 			if (name === 'himynamesl') {
 				this.add('c|@HiMyNamesL|There’s no such thing as winning or losing. There is won and there is lost, there is victory and defeat. There are absolutes. Everything in between is still left to fight for.');
 				this.add('c|@HiMyNamesL|' + pokemon.side.foe.name + ' will have won only when there is no one left to stand against them. Until then, there is only the struggle, because tides do what tides do – they turn.');
@@ -1287,6 +1290,9 @@ exports.Formats = [
 			}
 			if (name === 'spacebass') {
 				this.add('c|%SpaceBass|The most interesting ball of toxins you\'ll ever have to meet');
+			}
+			if (name === 'sparktrain') {
+				this.add('c|+sparktrain|hi');
 			}
 			if (name === 'specsmegabeedrill') {
 				this.add('c|+SpecsMegaBeedrill|(◕‿◕✿)');
@@ -1582,6 +1588,9 @@ exports.Formats = [
 			if (name === 'haund') {
 				this.add('c|%Haund|omg noob team report');
 			}
+			if (name === 'healndeal') {
+				this.add('c|+HeaLnDeaL|sadface I should have been a Sylveon');
+			}
 			if (name === 'himynamesl') {
 				this.add('c|@HiMyNamesL|hey ' + pokemon.side.name + ', get good');
 			}
@@ -1738,6 +1747,9 @@ exports.Formats = [
 			}
 			if (name === 'sonired') {
 				this.add('c|+Sonired|sigh lucky players.');
+			}
+			if (name === 'sparktrain') {
+				this.add('c|+sparktrain|nice');
 			}
 			if (name === 'spy') {
 				sentences = ['lolhax', 'crit mattered', 'bruh cum @ meh', '>thinking Pokemon takes any skill'];

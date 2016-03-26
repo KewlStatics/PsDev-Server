@@ -318,6 +318,7 @@ exports.BattleScripts = {
 				evs: {hp:252, atk:252, def:4}, nature: 'Adamant',
 			},
 			/*'Geoff Bruedly': {
+				TODO
 				species: '', ability: '', item: '', gender: '',
 				moves: [],
 				signatureMove: '',
@@ -366,7 +367,10 @@ exports.BattleScripts = {
 				evs: {atk:252, def:4, spe:252}, nature: 'Jolly',
 			},
 			'HeaLnDeaL': {
-
+				species: 'Magmar', ability: 'Fur Coat', item: 'Eviolite', gender: 'M',
+				moves: ['quiverdance', 'healorder', 'seedflare'],
+				signatureMove: "Boober's Oblivion",
+				evs: {hp:252, def:4, spa:252}, ivs: {atk:0}, nature: 'Modest',
 			},
 			'HiMyNamesL': {
 				species: 'Darmanitan-Zen', ability: 'Analytic', item: 'Life Orb', gender: 'M',
@@ -444,13 +448,13 @@ exports.BattleScripts = {
 				species: 'Zapdos', ability: 'Tinted Lens', item: 'Life Orb', gender: 'M', shiny: true,
 				moves: ['thunderbolt', 'hurricane', 'quiverdance'],
 				signatureMove: "Gaster Blaster",
-				evs: {hp:4, spa:252, spe:252}, nature: 'Modest',
+				evs: {hp:4, spa:252, spe:252}, ivs: {atk:0}, nature: 'Modest',
 			},
 			'Juanma': {
-				species: 'Zapdos', ability: 'Levitate', item: 'Charcoal', gender: 'M', shiny: true,
-				moves: ['thunderbolt', 'hurricane', 'quiverdance'],
+				species: 'Heatran', ability: 'Levitate', item: 'Charcoal', gender: 'M', shiny: true,
+				moves: ['eruption', 'steameruption', 'quiverdance'],
 				signatureMove: "Gaster Blaster",
-				evs: {hp:252, spa:252, def:4}, nature: 'Modest',
+				evs: {hp:252, spa:252, def:4}, ivs: {atk:0}, nature: 'Modest',
 			},
 			'Kalalokki': {
 				species: 'Wingull', ability: 'Swift Swim', item: 'Life Orb', gender: 'M',
@@ -714,9 +718,12 @@ exports.BattleScripts = {
 				signatureMove: "Army of Mushrooms",
 				evs: {hp:252, def:128, spd:128}, nature: 'Sassy',
 			},
-			/*'sparktrain': {
-				Reserved Seel, set TODO
-			},*/
+			'sparktrain': {
+				species: 'Seel', ability: 'Regenerator Plus', item: 'Life Orb', gender: 'M',
+				moves: ['fakeout', 'extremespeed', 'precipiceblades'],
+				signatureMove: 'Pill Frenzy',
+				evs: {hp:232, atk:252, spd:24}, nature: 'Adamant',
+			},
 			'SpecsMegaBeedrill': {
 				species: 'Weedle', ability: 'Shield Dust', item: 'Focus Sash', gender: 'M',
 				moves: ['blueflare', 'earthpower', 'sludgewave'],

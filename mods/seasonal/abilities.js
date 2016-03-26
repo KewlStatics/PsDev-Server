@@ -83,6 +83,28 @@ exports.BattleAbilities = {
 		name: "Killjoy",
 		rating: 2,
 	},
+	// Sparktrain
+	regeneratorplus: {
+		onSwitchOut: function (pokemon) {
+			pokemon.heal(pokemon.maxhp / 3);
+		},
+		onModifyMove: function (move, pokemon) {
+			if (move.type === 'Normal' && move.id !== 'naturalgift') {
+				move.type = 'Ice';
+				if (move.category !== 'Status') pokemon.addVolatile('regeneratorplus');
+			}
+		},
+		effect: {
+			duration: 1,
+			onBasePowerPriority: 8,
+			onBasePower: function (basePower, pokemon, target, move) {
+				return this.chainModify([0x14CD, 0x1000]);
+			},
+		},
+		id: "regeneratorplus",
+		name: "Regenerator Plus",
+		rating: 4,
+	},
 	// Golui
 	specialsnowflake: {
 		onStart: function (source) {
