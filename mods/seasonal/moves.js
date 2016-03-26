@@ -3457,6 +3457,42 @@ exports.BattleMovedex = {
 		target: "self",
 		type: "Normal",
 	},
+	// GeoffBruedly
+	shitpostparadise: {
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		id: "shitpostparadise",
+		name: "Shitpost Paradise",
+		pp: 10,
+		priority: 0,
+		flags: {mirror: 1},
+		onHitField: function (target, source, effect) {
+			if (this.pseudoWeather['shitpostparadise']) {
+				this.removePseudoWeather('shitpostparadise', source, effect, '[of] ' + source);
+			} else {
+				this.addPseudoWeather('shitpostparadise', source, effect, '[of] ' + source);
+			}
+		},
+		effect: {
+			duration: 5,
+			onStart: function (target, source) {
+				this.add('-fieldstart', 'move: Shitpost Paradise', '[of] ' + source);
+			},
+			onResidualOrder: 25,
+			onEnd: function () {
+				this.add('-fieldend', 'move: Shitpost Paradise', '[of] ' + this.effectData.source);
+			},
+			onModifyPriority: function (priority, pokemon, target, move) {
+				if (pokemon && pokemon.gender === 'F') {
+					return priority + 1;
+				}
+			},
+		},
+		secondary: false,
+		target: "all",
+		type: "Psychic",
+	},
 	// The Immortal
 	sleepwalk: {
 		accuracy: true,

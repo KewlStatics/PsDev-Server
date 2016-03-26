@@ -317,13 +317,12 @@ exports.BattleScripts = {
 				signatureMove: "Mother, Father, Gentleman",
 				evs: {hp:252, atk:252, def:4}, nature: 'Adamant',
 			},
-			/*'Geoff Bruedly': {
-				TODO
-				species: '', ability: '', item: '', gender: '',
-				moves: [],
-				signatureMove: '',
-				evs: {}, nature: '',
-			},*/
+			'GeoffBruedly': {
+				species: 'Stunfisk', ability: 'Baitkai', item: 'Leftovers', gender: 'F', shiny: true,
+				moves: ['recover', 'earthquake', 'discharge'],
+				signatureMove: 'Shitpost Paradise',
+				evs: {hp:252, def:252, spd:4}, nature: 'Bold',
+			},
 			'Giagantic': {
 				species: 'Moltres', ability: 'Pressure', item: 'Leftovers', shiny: true,
 				moves: ['fierydance', 'oblivionwing', 'roost'],

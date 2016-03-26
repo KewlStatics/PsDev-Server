@@ -1,6 +1,11 @@
 "use strict";
 
 exports.BattleAbilities = {
+	// GeoffBruedley
+	baitkai: {
+		id: "baitkai",
+		name: "Baitkai",
+	},
 	// Frysinger
 	funhouse: {
 		onStart: function (source) {

@@ -1054,7 +1054,7 @@ exports.Formats = [
 				this.add("c|+Gangnam Style|Here I Come, Rougher Than The Rest of 'Em.");
 			}
 			if (name === 'geoffbruedly') {
-				// TODO
+				this.add("c|%GeoffBruedly|FOR WINRY");
 			}
 			if (name === 'giagantic') {
 				this.add("c|+Giagantic|e.e");
@@ -1580,6 +1580,9 @@ exports.Formats = [
 			}
 			if (name === 'gangnamstyle') {
 				this.add("c|+Gangnam Style|The Great Emeralds power allows me to feel... ");
+			}
+			if (name === 'geoffbruedly') {
+				this.add("c|%GeoffBruedly|IM SORRY WINRY");
 			}
 			if (name === 'giagantic') {
 				this.add("c|+Giagantic|x.x");
