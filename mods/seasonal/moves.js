@@ -523,6 +523,26 @@ exports.BattleMovedex = {
 		target: "normal",
 		type: "Dark",
 	},
+	// Beotrump (Beowulf)
+	buzzingoftheswarm: {
+		accuracy: 100,
+		basePower: 100,
+		category: "Physical",
+		id: "buzzingoftheswarm",
+		isViable: true,
+		name: "Buzzing of the Swarm",
+		pp: 10,
+		priority: 0,
+		flags: {protect: 1, mirror: 1, sound: 1, authentic: 1},
+		secondary: {
+			chance: 10,
+			boosts: {
+				volatileStatus: 'flinch',
+			},
+		},
+		target: "normal",
+		type: "Bug",
+	},
 	// Zebraiken
 	bzzt: {
 		accuracy: true,

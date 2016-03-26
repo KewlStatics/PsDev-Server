@@ -113,12 +113,12 @@ exports.BattleScripts = {
 				signatureMove: "Ancestor's Rage",
 				evs: {hp:252, atk:252, def:4}, nature: 'Adamant',
 			},
-			/*'beotrump': {
-				species: '', ability: '', item: '', gender: '',
-				moves: [],
-				signatureMove: '',
-				evs: {}, nature: '',
-			},*/
+			'Beowulf': {
+				species: 'Beedrill', ability: 'Download', item: 'Beedrillite', gender: 'M',
+				moves: ['spikyshield', 'gunkshot', ['sacredfire', 'boltstrike', 'diamondstorm'][this.random(3)]],
+				signatureMove: "Buzzing of the Swarm",
+				evs: {hp:4, atk:252, spe:252}, nature: 'Jolly',
+			},
 			'biggie': {
 				species: 'Snorlax', ability: 'Fur Coat', item: 'Leftovers', gender: 'M',
 				moves: ['drainpunch', 'diamondstorm', 'kingsshield', 'knockoff', 'precipiceblades'],

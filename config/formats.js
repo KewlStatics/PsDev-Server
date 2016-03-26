@@ -937,7 +937,7 @@ exports.Formats = [
 			if (name === 'awu') {
 				this.add('c|+awu|Fite me irl bruh.');
 			}
-			if (name === 'beotrump') {
+			if (name === 'beowulf') {
 				this.add('c|@Beowulf|Grovel peasant, you are in the presence of the RNGesus');
 			}
 			if (name === 'biggie') {
@@ -1466,6 +1466,9 @@ exports.Formats = [
 			}
 			if (name === 'awu') {
 				this.add("c|+awu|No need for goodbye. I'll see you on the flip side.");
+			}
+			if (name === 'beowulf') {
+				this.add('c|@Beowulf|There is no need to be mad');
 			}
 			if (name === 'biggie') {
 				sentences = ['It was all a dream', 'It\'s gotta be the shoes', 'ヽ༼ຈل͜ຈ༽ﾉ RIOT ヽ༼ຈل͜ຈ༽ﾉ'];
