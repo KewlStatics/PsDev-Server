@@ -463,6 +463,31 @@ exports.BattleMovedex = {
 		target: "normal",
 		type: "Dark",
 	},
+	// Zebraiken
+	bzzt: {
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		id: "bzzt",
+		isViable: true,	
+		isNonstandard: true,
+		name: "bzzt",
+		pp: 5,
+		priority: 4,
+		flags: {},
+		self: {boosts: {spa:1, atk:1}},
+		stallingMove: true,
+		volatileStatus: 'protect',
+		onPrepareHit: function (pokemon) {
+			return !!this.willAct() && this.runEvent('StallMove', pokemon);
+		},
+		onHit: function (pokemon) {
+			pokemon.addVolatile('stall');
+		},
+		secondary: false,
+		target: "self",
+		type: "Fighting",
+	},
 	// Snobalt
 	capbust: {
 		accuracy: 100,
@@ -2875,6 +2900,56 @@ exports.BattleMovedex = {
 		},
 		target: "self",
 		type: "Normal",
+	},
+	// Zarel
+	relicsongdance: {
+		accuracy: 100,
+		basePower: 60,
+		multihit: 2,
+		category: "Special",
+		id: "relicsongdance",
+		isViable: true,
+		isNonstandard: true,
+		name: "Relic Song Dance",
+		pp: 10,
+		priority: 0,
+		flags: {protect: 1, mirror: 1, sound: 1, authentic: 1},
+		negateSecondary: true,
+		affectedByImmunities: false,
+		onTryHit: function (target, pokemon) {
+			this.attrLastMove('[still]');
+			var move = pokemon.template.speciesid === 'meloettapirouette' ? 'Brick Break' : 'Relic Song';
+			this.add('-anim', pokemon, move, target);
+		},
+		onHit: function (target, pokemon) {
+			if (pokemon.template.speciesid === 'meloettapirouette' && pokemon.formeChange('Meloetta')) {
+				this.add('-formechange', pokemon, 'Meloetta', '[msg]');
+			} else if (pokemon.formeChange('Meloetta-Pirouette')) {
+				this.add('-formechange', pokemon, 'Meloetta-Pirouette', '[msg]');
+				// Modifying the move outside of the ModifyMove event? BLASPHEMY
+				move.category = 'Physical';
+				move.type = 'Fighting';
+			}
+		},
+		onAfterMove: function (pokemon) {
+			// Ensure Meloetta goes back to standard form after using the move
+			if (pokemon.template.speciesid === 'meloettapirouette' && pokemon.formeChange('Meloetta')) {
+				this.add('-formechange', pokemon, 'Meloetta', '[msg]');
+			}
+		},
+		effect: {
+			duration: 1,
+			onAfterMoveSecondarySelf: function (pokemon, target, move) {
+				if (pokemon.template.speciesid === 'meloettapirouette' && pokemon.formeChange('Meloetta')) {
+					this.add('-formechange', pokemon, 'Meloetta', '[msg]');
+				} else if (pokemon.formeChange('Meloetta-Pirouette')) {
+					this.add('-formechange', pokemon, 'Meloetta-Pirouette', '[msg]');
+				}
+				pokemon.removeVolatile('relicsong');
+			},
+		},
+		target: "allAdjacentFoes",
+		type: "Psychic",
 	},
 	// Quite Quiet
 	retreat: {

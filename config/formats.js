@@ -1765,6 +1765,21 @@ exports.Formats = [
 			if (name === 'xshiba') {
 				this.add("c|+xShiba|Lol that feeling when you just win but get haxed..");
 			}
+			if (name === 'zarel') {
+				this.add('c|~Zarel|your mom');
+				// Followed by the usual '~Zarel fainted'.
+				this.add('-message', '~Zarel used your mom!');
+			}
+			if (name === 'zebraiken') {
+				if (pokemon.phraseIndex === 2) {
+					this.add('c|@Zebraiken|bzzt u_u');
+				} else if (pokemon.phraseIndex === 1) {
+					this.add('c|@Zebraiken|bzzt ._.');
+				} else {
+					// Default faint.
+					this.add('c|@Zebraiken|bzzt x_x');
+				}
+			}
 			if (name === 'zeroluxgiven') {
 				this.add('c|+Zero Lux Given|I\'ve been beaten, what a shock!');
 			}

@@ -833,18 +833,18 @@ exports.BattleScripts = {
 				signatureMove: "Go Inda Like Linda",
 				evs: {hp:248, atk:252, spe:8}, nature: 'Adamant',
 			},
-			/*'Zarel': {
-				species: '', ability: '', item: '', gender: '',
-				moves: [],
-				signatureMove: '',
-				evs: {}, nature: '',
-			},*/
-			/*'Zebraiken': {
-				species: '', ability: '', item: '', gender: '',
-				moves: [],
-				signatureMove: '',
-				evs: {}, nature: '',
-			},*/
+			'Zarel': {
+				species: 'Meloetta', ability: 'Serene Grace', item: '', gender: 'F',
+				moves: ['lunardance', 'fierydance', 'perishsong', 'petaldance', 'quiverdance'],
+				signatureMove: "Relic Song Dance",
+				evs: {hp:4, atk:252, spa:252}, nature: 'Quiet'
+			},
+			'Zebraiken': {
+				species: 'zebstrika', ability: 'Compound Eyes', item: 'Life Orb', gender: 'M',
+				moves: ['thunder', ['fire blast', 'focusblast', 'highjumpkick', 'meteormash'][this.random(3)], ['blizzard', 'iciclecrash', 'sleeppowder'][this.random(3)]], // why on earth does he learn Meteor Mash?
+				signatureMove: "bzzt",
+				evs: {atk:4, spa:252, spe:252}, nature: 'Hasty'
+			},
 			'Zero Lux Given': {
 				species: 'Luxray', ability: 'Guts', item: 'Flame Orb', gender: 'M',
 				moves: ['fusionbolt', 'facade', 'iciclespear'],
