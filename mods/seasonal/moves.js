@@ -421,6 +421,34 @@ exports.BattleMovedex = {
 		target: "self",
 		type: "Dark",
 	},
+	// Eevee General
+	brokenwand: {
+		accuracy: 100,
+		basePower: 0,
+		category: "Special",
+		id: "brokenwand",
+		isViable: true,
+		isNonstandard: true,
+		name: "Broken Wand",
+		pp: 10,
+		priority: 0,
+		flags: {},
+		onHit: function (target, source) {
+			let dice = this.random(10);
+			if (dice === 3) {
+				this.add('-message', "Broken Wand backfired!");
+				this.damage(source.maxhp / 2, source, source, 'brokenwand');
+				return false;
+			}
+			this.useMove('thunderbolt', target);
+			this.useMove('icebeam', target);
+			this.useMove('calmmind', target);
+			this.useMove('spikes', target);
+		},
+		secondary: false,
+		target: "normal",
+		type: "Psychic",
+	},
 	// Raven
 	buckfastbuzz: {
 		accuracy: 100,

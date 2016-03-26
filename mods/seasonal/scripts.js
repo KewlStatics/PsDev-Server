@@ -318,8 +318,8 @@ exports.BattleScripts = {
 				evs: {hp:252, atk:252, def:4}, nature: 'Adamant',
 			},
 			'GeoffBruedly': {
-				species: 'Stunfisk', ability: 'Baitkai', item: 'Leftovers', gender: 'F', shiny: true,
-				moves: ['recover', 'earthquake', 'discharge'],
+				species: 'Whiscash', ability: 'Baitkai', item: 'Leftovers', gender: 'F', shiny: true,
+				moves: ['recover', 'earthquake', 'scald'],
 				signatureMove: 'Shitpost Paradise',
 				evs: {hp:252, def:252, spd:4}, nature: 'Bold',
 			},
@@ -458,12 +458,15 @@ exports.BattleScripts = {
 			'Kalalokki': {
 				species: 'Wingull', ability: 'Swift Swim', item: 'Life Orb', gender: 'M',
 				moves: [(variant ? 'hurricane' : 'oblivionwing'), 'thunder', (variant ? 'recover' : 'scald')],
-				signatureMove: "Maelström",
+				signatureMove: "Broken Wand",
 				evs: {spa:252, spd:4, spe:252}, nature: 'Timid',
 			},
-			/*'Kid Wizard': {
-
-			},*/
+			'Kid Wizard': {
+				species: 'Hoopa', ability: 'Speed Boost', item: 'Life Orb', gender: 'N',
+				moves: ['protect', 'storedpower', ['energyball', 'flamethrower', 'scald'][this.random(3)]],
+				signatureMove: "Broken Wand",
+				evs: {spa:252, spd:4, spe:252}, nature: 'Timid',
+			},
 			'layell': {
 				species: 'Sneasel', ability: 'Technician', item: "King's Rock", gender: 'M',
 				moves: ['iceshard', 'iciclespear', ['machpunch', 'pursuit', 'knockoff'][this.random(3)]],
@@ -512,9 +515,6 @@ exports.BattleScripts = {
 				signatureMove: "Ribbit",
 				evs: {atk:252, spa:252, spe:252}, nature: 'Lonely',
 			},
-			/*'Magnemite': {
-				// NO set yet...
-			},*/
 			'manu 11': {
 				species: 'Surskit', ability: 'Swift Swim', item: 'Life Orb', gender: 'M',
 				moves: ['quiverdance', 'icebeam', 'spore'],
@@ -635,13 +635,6 @@ exports.BattleScripts = {
 				signatureMove: "Cosmos Ray",
 				evs: {hp:252, def:248, spd:8}, nature: 'Bold',
 			},
-			/*'Sam': {
-				SET TODO
-				species: 'Starmie', ability: '', item: '', gender: '',
-				moves: [],
-				signatureMove: '',
-				evs: {}, nature: '',
-			},*/
 			'Scotteh': {
 				species: 'Suicune', ability: 'Fur Coat', item: 'Leftovers', gender: 'M',
 				moves: ['icebeam', 'steameruption', 'recover', 'nastyplot'],
@@ -707,9 +700,6 @@ exports.BattleScripts = {
 				moves: ['stoneedge', 'megahorn', 'knockoff'],
 				signatureMove: "God Turn",
 				evs: {def:4, atk:252, spe:252}, nature: 'Jolly',
-			},
-			'soulgazer': {
-
 			},
 			'SpaceBass': {
 				species: 'Foongus', ability: 'Prankster', item: 'Eviolite', gender: 'M',

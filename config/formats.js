@@ -1154,6 +1154,9 @@ exports.Formats = [
 				this.add('c|+Kalalokki|( •_•)>⌐■-■');
 				this.add('c|+Kalalokki|(⌐■_■)');
 			}
+			if (name === 'kidwizard') {
+				this.add('c|+Kid Wizard|Eevee General room mod me.');
+			}
 			if (name === 'layell') {
 				this.add('c|@Layell|Enter stage left');
 			}
@@ -1653,6 +1656,9 @@ exports.Formats = [
 				this.add('c|+Kalalokki|(•_•)');
 				this.add('c|+Kalalokki|( •_•)>⌐■-■');
 				this.add('c|+Kalalokki|(x_x)');
+			}
+			if (name === 'kidwizard') {
+				this.add('c|+Kid Wizard|Go to hell.');
 			}
 			if (name === 'layell') {
 				this.add('c|@Layell|' + ['Alas poor me', 'Goodnight sweet prince'][this.random(2)]);
