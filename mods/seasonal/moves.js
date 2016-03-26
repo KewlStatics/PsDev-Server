@@ -1524,7 +1524,21 @@ exports.BattleMovedex = {
 			if (ppData && ppData.pp) {
 				ppData.pp = Math.round(ppData.pp * 10 + this.random(3) + 5) / 10;
 			}
-			this.useMove(Object.keys(exports.BattleMovedex).sample(), target);
+			let moves = [];
+			for (let i in exports.BattleMovedex) {
+				let move = exports.BattleMovedex[i];
+				if (i !== move.id) continue;
+				if (move.isNonstandard) continue;
+				moves.push(move);
+			}
+			if (moves.length) {
+				moves.sort((a, b) => a.num - b.num);
+				randomMove = moves[this.random(moves.length)].id;
+			}
+			if (!randomMove) {
+				return false;
+			}
+			this.useMove(randomMove, target);
 		},
 		onTryHit: function (target, source, effect) {
 			if (!source.isActive) return null;
@@ -1559,7 +1573,17 @@ exports.BattleMovedex = {
 					// Why not?
 					"shiny", "randomly", "'); DROP TABLE colors; --", "Ho-Oh", "blue screen",
 				];
-				this.add('-message', "Ho-Oh is now colored " + colors.sample(this.random(3) + 1).join(" and ") + "! As well as every other \u3069\u25C0mon.");
+				let colorText = [];
+				let used = {};
+				for (let i = 0; i < this.random(3) + 1; i++) {
+					let dice = this.random(colors.length);
+					if (!(dice in used)) {
+						colorText.push(colors[dice]);
+						used[dice] = true;
+					}
+				}
+				this.add('-message', "Ho-Oh is now colored " + colorText.join(" and ") + "! As well as every other \u3069\u25C0mon.");
+				}
 			},
 			onEffectiveness: function () {
 				return this.random(3) - 1;
@@ -3481,7 +3505,8 @@ exports.BattleMovedex = {
 		pp: 20,
 		priority: 0,
 		onTryHit: function (target, pokemon) {
-			const move = pokemon.moveset.map(x => x.id).filter(x => x !== 'shakethatbrass').sample();
+			const moveSet = pokemon.moveset.map(x => x.id).filter(x => x !== 'shakethatbrass');
+			const move = moveSet[this.random(moveSet.length)];
 			pokemon.addVolatile('shakethatbrass');
 			this.useMove(move, pokemon, target);
 			return null;
