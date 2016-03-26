@@ -2104,6 +2104,23 @@ exports.BattleMovedex = {
 		target: "self",
 		type: "Psychic",
 	},
+	// Spy
+	mineralpulse: {
+		accuracy: 100,
+		basePower: 95,
+		category: "Special",
+		id: "mineralpulse",
+		name: "Mineral Pulse",
+		pp: 20,
+		priority: 0,
+		flags: {protect: 1, pulse: 1, mirror: 1, distance: 1},
+		secondary: {
+			chance: 20,
+			volatileStatus: 'confusion',
+		},
+		target: "any",
+		type: "Steel",
+	},
 	// Death on Wings
 	monoflying: {
 		accuracy: true,
@@ -3650,6 +3667,23 @@ exports.BattleMovedex = {
 		secondary: false,
 		target: "normal",
 		type: "Normal",
+	},
+	// Skitty
+	ultimatedismissal: {
+		accuracy: 100,
+		basePower: 20,
+		basePowerCallback: function (pokemon) {
+			return 20 + 20 * pokemon.positiveBoosts();
+		},
+		category: "Special",
+		id: "ultimatedismissal",
+		name: "Ultimate Dismissal",
+		pp: 10,
+		priority: 0,
+		flags: {protect: 1, mirror: 1},
+		secondary: false,
+		target: "normal",
+		type: "Psychic",
 	},
 	// Sweep
 	wave: {

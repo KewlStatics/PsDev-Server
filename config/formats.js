@@ -663,6 +663,7 @@ exports.Formats = [
 			if (move && move.id === 'retreat') return;
 			if (move && move.id === 'freezedry' && type === 'Water') return;
 			if (move && !this.getImmunity(move, type)) return 1;
+			this.add('-message', "Blast Chance's Flip Side changed effectivity!");
 			return -typeMod;
 		},
 		// Hacks for megas changed abilities. This allow for their changed abilities.
@@ -1669,6 +1670,10 @@ exports.Formats = [
 			}
 			if (name === 'sonired') {
 				this.add('c|+Sonired|sigh lucky players.');
+			}
+			if (name === 'spy') {
+				sentences = ['lolhax', 'crit mattered', 'bruh cum @ meh', '>thinking Pokemon takes any skill'];
+				this.add('c|@Spy|' + sentences[this.random(4)]);
 			}
 			if (name === 'snobalt') {
 				this.add('c|+Snobalt|Blasphemy!');

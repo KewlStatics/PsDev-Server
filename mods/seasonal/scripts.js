@@ -668,12 +668,12 @@ exports.BattleScripts = {
 				signatureMove: "Ladies First",
 				evs: {hp:252, spa:252, spe:4}, nature: 'Modest',
 			},
-			/*'Skitty': {
-				species: '', ability: '', item: '', gender: '',
-				moves: [],
-				signatureMove: '',
-				evs: {}, nature: '',
-			},*/
+			'Skitty': {
+				species: 'Audino', ability: 'Intimidate', item: 'Audinite', gender: 'M',
+				moves: ['acupressure', 'recover', ['taunt', 'cosmicpower', 'magiccoat'][this.random(3)]],
+				signatureMove: "Ultimate Dismissal",
+				evs: {hp:252, def:252, spd:4}, nature: 'Bold'
+			},
 			'Snobalt': {
 				species: 'Voodoom', ability: 'Mountaineer', item: 'Life Orb', gender: 'M',
 				moves: ['paleowave', 'darkpulse', 'nastyplot'],
@@ -716,12 +716,12 @@ exports.BattleScripts = {
 				signatureMove: "High Five",
 				evs: {def:4, spa:252, spe:252}, nature: 'Timid',
 			},
-			/*'Spy': {
-				species: '', ability: '', item: '', gender: '',
-				moves: [],
-				signatureMove: '',
-				evs: {}, nature: '',
-			},*/
+			'Spy': {
+				species: 'Hydreigon', ability: 'Mega Launcher', item: 'Life Orb', gender: 'M',
+				moves: ['dragonpulse', 'darkpulse', 'aurasphere', 'originpulse', 'shiftgear'],
+				signatureMove: "Mineral Pulse",
+				evs: {hp:4, spa:252, spe:252}, nature: 'Timid'
+			},
 			'Starmei': {
 				species: 'Staryu', ability: 'Parental Bond', item: 'Leftovers', shiny: true,
 				moves: ['cosmicpower', 'recover', 'nuzzle'],
