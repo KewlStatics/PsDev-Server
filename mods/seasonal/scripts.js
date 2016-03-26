@@ -376,7 +376,7 @@ exports.BattleScripts = {
 				species: 'Darmanitan-Zen', ability: 'Analytic', item: 'Life Orb', gender: 'M',
 				moves: ['voltswitch', 'flamethrower', 'psychic'],
 				signatureMove: 'Solar Storm',
-				evs: {hp:252, def:4, spa:252}, ivs: {atk:0, spe:0}, nature: 'Quiet',
+				evs: {spa:252, spd:4, spe:252}, ivs: {atk:0}, nature: 'Timid',
 			},
 			'Hippopotas': {
 				species: 'Hippopotas', ability: 'Regenerator', item: 'Eviolite', gender: 'M',

@@ -3538,31 +3538,25 @@ exports.BattleMovedex = {
 	solarstorm: {
 		accuracy: 100,
 		basePower: 120,
-		category: "Special",
+		category: "Physical",
 		id: "solarstorm",
-		isNonstandard: true,
 		isViable: true,
 		name: "Solar Storm",
 		pp: 10,
 		priority: 0,
-		flags: {protect: 1, mirror: 1},
-		onPrepareHit: function (target, source) {
-			this.attrLastMove('[still]');
-			this.add('-prepare', source, 'Solar Beam', target);
-			this.add('-anim', source, 'Solar Beam', target);
+		flags: {contact: 1, protect: 1, mirror: 1},
+		self: {
+			volatileStatus: 'lockedmove',
 		},
-		onBasePowerPriority: 4,
-		onBasePower: function () {
-			if (this.isWeather(['raindance', 'primordialsea', 'sandstorm', 'hail'])) {
-				return this.chainModify(0.5);
+		weather: 'sunnyday',
+		onAfterMove: function (pokemon) {
+			if (pokemon.volatiles['lockedmove'] && pokemon.volatiles['lockedmove'].duration === 1) {
+				pokemon.removeVolatile('lockedmove');
 			}
 		},
-		secondary: {
-			chance: 30,
-			status: 'brn',
-		},
-		target: "normal",
-		type: "Grass",
+		secondary: false,
+		target: "randomNormal",
+		type: "Fire",
 	},
 	// Hannah
 	sparklerain: {
