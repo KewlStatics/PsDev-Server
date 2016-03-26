@@ -3521,6 +3521,23 @@ exports.BattleMovedex = {
 		target: "all",
 		type: "Psychic",
 	},
+	// Orda-Y
+	shockswitch: {
+		accuracy: 100,
+		basePower: 90,
+		category: "Special",
+		id: "shockswitch",
+		isViable: true,
+		name: "Shock Switch",
+		pp: 20,
+		priority: 0,
+		flags: {protect: 1, mirror: 1},
+		selfSwitch: true,
+		forceSwitch: true,
+		secondary: false,
+		target: "normal",
+		type: "Ice",
+	},
 	// The Immortal
 	sleepwalk: {
 		accuracy: true,

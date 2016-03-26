@@ -1214,6 +1214,9 @@ exports.Formats = [
 			if (name === 'omegaxis') {
 				this.add('c| Omega-Xis|lol this isn’t even my final form');
 			}
+			if (name === 'orday') {
+				this.add('c|%Orda-Y|❄');
+			}
 			if (name === 'overneat') {
 				this.add('c|+Overneat|tsk, tsk, is going to be funny');
 			}
@@ -1252,9 +1255,6 @@ exports.Formats = [
 			}
 			if (name === 'sailorcosmos') {
 				this.add("c|+SailorCosmos|Cosmos Prism Power Make Up!");
-			}
-			if (name === 'sam') {
-				// TODO
 			}
 			if (name === 'scotteh') {
 				this.add('c|@Scotteh|─────▄▄████▀█▄');
@@ -1707,6 +1707,9 @@ exports.Formats = [
 			}
 			if (name === 'omegaxis') {
 				this.add('c| Omega-Xis|bull shit bull sHit thats ✖️ some bullshit rightth ere right✖️there ✖️✖️if i do ƽaү so my selｆ ‼️ i say so ‼️ thats what im talking about right there right there (chorus: ʳᶦᵍʰᵗ ᵗʰᵉʳᵉ) mMMMMᎷМ‼️ HO0ОଠＯOOＯOОଠଠOoooᵒᵒᵒᵒᵒᵒᵒᵒᵒ ‼️ Bull shit');
+			}
+			if (name === 'orday') {
+				this.add('c|%Orda-Y|❄_❄');
 			}
 			if (name === 'overneat') {
 				this.add('c|+Overneat|Ugh! I failed you Iya-sama');

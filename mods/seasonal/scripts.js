@@ -177,7 +177,7 @@ exports.BattleScripts = {
 				species: 'Bouffalant', ability: 'Fur Coat', item: 'Red Card', gender: 'M',
 				moves: ['precipiceblades', ['recover', 'stockpile', 'swordsdance'][this.random(3)], 'extremespeed', 'explosion'],
 				signatureMove: "Forcewin",
-				evs: {hp:4, atk:252, spe:252}, nature: 'Adamant'
+				evs: {hp:4, atk:252, spe:252}, nature: 'Adamant',
 			},
 			'Albert': {
 				species: 'Goodra', ability: 'Protean', item: 'Assault Vest', gender: 'M',
@@ -562,6 +562,12 @@ exports.BattleScripts = {
 				moves: ['shiftgear', 'sacredfire', 'uturn'],
 				signatureMove: 'Meme Cannon',
 				evs: {atk:252, def:4, spe:252}, nature: 'Jolly',
+			},
+			'Orda-Y': {
+				species: 'Regice', ability: 'Magic Guard', item: 'Life Orb', gender: 'N',
+				moves: ['stealthrock', 'thunderbolt', 'recover'],
+				signatureMove: 'Shock Switch',
+				evs: {hp:252, spa:252, spe:4}, ivs: {atk: 0}, nature: 'Calm',
 			},
 			'Overneat': {
 				species: 'Blaziken', ability: 'Speed Boost', item: 'Blazikenite', gender: 'M',
