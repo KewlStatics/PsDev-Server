@@ -64,6 +64,13 @@ exports.BattleStatuses = {
 			}
 		},
 	},
+	// SpaceBass
+	badtrip: {
+		effectType: 'Ability',
+		onSwitchOut: function (pokemon) {
+			pokemon.heal(this.modify(pokemon.maxhp, 0.4));
+		},
+	},
 	// Teremiare
 	coinflip: {
 		effectType: 'Ability',
@@ -223,7 +230,7 @@ exports.BattleStatuses = {
 			}
 		},
 		onAnyAccuracy: function (accuracy, target, source, move) {
-			if (source.volatiles['hellacute'] && move.ohko) return 50;
+			if (source.volatiles['hellacute'] && move.ohko) return 55;
 			return accuracy;
 		},
 	},
@@ -315,13 +322,6 @@ exports.BattleStatuses = {
 			if (pokemon.activeTurns) {
 				this.boost({spe: 1});
 			}
-		},
-	},
-	// SpaceBass
-	spacebassinnate: {
-		effectType: 'Ability',
-		onSwitchOut: function (pokemon) {
-			pokemon.heal(this.modify(pokemon.maxhp, 0.4));
 		},
 	},
 	// SpecsMegaBeedrill

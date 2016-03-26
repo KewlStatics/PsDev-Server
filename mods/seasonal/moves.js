@@ -623,8 +623,8 @@ exports.BattleMovedex = {
 		isViable: true,
 		isNonstandard: true,
 		name: "Debilitate",
-		pp: 30,
-		priority: 0,
+		pp: 5,
+		priority: 1,
 		flags: {protect: 1, reflectable: 1, mirror: 1},
 		onPrepareHit: function (target, source) {
 			this.attrLastMove('[still]');
@@ -805,7 +805,7 @@ exports.BattleMovedex = {
 	},
 	// Aelita
 	energyfield: {
-		accuracy: 100,
+		accuracy: 90,
 		basePower: 150,
 		category: "Special",
 		id: "energyfield",
@@ -1308,8 +1308,8 @@ exports.BattleMovedex = {
 		priority: 0,
 		flags: {snatch: 1},
 		boosts: {
-			spe: 2,
-			atk: 4,
+			spe: 3,
+			atk: 3,
 		},
 		secondary: false,
 		target: "self",
@@ -1372,7 +1372,7 @@ exports.BattleMovedex = {
 		name: "Gravity Storm",
 		pp: 5,
 		priority: 0,
-		flags: {contact: 1, protect: 1, mirror: 1},
+		flags: {protect: 1, mirror: 1},
 		onPrepareHit: function (target, source) {
 			this.attrLastMove('[still]');
 			this.add('-anim', target, "Ion Deluge", target);
@@ -1793,7 +1793,7 @@ exports.BattleMovedex = {
 	},
 	// ih8ih8sn0w
 	imprisonform: {
-		accuracy: true,
+		accuracy: 90,
 		basePower: 0,
 		category: "Status",
 		id: "imprisonform",
@@ -2001,8 +2001,8 @@ exports.BattleMovedex = {
 	},
 	// Jetpack
 	malicioushypnosis: {
-		accuracy: 100,
-		basePower: 90,
+		accuracy: 90,
+		basePower: 100,
 		category: "Special",
 		id: "malicioushypnosis",
 		isViable: true,
@@ -2016,7 +2016,7 @@ exports.BattleMovedex = {
 			this.add('-anim', source, "Hypnosis", target);
 		},
 		secondary: {
-			chance: 35,
+			chance: 40,
 			status: 'slp',
 		},
 		target: "normal",
@@ -2117,7 +2117,7 @@ exports.BattleMovedex = {
 	},
 	// gangnam style
 	motherfathergentleman: {
-		accuracy: 80,
+		accuracy: 100,
 		basePower: 70,
 		category: "Physical",
 		id: "motherfathergentleman",
@@ -2509,7 +2509,7 @@ exports.BattleMovedex = {
 		volatileStatus: 'protect',
 		onPrepareHit: function (pokemon) {
 			this.attrLastMove('[still]');
-			this.add('-anim', pokemon, "Defog", pokemon);
+			this.add('-anim', pokemon, "Growth", pokemon);
 		},
 		onTry: function (pokemon) {
 			if (pokemon.activeTurns > 1) {
@@ -2537,7 +2537,7 @@ exports.BattleMovedex = {
 		name: "Psychokinesis",
 		pp: 10,
 		priority: 0,
-		flags: {contact: 1, protect: 1, mirror: 1},
+		flags: {protect: 1, mirror: 1},
 		onPrepareHit: function (target, source) {
 			this.attrLastMove('[still]');
 			this.add('-anim', source, "Aura Sphere", target);
@@ -3106,6 +3106,7 @@ exports.BattleMovedex = {
 		accuracy: 100,
 		basePower: 90,
 		category: "Special",
+		defensiveCategory: "Physical",
 		id: "cosmosray",
 		name: "Cosmos Ray",
 		pp: 20,
@@ -3518,13 +3519,13 @@ exports.BattleMovedex = {
 			this.add('-anim', source, "Roar of Time", target);
 			this.add('-anim', source, "Torment", target);
 		},
+		onHit: function (target, source) {
+			this.boost({atk: 2}, target, source);
+			target.addVolatile('confusion', source);
+		},
 		secondary: {
-			chance: 100,
-			onHit: function (target, source) {
-				if (this.random(10) < 3) target.trySetStatus('par');
-				this.boost({atk:2}, target, source);
-				target.addVolatile('confusion', source);
-			},
+			chance: 30,
+			status: 'par',
 		},
 		target: "normal",
 		type: "Dragon",
@@ -3795,5 +3796,9 @@ exports.BattleMovedex = {
 				}
 			},
 		},
+	},
+	"hypnosis": {
+		inherit: true,
+		accuracy: 45,
 	},
 };

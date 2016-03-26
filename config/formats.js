@@ -669,6 +669,10 @@ exports.Formats = [
 					pokemon.setAbility('adaptability');
 					this.add('-ability', pokemon, 'Adaptability');
 				}
+				if (name === 'awu' && pokemon.getAbility().id === 'hugepower') {
+					pokemon.setAbility('adaptability');
+					this.add('-ability', pokemon, 'Tough Claws');
+				}
 				if (name === 'crestfall' && pokemon.getAbility().id === 'magicbounce') {
 					pokemon.setAbility('simple');
 					this.add('-ability', pokemon, 'Simple');
@@ -703,6 +707,10 @@ exports.Formats = [
 				if (name === 'andy' && pokemon.getAbility().id === 'magicbounce') {
 					pokemon.setAbility('adaptability');
 					this.add('-ability', pokemon, 'Adaptability');
+				}
+				if (name === 'awu' && pokemon.getAbility().id === 'hugepower') {
+					pokemon.setAbility('adaptability');
+					this.add('-ability', pokemon, 'Tough Claws');
 				}
 				if (name === 'crestfall' && pokemon.getAbility().id === 'magicbounce') {
 					pokemon.setAbility('simple');
@@ -786,6 +794,15 @@ exports.Formats = [
 			if (name === 'pikachuun') {
 				this.boost({spe: 1}, pokemon, pokemon, 'Reisen Cosplay');
 			}
+			if (name === 'qtrx') {
+				pokemon.addVolatile('qtrxinnate', pokemon);
+			}
+			if (name === 'raseri') {
+				this.useMove('hypnosis', pokemon);
+			}
+			if (name === 'rssp1') {
+				pokemon.addVolatile('speedboostinnate', pokemon);
+			}
 			if (name === 'scythernoswiping') {
 				pokemon.addVolatile('mountaineerinnate', pokemon);
 			}
@@ -795,8 +812,20 @@ exports.Formats = [
 			if (name === 'sonired') {
 				this.boost({def: -1, spd: -1, atk: 1, spe: 1}, pokemon, pokemon, 'Weak Skin');
 			}
+			if (name === 'snobalt') {
+				pokemon.addVolatile('whitemagic', pokemon);
+			}
+			if (name === 'spacebass') {
+				pokemon.addVolatile('badtrip', pokemon);
+			}
 			if (name === 'specsmegabeedrill') {
 				pokemon.addVolatile('weed', pokemon);
+			}
+			if (name === 'starmei') {
+				this.useMove('cosmicpower', pokemon);
+			}
+			if (name === 'teremiare') {
+				pokemon.addVolatile('coinflip', pokemon);
 			}
 			if (name === 'trickster' || name === 'blitzamirin') {
 				let target = pokemon.battle[pokemon.side.id === 'p1' ? 'p2' : 'p1'].active[0];
@@ -809,27 +838,6 @@ exports.Formats = [
 				target.setBoost(sourceBoosts);
 				pokemon.setBoost(targetBoosts);
 				this.add('-swapboost', pokemon, target);
-			}
-			if (name === 'qtrx') {
-				pokemon.addVolatile('qtrxinnate', pokemon);
-			}
-			if (name === 'raseri') {
-				this.useMove('hypnosis', pokemon);
-			}
-			if (name === 'rssp1') {
-				pokemon.addVolatile('speedboostinnate', pokemon);
-			}
-			if (name === 'snobalt') {
-				pokemon.addVolatile('whitemagic', pokemon);
-			}
-			if (name === 'spacebass') {
-				pokemon.addVolatile('spacebassinnate', pokemon);
-			}
-			if (name === 'starmei') {
-				this.useMove('cosmicpower', pokemon);
-			}
-			if (name === 'teremiare') {
-				pokemon.addVolatile('coinflip', pokemon);
 			}
 			if (name === 'unfixable') {
 				pokemon.addVolatile('ironbarbsinnate', pokemon);
@@ -1256,7 +1264,7 @@ exports.Formats = [
 				this.add('c|@Temporaryanonymous|' + sentences[this.random(3)]);
 			}
 			if (name === 'teremiare') {
-				this.add('c|+Teremiare|I like to call it skill');
+				this.add('c|%Teremiare|I like to call it skill');
 			}
 			if (name === 'theimmortal') {
 				this.add('c|~The Immortal|Give me my robe, put on my crown!');
@@ -1664,7 +1672,7 @@ exports.Formats = [
 				this.add('c|&Sweep|You offended :C');
 			}
 			if (name === 'teremiare') {
-				this.add('c|+Teremiare|sigh...');
+				this.add('c|%Teremiare|sigh...');
 			}
 			if (name === 'theimmortal') {
 				this.add('c|~The Immortal|Oh how wrong we were to think immortality meant never dying.');

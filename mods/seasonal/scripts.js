@@ -15,7 +15,7 @@ exports.BattleScripts = {
 				species: 'Salamence', ability: 'Tinted Lens', item: 'Salamencite', gender: 'Male',
 				moves: ['dragonascent', 'closecombat', 'outrage'],
 				signatureMove: 'Big Narstie',
-				evs: {hp:80, atk:252, spd:176}, nature: 'Adamant',
+				evs: {hp:80, atk:252, spe:176}, nature: 'Adamant',
 			},
 			'Aelita': {
 				species: 'Porygon-Z', ability: 'Protean', item: 'Life Orb', gender: 'N',
@@ -83,7 +83,7 @@ exports.BattleScripts = {
 				signatureMove: "True Support",
 				evs: {hp:252, def:252, spa:4}, nature: 'Bold',
 			},
-			'Ascriptmaster': {	
+			'Ascriptmaster': {
 				species: 'Rotom', ability: 'Teravolt', item: 'Expert Belt', gender: 'M',
 				moves: ['thunderbolt', 'mysticalfire', ['psyshock', 'aurorabeam'][this.random(2)]],
 				signatureMove: 'Spectrum Triplet Beam',
@@ -367,7 +367,7 @@ exports.BattleScripts = {
 			},
 			'ih8ih8sn0w': {
 				species: 'Deoxys-Speed', ability: 'Pressure', item: 'Leftovers', gender: 'N', shiny: true,
-				moves: ['meteormash', 'stealthrock', (variant ? 'taunt' : 'magiccoat')],
+				moves: ['meteormash', 'stealthrock', ['taunt', 'magiccoat'][this.random(2)]],
 				signatureMove: "Imprisonform",
 				evs: {atk:252, spd:4, spe:252}, nature: 'Jolly',
 			},
@@ -498,7 +498,7 @@ exports.BattleScripts = {
 				evs: {atk:252, def:4, spe:252}, nature: 'Adamant',
 			},
 			'McMeghan': {
-				species: 'Scrafty', ability: ['moxie', 'clearbody', 'stench'][this.random(3)], item: 'Leftovers', gender: 'M',
+				species: 'Scrafty', ability: ['Moxie', 'Clear Body', 'Stench'][this.random(3)], item: 'Leftovers', gender: 'M',
 				moves: [['dragondance', 'agility'][this.random(2)], ['knockoff', 'rockslide'][this.random(2)], ['highjumpkick', 'drainpunch', 'substitute'][this.random(3)]],
 				signatureMove: 'Odd Punch',
 				evs: {hp:192, atk:80, spe:236}, nature: 'Jolly',
@@ -577,7 +577,7 @@ exports.BattleScripts = {
 			},*/
 			'RosieTheVenusaur': {
 				species: 'Venusaur', ability: 'Moxie', item: 'Leftovers', gender: 'F',
-				moves: [(variant ? 'fusionflare' : 'sacredfire'), 'extremespeed', 'knockoff', 'closecombat'],
+				moves: [['fusionflare', 'sacredfire'][this.random(2)], 'extremespeed', 'knockoff', 'closecombat'],
 				signatureMove: "Swag Plant",
 				evs: {hp:252, atk:252, def:4}, nature: 'Adamant',
 			},
@@ -589,7 +589,7 @@ exports.BattleScripts = {
 			},
 			'Sailor Cosmos': {
 				species: 'Milotic', ability: 'Competitive', item: 'Assault Vest', gender: 'F', shiny: true,
-				moves: ['scald', 'icebeam', 'dragontail'],
+				moves: ['steameruption', 'icebeam', 'dragontail'],
 				signatureMove: "Cosmos Ray",
 				evs: {hp:252, def:248, spd:8}, nature: 'Bold',
 			},
@@ -661,7 +661,7 @@ exports.BattleScripts = {
 			},
 			'Sonired': {
 				species: 'Anorith', ability: 'Sniper', item: 'Choice Band', gender: ['M', 'F', 'N'][this.random(3)],
-				moves: ['headsmash', 'megahorn', 'knockoff'],
+				moves: ['stoneedge', 'megahorn', 'knockoff'],
 				signatureMove: "God Turn",
 				evs: {def:4, atk:252, spe:252}, nature: 'Jolly',
 			},
@@ -769,7 +769,7 @@ exports.BattleScripts = {
 			},
 			'Winry': {
 				species: 'Buizel', ability: 'Water Veil', item: 'Life Orb', gender: 'F', shiny: true,
-				moves: ['watershuriken', ['highjumpkick', 'iciclecrash'][this.random(2)], 'waterfall'],
+				moves: ['watershuriken', ['jumpkick', 'iciclecrash'][this.random(2)], 'waterfall'],
 				signatureMove: 'Fight to the Death',
 				evs: {atk:252, def:4, spe:252}, nature: 'Jolly',
 			},
