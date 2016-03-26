@@ -3,8 +3,15 @@
 exports.BattleAbilities = {
 	// GeoffBruedley
 	baitkai: {
+		onAfterDamage: function (damage, target, source, move) {
+			if (move && move.flags['contact']) {
+				source.addVolatile('attract', target);
+				source.addVolatile('confusion', target);
+			}
+		},
 		id: "baitkai",
 		name: "Baitkai",
+		rating: 2,
 	},
 	// Frysinger
 	funhouse: {

@@ -452,7 +452,7 @@ exports.BattleScripts = {
 			'Juanma': {
 				species: 'Heatran', ability: 'Levitate', item: 'Charcoal', gender: 'M', shiny: true,
 				moves: ['eruption', 'steameruption', 'quiverdance'],
-				signatureMove: "Gaster Blaster",
+				signatureMove: "\\Exception",
 				evs: {hp:252, spa:252, def:4}, ivs: {atk:0}, nature: 'Modest',
 			},
 			'Kalalokki': {

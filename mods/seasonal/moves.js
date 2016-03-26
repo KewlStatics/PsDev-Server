@@ -1060,6 +1060,38 @@ exports.BattleMovedex = {
 		target: "allAdjacentFoes",
 		type: "Water",
 	},
+	// Juanma
+	exception: {
+		accuracy: true,
+		basePower: 110,
+		category: "Special"
+		id: "exception",
+		isViable: true,
+		isNonstandard: true,
+		name: "\\Exception",
+		pp: 5,
+		priority: 0,
+		flags: {mirror: 1, authentic: true},
+		onTryHit: function (target, source) {
+			this.add('-message', "PHP Fatal error: Uncaught exception 'Exception' with message 'The requested file does not exists.' in \\your\\moms\\basement:1\nStack trace:\n#0 {main}\nthrown in \\your\\moms\\basement on line 1.");
+		},
+		onPrepareHit: function (target, source) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Moonlight", source);
+			this.add('-anim', source, "Draco Meteor", target);
+		},
+		onHit: function (target, source) {
+			target.addVolatile('torment');
+			target.addVolatile('confusion');
+		},
+		secondary: {
+			chance: 66,
+			status: 'brn',
+		},
+		self: {boosts: {spe: -1}},
+		target: "allAdjacentFoes",
+		type: "Fire",
+	},
 	// Marshmallon
 	excuse: {
 		accuracy: 100,
@@ -3513,7 +3545,7 @@ exports.BattleMovedex = {
 			},
 			onModifyPriority: function (priority, pokemon, target, move) {
 				if (pokemon && pokemon.gender === 'F') {
-					return priority + 1;
+					return priority + 2;
 				}
 			},
 		},
