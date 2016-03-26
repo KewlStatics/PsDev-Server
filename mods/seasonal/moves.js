@@ -227,7 +227,8 @@ exports.BattleMovedex = {
 			this.add('-anim', source, "Draco Meteor", target);
 		},
 		onHit: function (target) {
-			const targets = target.side.pokemon.filter(pokemon => !(pokemon.fainted || pokemon === target)).randomize();
+			let targets = target.side.pokemon.filter(pokemon => !(pokemon.fainted || pokemon === target));
+			targets.sort(() => (Math.round(Math.random()) - 0.5));
 			let lowestpct = 1, pokemon = target, candidate;
 			for (let i = 0; i < targets.length; i++) {
 				candidate = targets[i];
@@ -1846,7 +1847,7 @@ exports.BattleMovedex = {
 		flags: {protect: 1, reflectable: 1, mirror: 1, sound: 1, authentic: 1},
 		selfSwitch: true,
 		onHit: function (pokemon) {
-			let hazards = ['stealthrock', 'spikes', 'toxicspikes', 'stickyweb'].randomize();
+			let hazards = ['stealthrock', 'spikes', 'toxicspikes', 'stickyweb'][this.random(4)];
 			pokemon.side.addSideCondition(hazards[0]);
 			pokemon.side.addSideCondition(hazards[1]);
 		},
@@ -3948,7 +3949,7 @@ exports.BattleMovedex = {
 			this.boost(boosts, source, source);
 		},
 		onModifyMove: function (move) {
-			move.type = move.typechart.randomize()[0];
+			move.type = move.typechart[this.random(18)];
 		},
 		secondary: {
 			chance: 100,
@@ -4299,7 +4300,7 @@ exports.BattleMovedex = {
 				'leafblade', 'xscissor', 'knockoff', 'shadowforce', 'ironhead', 'outrage', 'playrough', 'closecombat',
 				'bravebird', 'earthquake', 'stoneedge', 'extremespeed', 'stealthrock', 'spikes', 'toxicspikes', 'stickyweb',
 				'quiverdance', 'shellsmash', 'dragondance', 'recover', 'toxic', 'willowisp', 'leechseed',
-			].randomize();
+			][this.random(newMoves.length)];
 			for (let i = 0; i < pokemon.moveset.length; i++) {
 				let moveData = Tools.getMove(newMoves[i]);
 				let moveBuffer = {

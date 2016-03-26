@@ -470,7 +470,7 @@ exports.BattleScripts = {
 			'layell': {
 				species: 'Sneasel', ability: 'Technician', item: "King's Rock", gender: 'M',
 				moves: ['iceshard', 'iciclespear', ['machpunch', 'pursuit', 'knockoff'][this.random(3)]],
-				bsignatureMove: "Pixel Protection",
+				signatureMove: "Pixel Protection",
 				evs: {hp:4, atk:252, spe:252}, nature: 'Adamant',
 			},
 			'LegitimateUsername': {
