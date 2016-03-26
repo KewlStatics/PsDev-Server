@@ -1531,6 +1531,7 @@ exports.BattleMovedex = {
 				if (move.isNonstandard) continue;
 				moves.push(move);
 			}
+			let randomMove = false;
 			if (moves.length) {
 				moves.sort((a, b) => a.num - b.num);
 				randomMove = moves[this.random(moves.length)].id;
@@ -1583,7 +1584,6 @@ exports.BattleMovedex = {
 					}
 				}
 				this.add('-message', "Ho-Oh is now colored " + colorText.join(" and ") + "! As well as every other \u3069\u25C0mon.");
-				}
 			},
 			onEffectiveness: function () {
 				return this.random(3) - 1;
