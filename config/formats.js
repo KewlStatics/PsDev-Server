@@ -709,7 +709,6 @@ exports.Formats = [
 
 			// Add here more hacky stuff for mega abilities.
 			// This happens when the mega switches in, as opposed to mega-evolving on the turn.
-			//let oldAbility = pokemon.ability; //TODO
 			if (pokemon.template.isMega) {
 				if (name === 'andy' && pokemon.getAbility().id === 'magicbounce') {
 					pokemon.setAbility('adaptability');
@@ -735,7 +734,8 @@ exports.Formats = [
 					pokemon.setAbility('cloudnine');
 				}
 			} else {
-				pokemon.canMegaEvo = this.canMegaEvo(pokemon); // Bypass one mega limit.
+				// Bypass one mega limit.
+				pokemon.canMegaEvo = this.canMegaEvo(pokemon);
 			}
 
 			// Add here special typings, done for flavour mainly.
@@ -794,6 +794,9 @@ exports.Formats = [
 			}
 			if (name === 'manu11') {
 				pokemon.addVolatile('arachnophobia', pokemon);
+			}
+			if (name === 'marshmallon') {
+				this.boost({def: 2}, pokemon, pokemon, 'fur coat innate');
 			}
 			if (name === 'mizuhime' || name === 'kalalokki' || name === 'sweep') {
 				this.setWeather('raindance');
@@ -1153,13 +1156,17 @@ exports.Formats = [
 				this.add('c|%m00ns|oh');
 			}
 			if (name === 'macle') {
-				this.add("c|+macle|Follow the Frog Blog - https://gonefroggin.wordpress.com/");
+				this.add("c|+macle|Follow the Frog Blog");
 			}
 			if (name === 'manu11') {
 				this.add("c|%manu 11|/me is pet by ihateyourpancreas");
 			}
 			if (name === 'marshmallon') {
-				// TODO
+				this.add("c|%Marshmallon|Marshtomb be like");
+				this.add("c|%Marshmallon|- He sees you when you're sleeping -");
+				this.add("c|%Marshmallon|- He knows when you're awake -");
+				this.add("c|%Marshmallon|- He knows if you've been bad or good -");
+				this.add("c|%Marshmallon|- So be good for goodness sake -");
 			}
 			if  (name === 'mattl') {
 				this.add('c|+MattL|If you strike me down, I shall become more powerful than you can possibly imagine.');
@@ -1610,6 +1617,9 @@ exports.Formats = [
 			}
 			if (name === 'manu11') {
 				this.add("c|%manu 11|so much hax, why do I even try");
+			}
+			if (name === 'marshmallon') {
+				this.add("c|%Marshmallon|Shoutouts to sombolo and Rory Mercury ... for this trash set -_-");
 			}
 			if (name === 'mattL') {
 				this.add('c|+MattL|Forgive me. I feel it again... the call from the light.');

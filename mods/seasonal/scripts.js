@@ -506,21 +506,21 @@ exports.BattleScripts = {
 				signatureMove: "Ribbit",
 				evs: {atk:252, spa:252, spe:252}, nature: 'Lonely',
 			},
-			'Magnemite': {
+			/*'Magnemite': {
 				// NO set yet...
-			},
+			},*/
 			'manu 11': {
 				species: 'Surskit', ability: 'Swift Swim', item: 'Life Orb', gender: 'M',
 				moves: ['quiverdance', 'icebeam', 'spore'],
 				signatureMove: 'Surskit Energy',
 				evs: {def:4, spa:252, spe:252}, nature: 'Timid',
 			},
-			/*'Marshmallon': {
-				species: '', ability: '', item: '', gender: '',
-				moves: [],
-				signatureMove: '',
-				evs: {}, nature: '',
-			},*/
+			'Marshmallon': {
+				species: 'Marshtomp', ability: 'Shadow Tag', item: 'Eviolite', gender: 'M',
+				moves: ['earthquake', 'softboiled', 'spikyshield'],
+				signatureMove: 'Excuse',
+				evs: {hp:252, def:24, spd:232}, nature: 'Impish',
+			},
 			'MattL': {
 				species: 'Swampert', ability: 'Gravitational Field', item: 'Swampertite', gender: 'M',
 				moves: ['raindance', 'earthquake', 'icepunch'],

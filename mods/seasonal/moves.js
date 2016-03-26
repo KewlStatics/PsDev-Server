@@ -970,6 +970,25 @@ exports.BattleMovedex = {
 		target: "allAdjacentFoes",
 		type: "Water",
 	},
+	// Marshmallon
+	excuse: {
+		accuracy: 100,
+		basePower: 0,
+		category: "Status",
+		id: "excuse",
+		isViable: true,
+		name: "Excuse",
+		pp: 10,
+		priority: 2,
+		flags: {protect: 1, reflectable: 1, mirror: 1, authentic: 1},
+		volatileStatus: 'taunt',
+		onHit: function (pokemon) {
+			pokemon.addVolatile('confusion');
+		},
+		secondary: false,
+		target: "normal",
+		type: "Dark",
+	},
 	// Dirpz
 	fairytypesong: {
 		accuracy: 100,
