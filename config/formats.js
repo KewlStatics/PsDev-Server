@@ -886,9 +886,12 @@ exports.Formats = [
 			if (name === 'albacore') {
 				this.add('c|@Albacore|do I have to?');
 			}
+			if (name === 'albert') {
+				this.add('c|+Albert|Art is risk.');
+			}
 			if (name === 'always') {
-				const msg = (pokemon.side.foe.active.length && pokemon.side.foe.active[0].hp ? pokemon.side.foe.active[0].name : "... ohh nobody's there...");
-				this.add('c|+Always|Oh it\'s ' + msg);
+				sentence = (pokemon.side.foe.active.length && pokemon.side.foe.active[0].hp ? pokemon.side.foe.active[0].name : "... ohh nobody's there...");
+				this.add('c|+Always|Oh it\'s ' + sentence);
 			}
 			if (name === 'am') {
 				this.add('c|+AM|Lucky and Bad');
@@ -1385,6 +1388,9 @@ exports.Formats = [
 			}
 			if (name === 'albacore') {
 				this.add('c|@Albacore|Joke\'s on you, I was just testing!');
+			}
+			if (name === 'albert') {
+				this.add("c|+Albert|You may be good looking, but you're not a piece of art.");
 			}
 			if (name === 'always') {
 				this.add('c|+Always|i swear to fucking god how can a single person be this lucky after getting played all the fucking way. you are a mere slave you glorified heap of trash.');

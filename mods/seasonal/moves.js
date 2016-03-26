@@ -42,6 +42,24 @@ exports.BattleMovedex = {
 		target: "normal",
 		type: "Flying",
 	},
+	// Albert
+	aestheticallypleasing: {
+		accuracy: 100,
+		basePower: 90,
+		category: "Special",
+		id: "aestheticallypleasing",
+		isNonstandard: true,
+		name: "Aesthetically Pleasing",
+		pp: 10,
+		priority: 0,
+		flags: {protect: 1, mirror: 1},
+		secondary: {
+			chance: 40,
+			status: 'par',
+		},
+		target: "normal",
+		type: "Dragon",
+	},
 	// Acast
 	amibulkyyet: {
 		accuracy: true,

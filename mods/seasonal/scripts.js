@@ -179,8 +179,11 @@ exports.BattleScripts = {
 				signatureMove: '',
 				evs: {}, nature: '',
 			},*/
-			'Champion Albert': {
-
+			'Albert': {
+				species: 'Goodra', ability: 'Protean', item: 'Assault Vest', gender: 'M',
+				moves: ['aurasphere', 'icebeam', 'thunderbolt'],
+				signatureMove: 'Aesthetically Pleasing',
+				evs: {spa: 252, def:4, spe:252}, nature: 'Modest',
 			},
 			'Ciran': {
 				species: 'Rapidash', ability: 'Defiant', item: 'Life Orb', gender: 'N',
@@ -627,7 +630,8 @@ exports.BattleScripts = {
 				evs: {hp:252, def:248, spd:8}, nature: 'Bold',
 			},
 			/*'Sam': {
-				species: '', ability: '', item: '', gender: '',
+				SET TODO
+				species: 'Starmie', ability: '', item: '', gender: '',
 				moves: [],
 				signatureMove: '',
 				evs: {}, nature: '',
@@ -707,9 +711,9 @@ exports.BattleScripts = {
 				signatureMove: "Army of Mushrooms",
 				evs: {hp:252, def:128, spd:128}, nature: 'Sassy',
 			},
-			'sparktrain': {
-
-			},
+			/*'sparktrain': {
+				Reserved Seel, set TODO
+			},*/
 			'SpecsMegaBeedrill': {
 				species: 'Weedle', ability: 'Shield Dust', item: 'Focus Sash', gender: 'M',
 				moves: ['blueflare', 'earthpower', 'sludgewave'],
