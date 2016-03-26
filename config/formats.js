@@ -648,6 +648,10 @@ exports.Formats = [
 		},
 		// Here we add some flavour or design immunities.
 		onImmunity: function (type, pokemon) {
+			if (toId(pokemon.name) === 'juanma' && type === 'Fire') {
+				this.add('-message', "Did you think fire would stop __him__? You **fool**!");
+				return false;
+			}
 		},
 		onNegateImmunity: function (pokemon, type) {
 			if (pokemon.volatiles['flipside']) return false;
@@ -695,10 +699,10 @@ exports.Formats = [
 		onSwitchIn: function (pokemon) {
 			let name = toId(pokemon.illusion ? pokemon.illusion.name : pokemon.name);
 			// Wonder Guard is available, but it curses you.
-			/*if (pokemon.getAbility().id === 'wonderguard' && pokemon.baseTemplate.baseSpecies !== 'Shedinja') {
+			if (pokemon.getAbility().id === 'wonderguard' && pokemon.baseTemplate.baseSpecies !== 'Shedinja') {
 				pokemon.addVolatile('curse', pokemon);
 				this.add('-message', pokemon.name + "'s Wonder Guard has cursed it!");
-			}*/
+			}
 
 			// Add here more hacky stuff for mega abilities.
 			// This happens when the mega switches in, as opposed to mega-evolving on the turn.
@@ -935,6 +939,9 @@ exports.Formats = [
 			if (name === 'bottt') {
 				this.add('c|boTTT|Beep, boop');
 			}
+			if (name === 'brandon') {
+				this.add("c|+Brandon|Life's too short to take it seriously ALL the time.");
+			}
 			if (name === 'bumbadadabum') {
 				this.add('c|@bumbadadabum|Time for card games on motorcycles!');
 			}
@@ -1160,11 +1167,14 @@ exports.Formats = [
 			if (name === 'nv') {
 				this.add('c|+nv|Who tf is nv?');
 			}
+			if (name === 'omegaxis') {
+				this.add('c| Omega-Xis|lol this isn’t even my final form');
+			}
 			if (name === 'overneat') {
 				this.add('c|+Overneat|tsk, tsk, is going to be funny');
 			}
-			if (name === 'paradise') {
-				this.add('c|%Paradise|I sexually identify as a hazard setter');
+			if (name === 'phable') {
+				this.add('c|%Phable|I sexually identify as a hazard setter');
 			}
 			if (name === 'pikachuun') {
 				sentences = ['Reisen is best waifu', 'Hey look I coded myself into the game', 'sup (\'.w.\')'];
@@ -1379,6 +1389,9 @@ exports.Formats = [
 			if (name === 'andy') {
 				this.add('c|%AndrewGoncel|wow r00d! :c');
 			}
+			if (name === 'antemortem') {
+				this.add('c|@antemortem|FUCKING CAMPAIGNERS');
+			}
 			if (name === 'anttya') {
 				this.add('c|+Anttya|Can\'t beat hax ¯\\_(ツ)_/¯');
 			}
@@ -1421,7 +1434,10 @@ exports.Formats = [
 				this.add('c|+bondie|Sigh...');
 			}
 			if (name === 'bottt') {
-				this.add("c|boTTT|No longer being maintained...");
+				this.add("c| boTTT|No longer being maintained...");
+			}
+			if (name === 'brandon') {
+				this.add("c|+Brandon|Always leave the crowd wanting more~");
 			}
 			if (name === 'bumbadadabum') {
 				this.add("c|@bumbadadabum|Find another planet make the same mistakes.");
@@ -1591,11 +1607,14 @@ exports.Formats = [
 			if (name === 'nv') {
 				this.add('c|+nv|Too cute for this game ;~;');
 			}
+			if (name === 'omegaxis') {
+				this.add('c| Omega-Xis|bull shit bull sHit thats ✖️ some bullshit rightth ere right✖️there ✖️✖️if i do ƽaү so my selｆ ‼️ i say so ‼️ thats what im talking about right there right there (chorus: ʳᶦᵍʰᵗ ᵗʰᵉʳᵉ) mMMMMᎷМ‼️ HO0ОଠＯOOＯOОଠଠOoooᵒᵒᵒᵒᵒᵒᵒᵒᵒ ‼️ Bull shit');
+			}
 			if (name === 'overneat') {
 				this.add('c|+Overneat|Ugh! I failed you Iya-sama');
 			}
-			if (name === 'paradise') {
-				this.add('c|%Paradise|RIP THE DREAM');
+			if (name === 'phable') {
+				this.add('c|%Phable|RIP THE DREAM');
 			}
 			if (name === 'pikachuun') {
 				sentences = ['press f to pay respects ;_;7', 'this wouldn\'t have happened in my version', 'wait we were battling?'];
@@ -1625,6 +1644,10 @@ exports.Formats = [
 			}
 			if (name === 'sailorcosmos') {
 				this.add("c|+SailorCosmos|Cosmos Gorgeous Retreat!");
+			}
+			if (name === 'scotteh') {
+				this.add('-message', '▄███████▄.▲.▲.▲.▲.▲.▲');
+				this.add('-message', '█████████████████████▀▀');
 			}
 			if (name === 'scpinion') {
 				this.add("c|@scpinion|guys, I don't even know how to pronounce scpinion");

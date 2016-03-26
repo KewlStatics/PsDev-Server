@@ -396,7 +396,7 @@ exports.BattleMovedex = {
 		target: "normal",
 		type: "Flying",
 	},
-	// Paradise
+	// Phable (Paradise)
 	burnspikes: {
 		accuracy: true,
 		basePower: 0,
@@ -1199,6 +1199,26 @@ exports.BattleMovedex = {
 		},
 		secondary: false,
 		target: "normal",
+		type: "Electric",
+	},
+	// Scotteh
+	geomagneticstorm: {
+		num: 586,
+		accuracy: 100,
+		basePower: 140,
+		category: "Special",
+		id: "geomagneticstorm",
+		isViable: true,
+		name: "Geomagnetic Storm",
+		pp: 10,
+		priority: 0,
+		flags: {protect: 1, mirror: 1, sound: 1, authentic: 1},
+		onTryHit: function (target, source, move) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Discharge", target);
+		};
+		secondary: false,
+		target: "allAdjacent",
 		type: "Electric",
 	},
 	// xfix
@@ -2019,6 +2039,43 @@ exports.BattleMovedex = {
 		target: "normal",
 		type: "Psychic",
 	},
+	// Omega-Xis
+	memecannon: {
+		accuracy: 100,
+		basePower: 100,
+		category: "Physical",
+		id: 'memecannon',
+		isViable: true,
+		isNonstandard: true,
+		name: "Meme Cannon",
+		pp: 10,
+		priority: 0,
+		flags: {snatch: 1},
+		onTry: function (pokemon, target) {
+			if (pokemon.activeTurns > 1) {
+				this.add('c| omegaxis|good shit go౦ԁ sHit thats ✔ some goodshit rightthere right✔there ✔✔if i do ƽaү so my self i say so thats what im talking about right there right there (chorus: ʳᶦᵍʰᵗ ᵗʰᵉʳᵉ) mMMMMᎷМ НO0ОଠOOOOOОଠଠOoooᵒᵒᵒᵒᵒᵒᵒᵒᵒ Good shit');
+			} else {
+				this.add('c| omegaxis|Jet fuel can’t melt steel beams.');
+			}
+		},
+		onTryHit: function (target, source) {
+			let oldAbility = source.setAbility('flashfire');
+			if (oldAbility) {
+				this.add('-ability', source, this.getAbility(source.ability).name, '[from] move: Meme Cannon', '[of] ' + target);
+			}
+		},
+		onHit: function (target, source) {
+			let oldAbility = source.setAbility(target.ability);
+			if (oldAbility) {
+				this.add('-ability', source, this.getAbility(source.ability).name, '[from] move: Role Play', '[of] ' + target);
+				return;
+			}
+			return false;
+		},
+		secondary: false,
+		target: "normal",
+		type: "Steel",
+	},
 	// Hollywood
 	mememime: {
 		accuracy: true,
@@ -2490,6 +2547,20 @@ exports.BattleMovedex = {
 		},
 		target: "normal",
 		type: "Ghost",
+	},
+	// Antemortem
+	postmortem: {
+		accuracy: 85,
+		basePower: 110,
+		category: "Special",
+		id: "postmortem",
+		name: "Postmortem",
+		pp: 10,
+		priority: 0,
+		flags: {contact: 1, protect: 1, mirror: 1, heal: 1},
+		secondary: {chance: 50, self: {boosts: {spa: 1, spe: 1}}},
+		target: "normal",
+		type: "Fairy",
 	},
 	// rssp1
 	praiserufflets: {
@@ -3602,6 +3673,25 @@ exports.BattleMovedex = {
 		},
 		target: "normal",
 		type: "Water",
+	},
+	// Brandon (Eveelution Lover)
+	waveofindifference: {
+		accuracy: 95,
+		basePower: 80,
+		category: "Special",
+		id: "waveofindifference",
+		isViable: true,
+		isNonstandard: true,
+		name: "Wave of Indifference",
+		pp: 10,
+		priority: 0,
+		flags: {mirror: 1},
+		onEffectiveness: function (typeMod, type) {
+			return 1;
+		},
+		secondary: false,
+		target: "normal",
+		type: "Psychic",
 	},
 	// Vapo
 	wetwork: {

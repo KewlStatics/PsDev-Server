@@ -354,7 +354,6 @@ exports.BattleStatuses = {
 			}
 		},
 	},
-
 	// Weathers
 	hail: {
 		inherit: true,

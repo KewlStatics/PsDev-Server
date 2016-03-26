@@ -59,12 +59,12 @@ exports.BattleScripts = {
 				signatureMove: 'Pilfer',
 				evs: {hp:252, atk:252, spe:4}, nature: 'Adamant',
 			},
-			/*'Antemortem': {
-				species: '', ability: '', item: '', gender: '',
-				moves: [],
-				signatureMove: '',
-				evs: {}, nature: '',
-			},*/
+			'Antemortem': {
+				species: 'Clefable', ability: (variant === 1 ? 'Sheer Force' : 'Multiscale'), item: (variant === 1 ? 'Life Orb' : 'Leftovers'), gender: 'M',
+				moves: ['earthpower', 'cosmicpower', 'recover', 'gigadrain'],
+				signatureMove: "Postmortem",
+				evs: {hp:252, spa:252, def:4}, nature: 'Modest'
+			},
 			'Anttya': {
 				species: 'Altaria', ability: 'Aerilate', item: 'Leftovers', gender: 'F',
 				moves: ['roost', 'triattack', 'searingshot'],
@@ -155,6 +155,12 @@ exports.BattleScripts = {
 				signatureMove: "Auto-Moderation",
 				evs: {hp:60, atk:252, spd:196}, nature: 'Adamant',
 			},
+			'Brandon': {
+				species: 'Meowstic-M', ability: 'Prankster', item: 'Leftovers', gender: 'M',
+				moves: [['assist', 'barrier'][this.random(2)], 'calmmind', 'rest'],
+				signatureMove: 'Wave of Indifference',
+				evs: {hp:252, def:252, spd:4}, nature: 'Bold',
+			},
 			'bumbadadabum': {
 				species: 'Samurott', ability: 'Analytic', item: 'Leftovers', gender: 'M',
 				moves: ['calmmind', 'originpulse', 'icebeam'],
@@ -173,6 +179,9 @@ exports.BattleScripts = {
 				signatureMove: '',
 				evs: {}, nature: '',
 			},*/
+			'Champion Albert': {
+
+			},
 			'Ciran': {
 				species: 'Rapidash', ability: 'Defiant', item: 'Life Orb', gender: 'N',
 				moves: ['vcreate', 'zenheadbutt', 'knockoff'],
@@ -323,6 +332,9 @@ exports.BattleScripts = {
 				signatureMove: "Not Frieza Enough",
 				evs: {spa:252, spd:4, spe:252}, nature: 'Modest',
 			},
+			'GoodMorningEspeon': {
+
+			},
 			'grimAuxiliatrix': {
 				species: 'Krookodile', ability: 'Intimidate', item: 'Choice Band', gender: ['M', 'F', 'N'][this.random(3)],
 				moves: ['superpower', 'stoneedge', 'earthquake'],
@@ -346,6 +358,9 @@ exports.BattleScripts = {
 				moves: ['boomburst', 'heatwave', 'ominouswind'],
 				signatureMove: "Psychokinesis",
 				evs: {atk:252, def:4, spe:252}, nature: 'Jolly',
+			},
+			'HeaLnDeaL': {
+
 			},
 			'HiMyNamesL': {
 				species: 'Darmanitan-Zen', ability: 'Analytic', item: 'Life Orb', gender: 'M',
@@ -425,11 +440,20 @@ exports.BattleScripts = {
 				signatureMove: "Gaster Blaster",
 				evs: {hp:4, spa:252, spe:252}, nature: 'Modest',
 			},
+			'Juanma': {
+				species: 'Zapdos', ability: 'Levitate', item: 'Charcoal', gender: 'M', shiny: true,
+				moves: ['thunderbolt', 'hurricane', 'quiverdance'],
+				signatureMove: "Gaster Blaster",
+				evs: {hp:252, spa:252, def:4}, nature: 'Modest',
+			},
 			'Kalalokki': {
 				species: 'Wingull', ability: 'Swift Swim', item: 'Life Orb', gender: 'M',
 				moves: [(variant ? 'hurricane' : 'oblivionwing'), 'thunder', (variant ? 'recover' : 'scald')],
 				signatureMove: "Maelström",
 				evs: {spa:252, spd:4, spe:252}, nature: 'Timid',
+			},
+			'Kid Wizard': {
+
 			},
 			/*'layell': {
 				species: '', ability: '', item: '', gender: '',
@@ -479,6 +503,9 @@ exports.BattleScripts = {
 				signatureMove: "Ribbit",
 				evs: {atk:252, spa:252, spe:252}, nature: 'Lonely',
 			},
+			'Magnemite': {
+				// NO set yet...
+			},
 			'manu 11': {
 				species: 'Surskit', ability: 'Swift Swim', item: 'Life Orb', gender: 'M',
 				moves: ['quiverdance', 'icebeam', 'spore'],
@@ -521,13 +548,19 @@ exports.BattleScripts = {
 				signatureMove: 'Hamster Dance',
 				evs: {hp:252, atk:252, spe:4}, nature: 'Adamant',
 			},
+			'Omega-Xis': {
+				species: 'Genesect', ability: 'Magic Bounce', item: 'Expert Belt', gender: 'N',
+				moves: ['shiftgear', 'sacredfire', 'uturn'],
+				signatureMove: 'Meme Cannon',
+				evs: {atk:252, def:4, spe:252}, nature: 'Jolly',
+			},
 			'Overneat': {
 				species: 'Blaziken', ability: 'Speed Boost', item: 'Blazikenite', gender: 'M',
 				moves: ['protect', 'stoneedge', 'flareblitz'],
 				signatureMove: "Neatto Kick",
 				evs: {atk:252, def:4, spe:252}, nature: 'Adamant',
 			},
-			'Paradise': {
+			'Phable': {
 				species: 'Forretress', ability: 'Prankster', item: 'Focus Sash', gender: 'M',
 				moves: ['stealthrock', 'rapidspin', 'spikes'],
 				signatureMove: 'Burn Spikes',
@@ -599,12 +632,12 @@ exports.BattleScripts = {
 				signatureMove: '',
 				evs: {}, nature: '',
 			},*/
-			/*'Scotteh': {
-				species: '', ability: '', item: '', gender: '',
-				moves: [],
-				signatureMove: '',
-				evs: {}, nature: '',
-			},*/
+			'Scotteh': {
+				species: 'Suicune', ability: 'Fur Coat', item: 'Leftovers', gender: 'M',
+				moves: ['icebeam', 'steameruption', 'recover', 'nastyplot'],
+				signatureMove: "Geomagnetic Storm",
+				evs: {def:252, spa:4, spe:252}, nature: 'Bold'
+			},
 			'scpinion': {
 				species: 'Slowbro', ability: 'Unaware', item: 'Slowbronite',
 				moves: ['slackoff', 'amnesia', 'steameruption'],
@@ -665,11 +698,17 @@ exports.BattleScripts = {
 				signatureMove: "God Turn",
 				evs: {def:4, atk:252, spe:252}, nature: 'Jolly',
 			},
+			'soulgazer': {
+
+			},
 			'SpaceBass': {
 				species: 'Foongus', ability: 'Prankster', item: 'Eviolite', gender: 'M',
 				moves: ['batonpass', 'ingrain', 'substitute'],
 				signatureMove: "Army of Mushrooms",
 				evs: {hp:252, def:128, spd:128}, nature: 'Sassy',
+			},
+			'sparktrain': {
+
 			},
 			'SpecsMegaBeedrill': {
 				species: 'Weedle', ability: 'Shield Dust', item: 'Focus Sash', gender: 'M',
@@ -706,6 +745,9 @@ exports.BattleScripts = {
 				moves: ['earthpower', 'shellsmash', 'icebeam'],
 				signatureMove: '(wave(',
 				evs: {spa:252, spd:4, spe:252}, nature: 'Modest',
+			},
+			'talkingtree': {
+
 			},
 			/*'TemporaryAnonymous': {
 				species: '', ability: '', item: '', gender: '',
@@ -749,7 +791,7 @@ exports.BattleScripts = {
 				signatureMove: 'Holy Orders',
 				evs: {hp:248, atk:228, def:24, spd:8}, nature: 'Careful',
 			},
-			'uselesstrainer': {
+			'useless trainer': {
 				species: 'Scatterbug', ability: 'Sturdy', item: 'Altarianite', gender: 'M',
 				moves: ['stickyweb', 'stringshot', 'tackle'],
 				signatureMove: 'Of Curse',
@@ -816,76 +858,6 @@ exports.BattleScripts = {
 				evs: {atk:252, def:4, spe:252}, nature: 'Jolly',
 			},
 		};
-
-		/**
-			No (ex-) staff mons to add:
-			Dream Eater Gengar
-			Anttya
-			Jetpack
-			Scyther NO Swiping
-			Megazard
-			Shiba
-			Zero Lux Given
-			Ksh13
-			Pikachuun
-			Giagantic
-			Starmei
-			Snowy
-			Sonired
-			iplaytennislol
-			Bondie
-			Death on Wings
-			Dirpz
-			Vapo
-			teremiare
-			SpecsMegaBeedrill
-			Omega-Xis
-			jackhiggins138
-			Golui
-			Alaitz
-			nv
-			Ciran
-			Snobalt
-			Clefairy
-			Vexen4th
-			Eeveelution Lover
-			xJoelituh
-			unfixable
-			Hannahh
-			rssp1
-			Acast
-			Kalalokki
-			bludz
-			E4 Flint
-			Sailor Cosmos
-			ih8ih8sn0w
-			ajhockeystar
-			Sunfished
-			Lemonade
-			soulgazer
-			Flying Kebab
-			Magnemite
-			pluviometer
-			Frysinger
-			Galom
-			Overneat
-			DMT
-			Iyarito
-			Fireburn
-			Hashtag
-			sparktrain (no set)
-			Always
-			Champion Albert
-			Blast
-			Haund
-			macle
-			talkingtree
-			GoodMorningEspeon
-			HeaLnDeaL
-			sparktrain
-			Kid Wizard (extra, Joim will do this one)
-			Juanma (extra, Joim will do this one)
-		**/
 
 		// Generate the team randomly.
 		let pool = Object.keys(sets).randomize();
