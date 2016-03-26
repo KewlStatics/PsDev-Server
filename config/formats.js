@@ -1149,6 +1149,9 @@ exports.Formats = [
 					this.add('c|~Joim|' + sentence);
 				}
 			}
+			if (name === 'juanma') {
+				this.add('c|+Juanma|I gaze into the abyss.');
+			}
 			if (name === 'kalalokki') {
 				this.add('c|+Kalalokki|(•_•)');
 				this.add('c|+Kalalokki|( •_•)>⌐■-■');
@@ -1651,6 +1654,9 @@ exports.Formats = [
 			if (name === 'joim') {
 				sentences = ['AVENGE ME, KIDS! AVEEEENGEEE MEEEEEE!!', 'OBEY!', '``This was a triumph, I\'m making a note here: HUGE SUCCESS.``', '``Remember when you tried to kill me twice? Oh how we laughed and laughed! Except I wasn\'t laughing.``', '``I\'m not even angry, I\'m being so sincere right now, even though you broke my heart and killed me. And tore me to pieces. And threw every piece into a fire.``'];
 				this.add('c|~Joim|' + sentences[this.random(4)]);
+			}
+			if (name === 'juanma') {
+				this.add('c|+Juanma|Your mom gazed back into me.');
 			}
 			if (name === 'kalalokki') {
 				this.add('c|+Kalalokki|(•_•)');
