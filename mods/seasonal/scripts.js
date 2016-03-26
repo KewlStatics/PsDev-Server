@@ -696,7 +696,7 @@ exports.BattleScripts = {
 				evs: {spa:252, spd:4, spe:252}, nature: 'Modest',
 			},
 			'SolarisFox': {
-				species: 'Delphox', ability: 'Klutz', item: ['Choice Scarf', 'Choice Band', 'Choice Specs', 'Assault Vest', 'Lagging Tail', 'Flame Orb', 'Toxic Orb'].randomize()[0], gender: 'M',
+				species: 'Delphox', ability: 'Klutz', item: ['Choice Scarf', 'Choice Band', 'Choice Specs', 'Assault Vest', 'Lagging Tail', 'Flame Orb', 'Toxic Orb'][this.random(7)], gender: 'M',
 				moves: ['trick', 'lavaplume', 'psyshock'],
 				signatureMove: "Wonder Bark",
 				evs: {hp:40, spa:216, spe:252}, ivs: {atk:0}, nature: 'Timid',
