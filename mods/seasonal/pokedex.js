@@ -1,6 +1,17 @@
 ﻿'use strict';
 
 exports.BattlePokedex = {
+	// Eevee General
+	eevee: {
+		inherit: true,
+		baseStats: {hp:80, atk:80, def:75, spa:70, spd:90, spe:80},
+	},
+	// xJoelituh
+	marowak: {
+		inherit: true,
+		baseStats: {hp:60, atk:100, def:110, spa:50, spd:95, spe:75},
+	},
+	// qtrx
 	missingno: {
 		inherit: true,
 		basespecies: "Unown",
