@@ -837,13 +837,13 @@ exports.BattleScripts = {
 				species: 'Meloetta', ability: 'Serene Grace', item: '', gender: 'F',
 				moves: ['lunardance', 'fierydance', 'perishsong', 'petaldance', 'quiverdance'],
 				signatureMove: "Relic Song Dance",
-				evs: {hp:4, atk:252, spa:252}, nature: 'Quiet'
+				evs: {hp:4, atk:252, spa:252}, nature: 'Quiet',
 			},
 			'Zebraiken': {
 				species: 'zebstrika', ability: 'Compound Eyes', item: 'Life Orb', gender: 'M',
 				moves: ['thunder', ['fire blast', 'focusblast', 'highjumpkick', 'meteormash'][this.random(3)], ['blizzard', 'iciclecrash', 'sleeppowder'][this.random(3)]], // why on earth does he learn Meteor Mash?
 				signatureMove: "bzzt",
-				evs: {atk:4, spa:252, spe:252}, nature: 'Hasty'
+				evs: {atk:4, spa:252, spe:252}, nature: 'Hasty',
 			},
 			'Zero Lux Given': {
 				species: 'Luxray', ability: 'Guts', item: 'Flame Orb', gender: 'M',

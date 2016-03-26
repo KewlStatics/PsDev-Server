@@ -469,7 +469,7 @@ exports.BattleMovedex = {
 		basePower: 0,
 		category: "Status",
 		id: "bzzt",
-		isViable: true,	
+		isViable: true,
 		isNonstandard: true,
 		name: "bzzt",
 		pp: 5,
@@ -2918,10 +2918,10 @@ exports.BattleMovedex = {
 		affectedByImmunities: false,
 		onTryHit: function (target, pokemon) {
 			this.attrLastMove('[still]');
-			var move = pokemon.template.speciesid === 'meloettapirouette' ? 'Brick Break' : 'Relic Song';
+			let move = pokemon.template.speciesid === 'meloettapirouette' ? 'Brick Break' : 'Relic Song';
 			this.add('-anim', pokemon, move, target);
 		},
-		onHit: function (target, pokemon) {
+		onHit: function (target, pokemon, move) {
 			if (pokemon.template.speciesid === 'meloettapirouette' && pokemon.formeChange('Meloetta')) {
 				this.add('-formechange', pokemon, 'Meloetta', '[msg]');
 			} else if (pokemon.formeChange('Meloetta-Pirouette')) {
