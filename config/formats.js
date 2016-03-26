@@ -1096,8 +1096,8 @@ exports.Formats = [
 					this.add('c|~Joim|░░░░░█░░░░░░░░░░▐▌ SEND THIS TO 7 PPL OR SKELINTONS WILL EAT YOU');
 				} else {
 					sentences = [
-						"Gen 1 OU is a true skill metagame.", "Finally a good reason to punch a teenager in the face!",
-						"So here we are again, it's always such a pleasure.", "My ex-wife still misses me, BUT HER AIM IS GETTING BETTER!",
+						"Finally a good reason to punch a teenager in the face!", "WUBBA LUBBA DUB DUB",
+						"``So here we are again, it's always such a pleasure.``", "My ex-wife still misses me, BUT HER AIM IS GETTING BETTER!",
 						"A man chooses, a slave obeys.", "You're gonna have a bad time.", "Would you kindly let me win?",
 						"I'm sorry, but I only enjoy vintage memes from the early 00's.",
 					].randomize();

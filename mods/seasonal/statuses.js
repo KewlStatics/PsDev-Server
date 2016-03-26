@@ -1,4 +1,4 @@
-﻿"use strict";
+"use strict";
 
 exports.BattleStatuses = {
 	// Innate abilities
@@ -285,7 +285,6 @@ exports.BattleStatuses = {
 			if (this.pseudoWeather['prodigyweather'] && !(foes.length && foes[0].volatiles['prodigy'])) {
 				this.removePseudoWeather('prodigyweather', pokemon);
 			}
-			
 		},
 	},
 	// qtrx

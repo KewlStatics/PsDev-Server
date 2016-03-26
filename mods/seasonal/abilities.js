@@ -1,4 +1,4 @@
-﻿"use strict";
+"use strict";
 
 exports.BattleAbilities = {
 	// Frysinger
@@ -48,7 +48,7 @@ exports.BattleAbilities = {
 		name: "Holy Hail",
 		rating: 5,
 	},
-	// Sunfished	
+	// Sunfished
 	killjoy: {
 		onStart: function (pokemon) {
 			this.add('-ability', pokemon, 'Killjoy');

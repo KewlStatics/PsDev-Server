@@ -1,4 +1,4 @@
-﻿"use strict";
+"use strict";
 
 exports.BattleMovedex = {
 	// Eevee General
@@ -200,7 +200,6 @@ exports.BattleMovedex = {
 				this.add('message', "On " + target.side.name + "'s bench, " + pokemon.name + " was hit by the wake of the attack!");
 				if (pokemon.hasAbility('Magic Guard')) {
 					this.add('message', "But it resisted the effect using its Magic Guard!");
-
 				} else {
 					pokemon.hp -= Math.floor(pokemon.maxhp / 10);
 					this.add('message', "It took slight collateral damage!");
@@ -456,7 +455,6 @@ exports.BattleMovedex = {
 					}
 				}
 			}
-
 		},
 		self: {
 			volatileStatus: 'mustrecharge',
@@ -945,7 +943,6 @@ exports.BattleMovedex = {
 		onPrepareHit: function (target, source) {
 			if (toId(source.name) === 'feliburn') {
 				this.add('c|@Feliburn|FAALCOOOOOOON');
-				
 			}
 			this.attrLastMove('[still]');
 			this.add('-anim', source, "Dynamic Punch", target);
@@ -1062,7 +1059,7 @@ exports.BattleMovedex = {
 			this.add('-swapboost', source, target, '[from] move: Heart Swap');
 		},
 		self: {
-			volatileStatus: 'destinybond',	
+			volatileStatus: 'destinybond',
 		},
 		secondary: false,
 		target: "normal",
@@ -1862,7 +1859,7 @@ exports.BattleMovedex = {
 			this.add('-anim', source, "Sing", target);
 		},
 		onHit: function (target, pokemon) {
-			var decision = this.willMove(pokemon);
+			let decision = this.willMove(pokemon);
 			if (decision && target.gender === 'F') {
 				this.cancelMove(pokemon);
 				this.queue.unshift(decision);
@@ -2245,7 +2242,7 @@ exports.BattleMovedex = {
 			onHit: function (target, source) {
 				if (this.random(10) < 7) target.trySetStatus('par');
 				if (this.random(10) < 4) target.addVolatile('flinch', source);
-			}
+			},
 		},
 		target: "normal",
 		type: "Fighting",
@@ -2545,7 +2542,7 @@ exports.BattleMovedex = {
 		secondary: {
 			chance: 100,
 			onHit: function (target, source) {
-				var stolen = false;
+				let stolen = false;
 				for (let boost in target.boosts) {
 					if (target.boosts[boost] > 0) {
 						stolen = true;
@@ -2872,7 +2869,6 @@ exports.BattleMovedex = {
 					} else {
 						opponent.setType(mytype, true);
 						this.add('-start', opponent, 'typechange', opponent.types[0]);
-						
 					}
 				}
 			}
@@ -3147,7 +3143,7 @@ exports.BattleMovedex = {
 		typechart: [
 			'Bug', 'Dark', 'Dragon', 'Electric', 'Fairy', 'Fighting',
 			'Fire', 'Flying', 'Ghost', 'Grass', 'Ground', 'Ice',
-			'Normal', 'Poison', 'Psychic', 'Rock', 'Steel', 'Water'
+			'Normal', 'Poison', 'Psychic', 'Rock', 'Steel', 'Water',
 		],
 		onPrepareHit: function (target, source) {
 			this.attrLastMove('[still]');
@@ -3266,7 +3262,7 @@ exports.BattleMovedex = {
 		},
 		secondary: {
 			chance: 100,
-			volatileStatus: 'splatter'
+			volatileStatus: 'splatter',
 		},
 		effect: {
 			duration: 2,
@@ -3330,7 +3326,7 @@ exports.BattleMovedex = {
 		typechart: [
 			'Bug', 'Dark', 'Dragon', 'Electric', 'Fairy', 'Fighting',
 			'Fire', 'Flying', 'Ghost', 'Grass', 'Ground', 'Ice',
-			'Normal', 'Poison', 'Psychic', 'Rock', 'Steel', 'Water'
+			'Normal', 'Poison', 'Psychic', 'Rock', 'Steel', 'Water',
 		],
 		damageCallback: function (pokemon) {
 			return this.modify(pokemon.hp, 0.75);
@@ -3430,7 +3426,7 @@ exports.BattleMovedex = {
 			boosts: {
 				atk: 1,
 				def: 1,
-			}
+			},
 		},
 		secondary: {
 			chance: 100,
