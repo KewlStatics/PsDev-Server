@@ -1178,6 +1178,26 @@ exports.BattleMovedex = {
 		target: "normal",
 		type: "Ghost",
 	},
+	// GoodMorningEspeon
+	fridgeoff: {
+		accuracy: 70,
+		basePower: 120,
+		category: "Special",
+		defensiveCategory: "Physical",
+		id: "fridgeoff",
+		isViable: true,
+		name: "FRIDGE OFF",
+		pp: 10,
+		priority: 0,
+		flags: {protect: 1, mirror: 1},
+		secondary: false,
+		secondary: {
+			chance: 30,
+			volatileStatus: 'confusion',
+		},
+		target: "normal",
+		type: "Ice",
+	},
 	// bumbadadabum
 	freesoftware: {
 		accuracy: 95,
@@ -1270,7 +1290,7 @@ exports.BattleMovedex = {
 		pp: 20,
 		priority: 0,
 		flags: {},
-		onTryHit: function (target, pokemon) {
+		onTryHit: function (target, source) {
 			this.useMove('earthquake', source, target);
 			return null;
 		},
@@ -1970,7 +1990,7 @@ exports.BattleMovedex = {
 	// talkingtree
 	iwantyouback: {
 		accuracy: 100,
-		basePower: 96
+		basePower: 96,
 		category: "Physical",
 		id: "iwantyouback",
 		isViable: true,
@@ -1981,7 +2001,7 @@ exports.BattleMovedex = {
 		flags: {contact: 1, protect: 1, mirror: 1, heal: 1},
 		onHit: function (pokemon) {
 			pokemon.side.addSideCondition('stealthrock');
-		}
+		},
 		drain: [3, 4],
 		secondary: false,
 		target: "normal",
@@ -2574,7 +2594,7 @@ exports.BattleMovedex = {
 		target: 'normal',
 		type: "Ice",
 	},
-	// Andy
+	// Andy (AndrewGoncel)
 	pilfer: {
 		accuracy: true,
 		basePower: 70,

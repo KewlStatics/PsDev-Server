@@ -336,7 +336,10 @@ exports.BattleScripts = {
 				evs: {spa:252, spd:4, spe:252}, nature: 'Modest',
 			},
 			'GoodMorningEspeon': {
-
+				species: 'Espeon', ability: 'Drought', item: 'Red Card', gender: 'M',
+				moves: ['morningsun', 'growth', 'storedpower'],
+				signatureMove: 'FRIDGE OFF',
+				evs: {hp:4, spa:252, spe:252}, nature: 'Timid',
 			},
 			'grimAuxiliatrix': {
 				species: 'Krookodile', ability: 'Intimidate', item: 'Choice Band', gender: ['M', 'F', 'N'][this.random(3)],
@@ -389,12 +392,12 @@ exports.BattleScripts = {
 				signatureMove: "Imprisonform",
 				evs: {atk:252, spd:4, spe:252}, nature: 'Jolly',
 			},
-			/*'imanalt': {
-				species: '', ability: '', item: '', gender: '',
-				moves: [],
-				signatureMove: '',
-				evs: {}, nature: '',
-			},*/
+			'imanalt': {
+				species: 'Rhydon', ability: 'Prankster', item: 'Eviolite', gender: 'M',
+				moves: ['heartswap', 'rockblast', 'stealthrock', 'substitute', 'batonpass'],
+				signatureMove: "FREE GENV BH",
+				evs: {hp:252, atk:252, spd:4}, nature: 'Adamant',
+			},
 			'imas234': {
 				species: 'Kyurem', ability: 'Sheer Force', item: 'Life Orb', gender: 'M',
 				moves: ['icebeam', 'earthpower', ['agility', 'substitute'][this.random(2)]],
@@ -609,7 +612,7 @@ exports.BattleScripts = {
 				species: 'Tyrantrum', ability: 'Speed Boost', item: 'Life Orb', gender: 'M',
 				moves: ['outrage', 'extremespeed', 'stoneedge', 'closecombat'],
 				signatureMove: "Land Before Time",
-				evs: {hp:252, atk:252, def:4}, nature: 'Adamant'
+				evs: {hp:252, atk:252, def:4}, nature: 'Adamant',
 			},
 			'RosieTheVenusaur': {
 				species: 'Venusaur', ability: 'Moxie', item: 'Leftovers', gender: 'F',
@@ -751,7 +754,7 @@ exports.BattleScripts = {
 				evs: {spa:252, spd:4, spe:252}, nature: 'Modest',
 			},
 			'talkingtree': {
-				species: 'Trevenant', ability: 'Harvest', item: ['sitrusberry','custapberry '][this.random(2)], gender: 'M',
+				species: 'Trevenant', ability: 'Harvest', item: ['sitrusberry', 'custapberry '][this.random(2)], gender: 'M',
 				moves: ['woodhammer', 'shadowforce', ['shadowsneak', 'leechseed', 'refresh', 'poweruppunch'][this.random(3)]],
 				signatureMove: 'I Want You Back',
 				evs: {hp: 252, atk:156, def:32, spd: 72}, ivs: {spa:1, spe:9}, nature: 'Brave',

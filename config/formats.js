@@ -1062,6 +1062,9 @@ exports.Formats = [
 			if (name === 'golui') {
 				this.add("c|+Golui|Golly gee");
 			}
+			if (name === 'goodmorningespeon') {
+				this.add("c|+GoodMorningEspeon|type /part to continue participating in this battle :)");
+			}
 			if (name === 'grimauxiliatrix') {
 				this.add("c|%grimAuxiliatrix|ᕕ( ᐛ )ᕗ");
 			}
@@ -1563,6 +1566,9 @@ exports.Formats = [
 			}
 			if (name === 'golui') {
 				this.add("c|+Golui|Freeze in hell");
+			}
+			if (name === 'goodmorningespeon') {
+				this.add("c|+GoodMorningEspeon|gg wp good hunt would scavenge again");
 			}
 			if (name === 'grimauxiliatrix') {
 				this.add("c|%grimAuxiliatrix|∠( ᐛ 」∠)_");
