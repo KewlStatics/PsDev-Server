@@ -872,11 +872,12 @@ exports.BattleScripts = {
 		};
 
 		// Generate the team randomly.
-		let pool = Object.keys(sets).randomize();
+		let pool = Object.keys(sets);
 		for (let i = 0; i < 6; i++) {
-			let set = sets[pool[i]];
+			let name = this.sampleNoReplace(pool);
+			let set = sets[name];
 			set.level = 100;
-			set.name = pool[i];
+			set.name = name;
 			if (!set.ivs) {
 				set.ivs = {hp:31, atk:31, def:31, spa:31, spd:31, spe:31};
 			} else {
@@ -886,7 +887,7 @@ exports.BattleScripts = {
 			}
 			// Assuming the hardcoded set evs are all legal.
 			if (!set.evs) set.evs = {hp:84, atk:84, def:84, spa:84, spd:84, spe:84};
-			set.moves = set.moves.sample(3).concat(set.signatureMove);
+			set.moves = [this.sampleNoReplace(set.moves), this.sampleNoReplace(set.moves), this.sampleNoReplace(set.moves)].concat(set.signatureMove);
 			team.push(set);
 		}
 

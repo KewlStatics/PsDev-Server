@@ -941,8 +941,8 @@ exports.Formats = [
 				this.add('c|@Beowulf|Grovel peasant, you are in the presence of the RNGesus');
 			}
 			if (name === 'biggie') {
-				sentences = ["Now I'm in the limelight cause I rhyme tight", "HAPPY FEET! WOMBO COMBO!", "You finna mess around and get dunked on"].randomize();
-				this.add('c|@biggie|' + sentences[0]);
+				sentences = ["Now I'm in the limelight cause I rhyme tight", "HAPPY FEET! WOMBO COMBO!", "You finna mess around and get dunked on"];
+				this.add('c|@biggie|' + sentences[this.random(3)]);
 			}
 			if (name === 'blastchance') {
 				this.add("c|+Blast Chance|MAN BALAMAR");
@@ -1144,8 +1144,8 @@ exports.Formats = [
 						"``So here we are again, it's always such a pleasure.``", "My ex-wife still misses me, BUT HER AIM IS GETTING BETTER!",
 						"A man chooses, a slave obeys.", "You're gonna have a bad time.", "Would you kindly let me win?",
 						"I'm sorry, but I only enjoy vintage memes from the early 00's.",
-					].randomize();
-					sentence = sentences[0];
+					];
+					sentence = sentences[this.random(8)];
 					this.add('c|~Joim|' + sentence);
 				}
 			}
@@ -1177,8 +1177,8 @@ exports.Formats = [
 				this.add('c|%LJDarkrai|Powerfulll');
 			}
 			if (name === 'lyto') {
-				sentences = ["This is divine retribution!", "I will handle this myself!", "Let battle commence!"].randomize();
-				this.add('c|@Lyto|' + sentences[0]);
+				sentences = ["This is divine retribution!", "I will handle this myself!", "Let battle commence!"];
+				this.add('c|@Lyto|' + sentences[this.random(3)]);
 			}
 			if (name === 'm00ns') {
 				this.add('c|%m00ns|oh');
