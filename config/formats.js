@@ -1002,7 +1002,18 @@ exports.Formats = [
 				this.add('c|~Eevee General|' + sentences[this.random(2)]);
 			}
 			if (name === 'eyan') {
-				// TODO
+				this.add('c|@Eyan|░░░░░░░░▄▄▄▀▀▀▄▄███▄░░░░░░░░░░░░░░░░░');
+				this.add('c|@Eyan|░░░░░▄▀▀░░░░░░░▐░▀██▌░░░░░░░░░░░░░░░░');
+				this.add('c|@Eyan|░░░▄▀░░░░▄▄███░▌▀▀░▀█░░░░░░░░░░░░░░░░');
+				this.add('c|@Eyan|░░▄█░░▄▀▀▒▒▒▒▒▄▐░░░░█▌░░░░░░░░░░░░░░░ ');
+				this.add('c|@Eyan|░▐█▀▄▀▄▄▄▄▀▀▀▀▌░░░░░▐█▄░░░░░░░░░░░░░░');
+				this.add('c|@Eyan|░▌▄▄▀▀░░░░░░░░▌░░░░▄███████▄░░░░░░░░░');
+				this.add('c|@Eyan|░░░░░░░░░░░░░▐░░░░▐███████████▄░░░░░░');
+				this.add('c|@Eyan|░░░░░le░░░░░░░▐░░░░▐█████████████▄░░░');
+				this.add('c|@Eyan|░░░░toucan░░░░░░▀▄░░░▐██████████████▄');
+				this.add('c|@Eyan|░░░░░░has░░░░░░░░▀▄▄████████████████▄');
+				this.add('c|@Eyan|░░░░░arrived░░░░░░░░░░░░█▀██████░░░░░');
+				this.add('c|@Eyan|WELCOME TO COMPETITIVE TOUCANNING');
 			}
 			if (name === 'feliburn') {
 				this.add('c|@Feliburn|you don\'t go hand to hand with a fighter noob');
@@ -1502,6 +1513,9 @@ exports.Formats = [
 				sentences = ["Electrolyte is in charge", "/me secretly cries", "inap!"];
 				this.add("c|~Eevee General|bye room");
 				this.add("c|!Eevee General|" + sentences[this.random(3)]);
+			}
+			if (name === 'eyan') {
+				this.add("c|@Eyan|;-;7");
 			}
 			if (name === 'feliburn') {
 				this.add('c|@Feliburn|gg la verga de tu madre');

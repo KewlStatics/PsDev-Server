@@ -167,7 +167,7 @@ exports.BattleScripts = {
 				signatureMove: "Free Software",
 				evs: {hp:252, spa:252, spd:4}, nature: 'Modest',
 			},
-			'Bummer': {
+			'Bummer	': {
 				species: 'Quagsire', ability: 'Trace', item: 'Leftovers', gender: 'M',
 				moves: ['earthquake', 'icebeam', 'recover'],
 				signatureMove: "Speedpaint",
@@ -251,12 +251,12 @@ exports.BattleScripts = {
 				signatureMove: "Admin Things",
 				evs: {hp:252, def:4, spe: 252}, nature: 'Jolly',
 			},
-			/*'Eyan': {
-				species: '', ability: '', item: '', gender: '',
-				moves: [],
-				signatureMove: '',
-				evs: {}, nature: '',
-			},*/
+			'Eyan': {
+				species: 'Keldeo', ability: 'Serene Grace', item: 'Life Orb', gender: 'M',
+				moves: ['steameruption', ['icebeam', 'moonblast'][this.random(2)], ['seedflare', 'discharge'][this.random(2)]],
+				signatureMove: 'Attack of the TOUCAN',
+				evs: {spa:252, spd:4, spe:252}, nature: 'Timid',
+			},
 			'Feliburn': {
 				species: 'Infernape', ability: 'Adaptability', item: 'Expert Belt', gender: 'M',
 				moves: ['highjumpkick', 'taunt', 'machpunch'],
@@ -455,9 +455,9 @@ exports.BattleScripts = {
 				signatureMove: "Maelström",
 				evs: {spa:252, spd:4, spe:252}, nature: 'Timid',
 			},
-			'Kid Wizard': {
+			/*'Kid Wizard': {
 
-			},
+			},*/
 			'layell': {
 				species: 'Sneasel', ability: 'Technician', item: "King's Rock", gender: 'M',
 				moves: ['iceshard', 'iciclespear', ['machpunch', 'pursuit', 'knockoff'][this.random(3)]],

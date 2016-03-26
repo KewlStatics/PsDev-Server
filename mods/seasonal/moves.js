@@ -84,30 +84,6 @@ exports.BattleMovedex = {
 		target: "self",
 		type: "Normal",
 	},
-	// spacebass
-	armyofmushrooms: {
-		accuracy: true,
-		basePower: 0,
-		categoty: "Status",
-		id: "armyofmushrooms",
-		isNonstandard: true,
-		isViable: true,
-		name: "Army of Mushrooms",
-		pp: 10,
-		priority: 1,
-		flags: {snatch: 1},
-		beforeTurnCallback: function (pokemon) {
-			this.boost({def: 1, spd: 1}, pokemon, pokemon, 'mushroom army');
-		},
-		onHit: function (pokemon) {
-			this.useMove("sleeppowder", pokemon);
-			this.useMove("leechseed", pokemon);
-			this.useMove("powder", pokemon);
-		},
-		secondary: false,
-		target: "self",
-		type: "Grass",
-	},
 	// awu
 	ancestorsrage: {
 		accuracy: 100,
@@ -131,6 +107,52 @@ exports.BattleMovedex = {
 		},
 		target: "normal",
 		type: "Fairy",
+	},
+	// spacebass
+	armyofmushrooms: {
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		id: "armyofmushrooms",
+		isNonstandard: true,
+		isViable: true,
+		name: "Army of Mushrooms",
+		pp: 10,
+		priority: 1,
+		flags: {snatch: 1},
+		beforeTurnCallback: function (pokemon) {
+			this.boost({def: 1, spd: 1}, pokemon, pokemon, 'mushroom army');
+		},
+		onHit: function (pokemon) {
+			this.useMove("sleeppowder", pokemon);
+			this.useMove("leechseed", pokemon);
+			this.useMove("powder", pokemon);
+		},
+		secondary: false,
+		target: "self",
+		type: "Grass",
+	},
+	attackofthetoucan: {
+		accuracy: 100,
+		basePower: 85,
+		basePowerCallback: function (pokemon, target) {
+			if (target.status) return 170;
+			return 85;
+		},
+		category: "Special",
+		id: "attackofthetoucan",
+		isNonstandard: true,
+		isViable: true,
+		name: "Attack of the TOUCAN",
+		pp: 10,
+		priority: 1,
+		flags: {mirror: 1},
+		onHit: function (target, source) {
+			source.cureStatus();
+		},
+		secondary: false,
+		target: "normal",
+		type: "Fighting",
 	},
 	// boTTT
 	automoderation: {
