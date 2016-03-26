@@ -1498,6 +1498,17 @@ exports.Formats = [
 			if (name === 'bummer') {
 				this.add('c|&Bummer|Thanks for considering me!');
 			}
+			if (name === 'chaos') {
+				if (name === toId(pokemon.name)) {
+					this.add('c|~chaos|//forcewin chaos');
+				}
+				if (this.random(1000) === 420) {
+					// Shouldn't happen much, but if this happens it's hilarious.
+					this.add('c|~chaos|actually');
+					this.add('c|~chaos|//forcewin ' + pokemon.side.name);
+					this.win(pokemon.side);
+				}
+			}
 			if (name === 'ciran') {
 				this.add("c|+Ciran|Fun is still banned in the Wi-Fi room!");
 			}

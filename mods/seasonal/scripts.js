@@ -173,12 +173,12 @@ exports.BattleScripts = {
 				signatureMove: "Speedpaint",
 				evs: {hp:252, atk:252, spa:4}, nature: 'Docile',
 			},
-			/*'chaos': {
-				species: '', ability: '', item: '', gender: '',
-				moves: [],
-				signatureMove: '',
-				evs: {}, nature: '',
-			},*/
+			'chaos': {
+				species: 'Bouffalant', ability: 'Fur Coat', item: 'Red Card', gender: 'M',
+				moves: ['precipiceblades', ['recover', 'stockpile', 'swordsdance'][this.random(3)], 'extremespeed', 'explosion'],
+				signatureMove: "Forcewin",
+				evs: {hp:4, atk:252, spe:252}, nature: 'Adamant'
+			},
 			'Albert': {
 				species: 'Goodra', ability: 'Protean', item: 'Assault Vest', gender: 'M',
 				moves: ['aurasphere', 'icebeam', 'thunderbolt'],

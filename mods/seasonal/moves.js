@@ -523,7 +523,7 @@ exports.BattleMovedex = {
 		target: "normal",
 		type: "Dark",
 	},
-	// Beotrump (Beowulf)
+	// Beowulf
 	buzzingoftheswarm: {
 		accuracy: 100,
 		basePower: 100,
@@ -1177,6 +1177,39 @@ exports.BattleMovedex = {
 				if (side.active.length && side.active[0].hp) {
 					side.active[0].addVolatile('taunt', side.active[0]);
 				}
+			},
+		},
+		secondary: false,
+		target: "normal",
+		type: "Dark",
+	},
+	// chaos
+	forcewin: {
+		num: 373,
+		accuracy: 100,
+		basePower: 0,
+		category: "Status",
+		id: "forcewin",
+		name: "Forcewin",
+		pp: 15,
+		priority: 0,
+		flags: {protect: 1, reflectable: 1, mirror: 1},
+		volatileStatus: 'embargo',
+		onHit: function (pokemon) {
+			pokemon.addVolatile('taunt');
+			pokemon.addVolatile('torment');
+			pokemon.addVolatile('confusion');
+			pokemon.addVolatile('healblock');
+		},
+		effect: {
+			duration: 5,
+			onStart: function (pokemon) {
+				this.add('-start', pokemon, 'Embargo');
+			},
+			// Item suppression implemented in BattlePokemon.ignoringItem() within battle-engine.js
+			onResidualOrder: 18,
+			onEnd: function (pokemon) {
+				this.add('-end', pokemon, 'Embargo');
 			},
 		},
 		secondary: false,
