@@ -612,6 +612,35 @@ exports.BattleMovedex = {
 		target: "self",
 		type: "Fire",
 	},
+	// Sailor Cosmos
+	cosmosray: {
+		accuracy: 100,
+		basePower: 90,
+		category: "Special",
+		defensiveCategory: "Physical",
+		id: "cosmosray",
+		name: "Cosmos Ray",
+		pp: 20,
+		priority: 0,
+		flags: {protect: 1, mirror: 1},
+		onPrepareHit: function (target, source) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, 'Cosmic Power', source);
+			this.add('-anim', source, 'Freeze Shock', target);
+		},
+		secondary: {
+			chance: 80,
+			onHit: function (target, source) {
+				if (this.random(2) === 1) {
+					target.trySetStatus('par', source);
+				} else {
+					target.addVolatile('confusion', source);
+				}
+			},
+		},
+		target: "normal",
+		type: "Water",
+	},
 	// Vexen IV
 	debilitate: {
 		accuracy: true,
@@ -2751,6 +2780,23 @@ exports.BattleMovedex = {
 		target: "normal",
 		type: "Normal",
 	},
+	// Innovamania
+	ragequit: {
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		id: "ragequit",
+		name: "Rage Quit",
+		pp: 40,
+		priority: 0,
+		flags: {gravity: 1},
+		onHit: function (pokemon) {
+			pokemon.faint();
+		},
+		secondary: false,
+		target: "self",
+		type: "Normal",
+	},
 	// DMT
 	reallybigswordsdance: {
 		accuracy: true,
@@ -2892,7 +2938,8 @@ exports.BattleMovedex = {
 			this.attrLastMove('[still]');
 			this.add('-anim', source, "Megahorn", target);
 			this.add('-anim', target, "Explosion", source);
-			this.add('-formechange', target, target.template.species, ''); //resets sprite after explosion
+			// Resets sprite after explosion
+			this.add('-formechange', target, target.template.species, '');
 		},
 		onEffectiveness: function (typeMod, type, move) {
 			return typeMod + this.getEffectiveness('Steel', type);
@@ -3185,35 +3232,6 @@ exports.BattleMovedex = {
 		target: "normal",
 		type: "Normal",
 	},
-	// Sailor Cosmos
-	cosmosray: {
-		accuracy: 100,
-		basePower: 90,
-		category: "Special",
-		defensiveCategory: "Physical",
-		id: "cosmosray",
-		name: "Cosmos Ray",
-		pp: 20,
-		priority: 0,
-		flags: {protect: 1, mirror: 1},
-		onPrepareHit: function (target, source) {
-			this.attrLastMove('[still]');
-			this.add('-anim', source, 'Cosmic Power', source);
-			this.add('-anim', source, 'Freeze Shock', target);
-		},
-		secondary: {
-			chance: 80,
-			onHit: function (target, source) {
-				if (this.random(2) === 1) {
-					target.trySetStatus('par', source);
-				} else {
-					target.addVolatile('confusion', source);
-				}
-			},
-		},
-		target: "normal",
-		type: "Water",
-	},
 	// Ascriptmaster
 	spectrumtripletbeam: {
 		accuracy: 100,
@@ -3368,6 +3386,36 @@ exports.BattleMovedex = {
 		},
 		target: "normal",
 		type: "Bug",
+	},
+	spoopyedgecut: {
+		accuracy: 95,
+		basePower: 75,
+		category: "Physical",
+		id: "spoopyedgecut",
+		isViable: true,
+		isNonstandard: true,
+		name: "SPOOPY EDGE CUT",
+		pp: 30,
+		priority: 1,
+		flags: {contact: 1, protect: 1, mirror: 1},
+		onTryHit: function (target, source) {
+			this.add('-message', '*@Temporaryanonymous teleports behind you*');
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Shadow Force", target);
+		};
+		onHit: function (pokemon) {
+			if (pokemon.hp <= 0 || pokemon.fainted) {
+				this.add('c|@Temporaryanonymous|YOU ARE ALREADY DEAD *unsheathes glorious cursed nippon steel katana and cuts you in half with it* heh......nothing personnel.........kid......................');
+			}
+		};
+		onMoveFail: function (target, source, move) {
+			this.add('-message', '*@Temporaryanonymous teleports behind you*');
+			this.add('c|@Temporaryanonymous|YOU ARE ALREADY DEAD *misses* Tch......not bad.........kid......................');
+		};
+		secondary: false,
+		self: {boosts: {accuracy: -1}},
+		target: "normal",
+		type: "Ghost",
 	},
 	// Zodiax
 	standingfull: {

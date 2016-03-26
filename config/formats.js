@@ -616,6 +616,8 @@ exports.Formats = [
 		onBegin: function () {
 			this.add("raw|Super Staff Bros. <b>MELEEEEEEEEEEEEEE</b>!!");
 			this.add('message', "SURVIVAL! GET READY FOR THE NEXT BATTLE!");
+			// Delete this next thing for main when done.
+			this.add("raw|<font color='red'><b>PLEASE REPORT BUGS, MISTAKES, CHANGES, AND ANYTHING ON STAFF FORUMS ON SEASONAL THREAD.</b></font>");
 
 			let globalRenamedMoves = {};
 			let customRenamedMoves = {};
@@ -783,6 +785,9 @@ exports.Formats = [
 			}
 			if (name === 'haund') {
 				pokemon.addVolatile('prodigy', pokemon);
+			}
+			if (name === 'innovamania' && !pokemon.illusion) {
+				this.boost({atk:6, def:6, spa:6, spd:6, spe:6, accuracy:6}, pokemon, pokemon, 'divine grace');
 			}
 			if (name === 'lemonade') {
 				pokemon.addVolatile('adaptabilityinnate', pokemon);
@@ -1548,6 +1553,10 @@ exports.Formats = [
 			if (name === 'imas234') {
 				this.add('c|@imas234|bg no re');
 			}
+			if (name === 'innovamania') {
+				sentences = ['Did you rage quit?', 'How\'d you lose with this set?'];
+				this.add('c|@innovamania|' + sentences[this.random(2)]);
+			}
 			if (name === 'iplaytennislol') {
 				this.add('c|%iplaytennislol|/me des');
 			}
@@ -1698,6 +1707,10 @@ exports.Formats = [
 			}
 			if (name === 'sweep') {
 				this.add('c|&Sweep|You offended :C');
+			}
+			if (name === 'temporaryanonymous') {
+				sentences = [';_;7', 'This kills the tempo', 'I\'m kill. rip.', 'S-senpai! Y-you\'re being too rough! >.<;;;;;;;;;;;;;;;;;', 'A-at least you checked my dubs right?', 'B-but that\'s impossible! This can\'t be! AAAAAAAAAAAAAAAAAAAAAAAAAAAAAHHHHHHHHHHHHHHHHGH'];
+				this.add('c|@Temporaryanonymous|' + sentences[this.random(6)]);
 			}
 			if (name === 'teremiare') {
 				this.add('c|%Teremiare|sigh...');

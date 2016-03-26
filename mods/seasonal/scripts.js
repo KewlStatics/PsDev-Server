@@ -410,12 +410,12 @@ exports.BattleScripts = {
 				signatureMove: 'Tomala wey',
 				evs: {spa:200, spd:80, spe:228}, nature: 'Timid',
 			},
-			/*'innovamania': {
+			'innovamania': {
 				species: '', ability: '', item: '', gender: '',
 				moves: [],
 				signatureMove: '',
 				evs: {}, nature: '',
-			},*/
+			},
 			'Jasmine': {
 				species: 'Mew', ability: 'Speed Boost', item: 'Focus Sash', gender: 'F',
 				moves: ['taunt', 'explosion', 'protect'],
@@ -749,12 +749,12 @@ exports.BattleScripts = {
 			'talkingtree': {
 
 			},
-			/*'TemporaryAnonymous': {
-				species: '', ability: '', item: '', gender: '',
-				moves: [],
-				signatureMove: '',
-				evs: {}, nature: '',
-			},*/
+			'TemporaryAnonymous': {
+				species: 'Doublade', ability: 'Tough Claws', item: 'Eviolite', gender: 'M',
+				moves: ['swordsdance', ['xscissor', 'sacredsword', 'knockoff'][this.random(3)], 'geargrind'],
+				signatureMove: "SPOOPY EDGE CUT",
+				evs: {hp:252, atk:252, def:4}, nature: 'Adamant'
+			},
 			'Teremiare': {
 				species: 'Zorua', ability: 'Multiscale', item: 'Red Card', gender: ['M', 'F', 'N'][this.random(3)], shiny: true,
 				moves: ['darkpulse', 'foulplay', ['batonpass', 'partingshot'][this.random(2)]],
