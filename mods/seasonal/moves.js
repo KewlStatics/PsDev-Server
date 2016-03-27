@@ -60,30 +60,6 @@ exports.BattleMovedex = {
 		target: "normal",
 		type: "Dragon",
 	},
-	// Acast
-	amibulkyyet: {
-		accuracy: true,
-		basePower: 0,
-		category: "Status",
-		id: "amibulkyyet",
-		isNonstandard: true,
-		isViable: true,
-		name: "Am I Bulky Yet?",
-		pp: 40,
-		priority: 0,
-		self: {volatileStatus: 'magiccoat'},
-		flags: {},
-		onPrepareHit: function () {
-			this.attrLastMove('[still]');
-		},
-		onHit: function (target, source) {
-			source.side.addSideCondition('reflect', source);
-			source.side.addSideCondition('lightscreen', source);
-		},
-		secondary: false,
-		target: "self",
-		type: "Normal",
-	},
 	// awu
 	ancestorsrage: {
 		accuracy: 100,
@@ -520,16 +496,15 @@ exports.BattleMovedex = {
 	},
 	// grimAuxiliatrix
 	buzzaxerampage: {
-		accuracy: 90,
-		basePower: 200,
+		accuracy: 100,
+		basePower: 120,
 		category: "Physical",
 		id: "buzzaxerampage",
 		isViable: true,
-		isNonstandard: true,
 		name: "Buzz Axe Rampage",
-		pp: 5,
+		pp: 15,
 		priority: 0,
-		flags: {contact: 1, recharge: 1, protect: 1, mirror: 1},
+		flags: {contact: 1, protect: 1, mirror: 1},
 		onPrepareHit: function (target, source) {
 			this.attrLastMove('[still]');
 			this.add('-anim', source, "Night Slash", target);
@@ -545,9 +520,7 @@ exports.BattleMovedex = {
 				}
 			}
 		},
-		self: {
-			volatileStatus: 'mustrecharge',
-		},
+		recoil: [33, 100],
 		secondary: false,
 		target: "normal",
 		type: "Dark",
@@ -1871,9 +1844,9 @@ exports.BattleMovedex = {
 		flags: {protect: 1, reflectable: 1, mirror: 1, sound: 1, authentic: 1},
 		selfSwitch: true,
 		onHit: function (pokemon) {
-			let hazards = ['stealthrock', 'spikes', 'toxicspikes', 'stickyweb'][this.random(4)];
-			pokemon.side.addSideCondition(hazards[0]);
-			pokemon.side.addSideCondition(hazards[1]);
+			let hazards = ['stealthrock', 'spikes', 'toxicspikes', 'stickyweb'];
+			pokemon.side.addSideCondition(hazards.splice(this.random(hazards.length), 1)[0]);
+			pokemon.side.addSideCondition(hazards.splice(this.random(hazards.length), 1)[0]);
 		},
 		secondary: false,
 		target: "normal",
@@ -2575,6 +2548,32 @@ exports.BattleMovedex = {
 		},
 		target: "normal",
 		type: "Fighting",
+	},
+	// Acast
+	needsmorescreens: {
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		id: "needsmorescreens",
+		isNonstandard: true,
+		isViable: true,
+		name: "Needs More Screens",
+		pp: 40,
+		priority: 0,
+		self: {volatileStatus: 'magiccoat'},
+		flags: {},
+		onPrepareHit: function () {
+			this.attrLastMove('[still]');
+		},
+		onHit: function (target, source) {
+			source.side.addSideCondition('reflect', source);
+			source.side.addSideCondition('lightscreen', source);
+			source.side.addSideCondition('luckychant', source);
+			source.side.addSideCondition('safeguard', source);
+		},
+		secondary: false,
+		target: "self",
+		type: "Normal",
 	},
 	// Level 51
 	nextlevelstrats: {
@@ -3677,7 +3676,7 @@ exports.BattleMovedex = {
 	solarstorm: {
 		accuracy: 100,
 		basePower: 120,
-		category: "Physical",
+		category: "Special",
 		id: "solarstorm",
 		isViable: true,
 		name: "Solar Storm",

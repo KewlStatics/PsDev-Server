@@ -6,13 +6,13 @@ exports.BattleScripts = {
 		let variant = (this.random(2) === 1);
 		let sets = {
 			'Acast': {
-				species: 'Gourgeist-Super', ability: 'Prankster', item: 'Light Clay', gender: 'Male',
-				moves: ['willowisp', 'recover', 'seedbomb'],
-				signatureMove: 'Am I Bulky Yet?',
+				species: 'Gourgeist-Super', ability: 'Prankster', item: 'Light Clay', gender: 'M',
+				moves: ['willowisp', 'recover', ['seedbomb', 'shadowclaw'][this.random(2)]],
+				signatureMove: 'Needs More Screens',
 				evs: {hp:248, def:8, spd:252}, nature: 'Careful',
 			},
 			'Ace': {
-				species: 'Salamence', ability: 'Tinted Lens', item: 'Salamencite', gender: 'Male',
+				species: 'Salamence', ability: 'Tinted Lens', item: 'Salamencite', gender: 'M',
 				moves: ['dragonascent', 'closecombat', 'outrage'],
 				signatureMove: 'Big Narstie',
 				evs: {hp:80, atk:252, spe:176}, nature: 'Adamant',
@@ -372,8 +372,8 @@ exports.BattleScripts = {
 				evs: {hp:252, def:4, spa:252}, ivs: {atk:0}, nature: 'Modest',
 			},
 			'HiMyNamesL': {
-				species: 'Darmanitan-Zen', ability: 'Analytic', item: 'Life Orb', gender: 'M',
-				moves: ['voltswitch', 'flamethrower', 'psychic'],
+				species: 'Darmanitan-Zen', ability: 'Chlorophyll', item: 'Life Orb', gender: 'M',
+				moves: ['voltswitch', 'solarbeam', 'psychic'],
 				signatureMove: 'Solar Storm',
 				evs: {spa:252, spd:4, spe:252}, ivs: {atk:0}, nature: 'Timid',
 			},
