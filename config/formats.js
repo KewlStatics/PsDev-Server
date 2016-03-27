@@ -880,7 +880,7 @@ exports.Formats = [
 			let sentence = '';
 
 			if (name === 'acast') {
-				this.add('c|%Acast|Love this pumpkin <3');
+				this.add('c|%Acast|__A wild Castform appeared!__');
 			}
 			if (name === 'ace') {
 				this.add('c|@Ace|Lmaonade');
@@ -890,9 +890,6 @@ exports.Formats = [
 			}
 			if (name === 'ajhockeystar') {
 				this.add('c|+ajhockeystar|Here comes the greatest hockey player alive!');
-			}
-			if (name === 'alaitz') {
-				this.add('c|%Alaitz|Bye Cutie :*');
 			}
 			if (name === 'albacore') {
 				this.add('c|@Albacore|do I have to?');
@@ -1068,11 +1065,14 @@ exports.Formats = [
 			if (name === 'grimauxiliatrix') {
 				this.add("c|%grimAuxiliatrix|ᕕ( ᐛ )ᕗ");
 			}
-			if (name === 'hashtag') {
-				this.add("c|#Hashtag|hey opponent, you get 5 hashtag points if you forfeit right now ;}");
+			if (name === 'halite') {
+				this.add('c|+Hannahh|You’re gonna get haxxed kid :^)');
 			}
 			if (name === 'hannah') {
 				this.add('c|+Hannahh|♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥');
+			}
+			if (name === 'hashtag') {
+				this.add("c|#Hashtag|hey opponent, you get 5 hashtag points if you forfeit right now ;}");
 			}
 			if (name === 'haund') {
 				this.add('c|%Haund|le balanced normal flying bird has arrived');
@@ -1295,7 +1295,9 @@ exports.Formats = [
 				this.add('c|+Sonired|~');
 			}
 			if (name === 'spacebass') {
-				this.add('c|%SpaceBass|The most interesting ball of toxins you\'ll ever have to meet');
+				this.add('c|%SpaceBass|He aims his good ear best he can towards conversation and sometimes leans in awkward toward your seat');
+				this.add('c|%SpaceBass|And if by chance one feels their space too invaded, then try your best to calmly be discreet');
+				this.add('c|%SpaceBass|Because this septic breathed man that stands before you is a champion from days gone by');
 			}
 			if (name === 'sparktrain') {
 				this.add('c|+sparktrain|hi');
@@ -1416,7 +1418,7 @@ exports.Formats = [
 			}
 			// Actual faint phrases
 			if (name === 'acast') {
-				this.add('c|%Acast|Not bulky enough ;-;');
+				this.add('c|%Acast|If only I had more screens...');
 			}
 			if (name === 'ace') {
 				this.add('c|@Ace|inhale all of this');
@@ -1426,9 +1428,6 @@ exports.Formats = [
 			}
 			if (name === 'ajhockeystar') {
 				this.add('c|+ajhockeystar|You may have beaten me in battle, but never in hockey.');
-			}
-			if (name === 'alaitz') {
-				this.add('c|%Alaitz|You won\'t be kissed again! ;;');
 			}
 			if (name === 'albacore') {
 				this.add('c|@Albacore|Joke\'s on you, I was just testing!');
@@ -1602,11 +1601,14 @@ exports.Formats = [
 			if (name === 'grimauxiliatrix') {
 				this.add("c|%grimAuxiliatrix|∠( ᐛ 」∠)_");
 			}
-			if (name === 'hashtag') {
-				this.add("c|#Hashtag|fukn immigrants,,, slash me spits");
+			if (name === 'halite') {
+				this.add('c|+Hannahh|Today was your lucky day...');
 			}
 			if (name === 'hannah') {
 				this.add('c|+Hannahh|Nooo! ;~;');
+			}
+			if (name === 'hashtag') {
+				this.add("c|#Hashtag|fukn immigrants,,, slash me spits");
 			}
 			if (name === 'haund') {
 				this.add('c|%Haund|omg noob team report');
@@ -1794,7 +1796,9 @@ exports.Formats = [
 				this.add('c|+Snowy|i never understood this i always hear them be like "yo whats up monica" "u tryna blaze monica"');
 			}
 			if (name === 'spacebass') {
-				this.add('c|%SpaceBass|Of whales and woe.');
+				this.add('c|%SpaceBass|And the tales of whales and woe off his liquored toungue will flow, the light will soft white twinkle off the cataracts in his eye');
+				this.add("c|%SpaceBass|So if by chance you're cornered near the bathroom, or he blocks you sprawled in his aisle seat");
+				this.add("c|%SpaceBass|Embrace the chance to hear some tales of greatness, 'cause he's the most interesting ball of toxins you're ever apt to meet");
 			}
 			if (name === 'specsmegabeedrill') {
 				this.add('c|+SpecsMegaBeedrill|Tryhard.');
