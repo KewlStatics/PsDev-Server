@@ -2137,32 +2137,6 @@ exports.BattleMovedex = {
 		target: "normal",
 		type: "Rock",
 	},
-	// Alaitz
-	kissblast: {
-		accuracy: 100,
-		basePower: 75,
-		category: "Special",
-		id: "kissblast",
-		isNonstandard: true,
-		isViable: true,
-		name: "Kiss Blast",
-		pp: 5,
-		priority: 0,
-		flags: {contact: 1, protect: 1, mirror: 1, heal: 1},
-		drain: [1, 2],
-		onPrepareHit: function (target, source) {
-			this.attrLastMove('[still]');
-			this.add('-anim', source, "Fairy Lock", target);
-			this.add('-anim', source, "Giga Impact", target);
-		},
-		self: {boosts: {spa: 1}},
-		secondary: {
-			chance: 100,
-			volatileStatus: 'leechseed',
-		},
-		target: "normal",
-		type: "Fairy",
-	},
 	// sirDonovan
 	ladiesfirst: {
 		accuracy: 100,

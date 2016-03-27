@@ -29,12 +29,6 @@ exports.BattleScripts = {
 				signatureMove: 'OH CANADA',
 				evs: {hp:4, atk:252, spe:252}, nature: 'Jolly',
 			},
-			'Alaitz': {
-				species: 'Floette-Eternal', ability: 'Adaptability', item: 'Life Orb', gender: 'F', shiny: true,
-				moves: ['technoblast', 'fireblast', 'focusblast'],
-				signatureMove: 'Kiss Blast',
-				evs: {spa:252, spd:4, spe:252}, nature: 'Timid',
-			},
 			'Albacore': {
 				species: 'Hoopa-Unbound', ability: 'Regenerator', item: 'Choice Scarf', gender: 'N',
 				moves: ['hyperspacefury', 'closecombat', 'gunkshot'],
@@ -346,6 +340,12 @@ exports.BattleScripts = {
 				moves: ['superpower', 'stoneedge', 'earthquake'],
 				signatureMove: 'Buzz Axe Rampage',
 				evs: {atk:252, def:4, spe:252}, nature: 'Jolly',
+			},
+			'Halite': {
+				species: 'Cryogonal', ability: 'Lightly Salted', item: 'Leftovers', gender: 'M',
+				moves: ['substitute', 'furyattack', 'recover'],
+				signatureMove: "Saltstorm",
+				evs: {hp:252, def:4, spe:252}, nature: 'Timid',
 			},
 			'Hannah': {
 				species: 'Sylveon', ability: 'Pixilate', item: 'Leftovers', gender: 'F',

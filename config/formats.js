@@ -891,9 +891,6 @@ exports.Formats = [
 			if (name === 'ajhockeystar') {
 				this.add('c|+ajhockeystar|Here comes the greatest hockey player alive!');
 			}
-			if (name === 'alaitz') {
-				this.add('c|%Alaitz|Bye Cutie :*');
-			}
 			if (name === 'albacore') {
 				this.add('c|@Albacore|do I have to?');
 			}
@@ -1068,11 +1065,14 @@ exports.Formats = [
 			if (name === 'grimauxiliatrix') {
 				this.add("c|%grimAuxiliatrix|ᕕ( ᐛ )ᕗ");
 			}
-			if (name === 'hashtag') {
-				this.add("c|#Hashtag|hey opponent, you get 5 hashtag points if you forfeit right now ;}");
+			if (name === 'halite') {
+				this.add('c|+Hannahh|You’re gonna get haxxed kid :^)');
 			}
 			if (name === 'hannah') {
 				this.add('c|+Hannahh|♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥');
+			}
+			if (name === 'hashtag') {
+				this.add("c|#Hashtag|hey opponent, you get 5 hashtag points if you forfeit right now ;}");
 			}
 			if (name === 'haund') {
 				this.add('c|%Haund|le balanced normal flying bird has arrived');
@@ -1429,9 +1429,6 @@ exports.Formats = [
 			if (name === 'ajhockeystar') {
 				this.add('c|+ajhockeystar|You may have beaten me in battle, but never in hockey.');
 			}
-			if (name === 'alaitz') {
-				this.add('c|%Alaitz|You won\'t be kissed again! ;;');
-			}
 			if (name === 'albacore') {
 				this.add('c|@Albacore|Joke\'s on you, I was just testing!');
 			}
@@ -1604,11 +1601,14 @@ exports.Formats = [
 			if (name === 'grimauxiliatrix') {
 				this.add("c|%grimAuxiliatrix|∠( ᐛ 」∠)_");
 			}
-			if (name === 'hashtag') {
-				this.add("c|#Hashtag|fukn immigrants,,, slash me spits");
+			if (name === 'halite') {
+				this.add('c|+Hannahh|Today was your lucky day...');
 			}
 			if (name === 'hannah') {
 				this.add('c|+Hannahh|Nooo! ;~;');
+			}
+			if (name === 'hashtag') {
+				this.add("c|#Hashtag|fukn immigrants,,, slash me spits");
 			}
 			if (name === 'haund') {
 				this.add('c|%Haund|omg noob team report');

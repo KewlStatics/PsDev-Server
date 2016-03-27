@@ -95,6 +95,24 @@ exports.BattleAbilities = {
 		name: "Killjoy",
 		rating: 2,
 	},
+	// Halite
+	lightlysalted: {
+		onModifyPriority: function (priority, pokemon, target, move) {
+			if (move && move.category === 'Status') {
+				return priority + 1;
+			}
+		},
+		onAfterMoveSecondary: function (target, source, move) {
+			if (source && source !== target && move && move.flags['contact']) {
+				if (this.random(10) < 1) {
+					source.trySetStatus('frz', target);
+				}
+			}
+		},
+		id: "lightlysalted",
+		name: "Lightly Salted",
+		rating: 4.5,
+	},
 	// Sparktrain
 	regeneratorplus: {
 		onSwitchOut: function (pokemon) {
