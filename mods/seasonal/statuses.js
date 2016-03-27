@@ -76,7 +76,9 @@ exports.BattleStatuses = {
 		effectType: 'Ability',
 		onStart: function (target, source) {
 			this.add('-ability', source, 'Coin Flip');
-			const pool = ['atk', 'def', 'spa', 'spd', 'spe'].sample(2), boost1 = pool[0], boost2 = pool[1];
+			let pool = ['atk', 'def', 'spa', 'spd', 'spe'];
+			let boost1 = pool.splice(this.random(pool.length), 1)[0];
+			let boost2 = pool.splice(this.random(pool.length), 1)[0];
 			source.boosts[boost1] = 6;
 			this.add('-setboost', source, boost1, source.boosts[boost1]);
 			const foes = source.side.foe.active;
