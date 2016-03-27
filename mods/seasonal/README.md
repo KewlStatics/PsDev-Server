@@ -215,6 +215,8 @@ Landorus @ Life Orb
 
 Ability: Sand Force
 
+Innate Ability: Sand Stream
+
 EVs: 252 Atk, 4 Def, 252 Spe, Nature: Jolly
 
 - Earthquake
@@ -360,7 +362,7 @@ Exploud @ Life Orb
 
 Ability: Suction Cups
 
-Innate Ability: Cold Steel - Boosts speed on switch in and adds Dark-type to self. After 3 turns, changes Dark into Steel.
+Innate Ability: Coldsteel - Boosts speed on switch in and adds Dark-type to self. After 3 turns, changes Dark into Steel.
 
 EVs: 4 Def, 252 SpA, 252 Spe, Nature: Timid
 
@@ -602,7 +604,7 @@ EVs: 252 Atk, 252 Spe, Nature: Adamant
 - Earthquake \ Close Combat
 - Fire Fang
 - Extreme Speed
-- (dog) - 15 PP Normal\Physical 130\80%. Always hits in sandstorm. Makes contact.
+- (dog) - 15 PP Normal\Physical 130\80%. Always hits in sandstorm. Makes contact. Ignores immunities.
 
 ### Galom
 Bisharp @ Life Orb
@@ -1151,7 +1153,7 @@ EVs: 252 Atk, 128 Def, 128 Spe, Nature: Adamant
 - Return
 - Brave Bird
 - Superpower
-- Praise Rufflets - 10 PP, Protect-based move, only works on first turn out. Boosts Atk and Def by 2 stages.
+- Praise Rufflets - 40 PP, Protect-based move, only works on first turn out. Boosts Atk and Def by 2 stages.
 
 ### Sailor Cosmos
 Milotic @ Assault Vest

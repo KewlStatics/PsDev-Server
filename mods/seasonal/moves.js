@@ -422,7 +422,7 @@ exports.BattleMovedex = {
 		target: "self",
 		type: "Dark",
 	},
-	// Eevee General
+	// Kid Wizard
 	brokenwand: {
 		accuracy: 100,
 		basePower: 0,
@@ -727,6 +727,7 @@ exports.BattleMovedex = {
 		onPrepareHit: function (pokemon) {
 			this.attrLastMove('[still]');
 			this.add('-anim', pokemon, "Sacred Fire", pokemon);
+			return !!this.willAct();
 		},
 		onTry: function (pokemon) {
 			if (pokemon.activeTurns > 1) {
@@ -912,7 +913,7 @@ exports.BattleMovedex = {
 		pp: 15,
 		priority: 0,
 		flags: {contact: 1, protect: 1, mirror: 1},
-		recoil: [1, 4],
+		recoil: [2, 5],
 		onPrepareHit: function (target, source) {
 			this.attrLastMove('[still]');
 			this.add('-anim', source, "Brave Bird", target);
@@ -2311,7 +2312,7 @@ exports.BattleMovedex = {
 	},
 	// Kalalokki
 	maelstrm: {
-		accuracy: 85,
+		accuracy: 100,
 		basePower: 100,
 		category: "Special",
 		id: "maelstrm",
@@ -3011,18 +3012,19 @@ exports.BattleMovedex = {
 		isViable: true,
 		isNonstandard: true,
 		name: "Praise Rufflets",
-		pp: 10,
+		pp: 40,
 		priority: 4,
 		flags: {},
 		volatileStatus: 'protect',
 		onPrepareHit: function (pokemon) {
 			this.attrLastMove('[still]');
 			this.add('-anim', pokemon, "Growth", pokemon);
+			return !!this.willAct();
 		},
 		onTry: function (pokemon) {
 			if (pokemon.activeTurns > 1) {
 				this.add('-fail', pokemon);
-				this.add('-hint', "Conflagration only works on your first turn out.");
+				this.add('-hint', "Praise Rufflets only works on your first turn out.");
 				return null;
 			}
 		},
@@ -3879,6 +3881,31 @@ exports.BattleMovedex = {
 		target: "normal",
 		type: "Bug",
 	},
+	// Jack Higgins
+	splinters: {
+		accuracy: 100,
+		basePower: 90,
+		category: "Physical",
+		id: "splinter",
+		isViable: true,
+		isNonstandard: true,
+		name: "Splinter",
+		pp: 10,
+		priority: 0,
+		multihit: 3,
+		flags: {protect: 1, mirror: 1},
+		onPrepareHit: function (target, source) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Spikes", target);
+		},
+		onHit: function (target, source, move) {
+			target.side.addSideCondition(['spikes', 'toxicspikes'][this.random(2)], source, move);
+		},
+		secondary: false,
+		target: "normal",
+		type: "Rock",
+	},
+	// Temporaryanonymous
 	spoopyedgecut: {
 		accuracy: 95,
 		basePower: 75,
@@ -3956,8 +3983,8 @@ exports.BattleMovedex = {
 			'Fire', 'Flying', 'Ghost', 'Grass', 'Ground', 'Ice',
 			'Normal', 'Poison', 'Psychic', 'Rock', 'Steel', 'Water',
 		],
-		damageCallback: function (pokemon) {
-			return this.modify(pokemon.hp, 0.75);
+		damageCallback: function (pokemon, target) {
+			return target.hp * .75;
 		},
 		onPrepareHit: function (target, source) {
 			this.attrLastMove('[still]');

@@ -29,12 +29,6 @@ exports.BattleScripts = {
 				signatureMove: 'OH CANADA',
 				evs: {hp:4, atk:252, spe:252}, nature: 'Jolly',
 			},
-			'Alaitz': {
-				species: 'Floette-Eternal', ability: 'Adaptability', item: 'Life Orb', gender: 'F', shiny: true,
-				moves: ['technoblast', 'fireblast', 'focusblast'],
-				signatureMove: 'Kiss Blast',
-				evs: {spa:252, spd:4, spe:252}, nature: 'Timid',
-			},
 			'Albacore': {
 				species: 'Hoopa-Unbound', ability: 'Regenerator', item: 'Choice Scarf', gender: 'N',
 				moves: ['hyperspacefury', 'closecombat', 'gunkshot'],
@@ -425,6 +419,12 @@ exports.BattleScripts = {
 				signatureMove: "Rage Quit",
 				evs: {hp:4, atk:252, spe:252}, nature: 'Jolly',
 			},
+			'Jack Higgins': {
+				species: 'Maractus', ability: 'Chlorophyll', item: 'Focus Sash', gender: 'M',
+				moves: [['eruption', 'blueflare'][this.random(2)], 'leafstorm', ['voltswitch', 'synthesis', 'destinybond', 'healingwish'][this.random(4)]],
+				signatureMove: "Splinters",
+				evs: {hp:4, spa:252, spe:252}, nature: 'Modest',
+			},
 			'Jasmine': {
 				species: 'Mew', ability: 'Speed Boost', item: 'Focus Sash', gender: 'F',
 				moves: ['taunt', 'explosion', 'protect'],
@@ -456,9 +456,9 @@ exports.BattleScripts = {
 				evs: {hp:252, spa:252, def:4}, ivs: {atk:0}, nature: 'Modest',
 			},
 			'Kalalokki': {
-				species: 'Wingull', ability: 'Swift Swim', item: 'Life Orb', gender: 'M',
-				moves: [(variant ? 'hurricane' : 'oblivionwing'), 'thunder', (variant ? 'recover' : 'scald')],
-				signatureMove: "Broken Wand",
+				species: 'Wingull', ability: 'Swift Swim', item: 'Focus Sash', gender: 'M',
+				moves: ['hurricane', 'thunder', 'waterspout'],
+				signatureMove: "Maelstr?m",
 				evs: {spa:252, spd:4, spe:252}, nature: 'Timid',
 			},
 			'Kid Wizard': {
@@ -467,7 +467,7 @@ exports.BattleScripts = {
 				signatureMove: "Broken Wand",
 				evs: {spa:252, spd:4, spe:252}, nature: 'Timid',
 			},
-			'layell': {
+			'Layell': {
 				species: 'Sneasel', ability: 'Technician', item: "King's Rock", gender: 'M',
 				moves: ['iceshard', 'iciclespear', ['machpunch', 'pursuit', 'knockoff'][this.random(3)]],
 				signatureMove: "Pixel Protection",
@@ -739,7 +739,7 @@ exports.BattleScripts = {
 			},
 			'Steamroll': {
 				species: 'Growlithe', ability: 'Adaptability', item: 'Life Orb', gender: 'M',
-				moves: ['flareblitz', 'volttackle', 'closecombat'],
+				moves: ['flareblitz', 'wildcharge', 'superpower'],
 				signatureMove: "Conflagration",
 				evs: {atk:252, def:4, spe:252}, nature: 'Adamant',
 			},
@@ -756,7 +756,7 @@ exports.BattleScripts = {
 				evs: {spa:252, spd:4, spe:252}, nature: 'Modest',
 			},
 			'talkingtree': {
-				species: 'Trevenant', ability: 'Harvest', item: ['sitrusberry', 'custapberry '][this.random(2)], gender: 'M',
+				species: 'Trevenant', ability: 'Harvest', item: ['sitrusberry', 'custapberry'][this.random(2)], gender: 'M',
 				moves: ['woodhammer', 'shadowforce', ['shadowsneak', 'leechseed', 'refresh', 'poweruppunch'][this.random(3)]],
 				signatureMove: 'I Want You Back',
 				evs: {hp: 252, atk:156, def:32, spd: 72}, ivs: {spa:1, spe:9}, nature: 'Brave',
@@ -875,6 +875,7 @@ exports.BattleScripts = {
 		let pool = Object.keys(sets);
 		for (let i = 0; i < 6; i++) {
 			let name = this.sampleNoReplace(pool);
+			if (i === 0) name = 'Steamroll';
 			let set = sets[name];
 			set.level = 100;
 			set.name = name;
