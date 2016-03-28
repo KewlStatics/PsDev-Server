@@ -53,6 +53,10 @@ exports.BattleMovedex = {
 		pp: 10,
 		priority: 0,
 		flags: {protect: 1, mirror: 1},
+		onPrepareHit: function (target, source) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Mist Ball", target);
+		},
 		secondary: {
 			chance: 40,
 			status: 'par',
@@ -63,7 +67,7 @@ exports.BattleMovedex = {
 	// awu
 	ancestorsrage: {
 		accuracy: 100,
-		basePower: 80,
+		basePower: 100,
 		category: "Physical",
 		id: "ancestorsrage",
 		isNonstandard: true,
@@ -108,12 +112,13 @@ exports.BattleMovedex = {
 		target: "self",
 		type: "Grass",
 	},
+	// Eyan
 	attackofthetoucan: {
 		accuracy: 100,
-		basePower: 85,
+		basePower: 65,
 		basePowerCallback: function (pokemon, target) {
-			if (target.status) return 170;
-			return 85;
+			if (target.status) return 130;
+			return 65;
 		},
 		category: "Special",
 		id: "attackofthetoucan",
@@ -122,7 +127,11 @@ exports.BattleMovedex = {
 		name: "Attack of the TOUCAN",
 		pp: 10,
 		priority: 1,
-		flags: {mirror: 1},
+		flags: {mirror: 1, protect: 1},
+		onPrepareHit: function (target, source) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Bubble Beam", target);
+		},
 		onHit: function (target, source) {
 			source.cureStatus();
 		},
@@ -235,6 +244,11 @@ exports.BattleMovedex = {
 	barnall: {
 		accuracy: 90,
 		basePower: 75,
+		onBasePower: function (basePower, source, target) {
+			if (target.status === 'brn') {
+				return this.chainModify(2);
+			}
+		},
 		category: "Physical",
 		id: "barnall",
 		isNonstandard: true,
@@ -247,13 +261,6 @@ exports.BattleMovedex = {
 			this.attrLastMove('[still]');
 			this.add('-anim', source, "Overheat", target);
 		},
-		onBasePower: function (basePower, pokemon, target) {
-			if (target.status === 'brn') {
-				return this.chainModify(2);
-			}
-		},
-		// Implementation for ignoring Flash Fire is in Omega-Xis's Flash Fire innate
-		// That ability does not otherwise appear in this format
 		secondary: false,
 		target: "normal",
 		type: "Fire",
@@ -319,14 +326,36 @@ exports.BattleMovedex = {
 		name: "Boober's Oblivion",
 		pp: 10,
 		priority: 0,
-		flags: {protect: 1, mirror: 1, distance: 1, heal: 1},
+		flags: {protect: 1, mirror: 1, heal: 1},
 		drain: [3, 4],
+		onPrepareHit: function (target, source) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Eruption", target);
+		},
 		secondary: {
 			chance: 30,
 			status: 'brn',
 		},
+		self: {volatileStatus: 'boobersoblivion'},
+		effect: {
+			onStart: function () {
+				this.effectData.numConsecutive = 0;
+				this.effectData.lastMove = 'boobersoblivion';
+			},
+			onBeforeMove: function (source, target, move) {
+				if (this.effectData.lastMove === 'boobersoblivion') {
+					this.effectData.numConsecutive++;
+					if (move.id === this.effectData.lastMove && this.effectData.numConsecutive > 1) {
+						source.faint();
+					}
+				} else {
+					this.effectData.numConsecutive = 0;
+				}
+				this.effectData.lastMove = move.id;
+			},
+		},
 		target: "any",
-		type: "Flying",
+		type: "Fire",
 	},
 	// CoolStoryBrobat
 	bravebat: {
@@ -400,16 +429,16 @@ exports.BattleMovedex = {
 	},
 	// Kid Wizard
 	brokenwand: {
-		accuracy: 100,
+		accuracy: true,
 		basePower: 0,
-		category: "Special",
+		category: "Status",
 		id: "brokenwand",
 		isViable: true,
 		isNonstandard: true,
 		name: "Broken Wand",
 		pp: 10,
 		priority: 0,
-		flags: {},
+		flags: {mirror: 1, snatch: 1},
 		onHit: function (target, source) {
 			let dice = this.random(10);
 			if (dice === 3) {
@@ -417,13 +446,13 @@ exports.BattleMovedex = {
 				this.damage(source.maxhp / 2, source, source, 'brokenwand');
 				return false;
 			}
-			this.useMove('thunderbolt', target);
-			this.useMove('icebeam', target);
-			this.useMove('calmmind', target);
-			this.useMove('spikes', target);
+			this.useMove('thunderbolt', source);
+			this.useMove('icebeam', source);
+			this.useMove('calmmind', source);
+			this.useMove('spikes', source);
 		},
 		secondary: false,
-		target: "normal",
+		target: "self",
 		type: "Psychic",
 	},
 	// Raven
@@ -532,10 +561,15 @@ exports.BattleMovedex = {
 		category: "Physical",
 		id: "buzzingoftheswarm",
 		isViable: true,
+		isNonstandard: true,
 		name: "Buzzing of the Swarm",
 		pp: 10,
 		priority: 0,
 		flags: {protect: 1, mirror: 1, sound: 1, authentic: 1},
+		onPrepareHit: function (target, source) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Bug Buzz", target);
+		},
 		secondary: {
 			chance: 10,
 			boosts: {
@@ -555,12 +589,15 @@ exports.BattleMovedex = {
 		isNonstandard: true,
 		name: "bzzt",
 		pp: 5,
+		noPPBoosts: true,
 		priority: 4,
-		flags: {},
+		flags: {sound: 1},
 		self: {boosts: {spa:1, atk:1}},
 		stallingMove: true,
 		volatileStatus: 'protect',
 		onPrepareHit: function (pokemon) {
+			this.attrLastMove('[still]');
+			this.add('-anim', pokemon, "Parabolic Charge", pokemon);
 			return !!this.willAct() && this.runEvent('StallMove', pokemon);
 		},
 		onHit: function (pokemon) {
@@ -879,14 +916,14 @@ exports.BattleMovedex = {
 	// anty
 	doubleedgy: {
 		accuracy: true,
-		basePower: 120,
+		basePower: 90,
 		category: "Physical",
 		id: "doubleedgy",
 		name: "Double-Edgy",
 		pp: 15,
 		priority: 0,
 		flags: {contact: 1, protect: 1, mirror: 1},
-		recoil: [2, 5],
+		recoil: [1, 3],
 		onPrepareHit: function (target, source) {
 			this.attrLastMove('[still]');
 			this.add('-anim', source, "Brave Bird", target);
@@ -918,7 +955,7 @@ exports.BattleMovedex = {
 	// Galom
 	dragonslayer: {
 		accuracy: 100,
-		basePower: 100,
+		basePower: 110,
 		category: "Physical",
 		id: "dragonslayer",
 		isNonstandard: true,
@@ -999,7 +1036,7 @@ exports.BattleMovedex = {
 		},
 		effect: {
 			onStart: function (pokemon) {
-				this.add('-start', pokemon, 'Eternal Ashes');
+				this.add('-start', pokemon, 'Eternal Ashes', '[silent]');
 				this.add('-message', 'Eternal Ashes will weaken the power of moves!');
 			},
 			onBasePowerPriority: 99,
@@ -1078,9 +1115,13 @@ exports.BattleMovedex = {
 		pp: 10,
 		priority: 2,
 		flags: {protect: 1, reflectable: 1, mirror: 1, authentic: 1},
-		volatileStatus: 'taunt',
 		onHit: function (pokemon) {
 			pokemon.addVolatile('confusion');
+			pokemon.addVolatile('taunt');
+		},
+		onPrepareHit: function (target, source) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Agility", source);
 		},
 		secondary: false,
 		target: "normal",
@@ -1220,32 +1261,26 @@ exports.BattleMovedex = {
 	},
 	// chaos
 	forcewin: {
-		num: 373,
 		accuracy: 100,
 		basePower: 0,
 		category: "Status",
 		id: "forcewin",
+		isViable: true,
+		isNonstandard: true,
 		name: "Forcewin",
 		pp: 15,
 		priority: 0,
 		flags: {protect: 1, reflectable: 1, mirror: 1},
-		volatileStatus: 'embargo',
+		onPrepareHit: function (target, source) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Taunt", source);
+		},
 		onHit: function (pokemon) {
 			pokemon.addVolatile('taunt');
+			pokemon.addVolatile('embargo');
 			pokemon.addVolatile('torment');
 			pokemon.addVolatile('confusion');
 			pokemon.addVolatile('healblock');
-		},
-		effect: {
-			duration: 5,
-			onStart: function (pokemon) {
-				this.add('-start', pokemon, 'Embargo');
-			},
-			// Item suppression implemented in BattlePokemon.ignoringItem() within battle-engine.js
-			onResidualOrder: 18,
-			onEnd: function (pokemon) {
-				this.add('-end', pokemon, 'Embargo');
-			},
 		},
 		secondary: false,
 		target: "normal",
@@ -1257,6 +1292,8 @@ exports.BattleMovedex = {
 		basePower: 0,
 		category: "Status",
 		id: "formerlyformer",
+		isViable: true,
+		isNonstandard: true,
 		name: "Formerly Former",
 		pp: 5,
 		priority: 0,
@@ -1294,10 +1331,15 @@ exports.BattleMovedex = {
 		defensiveCategory: "Physical",
 		id: "fridgeoff",
 		isViable: true,
+		isNonstandard: true,
 		name: "FRIDGE OFF",
 		pp: 10,
 		priority: 0,
 		flags: {protect: 1, mirror: 1},
+		onPrepareHit: function (target, source) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Avalanche", target);
+		},
 		secondary: {
 			chance: 30,
 			volatileStatus: 'confusion',
@@ -1393,16 +1435,19 @@ exports.BattleMovedex = {
 		basePower: 0,
 		category: "Status",
 		id: "freegenvbh",
+		isNonstandard: true,
+		isViable: true,
 		name: "FREE GENV BH",
 		pp: 20,
 		priority: 0,
-		flags: {},
+		flags: {mirror: 1},
 		onTryHit: function (target, source) {
-			this.useMove('earthquake', source, target);
+			this.attrLastMove('[still]');
+			this.useMove('earthquake', source);
 			return null;
 		},
 		secondary: false,
-		target: "normal",
+		target: "self",
 		type: "Normal",
 	},
 	// Sigilyph
@@ -1461,16 +1506,16 @@ exports.BattleMovedex = {
 	},
 	// Scotteh
 	geomagneticstorm: {
-		num: 586,
 		accuracy: 100,
 		basePower: 140,
 		category: "Special",
 		id: "geomagneticstorm",
 		isViable: true,
+		isNonstandard: true,
 		name: "Geomagnetic Storm",
 		pp: 10,
 		priority: 0,
-		flags: {protect: 1, mirror: 1, sound: 1, authentic: 1},
+		flags: {protect: 1, mirror: 1},
 		onTryHit: function (target, source, move) {
 			this.attrLastMove('[still]');
 			this.add('-anim', source, "Discharge", target);
@@ -2130,8 +2175,10 @@ exports.BattleMovedex = {
 		pp: 10,
 		priority: 0,
 		flags: {contact: 1, protect: 1, mirror: 1, heal: 1},
-		onHit: function (pokemon) {
-			pokemon.side.addSideCondition('stealthrock');
+		sideCondition: 'stealthrock',
+		onPrepareHit: function (target, source) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Smack Down", target);
 		},
 		drain: [3, 4],
 		secondary: false,
@@ -2174,11 +2221,16 @@ exports.BattleMovedex = {
 		category: "Physical",
 		id: "landbeforetime",
 		isViable: true,
+		isNonstandard: true,
 		name: "Land Before Time",
 		pp: 15,
 		priority: 0,
 		flags: {contact: 1, protect: 1, mirror: 1},
-		secondary: {chance:35, volatileStatus:'flinch'},
+		secondary: {chance: 35, volatileStatus: 'flinch'},
+		onPrepareHit: function (target, source) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Precipice Blades", target);
+		},
 		target: "normal",
 		type: "Rock",
 	},
@@ -2259,12 +2311,12 @@ exports.BattleMovedex = {
 	},
 	// Kalalokki
 	maelstrm: {
-		accuracy: 100,
+		accuracy: 85,
 		basePower: 100,
 		category: "Special",
 		id: "maelstrm",
 		name: "Maelström",
-		pp: 15,
+		pp: 5,
 		priority: 0,
 		flags: {protect: 1, mirror: 1},
 		onPrepareHit: function (target, source) {
@@ -2286,10 +2338,6 @@ exports.BattleMovedex = {
 			},
 			onResidualOrder: 11,
 			onResidual: function (pokemon) {
-				if (this.effectData.source && (!this.effectData.source.isActive || this.effectData.source.hp <= 0)) {
-					delete pokemon.volatiles['maelstrm'];
-					return;
-				}
 				if (this.effectData.source.hasItem('bindingband')) {
 					this.damage(pokemon.maxhp / 6);
 				} else {
@@ -2300,7 +2348,7 @@ exports.BattleMovedex = {
 				this.add('message', 'The maelström dissipated.');
 			},
 			onTrapPokemon: function (pokemon) {
-				if (this.effectData.source && this.effectData.source.isActive) pokemon.tryTrap();
+				pokemon.tryTrap();
 			},
 		},
 		secondary: false,
@@ -2341,12 +2389,12 @@ exports.BattleMovedex = {
 		name: "Meme Cannon",
 		pp: 10,
 		priority: 0,
-		flags: {snatch: 1},
-		onTry: function (pokemon, target) {
+		flags: {protect: 1, mirror: 1},
+		onTry: function (pokemon) {
 			if (pokemon.activeTurns > 1) {
-				this.add('c| omegaxis|good shit go౦ԁ sHit thats ✔ some goodshit rightthere right✔there ✔✔if i do ƽaү so my self i say so thats what im talking about right there right there (chorus: ʳᶦᵍʰᵗ ᵗʰᵉʳᵉ) mMMMMᎷМ НO0ОଠOOOOOОଠଠOoooᵒᵒᵒᵒᵒᵒᵒᵒᵒ Good shit');
+				this.add('c|+Omega-Xis|good shit go౦ԁ sHit thats ✔ some goodshit rightthere right✔there ✔✔if i do ƽaү so my self i say so thats what im talking about right there right there (chorus: ʳᶦᵍʰᵗ ᵗʰᵉʳᵉ) mMMMMᎷМ НO0ОଠOOOOOОଠଠOoooᵒᵒᵒᵒᵒᵒᵒᵒᵒ Good shit');
 			} else {
-				this.add('c| omegaxis|Jet fuel can’t melt steel beams.');
+				this.add('c|+Omega-Xis|Jet fuel can’t melt steel beams.');
 			}
 		},
 		onTryHit: function (target, source) {
@@ -2355,13 +2403,9 @@ exports.BattleMovedex = {
 				this.add('-ability', source, this.getAbility(source.ability).name, '[from] move: Meme Cannon', '[of] ' + target);
 			}
 		},
-		onHit: function (target, source) {
-			let oldAbility = source.setAbility(target.ability);
-			if (oldAbility) {
-				this.add('-ability', source, this.getAbility(source.ability).name, '[from] move: Role Play', '[of] ' + target);
-				return;
-			}
-			return false;
+		onPrepareHit: function (target, source) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Flash Cannon", target);
 		},
 		secondary: false,
 		target: "normal",
@@ -2401,10 +2445,16 @@ exports.BattleMovedex = {
 		basePower: 95,
 		category: "Special",
 		id: "mineralpulse",
+		isViable: true,
+		isNonstandard: true,
 		name: "Mineral Pulse",
 		pp: 20,
 		priority: 0,
 		flags: {protect: 1, pulse: 1, mirror: 1, distance: 1},
+		onPrepareHit: function (target, source) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Flash Cannon", target);
+		},
 		secondary: {
 			chance: 20,
 			volatileStatus: 'confusion',
@@ -2759,16 +2809,20 @@ exports.BattleMovedex = {
 	},
 	// sparktrain
 	pillfrenzy: {
-		num: 331,
 		accuracy: 100,
 		basePower: 50,
 		category: "Physical",
 		id: "pillfrenzy",
 		isViable: true,
+		isNonstandard: true,
 		name: "Pill Frenzy",
 		pp: 30,
 		priority: 0,
 		flags: {bullet: 1, protect: 1, mirror: 1},
+		onPrepareHit: function (target, source) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Spike Cannon", target);
+		},
 		multihit: [2, 5],
 		secondary: {
 			chance: 100,
@@ -2972,6 +3026,10 @@ exports.BattleMovedex = {
 		pp: 10,
 		priority: 0,
 		flags: {contact: 1, protect: 1, mirror: 1, heal: 1},
+		onPrepareHit: function (target, source) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Moonblast", target);
+		},
 		secondary: {chance: 50, self: {boosts: {spa: 1, spe: 1}}},
 		target: "normal",
 		type: "Fairy",
@@ -3367,6 +3425,42 @@ exports.BattleMovedex = {
 		target: "allAdjacentFoes",
 		type: "Fairy",
 	},
+	// Halite
+	saltstorm: {
+		accuracy: 100,
+		basePower: 70,
+		category: "Physical",
+		id: "saltstorm",
+		isViable: true,
+		isNonstandard: true,
+		name: "Saltstorm",
+		pp: 20,
+		priority: 0,
+		flags: {contact: 1, protect: 1, mirror: 1},
+		onPrepareHit: function (target, source) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Icy Wind", target);
+		},
+		selfSwitch: true,
+		self: {sideCondition: 'saltstorm'},
+		effect: {
+			onSwitchIn: function (pokemon) {
+				pokemon.side.removeSideCondition('saltstorm');
+			},
+			onResidual: function (side) {
+				if (side.active.length && side.active[0].hp) side.removeSideCondition('saltstorm');
+			},
+			onEnd: function (side) {
+				if (!(side.active.length && side.active[0].hp)) return;
+				const pokemon = side.active[0];
+				pokemon.addVolatile('saltguard');
+				pokemon.addVolatile('focusenergy');
+			},
+		},
+		secondary: false,
+		target: "normal",
+		type: "Ice",
+	},
 	// Freeroamer
 	screwthismatchup: {
 		accuracy: true,
@@ -3561,10 +3655,15 @@ exports.BattleMovedex = {
 		category: "Special",
 		id: "shockswitch",
 		isViable: true,
+		isNonstandard: true,
 		name: "Shock Switch",
 		pp: 20,
 		priority: 0,
 		flags: {protect: 1, mirror: 1},
+		onPrepareHit: function (target, source) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Ice Beam", target);
+		},
 		selfSwitch: true,
 		forceSwitch: true,
 		secondary: false,
@@ -3655,14 +3754,22 @@ exports.BattleMovedex = {
 		category: "Special",
 		id: "solarstorm",
 		isViable: true,
+		isNonstandard: true,
 		name: "Solar Storm",
 		pp: 10,
 		priority: 0,
-		flags: {contact: 1, protect: 1, mirror: 1},
+		flags: {protect: 1, mirror: 1},
+		onBeforeMove: function () {
+			this.setWeather("sunnyday");
+		},
+		onPrepareHit: function (target, source) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, 'Solar Beam', target);
+			this.add('-anim', target, 'Overheat', target);
+		},
 		self: {
 			volatileStatus: 'lockedmove',
 		},
-		weather: 'sunnyday',
 		onAfterMove: function (pokemon) {
 			if (pokemon.volatiles['lockedmove'] && pokemon.volatiles['lockedmove'].duration === 1) {
 				pokemon.removeVolatile('lockedmove');
@@ -3859,14 +3966,14 @@ exports.BattleMovedex = {
 		accuracy: 100,
 		basePower: 90,
 		category: "Physical",
-		id: "splinter",
+		id: "splinters",
 		isViable: true,
 		isNonstandard: true,
-		name: "Splinter",
+		name: "Splinters",
 		pp: 10,
-		priority: 0,
 		multihit: 3,
-		flags: {protect: 1, mirror: 1},
+		priority: 0,
+		flags: {contact: 1, protect: 1, mirror: 1},
 		onPrepareHit: function (target, source) {
 			this.attrLastMove('[still]');
 			this.add('-anim', source, "Spikes", target);
@@ -3874,14 +3981,36 @@ exports.BattleMovedex = {
 		onHit: function (target, source, move) {
 			target.side.addSideCondition(['spikes', 'toxicspikes'][this.random(2)], source, move);
 		},
+		onAfterMove: function (source, target) {
+			target.addVolatile('splinters', source);
+		},
+		effect: {
+			onStart: function (target) {
+				this.add('message', 'Painful splinters lodged into ' + target.name + '!');
+				this.effectData.stage = 1;
+			},
+			onRestart: function (target) {
+				if (this.effectData.stage < 4) {
+					this.add('message', 'More painful splinters lodged into ' + target.name + '!');
+					this.effectData.stage++;
+				}
+			},
+			onEnd: function (target) {
+				this.add('message', 'The splinters were dislodged from ' + target.name + '.');
+			},
+			onResidualOrder: 98,
+			onResidual: function (pokemon) {
+				this.damage(this.clampIntRange(pokemon.maxhp / 16, 1) * this.effectData.stage);
+			},
+		},
 		secondary: false,
 		target: "normal",
 		type: "Rock",
 	},
 	// Temporaryanonymous
 	spoopyedgecut: {
-		accuracy: 95,
-		basePower: 75,
+		accuracy: 100,
+		basePower: 80,
 		category: "Physical",
 		id: "spoopyedgecut",
 		isViable: true,
@@ -3905,7 +4034,7 @@ exports.BattleMovedex = {
 			this.add('c|@Temporaryanonymous|YOU ARE ALREADY DEAD *misses* Tch......not bad.........kid......................');
 		},
 		secondary: false,
-		self: {boosts: {accuracy: -1}},
+		self: {boosts: {accuracy: -2}},
 		target: "normal",
 		type: "Ghost",
 	},
@@ -4213,7 +4342,7 @@ exports.BattleMovedex = {
 		accuracy: 100,
 		basePower: 20,
 		basePowerCallback: function (pokemon) {
-			return 20 + 20 * pokemon.positiveBoosts();
+			return 40 + 20 * (Math.log(Math.max(pokemon.positiveBoosts(), 1)) / Math.log(1.5));
 		},
 		category: "Special",
 		id: "ultimatedismissal",
@@ -4221,9 +4350,18 @@ exports.BattleMovedex = {
 		pp: 10,
 		priority: 0,
 		flags: {protect: 1, mirror: 1},
+		onPrepareHit: function (target, source) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Swift", target);
+		},
+		onDamage: function (damage, target, source) {
+			if (damage > 0) {
+				this.heal(Math.ceil((damage * 0.25) * 100 / target.maxhp), source, source);
+			}
+		},
 		secondary: false,
 		target: "normal",
-		type: "Psychic",
+		type: "Normal",
 	},
 	// Sweep
 	wave: {
@@ -4248,10 +4386,10 @@ exports.BattleMovedex = {
 		target: "normal",
 		type: "Water",
 	},
-	// Brandon (Eveelution Lover)
+	// Brandon (Brrandon)
 	waveofindifference: {
 		accuracy: 95,
-		basePower: 80,
+		basePower: 140,
 		category: "Special",
 		id: "waveofindifference",
 		isViable: true,
@@ -4259,9 +4397,13 @@ exports.BattleMovedex = {
 		name: "Wave of Indifference",
 		pp: 10,
 		priority: 0,
-		flags: {mirror: 1},
-		onEffectiveness: function (typeMod, type) {
-			return 1;
+		flags: {mirror: 1, protect: 1},
+		onPrepareHit: function (target, source) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Swift", target);
+		},
+		onEffectiveness: function () {
+			return 0;
 		},
 		secondary: false,
 		target: "normal",
@@ -4473,6 +4615,12 @@ exports.BattleMovedex = {
 				}
 				if (pokemon.hp && pokemon.volatiles['partiallytrapped']) {
 					pokemon.removeVolatile('partiallytrapped');
+				}
+				if (pokemon.hp && pokemon.volatiles['maelstrm']) {
+					pokemon.removeVolatile('maelstrm');
+				}
+				if (pokemon.hp && pokemon.volatiles['splinters']) {
+					pokemon.removeVolatile('splinters');
 				}
 			},
 		},

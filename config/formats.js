@@ -700,6 +700,10 @@ exports.Formats = [
 					pokemon.setAbility('noguard');
 					this.add('-ability', pokemon, 'No Guard');
 				}
+				if (name === 'skitty' && pokemon.getAbility().id === 'healer') {
+					pokemon.setAbility('shedskin');
+					this.add('-ability', pokemon, 'Shed Skin');
+				}
 				if (name === 'theimmortal' && pokemon.getAbility().id === 'megalauncher') {
 					pokemon.setAbility('cloudnine');
 				}
@@ -737,6 +741,10 @@ exports.Formats = [
 				if (name === 'overneat' && pokemon.getAbility().id === 'speedboost') {
 					pokemon.setAbility('noguard');
 					this.add('-ability', pokemon, 'No Guard');
+				}
+				if (name === 'skitty' && pokemon.getAbility().id === 'healer') {
+					pokemon.setAbility('shedskin');
+					this.add('-ability', pokemon, 'Shed Skin');
 				}
 				if (name === 'theimmortal' && pokemon.getAbility().id === 'megalauncher') {
 					pokemon.setAbility('cloudnine');
@@ -797,6 +805,9 @@ exports.Formats = [
 			if (name === 'innovamania' && !pokemon.illusion) {
 				this.boost({atk:6, def:6, spa:6, spd:6, spe:6, accuracy:6}, pokemon, pokemon, 'divine grace');
 			}
+			if (name === 'jackhiggins') {
+				this.setWeather('sunnyday');
+			}
 			if (name === 'lemonade') {
 				pokemon.addVolatile('adaptabilityinnate', pokemon);
 			}
@@ -839,11 +850,18 @@ exports.Formats = [
 			if (name === 'spacebass') {
 				pokemon.addVolatile('badtrip', pokemon);
 			}
+			if (name === 'sparktrain') {
+				pokemon.addVolatile('refrigerateinnate', pokemon);
+			}
 			if (name === 'specsmegabeedrill') {
 				pokemon.addVolatile('weed', pokemon);
 			}
 			if (name === 'starmei') {
 				this.useMove('cosmicpower', pokemon);
+			}
+			if (name === 'talkingtree') {
+				this.useMove('synthesis', pokemon);
+				this.useMove('bulkup', pokemon);
 			}
 			if (name === 'teremiare') {
 				pokemon.addVolatile('coinflip', pokemon);
@@ -908,7 +926,7 @@ exports.Formats = [
 				this.add('c|%AndrewGoncel|:I');
 			}
 			if (name === 'antemortem') {
-				this.add('c|@antemortem|I Am Here To Oppress Users');
+				this.add('c|&antemortem|I Am Here To Oppress Users');
 			}
 			if (name === 'anttya') {
 				this.add('c|+Anttya|Those crits didn\'t even matter');
@@ -957,7 +975,7 @@ exports.Formats = [
 				this.add('c|boTTT|Beep, boop');
 			}
 			if (name === 'brandon') {
-				this.add("c|+Brandon|Life's too short to take it seriously ALL the time.");
+				this.add("c|+Brrandon|Life's too short to take it seriously ALL the time.");
 			}
 			if (name === 'bumbadadabum') {
 				this.add('c|@bumbadadabum|Time for card games on motorcycles!');
@@ -1066,7 +1084,7 @@ exports.Formats = [
 				this.add("c|%grimAuxiliatrix|ᕕ( ᐛ )ᕗ");
 			}
 			if (name === 'halite') {
-				this.add('c|+Hannahh|You’re gonna get haxxed kid :^)');
+				this.add('c|@Halite|You’re gonna get haxxed kid :^)');
 			}
 			if (name === 'hannah') {
 				this.add('c|+Hannahh|♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥');
@@ -1094,7 +1112,7 @@ exports.Formats = [
 				this.add('c|+ih8ih8sn0w|*sips tea*');
 			}
 			if (name === 'imanalt') {
-				this.add('c|+imanalt|muh bulk');
+				this.add('c|%imanalt|muh bulk');
 			}
 			if (name === 'imas234') {
 				this.add('c|@imas234|hlo');
@@ -1190,7 +1208,7 @@ exports.Formats = [
 				this.add("c|+macle|Follow the Frog Blog");
 			}
 			if (name === 'manu11') {
-				this.add("c|%manu 11|/me is pet by ihateyourpancreas");
+				this.add("c|@manu 11|/me is pet by ihateyourpancreas");
 			}
 			if (name === 'marshmallon') {
 				this.add("c|%Marshmallon|Marshtomb be like");
@@ -1215,7 +1233,7 @@ exports.Formats = [
 				this.add('c|+nv|Who tf is nv?');
 			}
 			if (name === 'omegaxis') {
-				this.add('c| Omega-Xis|lol this isn’t even my final form');
+				this.add('c|+Omega-Xis|lol this isn’t even my final form');
 			}
 			if (name === 'orday') {
 				this.add('c|%Orda-Y|❄');
@@ -1445,7 +1463,7 @@ exports.Formats = [
 				this.add('c|%AndrewGoncel|wow r00d! :c');
 			}
 			if (name === 'antemortem') {
-				this.add('c|@antemortem|FUCKING CAMPAIGNERS');
+				this.add('c|&antemortem|FUCKING CAMPAIGNERS');
 			}
 			if (name === 'anttya') {
 				this.add('c|+Anttya|Can\'t beat hax ¯\\_(ツ)_/¯');
@@ -1495,7 +1513,7 @@ exports.Formats = [
 				this.add("c| boTTT|No longer being maintained...");
 			}
 			if (name === 'brandon') {
-				this.add("c|+Brandon|Always leave the crowd wanting more~");
+				this.add("c|+Brrandon|Always leave the crowd wanting more~");
 			}
 			if (name === 'bumbadadabum') {
 				this.add("c|@bumbadadabum|Find another planet make the same mistakes.");
@@ -1504,9 +1522,7 @@ exports.Formats = [
 				this.add('c|&Bummer|Thanks for considering me!');
 			}
 			if (name === 'chaos') {
-				if (name === toId(pokemon.name)) {
-					this.add('c|~chaos|//forcewin chaos');
-				}
+				this.add('c|~chaos|//forcewin chaos');
 				if (this.random(1000) === 420) {
 					// Shouldn't happen much, but if this happens it's hilarious.
 					this.add('c|~chaos|actually');
@@ -1602,7 +1618,7 @@ exports.Formats = [
 				this.add("c|%grimAuxiliatrix|∠( ᐛ 」∠)_");
 			}
 			if (name === 'halite') {
-				this.add('c|+Hannahh|Today was your lucky day...');
+				this.add('c|@Halite|Today was your lucky day...');
 			}
 			if (name === 'hannah') {
 				this.add('c|+Hannahh|Nooo! ;~;');
@@ -1629,7 +1645,7 @@ exports.Formats = [
 				this.add('c|+ih8ih8sn0w|nice hax :(');
 			}
 			if (name === 'imanalt') {
-				this.add('c|+imanalt|bshax imo');
+				this.add('c|%imanalt|bshax imo');
 			}
 			if (name === 'imas234') {
 				this.add('c|@imas234|bg no re');
@@ -1690,7 +1706,7 @@ exports.Formats = [
 				this.add("c|+macle|Follow the Frog Blog - https://gonefroggin.wordpress.com/");
 			}
 			if (name === 'manu11') {
-				this.add("c|%manu 11|so much hax, why do I even try");
+				this.add("c|@manu 11|so much hax, why do I even try");
 			}
 			if (name === 'marshmallon') {
 				this.add("c|%Marshmallon|Shoutouts to sombolo and Rory Mercury ... for this trash set -_-");
@@ -1714,7 +1730,7 @@ exports.Formats = [
 				this.add('c|+nv|Too cute for this game ;~;');
 			}
 			if (name === 'omegaxis') {
-				this.add('c| Omega-Xis|bull shit bull sHit thats ✖️ some bullshit rightth ere right✖️there ✖️✖️if i do ƽaү so my selｆ ‼️ i say so ‼️ thats what im talking about right there right there (chorus: ʳᶦᵍʰᵗ ᵗʰᵉʳᵉ) mMMMMᎷМ‼️ HO0ОଠＯOOＯOОଠଠOoooᵒᵒᵒᵒᵒᵒᵒᵒᵒ ‼️ Bull shit');
+				this.add('c|+Omega-Xis|bull shit bull sHit thats ✖️ some bullshit rightth ere right✖️there ✖️✖️if i do ƽaү so my selｆ ‼️ i say so ‼️ thats what im talking about right there right there (chorus: ʳᶦᵍʰᵗ ᵗʰᵉʳᵉ) mMMMMᎷМ‼️ HO0ОଠＯOOＯOОଠଠOoooᵒᵒᵒᵒᵒᵒᵒᵒᵒ ‼️ Bull shit');
 			}
 			if (name === 'orday') {
 				this.add('c|%Orda-Y|❄_❄');

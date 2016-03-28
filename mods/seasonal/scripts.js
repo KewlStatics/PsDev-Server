@@ -1,4 +1,4 @@
-"use strict";
+﻿"use strict";
 
 exports.BattleScripts = {
 	randomSeasonalMeleeTeam: function (side) {
@@ -34,6 +34,12 @@ exports.BattleScripts = {
 				moves: ['hyperspacefury', 'closecombat', 'gunkshot'],
 				signatureMove: 'Hit-And-Run',
 				evs: {atk:252, spd:4, spe:252}, nature: 'Jolly',
+			},
+			'Albert': {
+				species: 'Goodra', ability: 'Protean', item: 'Assault Vest', gender: 'M',
+				moves: ['aurasphere', 'icebeam', 'thunderbolt'],
+				signatureMove: 'Aesthetically Pleasing',
+				evs: {spa:252, def:4, spe:252}, nature: 'Modest',
 			},
 			'Always': {
 				species: 'Sceptile', ability: 'Overgrow', item: 'Sceptilite', gender: 'M',
@@ -111,7 +117,7 @@ exports.BattleScripts = {
 				species: 'Beedrill', ability: 'Download', item: 'Beedrillite', gender: 'M',
 				moves: ['spikyshield', 'gunkshot', ['sacredfire', 'boltstrike', 'diamondstorm'][this.random(3)]],
 				signatureMove: "Buzzing of the Swarm",
-				evs: {hp:4, atk:252, spe:252}, nature: 'Jolly',
+				evs: {def:4, atk:252, spe:252}, nature: 'Jolly',
 			},
 			'biggie': {
 				species: 'Snorlax', ability: 'Fur Coat', item: 'Leftovers', gender: 'M',
@@ -145,9 +151,9 @@ exports.BattleScripts = {
 			},
 			'boTTT': {
 				species: 'Regigigas', ability: ['Scrappy', 'Magic Guard'][this.random(2)], item: (variant ? 'Leftovers' : 'Chesto Berry'), gender: 'N', shiny: variant,
-				moves: ['megapunch', 'skyuppercut', (variant ? 'aromatherapy' : 'rest')],
+				moves: ['bodyslam', 'drainpunch', (variant ? 'aromatherapy' : 'rest')],
 				signatureMove: "Auto-Moderation",
-				evs: {hp:60, atk:252, spd:196}, nature: 'Adamant',
+				evs: {hp:60, atk:252, spe:196}, nature: 'Adamant',
 			},
 			'Brandon': {
 				species: 'Meowstic-M', ability: 'Prankster', item: 'Leftovers', gender: 'M',
@@ -161,7 +167,7 @@ exports.BattleScripts = {
 				signatureMove: "Free Software",
 				evs: {hp:252, spa:252, spd:4}, nature: 'Modest',
 			},
-			'Bummer	': {
+			'Bummer': {
 				species: 'Quagsire', ability: 'Trace', item: 'Leftovers', gender: 'M',
 				moves: ['earthquake', 'icebeam', 'recover'],
 				signatureMove: "Speedpaint",
@@ -172,12 +178,6 @@ exports.BattleScripts = {
 				moves: ['precipiceblades', ['recover', 'stockpile', 'swordsdance'][this.random(3)], 'extremespeed', 'explosion'],
 				signatureMove: "Forcewin",
 				evs: {hp:4, atk:252, spe:252}, nature: 'Adamant',
-			},
-			'Albert': {
-				species: 'Goodra', ability: 'Protean', item: 'Assault Vest', gender: 'M',
-				moves: ['aurasphere', 'icebeam', 'thunderbolt'],
-				signatureMove: 'Aesthetically Pleasing',
-				evs: {spa: 252, def:4, spe:252}, nature: 'Modest',
 			},
 			'Ciran': {
 				species: 'Rapidash', ability: 'Defiant', item: 'Life Orb', gender: 'N',
@@ -313,9 +313,9 @@ exports.BattleScripts = {
 			},
 			'GeoffBruedly': {
 				species: 'Whiscash', ability: 'Baitkai', item: 'Leftovers', gender: 'F', shiny: true,
-				moves: ['recover', 'earthquake', 'scald'],
+				moves: ['recover', 'thousandwaves', 'razorshell'],
 				signatureMove: 'Shitpost Paradise',
-				evs: {hp:252, def:252, spd:4}, nature: 'Bold',
+				evs: {hp:252, def:252, spd:4}, nature: 'Relaxed',
 			},
 			'Giagantic': {
 				species: 'Moltres', ability: 'Pressure', item: 'Leftovers', shiny: true,
@@ -342,10 +342,10 @@ exports.BattleScripts = {
 				evs: {atk:252, def:4, spe:252}, nature: 'Jolly',
 			},
 			'Halite': {
-				species: 'Cryogonal', ability: 'Lightly Salted', item: 'Leftovers', gender: 'M',
-				moves: ['substitute', 'furyattack', 'recover'],
+				species: 'Glaceon', ability: 'Lightly Salted', item: 'Leftovers', gender: 'M',
+				moves: [['encore', 'taunt'][this.random(2)], 'tailslap', 'recover'],
 				signatureMove: "Saltstorm",
-				evs: {hp:252, def:4, spe:252}, nature: 'Timid',
+				evs: {hp:252, def:216, spa:200}, nature: 'bold',
 			},
 			'Hannah': {
 				species: 'Sylveon', ability: 'Pixilate', item: 'Leftovers', gender: 'F',
@@ -372,7 +372,7 @@ exports.BattleScripts = {
 				evs: {hp:252, def:4, spa:252}, ivs: {atk:0}, nature: 'Modest',
 			},
 			'HiMyNamesL': {
-				species: 'Darmanitan-Zen', ability: 'Chlorophyll', item: 'Life Orb', gender: 'M',
+				species: 'Darmanitan-Zen', ability: 'Chlorophyll', item: 'Lum Berry', gender: 'M',
 				moves: ['voltswitch', 'solarbeam', 'psychic'],
 				signatureMove: 'Solar Storm',
 				evs: {spa:252, spd:4, spe:252}, ivs: {atk:0}, nature: 'Timid',
@@ -427,7 +427,7 @@ exports.BattleScripts = {
 			},
 			'Jack Higgins': {
 				species: 'Maractus', ability: 'Chlorophyll', item: 'Focus Sash', gender: 'M',
-				moves: [['eruption', 'blueflare'][this.random(2)], 'leafstorm', ['voltswitch', 'synthesis', 'destinybond', 'healingwish'][this.random(4)]],
+				moves: [['eruption', 'blueflare'][this.random(2)], 'seedflare', ['voltswitch', 'synthesis', 'destinybond', 'healingwish', 'growth'][this.random(5)]],
 				signatureMove: "Splinters",
 				evs: {hp:4, spa:252, spe:252}, nature: 'Modest',
 			},
@@ -462,10 +462,10 @@ exports.BattleScripts = {
 				evs: {hp:252, spa:252, def:4}, ivs: {atk:0}, nature: 'Modest',
 			},
 			'Kalalokki': {
-				species: 'Wingull', ability: 'Swift Swim', item: 'Focus Sash', gender: 'M',
+				species: 'Wingull', ability: 'Swift Swim', item: 'Life Orb', gender: 'M',
 				moves: ['hurricane', 'thunder', 'waterspout'],
-				signatureMove: "Maelstr?m",
-				evs: {spa:252, spd:4, spe:252}, nature: 'Timid',
+				signatureMove: "Maelström",
+				evs: {spa:252, spd:4, spe:252}, nature: 'Modest',
 			},
 			'Kid Wizard': {
 				species: 'Hoopa', ability: 'Speed Boost', item: 'Life Orb', gender: 'N',
@@ -477,7 +477,7 @@ exports.BattleScripts = {
 				species: 'Sneasel', ability: 'Technician', item: "King's Rock", gender: 'M',
 				moves: ['iceshard', 'iciclespear', ['machpunch', 'pursuit', 'knockoff'][this.random(3)]],
 				signatureMove: "Pixel Protection",
-				evs: {hp:4, atk:252, spe:252}, nature: 'Adamant',
+				evs: {def:4, atk:252, spe:252}, nature: 'Adamant',
 			},
 			'LegitimateUsername': {
 				species: 'Shuckle', ability: 'Unaware', item: 'Leftovers', gender: 'M',
@@ -625,7 +625,7 @@ exports.BattleScripts = {
 			},
 			'Rekeri': {
 				species: 'Tyrantrum', ability: 'Speed Boost', item: 'Life Orb', gender: 'M',
-				moves: ['outrage', 'extremespeed', 'stoneedge', 'closecombat'],
+				moves: ['outrage', 'extremespeed', 'closecombat'],
 				signatureMove: "Land Before Time",
 				evs: {hp:252, atk:252, def:4}, nature: 'Adamant',
 			},
@@ -649,7 +649,7 @@ exports.BattleScripts = {
 			},
 			'Scotteh': {
 				species: 'Suicune', ability: 'Fur Coat', item: 'Leftovers', gender: 'M',
-				moves: ['icebeam', 'steameruption', 'recover', 'nastyplot'],
+				moves: ['icebeam', 'scald', 'recover', 'nastyplot'],
 				signatureMove: "Geomagnetic Storm",
 				evs: {def:252, spa:4, spe:252}, nature: 'Bold',
 			},
@@ -720,7 +720,7 @@ exports.BattleScripts = {
 				evs: {hp:252, def:128, spd:128}, nature: 'Sassy',
 			},
 			'sparktrain': {
-				species: 'Seel', ability: 'Regenerator Plus', item: 'Life Orb', gender: 'M',
+				species: 'Seel', ability: 'Regenerator', item: 'Life Orb', gender: 'M',
 				moves: ['fakeout', 'extremespeed', 'precipiceblades'],
 				signatureMove: 'Pill Frenzy',
 				evs: {hp:232, atk:252, spd:24}, nature: 'Adamant',
@@ -733,7 +733,7 @@ exports.BattleScripts = {
 			},
 			'Spy': {
 				species: 'Hydreigon', ability: 'Mega Launcher', item: 'Life Orb', gender: 'M',
-				moves: ['dragonpulse', 'darkpulse', 'aurasphere', 'originpulse', 'shiftgear'],
+				moves: ['dragonpulse', 'darkpulse', 'aurasphere', 'originpulse', 'autotomize'],
 				signatureMove: "Mineral Pulse",
 				evs: {hp:4, spa:252, spe:252}, nature: 'Timid',
 			},
@@ -765,9 +765,9 @@ exports.BattleScripts = {
 				species: 'Trevenant', ability: 'Harvest', item: ['sitrusberry', 'custapberry'][this.random(2)], gender: 'M',
 				moves: ['woodhammer', 'shadowforce', ['shadowsneak', 'leechseed', 'refresh', 'poweruppunch'][this.random(3)]],
 				signatureMove: 'I Want You Back',
-				evs: {hp: 252, atk:156, def:32, spd: 72}, ivs: {spa:1, spe:9}, nature: 'Brave',
+				evs: {hp:252, atk:156, def:32, spd:72}, ivs: {spa:1, spe:9}, nature: 'Brave',
 			},
-			'TemporaryAnonymous': {
+			'Temporaryanonymous': {
 				species: 'Doublade', ability: 'Tough Claws', item: 'Eviolite', gender: 'M',
 				moves: ['swordsdance', ['xscissor', 'sacredsword', 'knockoff'][this.random(3)], 'geargrind'],
 				signatureMove: "SPOOPY EDGE CUT",
@@ -859,7 +859,7 @@ exports.BattleScripts = {
 			},
 			'Zebraiken': {
 				species: 'zebstrika', ability: 'Compound Eyes', item: 'Life Orb', gender: 'M',
-				moves: ['thunder', ['fire blast', 'focusblast', 'highjumpkick', 'meteormash'][this.random(3)], ['blizzard', 'iciclecrash', 'sleeppowder'][this.random(3)]], // why on earth does he learn Meteor Mash?
+				moves: ['thunder', ['fire blast', 'focusblast', 'highjumpkick', 'headsmash'][this.random(3)], ['blizzard', 'iciclecrash', 'sleeppowder'][this.random(3)]],
 				signatureMove: "bzzt",
 				evs: {atk:4, spa:252, spe:252}, nature: 'Hasty',
 			},
@@ -881,7 +881,7 @@ exports.BattleScripts = {
 		let pool = Object.keys(sets);
 		for (let i = 0; i < 6; i++) {
 			let name = this.sampleNoReplace(pool);
-			if (i === 0) name = 'Steamroll';
+			if (i === 0) name = 'Jack Higgins';
 			let set = sets[name];
 			set.level = 100;
 			set.name = name;
