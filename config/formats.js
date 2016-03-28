@@ -620,7 +620,7 @@ exports.Formats = [
 
 		mod: 'seasonal',
 		team: 'randomSeasonalMelee',
-		ruleset: ['Sleep Clause Mod', 'Freeze Clause Mod', 'HP Percentage Mod', 'Cancel Mod'],
+		ruleset: ['Sleep Clause Mod', 'Freeze Clause Mod', 'HP Percentage Mod', 'Cancel Mod', 'Team Preview'],
 		onBegin: function () {
 			this.add("raw|Super Staff Bros. <b>MELEEEEEEEEEEEEEE</b>!!");
 			this.add('message', "SURVIVAL! GET READY FOR THE NEXT BATTLE!");
@@ -1262,7 +1262,7 @@ exports.Formats = [
 				this.add('c|&Raseri|gg');
 			}
 			if (name === 'raven') {
-				this.add('c|@Raven|Are you ready? Then let the challenge... Begin!');
+				this.add('c|&Raven|Are you ready? Then let the challenge... Begin!');
 			}
 			if (name === 'rekeri') {
 				this.add('c|@rekeri|Get Rekeri\'d :]');
@@ -1759,7 +1759,7 @@ exports.Formats = [
 				this.add('c|&Raseri|you killed a mush :(');
 			}
 			if (name === 'raven') {
-				this.add('c|@Raven|I failed the challenge, and for that, I must lose a life. At least I had one to lose in the first place, nerd.');
+				this.add('c|&Raven|I failed the challenge, and for that, I must lose a life. At least I had one to lose in the first place, nerd.');
 			}
 			if (name === 'rekeri') {
 				this.add('c|@rekeri|lucky af :[');

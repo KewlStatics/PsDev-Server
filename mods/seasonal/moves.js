@@ -472,7 +472,7 @@ exports.BattleMovedex = {
 			this.attrLastMove('[still]');
 			this.add('-anim', source, "Oblivion Wing", target);
 			if (toId(source.name) === 'raven') {
-				this.add('c|@Raven|*hic* Ah\'ve had mah tonic wine and ah\'m ready tae batter yeh like a Mars bar ye wee Sassenach.');
+				this.add('c|&Raven|*hic* Ah\'ve had mah tonic wine and ah\'m ready tae batter yeh like a Mars bar ye wee Sassenach.');
 			}
 		},
 		onAfterMoveSecondarySelf: function (source) {
