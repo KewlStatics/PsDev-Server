@@ -345,7 +345,7 @@ exports.BattleScripts = {
 				species: 'Glaceon', ability: 'Lightly Salted', item: 'Leftovers', gender: 'M',
 				moves: [['encore', 'taunt'][this.random(2)], 'tailslap', 'recover'],
 				signatureMove: "Saltstorm",
-				evs: {hp:252, def:216, spa:200}, nature: 'bold',
+				evs: {hp:252, def:216, spa:200}, nature: 'Bold',
 			},
 			'Hannah': {
 				species: 'Sylveon', ability: 'Pixilate', item: 'Leftovers', gender: 'F',
@@ -881,7 +881,6 @@ exports.BattleScripts = {
 		let pool = Object.keys(sets);
 		for (let i = 0; i < 6; i++) {
 			let name = this.sampleNoReplace(pool);
-			if (i === 0) name = 'Jack Higgins';
 			let set = sets[name];
 			set.level = 100;
 			set.name = name;
