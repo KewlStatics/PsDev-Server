@@ -1112,7 +1112,7 @@ exports.Formats = [
 				this.add('c|+ih8ih8sn0w|*sips tea*');
 			}
 			if (name === 'imanalt') {
-				this.add('c|%imanalt|muh bulk');
+				this.add('c|+imanalt|muh bulk');
 			}
 			if (name === 'imas234') {
 				this.add('c|@imas234|hlo');
@@ -1645,7 +1645,7 @@ exports.Formats = [
 				this.add('c|+ih8ih8sn0w|nice hax :(');
 			}
 			if (name === 'imanalt') {
-				this.add('c|%imanalt|bshax imo');
+				this.add('c|+imanalt|bshax imo');
 			}
 			if (name === 'imas234') {
 				this.add('c|@imas234|bg no re');
