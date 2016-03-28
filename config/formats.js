@@ -620,7 +620,7 @@ exports.Formats = [
 
 		mod: 'seasonal',
 		team: 'randomSeasonalMelee',
-		ruleset: ['Sleep Clause Mod', 'Freeze Clause Mod', 'HP Percentage Mod', 'Cancel Mod', 'Team Preview'],
+		ruleset: ['Sleep Clause Mod', 'Freeze Clause Mod', 'HP Percentage Mod', 'Cancel Mod'],
 		onBegin: function () {
 			this.add("raw|Super Staff Bros. <b>MELEEEEEEEEEEEEEE</b>!!");
 			this.add('message', "SURVIVAL! GET READY FOR THE NEXT BATTLE!");
@@ -673,7 +673,6 @@ exports.Formats = [
 			if (move && move.id === 'retreat') return;
 			if (move && move.id === 'freezedry' && type === 'Water') return;
 			if (move && !this.getImmunity(move, type)) return 1;
-			this.add('-message', "Blast Chance's Flip Side changed effectivity!");
 			return -typeMod;
 		},
 		// Hacks for megas changed abilities. This allow for their changed abilities.

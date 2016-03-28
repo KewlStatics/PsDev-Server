@@ -3632,11 +3632,13 @@ exports.BattleMovedex = {
 		effect: {
 			duration: 5,
 			onStart: function (target, source) {
-				this.add('-fieldstart', 'move: Shitpost Paradise', '[of] ' + source);
+				this.add('-fieldstart', 'move: Shitpost Paradise', '[silent]');
+				this.add('message', 'Female Pokemon have gained additional priority to their moves!');
 			},
 			onResidualOrder: 25,
 			onEnd: function () {
-				this.add('-fieldend', 'move: Shitpost Paradise', '[of] ' + this.effectData.source);
+				this.add('-fieldend', 'move: Shitpost Paradise', '[silent]');
+				this.add('message', 'The altered priorities returned to normal.');
 			},
 			onModifyPriority: function (priority, pokemon, target, move) {
 				if (pokemon && pokemon.gender === 'F') {
@@ -4467,9 +4469,10 @@ exports.BattleMovedex = {
 				'leafblade', 'xscissor', 'knockoff', 'shadowforce', 'ironhead', 'outrage', 'playrough', 'closecombat',
 				'bravebird', 'earthquake', 'stoneedge', 'extremespeed', 'stealthrock', 'spikes', 'toxicspikes', 'stickyweb',
 				'quiverdance', 'shellsmash', 'dragondance', 'recover', 'toxic', 'willowisp', 'leechseed',
-			][this.random(newMoves.length)];
+			];
 			for (let i = 0; i < pokemon.moveset.length; i++) {
-				let moveData = Tools.getMove(newMoves[i]);
+				let moveData = Tools.getMove(this.sampleNoReplace(newMoves));
+				
 				let moveBuffer = {
 					move: moveData.name,
 					id: moveData.id,
