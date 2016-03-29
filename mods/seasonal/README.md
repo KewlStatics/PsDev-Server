@@ -16,7 +16,7 @@ EVs: 248 HP, 8 Def, 252 SpD, Nature: Careful
 - Will-O-Wisp
 - Recover
 - Seed Bomb
-- Am I Bulky Yet? - 40 PP, uses Magic Coat, Reflect and Light Screen.
+- Needs More Screens - 40 PP, uses Magic Coat, Lucky Chant, Safeguard, Reflect and Light Screen.
 
 ### Ace
 Salamence @ Salamencite
@@ -54,18 +54,6 @@ EVs: 4 HP, 252 Atk, 252 Spe, Nature: Jolly
 - High Jump Kick
 - OH CANADA - 35 PP 55%, causes Freezing. Lowers own Spe by 2 (by 1 if failed).
 
-### Alaitz
-Floette-Eternal @ Life Orb
-
-Ability: Adaptability
-
-EVs: 252 SpA, 4 SpD, 252 Spe, Nature: Timid
-
-- Techno Blast
-- Fire Blast
-- Focus Blast
-- Kiss Blast - 5 PP Fairy\Special 75\100%, makes contact, heals half of damage dealt. Boosts own SpA. Leech Seeds target.
-
 ### Albacore
 Hoopa-Unbound @ Choice Scarf
 
@@ -77,6 +65,18 @@ EVs: 252 Atk, 4 SpD, 252 Spe, Nature: Jolly
 - Close Combat
 - Gunk Shot
 - Hit-And-Run - U-turn, but Psychic-type.
+
+### Albert
+Goodra @ Assault Vest
+
+Ability: Protean
+
+EVs: 4 Def, 252 SpA, 252 Spe, Nature: Modest
+
+- Aura Sphere
+- Ice Beam
+- Thunderbolt
+- Aesthetically Pleasing - 10 PP Dragon\Special 90\100%. 40% paralysis.
 
 ### Always
 Sceptile @ Sceptilite
@@ -119,6 +119,22 @@ EVs: 252 HP, 252 Atk, 4 Spe, Nature: Adamant
 - U-turn
 - Pilfer - 15 PP Dark\Physical 70\100%. Only works when target is about to use status move, in which case the user uses that move before dealing damage with this move. Bypasses Subs.
 
+### Antemortem
+Clefable @ Life Orb \ Leftovers
+
+Ability: Sheer Force \ Multiscale
+
+EVs: 252 HP, 4 Def, 252 SpA, Nature: Modest
+
+- Postmortem - 10 PP Fairy\Special 110\85%. Makes contact. 50% boost own SpA, Spe.
+
+Other Possible Moves:
+
+- Earth Power
+- Cosmic Power
+- Recover
+- Giga Drain
+
 ### Anttya
 Altaria @ Leftovers
 
@@ -145,7 +161,7 @@ EVs: 4 HP, 252 Atk, 252 Spe, Nature: Adamant
 - Attack Order
 - Superpower
 - Coil \ Diamond Storm
-- Double-Edgy - 15PP Steel\Physical 120 pwr always hits. Makes contact. Causes 25% recoil.
+- Double-Edgy - 15PP Steel\Physical 90 pwr always hits. Makes contact. Causes 33% recoil.
 
 ### Articuno
 Articuno @ Red Card
@@ -215,6 +231,8 @@ Landorus @ Life Orb
 
 Ability: Sand Force
 
+Innate Ability: Sand Stream
+
 EVs: 252 Atk, 4 Def, 252 Spe, Nature: Jolly
 
 - Earthquake
@@ -232,7 +250,19 @@ EVs: 252 HP, 252 Atk, 4 Def, Nature: Adamant
 - Meteor Mash
 - Bullet Punch
 - U-turn
-- Ancestor's Rage - 10 PP Fairy\Physical 80\100%. 30% confuse. Makes contact.
+- Ancestor's Rage - 10 PP Fairy\Physical 100\100%. 30% confuse. Makes contact.
+
+### Beowulf
+Beedrill @ Beedrillite
+
+Ability: Download
+
+EVs: 4 Def, 252 Atk, 252 Spe, Nature: Jolly
+
+- Spiky Shield
+- Gunk Shot
+- Bolt Strike \ Diamond Storm \ Sacred Fire
+- Buzzing of the Swarm - 10 PP Bug\Physical 100\100%. Sound-based. 10% flinch.
 
 ### biggie
 Snorlax @ Leftovers
@@ -312,12 +342,24 @@ Regigigas @ Leftovers \ Chesto Berry
 
 Ability: Scrappy \ Magic Guard
 
-EVs: 60 HP, 252 Atk, 196 SpD, Nature: Adamant
+EVs: 60 HP, 252 Atk, 196 Spe, Nature: Adamant
 
-- Mega Punch
-- Sky Uppercut
+- Body Slam
+- Drain Punch
 - Aromatherapy \ Rest
 - Auto-Moderation - 35 PP, Ghost\Physical, 40 pwr, +3 prio, always hits. The base power is multiplied by 1.5x with each boost of the target. Ignores all defense boosts of target.
+
+### Brandon
+Meowstic-M @ Leftovers
+
+Ability: Prankster
+
+EVs: 252 HP, 252 Def, 4 SpD, Nature: Bold
+
+- Calm Mind
+- Rest
+- Assist \ Barrier
+- Wave of Indifference - 10 PP, Psychic\Special, 140\95%. Always 1x effective.
 
 ### bumbadadabum
 Samurott @ Leftovers
@@ -343,6 +385,26 @@ EVs: 252 HP, 252 Atk, 4 SpA, Nature: Docile
 - Recover
 - Speedpaint - 10 PP +1 prio. If the opponent is about to move, uses the opponent's selected move.
 
+### chaos
+Bouffalant @ Red Card
+
+Ability: Fur Coat
+
+Innate Ability: ???
+
+EVs: 4 HP, 252 Atk, 252 Spe, Nature: Adamant
+
+- Forcewin - 15 PP 100% acc. Taunts, embargoes, confuses, torments and heal blocks opponent.
+
+Other Possible Moves:
+
+- Precipice Blades
+- Recover 
+- Stockpile
+- Swords Dance
+- Explosion
+- Extreme Speed
+
 ### Ciran
 Rapidash @ Life Orb
 
@@ -360,7 +422,7 @@ Exploud @ Life Orb
 
 Ability: Suction Cups
 
-Innate Ability: Cold Steel - Boosts speed on switch in and adds Dark-type to self. After 3 turns, changes Dark into Steel.
+Innate Ability: Coldsteel - Boosts speed on switch in and adds Dark-type to self. After 3 turns, changes Dark into Steel.
 
 EVs: 4 Def, 252 SpA, 252 Spe, Nature: Timid
 
@@ -500,6 +562,18 @@ EVs: 252 HP, 4 Def, 252 Spe, Nature: Jolly
 - Knock Off \ Milk Drink \ Encore
 - Admin Things - 5 PP. Taunts and badly poisons opponent, and lowers its offenses. User switches out.
 
+### Eyan
+Keldeo @ Life Orb
+
+Ability: Serene Grace
+
+EVs: 252 SpA, 4 SpD, 252 Spe, Nature: Timid
+
+- Steam Eruption
+- Ice Beam \ Moonblast
+- Discharge \ Seed Flare
+- Attack of the TOUCAN - Fighting-type equivalent of Hex. Heals major status ailments of user.
+
 ### Feliburn
 Infernape @ Expert Belt
 
@@ -522,7 +596,7 @@ EVs: 252 Atk, 4 SpD, 252 Spe, Nature: Adamant
 - Sacred Fire
 - Brave Bird
 - Recover
-- BARN ALL - 5 PP Fire\Physical 75\90%. Doubles in power if target is burned. Thaws out user. Bypasses Flash Fire.
+- BARN ALL - 5 PP Fire\Physical 75\90%. Doubles in power if target is burned. Thaws out user.
 
 ### Flying Kebab
 Cloyster @ White Herb
@@ -602,7 +676,7 @@ EVs: 252 Atk, 252 Spe, Nature: Adamant
 - Earthquake \ Close Combat
 - Fire Fang
 - Extreme Speed
-- (dog) - 15 PP Normal\Physical 130\80%. Always hits in sandstorm. Makes contact.
+- (dog) - 15 PP Normal\Physical 130\80%. Always hits in sandstorm. Makes contact. Ignores immunities.
 
 ### Galom
 Bisharp @ Life Orb
@@ -614,7 +688,7 @@ EVs: 252 Atk, 4 Def, 252 Spe, Nature: Adamant
 - Swords Dance
 - Sucker Punch
 - Knock Off
-- Dragon Slayer - 10 PP Steel\Physical 100\100%. Super effective against Dragon-type. Makes contact.
+- Dragon Slayer - 10 PP Steel\Physical 110\100%. Super effective against Dragon-type. Makes contact.
 
 ### Gangnam Style
 Munchlax @ Eviolite
@@ -629,6 +703,18 @@ EVs: 252 HP, 252 Atk, 4 Def, Nature: Adamant
 - Drain Punch
 - Body Slam
 - Mother, Father, Gentleman - 15 PP Dark\Physical 70\100%. Hits 3 times. Makes contact.
+
+### GeoffBruedly
+Whiscash @ Leftovers
+
+Ability: Baitkai - Attracts and confuses opponents that make contact.
+
+EVs: 252 HP, 252 Def, 4 SpD, Nature: Relaxed
+
+- Thousand Waves
+- Razor Shell
+- Recover
+- Shitpost Paradise - 10 PP. For 5 turns female Pokemon gain +2 priority for their moves.
 
 ### Giagantic
 Moltres @ Leftovers
@@ -656,6 +742,18 @@ EVs: 252 SpA, 4 SpD, 252 Spe, Nature: Modest
 - Secret Sword
 - Not Frieza Enough - 5 PP Ice\Special 120\100%. Sets Hail. Super-effective against Water-type. 10% freeze. Lowers user specials.
 
+### GoodMorningEspeon
+Espeon @ Red Card
+
+Ability: Drought
+
+EVs: 4 HP, 252 SpA, 252 Spe, Nature: Timid
+
+- Morning Sun
+- Growth
+- Stored Power
+- FRIDGE OFF - 10 PP Ice\Special 120\70%. Targets defense. 30% confuse.
+
 ### grimAuxiliatrix
 Krookodile @ Choice Band
 
@@ -666,7 +764,19 @@ EVs: 252 Atk, 4 Def, 252 Spe, Nature: Jolly
 - Superpower
 - Stone Edge
 - Earthquake
-- Buzz Axe Rampage - 5 PP Dark\Physical 200\90%. User must recharge. Makes contact. Shifts hazards to other side.
+- Buzz Axe Rampage - Dark-type equivalent of Double-Edge. Shifts hazards to other side.
+
+### Halite
+Glaceon @ Leftovers
+
+Ability: Lightly Salted - This Pokemon's physical moves turn into special moves. Contact moves may freeze (10%). Status moves gain +1 priority.
+
+EVs: 252 HP, 216 Def, 200 SpA, Nature: Modest
+
+- Recover
+- Taunt \ Encore
+- Tail Slap
+- Saltstorm - Ice-type equivalent of U-turn. Incoming Pokemon gain Magic Guard (2 turns), heightened critical ratio.
 
 ### Hannah
 Sylveon @ Leftovers
@@ -706,17 +816,29 @@ EVs: 252 Atk, 4 Def, 252 Spe, Nature: Jolly
 - Ominous Wind
 - Psychokinesis - 10 PP Fighting\Special 90\100%. Shifts target's positive boosts to user.
 
+### HeaLnDeaL
+Magmar @ Eviolite
+
+Ability: Fur Coat
+
+EVs: 252 HP, 4 Def, 252 SpA, IVs: 0 Atk, Nature: Modest
+
+- Quiver Dance
+- Heal Order
+- Seed Flare
+- Boober's Oblivion - 10 PP Fire\Special 80\100%. Heals user by 75% of damage dealt. User faints if used 3 times in a row.
+
 ### HiMyNamesL
-Darmanitan-Zen @ Life Orb
+Darmanitan-Zen @ Lum Berry
 
-Ability: Analytic
+Ability: Chlorophyll
 
-EVs: 252 HP, 4 Def, 252 SpA, IVs: 0 Atk, 0 Spe, Nature: Quiet
+EVs: 252 SpA, 4 SpD, 252 Spe, IVs: 0 Atk, Nature: Timid
 
 - Volt Switch
-- Flamethrower
+- Solar Beam
 - Psychic
-- Solar Storm - Solar Beam, in one turn. 30% burn.
+- Solar Storm - 10 PP Fire\Special 120\100%. Sets Sunny Day before the move. The user goes on a rampage for 2-3 turns.
 
 ### Hippopotas
 Hippopotas @ Eviolite
@@ -759,6 +881,23 @@ EVs: 252 Atk, 4 SpD, 252 Spe, Nature: Jolly
 - Taunt \ Magic Coat
 - Imprisonform - 5 (no boosts) PP, 90% acc. Transforms into opponent and uses Imprison.
 
+### imanalt
+Rhydon @ Eviolite
+
+Ability: Prankster
+
+EVs: 252 HP, 252 Atk, 4 SpD, Nature: Adamant
+
+- FREE GENV BH - 20 PP, Status move that calls Earthquake.
+
+Other Possible Moves:
+
+- Rock Blast
+- Stealth Rock
+- Substitute
+- Heart Swap
+- Baton Pass
+
 ### imas234
 Kyurem @ Life Orb
 
@@ -795,6 +934,18 @@ EVs: 200 SpA, 80 SpD, 228 Spe, Nature: Timid
 - Dazzling Gleam
 - Tomala wey - 5 (no boosts) PP, Protect-based move. User gains Quiver Dance boost.
 
+### Innovamania
+Arceus @ Black Glasses
+
+Ability: Pick Up
+
+EVs: 4 HP, 252 Atk, 252 Spe, Nature: Jolly
+
+- Hold Hands \ Trick-or-Treat
+- Swords Dance \ Agilty
+- Celebrate
+- Rage Quit - The user faints.
+
 ### Jasmine
 Mew @ Focus Sash
 
@@ -824,12 +975,24 @@ Zapdos @ Life Orb
 
 Ability: Tinted Lens
 
-EVs: 4 HP, 252 SpA, 252 Spe, Nature: Modest
+EVs: 4 HP, 252 SpA, 252 Spe, IVs: 0 Atk, Nature: Modest
 
 - Thunderbolt
 - Hurricane
 - Quiver Dance
 - Gaster Blaster - Electric-type Hyper Beam. No recharge if this move knocks out an opponent.
+
+### Juanma
+Heatran @ Charcoal
+
+Ability: Levitate
+
+EVs: 252 HP, 4 Def, 252 SpA, IVs: 0 Atk, Nature: Modest
+
+- Eruption
+- Steam Eruption
+- Quiver Dance
+- Gaster Blaster - 5 PP Fire\Special 110 pwr. Always hits. Lowers own speed. 66% Burn. Torments and confuses opponent. Bypasses Protect and Subs.
 
 ### Kalalokki
 Wingull @ Life Orb
@@ -838,12 +1001,36 @@ Ability: Swift Swim
 
 Innate Ability: Drizzle
 
+EVs: 252 SpA, 4 SpD, 252 Spe, Nature: Modest
+
+- Hurricane
+- Thunder
+- Water Spout
+- Maelström - 15 PP Water\Special 100\85%. Partial trapping move, persists even when user is not in play.
+
+### Kid Wizard
+Hoopa @ Life Orb
+
+Ability: Speed Boost
+
 EVs: 252 SpA, 4 SpD, 252 Spe, Nature: Timid
 
-- Hurricane \ Oblivion Wing
-- Thunder
-- Recover \ Scald
-- Maelström - 15 PP Water\Special 100\85%. Partial trapping move.
+- Protect
+- Stored Power
+- Energy Ball \ Flamethrower \ Scald
+- Broken Wand - 10 PP. May fail and half user's HP (10%). Uses Thunderbolt, Ice Beam, Calm Mind and Spikes.
+
+### Layell
+Sneasel @ King's Rock
+
+Ability: Technician
+
+EVs: 4 Def, 252 Atk, 252 Spe, Nature: Adamant
+
+- Ice Shard
+- Icicle Spear
+- Mach Punch \ Pursuit \ Knock Off
+- Pixel Protection - 10 PP. Protect-based move. Only works on first turn out. Boosts Def by 3 and SpD by 2.
 
 ### LegitimateUsername
 Shuckle @ Leftovers
@@ -941,7 +1128,7 @@ Surskit @ Life Orb
 
 Ability: Swift Swim
 
-Innate Ability: Arachnophobia - Makes opponent have Bad Dreams. User gains Tinted Lens effects.
+Innate Ability: Arachnophobia - Makes opponent have Bad Dreams. User gains Tinted Lens effects. Boosts SpD and Spe on switch in.
 
 EVs: 4 Def, 252 SpA, 252 Spe, Nature: Timid
 
@@ -949,6 +1136,18 @@ EVs: 4 Def, 252 SpA, 252 Spe, Nature: Timid
 - Ice Beam
 - Spore
 - Surskit Energy - 5 PP Water\Special 130\95%. + Bug type. Sets Sticky Web.
+
+### Marshmallon
+Marshtomp @ Eviolite
+
+Ability: Shadow Tag
+
+EVs: 252 HP, 24 Def, 232 SpD, Nature: Impish
+
+- Earthquake
+- Softboiled
+- Spiky Shield
+- Excuse - 10 PP, prio +2. Confuses and Taunts opponent.
 
 ### MattL
 Swampert @ Swampertite
@@ -1014,6 +1213,30 @@ EVs: 252 HP, 252 Atk, 4 Spe, Nature: Adamant
 - Megahorn
 - Hamster Dance - Teeter Dance, in addition uses Haze.
 
+### Omega-Xis
+Genesect @ Expert Belt
+
+Ability: Magic Bounce
+
+EVs: 252 Atk, 4 Def, 252 Spe, Nature: Jolly
+
+- Shift Gear
+- Sacred Fire
+- U-turn
+- Meme Cannon - 10 PP Steel\Physical 100\100%. Changes user ability to Flash Fire.
+
+### Orda-Y
+Regice @ Life Orb
+
+Ability: Magic Guard
+
+EVs: 252 Atk, 252 SpA, 4 Spe, IVs: 0 Atk, Nature: Calm
+
+- Stealth Rock
+- Thunderbolt
+- Recover
+- Shock Switch - 20 PP Ice\Special 90\100%. Forces out opponent. User switches out.
+
 ### Overneat
 Blaziken @ Blazikenite - Mega Ability: No Guard
 
@@ -1026,7 +1249,7 @@ EVs: 252 Atk, 4 Def, 252 Spe, Nature: Adamant
 - Flare Blitz
 - Neatto Kick - High Jump Kick, 50% paralysis.
 
-### Paradise
+### Phable
 Forretress @ Focus Sash
 
 Ability: Prankster
@@ -1123,6 +1346,18 @@ EVs: 248 HP, 252 SpA, 8 SpD, Nature: Modest
 - Dark Pulse
 - Buckfast Buzz - Oblivion Wing, with 30 PP. Toggles user's secondary typing between Flying and Electric.
 
+### Rekeri
+Tyrantrum @ Life Orb
+
+Ability: Speed Boost
+
+EVs: 252 HP, 252 Atk, 4 Def, Nature: Adamant
+
+- Extreme Speed
+- Close Combat
+- Outrage
+- Land Before Time - 15 PP Rock\Physical 125\90%. Makes contact. 35% flinch.
+
 ### RosieTheVenusaur
 Venusaur @ Leftovers
 
@@ -1151,7 +1386,7 @@ EVs: 252 Atk, 128 Def, 128 Spe, Nature: Adamant
 - Return
 - Brave Bird
 - Superpower
-- Praise Rufflets - 10 PP, Protect-based move, only works on first turn out. Boosts Atk and Def by 2 stages.
+- Praise Rufflets - 40 PP, Protect-based move, only works on first turn out. Boosts Atk and Def by 2 stages.
 
 ### Sailor Cosmos
 Milotic @ Assault Vest
@@ -1164,6 +1399,18 @@ EVs: 252 HP, 248 Def, 8 SpD, Nature: Bold
 - Ice Beam
 - Dragon Tail
 - Cosmos Ray - 20 PP, Water\Special 90\100%, 80% chance to set a random status (either paralysis or confusion). Targets defense.
+
+### Scotteh
+Suicune @ Leftovers
+
+Ability: Fur Coat
+
+EVs: 252 Def, 4 SpA, 252 Spe, Nature: Bold
+
+- Slack Off
+- Amnesia
+- Steam Eruption
+- Geomagnetic Storm - Electric-type equivalent of Boomburst. Not sound-based.
 
 ### scpinion
 Slowbro @ Slowbronite
@@ -1228,6 +1475,18 @@ EVs: 252 HP, 252 SpA, 4 Spe, Nature: Modest
 - Hurricane
 - Charm
 - Ladies First - 20 PP Fairy\Special 120\100%. Boosts user speed. Always moves last if opponent is female.
+
+### Skitty
+Audino @ Audinite
+
+Ability: Gale Wings
+
+EVs: 252 HP, 252 SpA, 4 Spe, Nature: Modest
+
+- Acupressure
+- Recover
+- Taunt \ Cosmic Power \ Magic Coat
+- Ultimate Dismissal - 10 PP Normal\Special 40\100%. If the user has boosts, the move becomes more powerful (40 + 20 log(1.5)(boosts)).
 
 ### Snobalt
 Voodoom @ Life Orb
@@ -1296,6 +1555,20 @@ EVs: 252 HP, 128 Def, 128 SpD, Nature: Sassy
 - Substitute
 - Army of Mushrooms - 10 PP, boosts defenses at beginning of turn. Uses Sleep Powder, Powder and Leech Seed when the actual move is used. Ignores Prankster.
 
+### sparktrain
+Seel @ Life Orb
+
+Ability: Regenerator
+
+Innate Ability: Refrigerate
+
+EVs: 232 HP, 252 Atk, 24 SpD, Nature: Adamant
+
+- Fake Out
+- Extreme Speed
+- Precipice Blades
+- Pill Frenzy - 30 PP Water\Physical 50\100%. Hits 2 - 5 times. Bullet-based. Boosts self speed and lowers self evasion with each hit.
+
 ### SpecsMegaBeedrill
 Weedle @ Focus Sash
 
@@ -1324,6 +1597,23 @@ EVs: 248 HP, 4 Def, 252 Spe, Nature: Timid
 - Nuzzle
 - RKO Outta Nowhere - 35 PP, Water-type equivalent of Psywave.
 
+### Spy
+Hydreigon @ Life Orb
+
+Ability: Mega Launcher
+
+EVs: 4 HP, 252 SpA, 252 Spe, Nature: Timid
+
+- Mineral Pulse - 20 PP Steel\Special 95\100%. Pulse-based. 20% confuse.
+
+Other Possible Moves:
+
+- Dragon Pulse
+- Origin Pulse
+- Dark Pulse
+- Aura Sphere
+- Autotomize
+
 ### Steamroll
 Growlithe @ Life Orb
 
@@ -1332,8 +1622,8 @@ Ability: Adaptability
 EVs: 252 Atk, 4 Def, 252 Spe, Nature: Adamant
 
 - Flare Blitz
-- Volt Tackle
-- Close Combat
+- Wild Charge
+- Superpower
 - Conflagration - 40 PP, Protect-based move. Only works on first turn out. Boosts offenses, defenses and speed by 2 stages.
 
 ### Sunfished
@@ -1361,6 +1651,32 @@ EVs: 252 SpA, 4 SpD, 252 Spe, Nature: Modest
 - Shell Smash
 - Ice Beam
 - (wave( - 35 PP Water\Special 100\100%. 20% flinch.
+
+### talkingtree
+Trevenant @ Sitrus Berry \ Custap Berry
+
+Ability: Harvest
+
+Innate Ability: Uses Synthesis + Bulk Up on switch in.
+
+EVs: 252 HP, 156 Atk, 32 Def, 72 SpD, IVs: 1 SpA, 9 Spe, Nature: Brave
+
+- Wood Hammer
+- Shadow Force
+- Shadow Sneak \ Leech Seed \ Refresh \ Power-up Punch
+- I Want You Back - 10 PP Rock\Physical 96\100%. Sets rocks. Heals user by 75% of damage dealt.
+
+### Temporaryanonymous
+Doublade @ Eviolite
+
+Ability: Tough Claws
+
+EVs: 252 HP, 252 Atk, 4 Def, Nature: Adamant
+
+- Swords Dance
+- Gear Grind
+- Sacred Sword \ X-Scissor \ Knock Off
+- SPOOPY EDGE CUT - 30 PP Ghost\Physical 80\100%. Makes contact. Sharply lowers own accuracy.
 
 ### Teremiare
 Zorua @ Red Card
@@ -1442,7 +1758,7 @@ EVs: 248 HP, 228 Atk, 24 Def, 8 SpD, Nature: Careful
 - Cross Poison
 - Holy Orders - 10 PP. Successively uses Heal Order, Defend Order and Attack Order.
 
-### uselesstrainer
+### useless trainer
 Scatterbug @ Altarianite
 
 Ability: Sturdy
@@ -1531,6 +1847,35 @@ EVs: 248 HP, 252 Atk, 8 Spe, Nature: Adamant
 - Sacred Fire
 - Roost
 - Go Inda Like Linda - 30 PP. Boosts Atk and Speed by 3 stages.
+
+### Zarel
+Meloetta @ Your Mom
+
+Ability: Serene Grace
+
+EVs: 4 HP, 252 Atk, 252 SpA, Nature: Quiet
+
+- Relic Song Dance - 10 PP, 60 pwr, 2 hits. First hit is Psychic\Special, afterwards user turns into Pirouette forme, second hit is Fighting\Physical, and user transforms back.
+
+Other Possible Moves
+
+- Perish Song
+- Quiver Dance
+- Fiery Dance
+- Lunar Dance
+- Petal Dance
+
+### Zebraiken
+Zebstrika @ Life Orb
+
+Ability: Compoundeyes
+
+EVs: 4 Atk, 252 SpA, 252 Spe, Nature: Hasty
+
+- Thunder
+- Fire Blast \ Focus Blast \ High Jump Kick \ Head Smash
+- Blizzard \ Icicle Crash \ Sleep Powder
+- bzzt - 5 (no boosts) PP, Protect-based move. Boosts offenses. Sound-based.
 
 ### Zero Lux Given
 Luxray @ Flame Orb

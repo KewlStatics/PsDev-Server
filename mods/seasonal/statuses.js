@@ -14,6 +14,7 @@ exports.BattleStatuses = {
 		effectType: 'Ability',
 		onStart: function (target, source) {
 			source.addVolatile('baddreamsinnate');
+			this.boost({spd:1, spe:1}, source, source);
 		},
 		onModifyDamage: function (damage, source, target, move) {
 			if (move.typeMod < 0) {
@@ -153,12 +154,20 @@ exports.BattleStatuses = {
 			if (this.getWeather().id === 'deltastream' && !(weather.id in {desolateland: 1, primordialsea: 1, deltastream: 1})) return false;
 		},
 		onSwitchOut: function (pokemon) {
-			pokemon.removeVolatile('deltastreaminnate');
+			if (this.getWeather().id === 'deltastream') {
+				if (pokemon.side.foe.active.length) {
+					const opponent = pokemon.side.foe.active[0];
+					if (opponent.hasAbility('deltastream') || (opponent.volatiles['deltastreaminnate'])) {
+						this.weatherData.source = opponent;
+					} else {
+						this.clearWeather();
+					}
+				} else {
+					this.clearWeather();
+				}
+			}
 		},
 		onFaint: function (pokemon) {
-			pokemon.removeVolatile('deltastreaminnate');
-		},
-		onEnd: function (pokemon) {
 			if (this.getWeather().id === 'deltastream') {
 				if (pokemon.side.foe.active.length) {
 					const opponent = pokemon.side.foe.active[0];
@@ -277,12 +286,12 @@ exports.BattleStatuses = {
 			this.addPseudoWeather('prodigyweather', source, "Prodigy");
 		},
 		onSwitchOut: function (pokemon) {
-			pokemon.removeVolatile('prodigy');
+			const foes = pokemon.side.foe.active;
+			if (this.pseudoWeather['prodigyweather'] && !(foes.length && foes[0].volatiles['prodigy'])) {
+				this.removePseudoWeather('prodigyweather', pokemon);
+			}
 		},
 		onFaint: function (pokemon) {
-			pokemon.removeVolatile('prodigy');
-		},
-		onEnd: function (pokemon) {
 			const foes = pokemon.side.foe.active;
 			if (this.pseudoWeather['prodigyweather'] && !(foes.length && foes[0].volatiles['prodigy'])) {
 				this.removePseudoWeather('prodigyweather', pokemon);
@@ -307,6 +316,17 @@ exports.BattleStatuses = {
 			this.add('-message', pokemon.name + "'s aura of spammy letters is tearing at the very fabric of reality!");
 			this.useMove(((this.random(2) === 1) ? 'trickroom' : 'wonderroom'), pokemon);
 		},
+	},
+	// sparktrain
+	refrigerateinnate: {
+		effectType: 'Ability',
+		onModifyMove: function (move, pokemon) {
+			if (move.type === 'Normal' && move.id !== 'naturalgift') {
+				move.type = 'Ice';
+				if (move.category !== 'Status') pokemon.addVolatile('refrigerate');
+			}
+		},
+		name: "Refrigerate",
 	},
 	// bludz
 	shielddustinnate: {
@@ -399,6 +419,23 @@ exports.BattleStatuses = {
 		},
 		onEnd: function () {
 			this.add('message', "Physical and special move categories on the battlefield have returned to normal!");
+		},
+	},
+	// Other effects
+	saltguard: {
+		duration: 2,
+		onStart: function (pokemon) {
+			this.add('-start', pokemon, 'Salt', '[silent]');
+			this.add('message', "Residual salt is protecting againt indirect damage!");
+		},
+		onDamage: function (damage, target, source, effect) {
+			if (effect.effectType !== 'Move') {
+				return false;
+			}
+		},
+		onEnd: function (pokemon) {
+			this.add('-end', pokemon, 'Salt', '[silent]');
+			this.add('message', "The salt subsided.");
 		},
 	},
 };

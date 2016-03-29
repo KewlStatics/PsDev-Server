@@ -1,4 +1,4 @@
-"use strict";
+﻿"use strict";
 
 exports.BattleAbilities = {
 	// GeoffBruedley
@@ -102,38 +102,23 @@ exports.BattleAbilities = {
 				return priority + 1;
 			}
 		},
-		onAfterMoveSecondary: function (target, source, move) {
-			if (source && source !== target && move && move.flags['contact']) {
-				if (this.random(10) < 1) {
-					source.trySetStatus('frz', target);
-				}
+		onModifyMovePriority: 90,
+		onModifyMove: function (move) {
+			if (move.category === "Physical") {
+				move.category = "Special";
 			}
+			if (!move.flags['contact']) return;
+			if (!move.secondaries) {
+				move.secondaries = [];
+			}
+			move.secondaries.push({
+				chance: 10,
+				status: 'frz',
+			});
 		},
 		id: "lightlysalted",
 		name: "Lightly Salted",
-		rating: 4.5,
-	},
-	// Sparktrain
-	regeneratorplus: {
-		onSwitchOut: function (pokemon) {
-			pokemon.heal(pokemon.maxhp / 3);
-		},
-		onModifyMove: function (move, pokemon) {
-			if (move.type === 'Normal' && move.id !== 'naturalgift') {
-				move.type = 'Ice';
-				if (move.category !== 'Status') pokemon.addVolatile('regeneratorplus');
-			}
-		},
-		effect: {
-			duration: 1,
-			onBasePowerPriority: 8,
-			onBasePower: function (basePower, pokemon, target, move) {
-				return this.chainModify([0x14CD, 0x1000]);
-			},
-		},
-		id: "regeneratorplus",
-		name: "Regenerator Plus",
-		rating: 4,
+		rating: 3.5,
 	},
 	// Golui
 	specialsnowflake: {
