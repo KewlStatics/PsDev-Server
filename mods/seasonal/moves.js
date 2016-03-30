@@ -4088,7 +4088,7 @@ exports.BattleMovedex = {
 			'Normal', 'Poison', 'Psychic', 'Rock', 'Steel', 'Water',
 		],
 		damageCallback: function (pokemon, target) {
-			return target.hp * .75;
+			return target.hp * 0.75;
 		},
 		onPrepareHit: function (target, source) {
 			this.attrLastMove('[still]');
@@ -4472,7 +4472,6 @@ exports.BattleMovedex = {
 			];
 			for (let i = 0; i < pokemon.moveset.length; i++) {
 				let moveData = Tools.getMove(this.sampleNoReplace(newMoves));
-				
 				let moveBuffer = {
 					move: moveData.name,
 					id: moveData.id,
