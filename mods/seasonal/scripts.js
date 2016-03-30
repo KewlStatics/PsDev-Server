@@ -775,7 +775,7 @@ exports.BattleScripts = {
 			},
 			'Teremiare': {
 				species: 'Zorua', ability: 'Multiscale', item: 'Red Card', gender: ['M', 'F', 'N'][this.random(3)], shiny: true,
-				moves: ['darkpulse', 'foulplay', ['batonpass', 'partingshot'][this.random(2)]],
+				moves: ['encore', 'foulplay', 'batonpass'],
 				signatureMove: "Broken Mirror",
 				evs: {hp:252, spa:4, spe:252}, ivs: {atk:0}, nature: 'Timid',
 			},
