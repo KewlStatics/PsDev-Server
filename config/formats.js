@@ -1191,7 +1191,7 @@ exports.Formats = [
 				this.add('c|+Lemonade|Pasta');
 			}
 			if (name === 'level51') {
-				this.add('c|@Level 51|Happiness and rainbows, hurrah!');
+				this.add('c|@Level 51|n_n!');
 			}
 			if (name === 'lj') {
 				this.add('c|%LJDarkrai|Powerfulll');
@@ -1693,7 +1693,7 @@ exports.Formats = [
 				this.add('c|+Lemonade|Pasta');
 			}
 			if (name === 'level51') {
-				this.add('c|@Level 51|You made me sad. That\'s the opposite of happy.');
+				this.add('c|@Level 51|u_u!');
 			}
 			if (name === 'lj') {
 				this.add('c|%LJDarkrai|.Blast');
