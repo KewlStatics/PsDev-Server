@@ -1181,11 +1181,8 @@ exports.Formats = [
 				this.add('c|@Layell|Enter stage left');
 			}
 			if (name === 'legitimateusername') {
-				this.add('c|@LegitimateUsername|``And believe me I am still alive.``');
-				this.add('c|@LegitimateUsername|``I\'m doing Science and I\'m still alive.``');
-				this.add('c|@LegitimateUsername|``I feel FANTASTIC and I\'m still alive.``');
-				this.add('c|@LegitimateUsername|``While you\'re dying I\'ll be still alive.``');
-				this.add('c|@LegitimateUsername|``And when you\'re dead I will be still alive.``');
+				sentence = ["This isn't my fault.", "I'm not sorry."][this.random(2)];
+				this.add('c|@LegitimateUsername|``' + sentence + '``');
 			}
 			if (name === 'lemonade') {
 				this.add('c|+Lemonade|Pasta');
