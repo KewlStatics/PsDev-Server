@@ -447,6 +447,7 @@ exports.BattleMovedex = {
 				return false;
 			}
 			this.useMove('thunderbolt', source);
+			this.heal(source.maxhp * 0.10, source, source);
 			this.useMove('icebeam', source);
 			this.useMove('calmmind', source);
 			this.useMove('spikes', source);

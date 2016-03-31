@@ -1256,7 +1256,7 @@ Regice @ Life Orb
 
 Ability: Magic Guard
 
-EVs: 252 Atk, 252 SpA, 4 Spe, IVs: 0 Atk, Nature: Calm
+EVs: 252 HP, 252 SpA, 4 Spe, IVs: 0 Atk, Nature: Calm
 
 - Stealth Rock
 - Thunderbolt
