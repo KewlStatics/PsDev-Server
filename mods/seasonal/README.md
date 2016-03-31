@@ -16,7 +16,7 @@ EVs: 248 HP, 8 Def, 252 SpD, Nature: Careful
 - Will-O-Wisp
 - Recover
 - Seed Bomb
-- Needs More Screens - 40 PP, uses Magic Coat, Lucky Chant, Safeguard, Reflect and Light Screen.
+- Needs More Screens - 5 (no boosts) PP, uses Magic Coat, Lucky Chant, Safeguard, Reflect and Light Screen.
 
 ### Ace
 Salamence @ Salamencite
@@ -546,7 +546,7 @@ EVs: 252 HP, 252 SpA, 4 SpD, Nature: Modest
 - King's Shield
 - Tail Glow
 - Doom Desire
-- Holographic Dragon Storm - Draco Meteor, in addition uses Magnet Rise.
+- Holographic Dragon Storm - 5 PP Dragon\Special 150\75%, lowers own SpA by 2. User uses Substitute if possible.
 
 ### Eevee General
 Eevee @ Eviolite
@@ -589,7 +589,7 @@ EVs: 252 Atk, 4 Def, 252 Spe, Nature: Jolly
 ### Fireburn
 Ho-oh @ Flame Plate
 
-Ability: Flame Body
+Ability: Regenerator
 
 EVs: 252 Atk, 4 SpD, 252 Spe, Nature: Adamant
 
@@ -599,16 +599,16 @@ EVs: 252 Atk, 4 SpD, 252 Spe, Nature: Adamant
 - BARN ALL - 5 PP Fire\Physical 75\90%. Doubles in power if target is burned. Thaws out user.
 
 ### Flying Kebab
-Cloyster @ White Herb
+Cloyster @ King's Rock
 
 Ability: Skill Link
 
 EVs: 252 Atk, 4 SpD, 252 Spe, Nature: Jolly
 
 - Water Shuriken
-- Bullet Seed
-- Shell Smash
-- Frozen Kebab Skewers - 10 PP, Ice\Physical 25\100%. 2-5 hits, each hit has a 10% chance to raise a stat (Atk or Spe). After all hits, may raise SpD (10%).
+- Bullet Seed \ Rock Blast
+- Icicle Spear
+- Frozen Kebab Skewers - 5 (no boosts) PP, Ice\Physical 20\100%, 2 hits, +1 prio, + Rock type. Each hit boosts own Atk and Spe. Ignores Protect, Sub or defensive boosts. 10% freeze.
 
 ### Former Hope
 Froslass @ Focus Sash
@@ -726,9 +726,9 @@ Innate Ability: Delta Stream
 EVs: 248 HP, 244 SpD, 16 Spe, Nature: Bold
 
 - Fiery Dance
-- Oblivion Wing
+- Aeroblast
 - Roost
-- Eternal Ashes - 10 PP Fire-type 100% acc, burns opponent and adds Eternal Ashes to it, reducing its damage output by 35%. Powder-based. Thaws user.
+- Eternal Ashes - 5 (no boosts) PP Fire-type 85% acc, burns opponent and adds Eternal Ashes to it, reducing its damage output by 20%. Powder-based. Thaws user.
 
 ### Golui
 Cryogonal @ Life Orb
@@ -879,7 +879,7 @@ EVs: 252 Atk, 4 SpD, 252 Spe, Nature: Jolly
 - Meteor Mash
 - Stealth Rock
 - Taunt \ Magic Coat
-- Imprisonform - 5 (no boosts) PP, 90% acc. Transforms into opponent and uses Imprison.
+- Imprisonform - 3 PP, 90% acc. Transforms into opponent and uses Imprison.
 
 ### imanalt
 Rhydon @ Eviolite
@@ -946,6 +946,20 @@ EVs: 4 HP, 252 Atk, 252 Spe, Nature: Jolly
 - Celebrate
 - Rage Quit - The user faints.
 
+### Jack Higgins
+Maractus @ Focus Sash
+
+Ability: Chlorophyll
+
+Innate Ability: Drought
+
+EVs: 4 HP, 252 SpA, 252 Spe, Nature: Timid
+
+- Eruption \ Blue Flare
+- Seed Flare
+- Volt Switch \ Synthesis \ Destiny Bond \ Growth \ Healing Wish
+- Splinters - 10 PP Rock\Physical 90\100%. 3 hits, each hit setting either Spikes or Toxic Spikes randomly. Causes the target to get splinters, losing 1/16 HP each turn.
+
 ### Jasmine
 Mew @ Focus Sash
 
@@ -957,6 +971,18 @@ EVs: 84 HP, 84 Atk, 84 Def, 84 SpA, 84 SpD, 84 Spe, Nature: Quirky
 - Explosion
 - Protect
 - Reverse Transform - 1 PP. Opponent transforms into user.
+
+### jdarden
+Dragonair @ Eviolite
+
+Ability: Fur Coat
+
+EVs: 4 HP, 252 SpA, 252 Spe, Nature: Timid
+
+- Rest
+- Sleep Talk
+- Fur Coat
+- Wyvern's Wind - 10 PP Flying\Special 80\90%, -6 prio. Forces out opponent.
 
 ### Jetpack
 Alakazam @ Alakazite
@@ -1018,7 +1044,7 @@ EVs: 252 SpA, 4 SpD, 252 Spe, Nature: Timid
 - Protect
 - Stored Power
 - Energy Ball \ Flamethrower \ Scald
-- Broken Wand - 10 PP. May fail and half user's HP (10%). Uses Thunderbolt, Ice Beam, Calm Mind and Spikes.
+- Broken Wand - 10 PP. May fail and half user's HP (14%). Uses Thunderbolt, Ice Beam, Calm Mind and Spikes.
 
 ### Layell
 Sneasel @ King's Rock
@@ -1211,7 +1237,7 @@ EVs: 252 HP, 252 Atk, 4 Spe, Nature: Adamant
 - Precipice Blades
 - Diamond Storm
 - Megahorn
-- Hamster Dance - Teeter Dance, in addition uses Haze.
+- Hamster Dance - 10 PP, 100% acc, confuses opponent. Removes all positive boosts on the field.
 
 ### Omega-Xis
 Genesect @ Expert Belt
@@ -1687,9 +1713,9 @@ Innate Ability: Coin Flip - Maximizes a random stat of each party on switch in.
 
 EVs: 252 HP, 4 SpA, 252 Spe, IVs: 0 Atk, Nature: Timid
 
-- Dark Pulse
+- Encore
 - Foul Play
-- Parting Shot \ Baton Pass
+- Baton Pass
 - Broken Mirror - 10 PP. Protect-based move. Does not protect against status. If opponent attacks, their stat boosts will become inverted.
 
 ### The Immortal

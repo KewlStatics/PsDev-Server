@@ -1,4 +1,4 @@
-"use strict";
+﻿"use strict";
 
 exports.BattleStatuses = {
 	// Innate abilities
@@ -12,6 +12,7 @@ exports.BattleStatuses = {
 	// manu 11
 	arachnophobia: {
 		effectType: 'Ability',
+		name: 'Arachnophobia',
 		onStart: function (target, source) {
 			source.addVolatile('baddreamsinnate');
 			this.boost({spd:1, spe:1}, source, source);
@@ -142,6 +143,12 @@ exports.BattleStatuses = {
 				this.add('-ability', source, 'Cuteness');
 				this.boost({atk:-1, def:-1, spa:-1, spd:-1, spe:-1, evasion:-1}, foes[0], source, source);
 			}
+		},
+		onModifyAtk: function () {
+			return this.chainModify(1.7);
+		},
+		onModifySpA: function () {
+			return this.chainModify(1.7);
 		},
 	},
 	// Giagantic

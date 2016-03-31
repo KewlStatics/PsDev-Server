@@ -360,7 +360,7 @@ exports.BattleMovedex = {
 	// CoolStoryBrobat
 	bravebat: {
 		accuracy: 100,
-		basePower: 130,
+		basePower: 120,
 		category: "Physical",
 		id: "bravebat",
 		isNonstandard: true,
@@ -440,7 +440,7 @@ exports.BattleMovedex = {
 		priority: 0,
 		flags: {mirror: 1, snatch: 1},
 		onHit: function (target, source) {
-			let dice = this.random(10);
+			let dice = this.random(7);
 			if (dice === 3) {
 				this.add('-message', "Broken Wand backfired!");
 				this.damage(source.maxhp / 2, source, source, 'brokenwand');
@@ -1010,14 +1010,15 @@ exports.BattleMovedex = {
 	},
 	// Giagantic
 	eternalashes: {
-		accuracy: 100,
+		accuracy: 85,
 		basePower: 0,
 		category: "Status",
 		id: "eternalashes",
 		isNonstandard: true,
 		isViable: true,
 		name: "Eternal Ashes",
-		pp: 10,
+		pp: 5,
+		noPPBoosts: true,
 		priority: 0,
 		flags: {reflectable: 1, protect: 1, powder: 1, mirror: 1, defrost: 1},
 		onTryHit: function (target) {
@@ -1042,7 +1043,7 @@ exports.BattleMovedex = {
 			onBasePowerPriority: 99,
 			onBasePower: function () {
 				this.add('-message', 'Eternal Ashes weakened the power of moves!');
-				return this.chainModify(0.65);
+				return this.chainModify(0.8);
 			},
 		},
 		secondary: false,
@@ -1377,34 +1378,33 @@ exports.BattleMovedex = {
 	// flying kebab
 	frozenkebabskewers: {
 		accuracy: 100,
-		basePower: 25,
+		basePower: 20,
 		category: "Physical",
 		id: "frozenkebabskewers",
 		isViable: true,
 		isNonstandard: true,
 		name: "Frozen Kebab Skewers",
-		pp: 10,
-		priority: 0,
-		flags: {contact: 1, protect: 1, mirror: 1},
-		multihit: [2, 5],
+		pp: 5,
+		noPPBoosts: true,
+		priority: 1,
+		flags: {authentic: 1, mirror: 1},
+		multihit: 2,
+		ignoreDefensive: true,
 		onPrepareHit: function (target, source) {
 			this.attrLastMove('[still]');
 			this.add('-anim', source, "Icicle Spear", target);
 		},
-		onHit: function (target, source) {
-			if (this.random(10) !== 0) return;
-			if (this.random(2) === 0) {
-				this.boost({atk: 1}, source, source);
-			} else {
-				this.boost({spe: 1}, source, source);
-			}
+		onTryHit: function (target, source) {
+			this.boost({atk: 1}, source, source);
+			this.boost({spe: 1}, source, source);
 		},
-		onAfterMove: function (source) {
-			if (this.random(10) === 3) {
-				this.boost({spd: 1}, source, source);
-			}
+		onEffectiveness: function (typeMod, type) {
+			return typeMod + this.getEffectiveness('Rock', type);
 		},
-		secondary: false,
+		secondary: {
+			chance: 10,
+			status: 'frz',
+		},
 		target: "normal",
 		type: "Ice",
 	},
@@ -1803,12 +1803,22 @@ exports.BattleMovedex = {
 		},
 		onHit: function (target, source) {
 			target.addVolatile('confusion', source);
-			this.add('-clearallboost');
-			for (let i = 0; i < this.sides.length; i++) {
-				for (let j = 0; j < this.sides[i].active.length; j++) {
-					if (this.sides[i].active[j] && this.sides[i].active[j].isActive) this.sides[i].active[j].clearBoosts();
+			let reset = false;
+			for (let boost in source.boosts) {
+				if (source.boosts[boost] > 0) {
+					source.boosts[boost] = 0;
+					this.add('-setboost', source, boost, 0);
+					reset = true;
 				}
 			}
+			for (let boost in target.boosts) {
+				if (target.boosts[boost] > 0) {
+					target.boosts[boost] = 0;
+					this.add('-setboost', target, boost, 0);
+					reset = true;
+				}
+			}
+			if (reset) this.add('message', 'Hamster Dance has reset all positive boosts!');
 		},
 		secondary: false,
 		target: "normal",
@@ -1945,7 +1955,7 @@ exports.BattleMovedex = {
 						hits++;
 					}
 				}
-				this.add('-message', 'Hit ' + hits + (hits === 1 ? 'time!' : ' times!'));
+				this.add('-message', 'Hit ' + hits + (hits === 1 ? ' time!' : ' times!'));
 				source.isDuringAttack = false;
 			} else if (source.volatiles['ingrain'] || target.volatiles['ingrain']) {
 				// Avoid weirdness with trade prompts when trading is not possible
@@ -2054,23 +2064,24 @@ exports.BattleMovedex = {
 	},
 	// E4 Flint
 	holographicdragonstorm: {
-		accuracy: 90,
-		basePower: 130,
+		accuracy: 75,
+		basePower: 150,
 		category: "Special",
-		id: "dracometeor",
+		id: "holographicdragonstorm",
 		isNonstandard: true,
 		isViable: true,
-		name: "Draco Meteor",
+		name: "Holographic Dragon Storm",
 		pp: 5,
 		priority: 0,
 		flags: {protect: 1, mirror: 1},
 		onPrepareHit: function (target, source) {
 			this.attrLastMove('[still]');
+			this.add('-anim', source, "Wish", source);
 			this.add('-anim', source, "Draco Meteor", target);
 		},
 		onHit: function (target, source) {
-			if (!(source.volatiles['magnetrise'] || this.pseudoWeather['gravity'])) {
-				source.addVolatile('magnetrise');
+			if (!source.volatiles['substitute'] && source.hp > source.maxhp / 4 && source.addVolatile('substitute', source)) {
+				this.directDamage(source.maxhp / 4, source, source);
 			}
 		},
 		self: {
@@ -2144,7 +2155,7 @@ exports.BattleMovedex = {
 		isNonstandard: true,
 		isViable: true,
 		name: "Imprisonform",
-		pp: 5,
+		pp: 3,
 		noPPBoosts: true,
 		priority: 0,
 		flags: {},
@@ -2583,7 +2594,8 @@ exports.BattleMovedex = {
 		isNonstandard: true,
 		isViable: true,
 		name: "Needs More Screens",
-		pp: 40,
+		pp: 5,
+		noPPBoosts: true,
 		priority: 0,
 		self: {volatileStatus: 'magiccoat'},
 		flags: {},
@@ -4088,7 +4100,7 @@ exports.BattleMovedex = {
 			'Normal', 'Poison', 'Psychic', 'Rock', 'Steel', 'Water',
 		],
 		damageCallback: function (pokemon, target) {
-			return target.hp * .75;
+			return target.hp * 0.75;
 		},
 		onPrepareHit: function (target, source) {
 			this.attrLastMove('[still]');
@@ -4472,7 +4484,7 @@ exports.BattleMovedex = {
 			];
 			for (let i = 0; i < pokemon.moveset.length; i++) {
 				let moveData = Tools.getMove(this.sampleNoReplace(newMoves));
-				
+
 				let moveBuffer = {
 					move: moveData.name,
 					id: moveData.id,
@@ -4549,7 +4561,7 @@ exports.BattleMovedex = {
 		name: "Wyvern's Wind",
 		pp: 10,
 		priority: -6,
-		flags: {contact: 1, protect: 1, mirror: 1, sound: 1, authentic: 1},
+		flags: {protect: 1, mirror: 1},
 		forceSwitch: true,
 		onTryHit: function (target, source, move) {
 			this.attrLastMove('[still]');

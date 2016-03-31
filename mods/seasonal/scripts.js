@@ -6,7 +6,7 @@ exports.BattleScripts = {
 		let variant = (this.random(2) === 1);
 		let sets = {
 			'Acast': {
-				species: 'Gourgeist-Super', ability: 'Prankster', item: 'Light Clay', gender: 'M',
+				species: 'Gourgeist', ability: 'Prankster', item: 'Light Clay', gender: 'M',
 				moves: ['willowisp', 'recover', ['seedbomb', 'shadowclaw'][this.random(2)]],
 				signatureMove: 'Needs More Screens',
 				evs: {hp:248, def:8, spd:252}, nature: 'Careful',
@@ -258,14 +258,14 @@ exports.BattleScripts = {
 				evs: {atk:252, def:4, spe:252}, nature: 'Jolly',
 			},
 			'Fireburn': {
-				species: 'Ho-oh', ability: 'Flame Body', item: 'Flame Plate', gender: 'M', shiny: true,
+				species: 'Ho-oh', ability: 'Regenerator', item: 'Flame Plate', gender: 'M', shiny: true,
 				moves: ['sacredfire', 'bravebird', 'recover'],
 				signatureMove: "BARN ALL",
 				evs: {atk: 252, spd: 4, spe: 252}, nature: 'Adamant',
 			},
 			'Flying Kebab': {
-				species: 'Cloyster', ability: 'Skill Link', item: 'White Herb', gender: 'M',
-				moves: ['watershuriken', 'bulletseed', 'shellsmash'],
+				species: 'Cloyster', ability: 'Skill Link', item: 'King\'s Rock', gender: 'M',
+				moves: ['watershuriken', ['bulletseed', 'pinmissile'][this.random(2)], 'iciclespear'],
 				signatureMove: "Frozen Kebab Skewers",
 				evs: {atk:252, spd:4, spe:252}, nature: 'Jolly',
 			},
@@ -319,7 +319,7 @@ exports.BattleScripts = {
 			},
 			'Giagantic': {
 				species: 'Moltres', ability: 'Pressure', item: 'Leftovers', shiny: true,
-				moves: ['fierydance', 'oblivionwing', 'roost'],
+				moves: ['fierydance', 'aeroblast', 'roost'],
 				signatureMove: "Eternal Ashes",
 				evs: {hp:248, spd:244, spe:16}, nature: 'Bold',
 			},
@@ -775,7 +775,7 @@ exports.BattleScripts = {
 			},
 			'Teremiare': {
 				species: 'Zorua', ability: 'Multiscale', item: 'Red Card', gender: ['M', 'F', 'N'][this.random(3)], shiny: true,
-				moves: ['darkpulse', 'foulplay', ['batonpass', 'partingshot'][this.random(2)]],
+				moves: ['encore', 'foulplay', 'batonpass'],
 				signatureMove: "Broken Mirror",
 				evs: {hp:252, spa:4, spe:252}, ivs: {atk:0}, nature: 'Timid',
 			},
@@ -881,6 +881,8 @@ exports.BattleScripts = {
 		let pool = Object.keys(sets);
 		for (let i = 0; i < 6; i++) {
 			let name = this.sampleNoReplace(pool);
+			if (i === 0) name = 'E4 Flint';
+			if (i === 1) name = 'nv';
 			let set = sets[name];
 			set.level = 100;
 			set.name = name;

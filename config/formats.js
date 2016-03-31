@@ -713,7 +713,7 @@ exports.Formats = [
 		onSwitchIn: function (pokemon) {
 			let name = toId(pokemon.illusion ? pokemon.illusion.name : pokemon.name);
 			// Wonder Guard is available, but it curses you.
-			if (pokemon.getAbility().id === 'wonderguard' && pokemon.baseTemplate.baseSpecies !== 'Shedinja') {
+			if (pokemon.getAbility().id === 'wonderguard' && pokemon.baseTemplate.baseSpecies !== 'Shedinja' && pokemon.baseTemplate.baseSpecies !== 'Kakuna') {
 				pokemon.addVolatile('curse', pokemon);
 				this.add('-message', pokemon.name + "'s Wonder Guard has cursed it!");
 			}
@@ -1191,7 +1191,7 @@ exports.Formats = [
 				this.add('c|+Lemonade|Pasta');
 			}
 			if (name === 'level51') {
-				this.add('c|@Level 51|Happiness and rainbows, hurrah!');
+				this.add('c|@Level 51|n_n!');
 			}
 			if (name === 'lj') {
 				this.add('c|%LJDarkrai|Powerfulll');
@@ -1216,7 +1216,7 @@ exports.Formats = [
 				this.add("c|%Marshmallon|- He knows if you've been bad or good -");
 				this.add("c|%Marshmallon|- So be good for goodness sake -");
 			}
-			if  (name === 'mattl') {
+			if (name === 'mattl') {
 				this.add('c|+MattL|If you strike me down, I shall become more powerful than you can possibly imagine.');
 			}
 			if (name === 'mcmeghan') {
@@ -1693,7 +1693,7 @@ exports.Formats = [
 				this.add('c|+Lemonade|Pasta');
 			}
 			if (name === 'level51') {
-				this.add('c|@Level 51|You made me sad. That\'s the opposite of happy.');
+				this.add('c|@Level 51|u_u!');
 			}
 			if (name === 'lj') {
 				this.add('c|%LJDarkrai|.Blast');
@@ -1710,7 +1710,7 @@ exports.Formats = [
 			if (name === 'marshmallon') {
 				this.add("c|%Marshmallon|Shoutouts to sombolo and Rory Mercury ... for this trash set -_-");
 			}
-			if (name === 'mattL') {
+			if (name === 'mattl') {
 				this.add('c|+MattL|Forgive me. I feel it again... the call from the light.');
 			}
 			if (name === 'mcmeghan') {
