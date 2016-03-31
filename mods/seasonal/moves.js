@@ -4484,7 +4484,6 @@ exports.BattleMovedex = {
 			];
 			for (let i = 0; i < pokemon.moveset.length; i++) {
 				let moveData = Tools.getMove(this.sampleNoReplace(newMoves));
-
 				let moveBuffer = {
 					move: moveData.name,
 					id: moveData.id,
