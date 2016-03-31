@@ -12,6 +12,7 @@ exports.BattleStatuses = {
 	// manu 11
 	arachnophobia: {
 		effectType: 'Ability',
+		name: 'Arachnophobia',
 		onStart: function (target, source) {
 			source.addVolatile('baddreamsinnate');
 			this.boost({spd:1, spe:1}, source, source);
@@ -139,6 +140,12 @@ exports.BattleStatuses = {
 		onStart: function (target, source) {
 			this.add('-ability', source, 'Cuteness');
 			this.boost({atk:1, def:1, spa:1, spd:1, spe:1, evasion:1}, source, source, source);
+		},
+		onModifyAtk: function () {
+			return this.chainModify(1.7);
+		},
+		onModifySpA: function () {
+			return this.chainModify(1.7);
 		},
 	},
 	// Giagantic
