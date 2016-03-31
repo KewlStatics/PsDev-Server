@@ -881,8 +881,6 @@ exports.BattleScripts = {
 		let pool = Object.keys(sets);
 		for (let i = 0; i < 6; i++) {
 			let name = this.sampleNoReplace(pool);
-			if (i === 0) name = 'E4 Flint';
-			if (i === 1) name = 'nv';
 			let set = sets[name];
 			set.level = 100;
 			set.name = name;
