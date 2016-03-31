@@ -138,11 +138,8 @@ exports.BattleStatuses = {
 	cuteness: {
 		effectType: 'Ability',
 		onStart: function (target, source) {
-			const foes = source.side.foe.active;
-			if (foes.length && foes[0].hp) {
-				this.add('-ability', source, 'Cuteness');
-				this.boost({atk:-1, def:-1, spa:-1, spd:-1, spe:-1, evasion:-1}, foes[0], source, source);
-			}
+			this.add('-ability', source, 'Cuteness');
+			this.boost({atk:1, def:1, spa:1, spd:1, spe:1, evasion:1}, source, source, source);
 		},
 		onModifyAtk: function () {
 			return this.chainModify(1.7);
