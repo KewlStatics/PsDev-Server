@@ -1804,21 +1804,14 @@ exports.BattleMovedex = {
 		onHit: function (target, source) {
 			target.addVolatile('confusion', source);
 			let reset = false;
-			for (let boost in source.boosts) {
-				if (source.boosts[boost] > 0) {
-					source.boosts[boost] = 0;
-					this.add('-setboost', source, boost, 0);
-					reset = true;
-				}
-			}
 			for (let boost in target.boosts) {
-				if (target.boosts[boost] > 0) {
+				if (target.boosts[boost] !== 0) {
 					target.boosts[boost] = 0;
 					this.add('-setboost', target, boost, 0);
 					reset = true;
 				}
 			}
-			if (reset) this.add('message', 'Hamster Dance has reset all positive boosts!');
+			if (reset) this.add('message', 'Hamster Dance has reset stat changes!');
 		},
 		secondary: false,
 		target: "normal",

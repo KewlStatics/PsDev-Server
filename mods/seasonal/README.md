@@ -7,7 +7,7 @@ Roster
 ------------------------------------------------------------------------
 
 ### Acast
-Gourgeist-Super @ Light Clay
+Gourgeist @ Light Clay
 
 Ability: Prankster
 
@@ -1230,14 +1230,14 @@ Larvitar @ Eviolite
 
 Ability: Solid Rock
 
-Innate Ability: Cuteness - Lowers opponent offenses, defenses and speed on switch in.
+Innate Ability: Cuteness - Boosts own offenses, defenses and speed on switch in.
 
 EVs: 252 HP, 252 Atk, 4 Spe, Nature: Adamant
 
 - Precipice Blades
 - Diamond Storm
 - Megahorn
-- Hamster Dance - 10 PP, 100% acc, confuses opponent. Removes all positive boosts on the field.
+- Hamster Dance - 10 PP, 100% acc, confuses opponent. Removes all stat changes from opponent.
 
 ### Omega-Xis
 Genesect @ Expert Belt
