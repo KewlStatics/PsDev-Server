@@ -1396,7 +1396,7 @@ exports.BattleMovedex = {
 			this.add('-anim', source, "Icicle Spear", target);
 		},
 		onTryHit: function (target, source) {
-			this.boost({atk: 1}, source, source);
+			if (source.boosts['atk'] < 2) this.boost({atk: 1}, source, source);
 			this.boost({spe: 1}, source, source);
 		},
 		onEffectiveness: function (typeMod, type) {
@@ -3770,7 +3770,7 @@ exports.BattleMovedex = {
 		pp: 10,
 		priority: 0,
 		flags: {protect: 1, mirror: 1},
-		onBeforeMove: function () {
+		onTryHit: function () {
 			this.setWeather("sunnyday");
 		},
 		onPrepareHit: function (target, source) {

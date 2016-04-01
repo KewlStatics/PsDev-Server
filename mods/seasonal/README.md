@@ -599,7 +599,7 @@ EVs: 252 Atk, 4 SpD, 252 Spe, Nature: Jolly
 - Water Shuriken
 - Bullet Seed \ Rock Blast
 - Icicle Spear
-- Frozen Kebab Skewers - 5 (no boosts) PP, Ice\Physical 20\100%, 2 hits, +1 prio, + Rock type. Each hit boosts own Atk and Spe. Ignores Protect, Sub or defensive boosts. 10% freeze.
+- Frozen Kebab Skewers - 5 (no boosts) PP, Ice\Physical 20\100%, 2 hits, +1 prio, + Rock type. Each hit boosts own Atk and Spe (cannot boost Atk past +2). Ignores Protect, Sub or defensive boosts. 10% freeze.
 
 ### Former Hope
 Froslass @ Focus Sash

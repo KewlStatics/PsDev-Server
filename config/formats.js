@@ -1064,7 +1064,7 @@ exports.Formats = [
 				this.add('c|+Fireburn|:V');
 			}
 			if (name === 'flyingkebab') {
-				this.add("c|+Flying Kebab|I'm ready for ya. Bring it on!");
+				this.add("c|+Flying Kebab|Kebab > Pizza");
 			}
 			if (name === 'formerhope') {
 				this.add('c|@Former Hope|I have Hope');
