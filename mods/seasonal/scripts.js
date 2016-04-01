@@ -99,13 +99,13 @@ exports.BattleScripts = {
 				species: 'Jynx', ability: 'Snow Warning', item: 'Focus Sash', gender: 'M',
 				moves: ['lovelykiss', 'blizzard', 'aurasphere'],
 				signatureMove: 'Bitchy Comment',
-				evs: {spa: 252, spd: 4, spe: 252}, nature: 'Timid',
+				evs: {spa:252, spd:4, spe:252}, nature: 'Timid',
 			},
 			'Aurora': {
 				species: 'Landorus', ability: 'Sand Force', item: 'Life Orb', gender: 'F',
 				moves: ['earthquake', 'rockslide', 'rockpolish'],
 				signatureMove: "Aerial Fury",
-				evs: {atk: 252, def: 4, spe: 252}, nature: 'Jolly',
+				evs: {atk:252, def:4, spe:252}, nature: 'Jolly',
 			},
 			'awu': {
 				species: 'Mawile', ability: 'Adaptability', item: 'Mawilite', gender: 'F',

@@ -1,4 +1,4 @@
-"use strict";
+﻿"use strict";
 
 exports.BattleStatuses = {
 	// Innate abilities
@@ -331,6 +331,13 @@ exports.BattleStatuses = {
 			}
 		},
 		name: "Refrigerate",
+	},
+	// Sigilyph
+	samuraijack: {
+		effectType: 'Ability',
+		onModifySpe: function () {
+			return this.chainModify(1.1);
+		},
 	},
 	// bludz
 	shielddustinnate: {

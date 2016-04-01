@@ -894,14 +894,14 @@ exports.BattleMovedex = {
 	// galbia
 	dog: {
 		accuracy: 80,
-		basePower: 130,
+		basePower: 120,
 		category: "Physical",
 		id: "dog",
 		isNonstandard: true,
 		name: "(dog)",
-		pp: 15,
+		pp: 5,
 		priority: 0,
-		flags: {contact: 1, protect: 1},
+		flags: {contact: 1, protect: 1, mirror: 1},
 		onModifyMove: function (move) {
 			if (this.isWeather('sandstorm')) move.accuracy = true;
 		},
@@ -1132,7 +1132,7 @@ exports.BattleMovedex = {
 	// Dirpz
 	fairytypesong: {
 		accuracy: 100,
-		basePower: 65,
+		basePower: 80,
 		category: "Physical",
 		defensiveCategory: "Special",
 		id: "fairytypesong",
@@ -1454,7 +1454,7 @@ exports.BattleMovedex = {
 	// Sigilyph
 	gammarayburst: {
 		accuracy: 90,
-		basePower: 300,
+		basePower: 350,
 		category: "Special",
 		id: "gammarayburst",
 		isNonstandard: true,
@@ -1891,7 +1891,7 @@ exports.BattleMovedex = {
 		name: "Hazard Pass",
 		pp: 20,
 		priority: 0,
-		flags: {protect: 1, reflectable: 1, mirror: 1, sound: 1, authentic: 1},
+		flags: {protect: 1, reflectable: 1, mirror: 1},
 		selfSwitch: true,
 		onHit: function (pokemon) {
 			let hazards = ['stealthrock', 'spikes', 'toxicspikes', 'stickyweb'];
@@ -2070,6 +2070,7 @@ exports.BattleMovedex = {
 		flags: {protect: 1, mirror: 1},
 		onPrepareHit: function (target, source) {
 			this.attrLastMove('[still]');
+			this.add('-anim', source, "Night Shade", source);
 			this.add('-anim', source, "Wish", source);
 			this.add('-anim', source, "Draco Meteor", target);
 		},
@@ -2142,7 +2143,7 @@ exports.BattleMovedex = {
 	},
 	// ih8ih8sn0w
 	imprisonform: {
-		accuracy: 90,
+		accuracy: 85,
 		basePower: 0,
 		category: "Status",
 		id: "imprisonform",
@@ -2494,7 +2495,7 @@ exports.BattleMovedex = {
 					const thisSide = this.sides[s];
 					for (let p in thisSide.active) {
 						const pokemon = thisSide.active[p];
-						if (pokemon.types === 'Flying' || !pokemon.hp) continue; // coerce with ==
+						if ((pokemon.types[0] === 'Flying' && !pokemon.types[1]) || !pokemon.hp) continue;
 						pokemon.setType('Flying', true);
 						this.add('-start', pokemon, 'typechange', 'Flying');
 					}
@@ -2856,7 +2857,7 @@ exports.BattleMovedex = {
 		flags: {},
 		stallingMove: true,
 		volatileStatus: 'protect',
-		self: {boosts: {def:3, spd:2}},
+		self: {boosts: {def:4, spd:2}},
 		onPrepareHit: function (pokemon) {
 			return !!this.willAct() && this.runEvent('StallMove', pokemon);
 		},
@@ -3164,6 +3165,7 @@ exports.BattleMovedex = {
 				};
 			} else {
 				move.basePower = 255;
+				move.self = {boosts: {spa: -1, accuracy: -1}};
 			}
 		},
 		secondary: false,
@@ -3248,6 +3250,7 @@ exports.BattleMovedex = {
 		secondary: false,
 		onPrepareHit: function (target, source) {
 			this.attrLastMove('[still]');
+			this.add('-anim', source, "Growth", source);
 			this.add('-anim', source, "Swords Dance", source);
 			this.add('-anim', source, "Swords Dance", source);
 		},
@@ -4030,7 +4033,7 @@ exports.BattleMovedex = {
 		onTryHit: function (target, source) {
 			this.add('-message', '*@Temporaryanonymous teleports behind you*');
 			this.attrLastMove('[still]');
-			this.add('-anim', source, "Shadow Force", target);
+			this.add('-anim', source, "Night Shade", target);
 		},
 		onHit: function (pokemon) {
 			if (pokemon.hp <= 0 || pokemon.fainted) {
@@ -4374,7 +4377,7 @@ exports.BattleMovedex = {
 	// Sweep
 	wave: {
 		accuracy: 100,
-		basePower: 100,
+		basePower: 120,
 		category: "Special",
 		id: "wave",
 		isViable: true,
@@ -4440,7 +4443,7 @@ exports.BattleMovedex = {
 				moved = true;
 			}
 			if (source.maxhp !== source.hp) {
-				this.heal(this.modify(target.maxhp, 0.5), target, source);
+				this.heal(this.modify(target.maxhp, 0.4), target, source);
 				moved = true;
 			}
 			if (!moved) return false;

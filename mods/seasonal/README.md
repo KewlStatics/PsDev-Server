@@ -91,7 +91,7 @@ EVs: 252 SpA, 4 SpD, 252 Spe, Nature: Timid
 - Back to the bench again? - Volt Switch, but Dragon-type. This move ignores modifiers and always hits.
 
 ### AM
-Tyranitar @ Lum Berry
+Tyranitar @ Lum Berry / Choice Scarf
 
 Ability: Adaptability
 
@@ -300,7 +300,7 @@ Chandelure @ Red Card
 
 Ability: Prankster
 
-Innate Ability: Swaps boosts with opponent on switch in.
+Innate Ability: Swaps stat changes with opponent on switch in.
 
 EVs: 4 Def, 252 SpA, 252 Spe, IVs: 0 Atk, Nature: Timid
 
@@ -426,19 +426,10 @@ Innate Ability: Coldsteel - Boosts speed on switch in and adds Dark-type to self
 
 EVs: 4 Def, 252 SpA, 252 Spe, Nature: Timid
 
-- Hyperspace Earrape - 5 PP, Dark\Special, 140 pwr. Always hits. Bypasses Protect. Sound-based. Lowers own Def, SpA, SpD.
-
-Other Possible Moves:
-
 - Boomburst
 - Focus Blast
-- Surf
-- Fire Blast
-- Extrasensory
-- Ice Beam
-- Shadow Ball
-- Future Sight
-- Mud-Slap
+- Surf \ Fire Blast \ Extrasensory \ Ice Beam \ Shadow Ball \ Future Sight \ Mud-Slap
+- Hyperspace Earrape - 5 PP, Dark\Special, 140 pwr. Always hits. Bypasses Protect. Sound-based. Lowers own Def, SpA, SpD.
 
 ### CoolStoryBrobat
 Crobat @ Black Glasses
@@ -447,7 +438,7 @@ Ability: Gale Wings
 
 EVs: 4 HP, 252 Atk, 252 Spe, Nature: Jolly
 
-- Brave Bat - 5 PP, Flying\Physical, 130\100%. High crit. Makes contact.
+- Brave Bat - 5 PP, Flying\Physical, 120\100%. High crit. Makes contact.
 
 Other Possible Moves:
 
@@ -491,7 +482,7 @@ EVs: 64 HP, 4 Def, 252 Atk, 188 Spe, Nature: Adamant
 - Aqua Jet
 - Knock Off
 - Belly Drum
-- Fairy Type Song - Chatter, but Fairy\Physical.
+- Fairy Type Song - 20 PP Fairy\Physical. 80\100%. Targets Special Defense. 100% confuse. Sound-based.
 
 ### DMT
 Shedinja @ Focus Sash
@@ -676,7 +667,7 @@ EVs: 252 Atk, 252 Spe, Nature: Adamant
 - Earthquake \ Close Combat
 - Fire Fang
 - Extreme Speed
-- (dog) - 15 PP Normal\Physical 130\80%. Always hits in sandstorm. Makes contact. Ignores immunities.
+- (dog) - 5 PP Normal\Physical 120\80%. Always hits in sandstorm. Makes contact. Ignores immunities.
 
 ### Galom
 Bisharp @ Life Orb
@@ -879,7 +870,7 @@ EVs: 252 Atk, 4 SpD, 252 Spe, Nature: Jolly
 - Meteor Mash
 - Stealth Rock
 - Taunt \ Magic Coat
-- Imprisonform - 3 PP, 90% acc. Transforms into opponent and uses Imprison.
+- Imprisonform - 3 PP, 85% acc. Transforms into opponent and uses Imprison.
 
 ### imanalt
 Rhydon @ Eviolite
@@ -1044,7 +1035,7 @@ EVs: 252 SpA, 4 SpD, 252 Spe, Nature: Timid
 - Protect
 - Stored Power
 - Energy Ball \ Flamethrower \ Scald
-- Broken Wand - 10 PP. May fail and half user's HP (14%). Uses Thunderbolt, Ice Beam, Calm Mind and Spikes.
+- Broken Wand - 10 PP. May fail and half user's HP (14%). Uses Thunderbolt, Ice Beam, Calm Mind and Spikes. Recovers 10% HP.
 
 ### Layell
 Sneasel @ King's Rock
@@ -1056,7 +1047,7 @@ EVs: 4 Def, 252 Atk, 252 Spe, Nature: Adamant
 - Ice Shard
 - Icicle Spear
 - Mach Punch \ Pursuit \ Knock Off
-- Pixel Protection - 10 PP. Protect-based move. Only works on first turn out. Boosts Def by 3 and SpD by 2.
+- Pixel Protection - 10 PP. Protect-based move. Only works on first turn out. Boosts Def by 4 and SpD by 2.
 
 ### LegitimateUsername
 Shuckle @ Leftovers
@@ -1167,6 +1158,8 @@ EVs: 4 Def, 252 SpA, 252 Spe, Nature: Timid
 Marshtomp @ Eviolite
 
 Ability: Shadow Tag
+
+Innate Ability: Boosts defense by 2 on switch in.
 
 EVs: 252 HP, 24 Def, 232 SpD, Nature: Impish
 
@@ -1302,7 +1295,7 @@ EVs: 4 Def, 252 SpA, 252 Spe, Nature: Modest
 - Pure Skill - 5 PP, ???-type\Special. Always hits.
  - (10%) User faints.
  - (45%) Attempts to half target health, but at least does 25% damage.
- - (45%) Deals damage with 255 base power.
+ - (45%) Deals damage with 255 base power. Lowers own SpA and accuracy afterwards.
 
 ### pluviometer
 Mismagius @ Life Orb
@@ -1481,14 +1474,14 @@ Sigilyph @ Life Orb
 
 Ability: Magic Guard
 
-Innate Ability: Samurai Jack - Bypasses Dark's immunity to Psychic.
+Innate Ability: Samurai Jack - Bypasses Dark's immunity to Psychic. Boosts own speed by 10%.
 
 EVs: 252 SpA, 4 SpD, 252 Spe, IVs: 0 Atk, Nature: Timid
 
 - Aeroblast
 - Blue Flare
 - Night Daze
-- Gamma Ray Burst - 5 PP Psychic\Special 300\90%. User faints.
+- Gamma Ray Burst - 5 PP Psychic\Special 350\90%. User faints.
 
 ### sirDonovan
 Togetic @ Eviolite
@@ -1503,9 +1496,9 @@ EVs: 252 HP, 252 SpA, 4 Spe, Nature: Modest
 - Ladies First - 20 PP Fairy\Special 120\100%. Boosts user speed. Always moves last if opponent is female.
 
 ### Skitty
-Audino @ Audinite
+Audino @ Audinite - Mega Ability: Shed Skin
 
-Ability: Gale Wings
+Ability: Intimidate
 
 EVs: 252 HP, 252 SpA, 4 Spe, Nature: Modest
 
@@ -1571,7 +1564,7 @@ Foongus @ Eviolite
 
 Ability: Prankster
 
-Innate Ability: Bad Trip - Regenerates 50% HP on switch out.
+Innate Ability: Bad Trip - Regenerates 40% HP on switch out.
 
 EVs: 252 HP, 128 Def, 128 SpD, Nature: Sassy
 
@@ -1609,20 +1602,6 @@ EVs: 4 Def, 252 SpA, 252 Spe, Nature: Timid
 - Sludge Wave
 - High Five - 35 PP Bug\Special 30\100%. Hits 5 times. Makes contact (yeah, that's right).
 
-### Starmei
-Staryu @ Leftovers
-
-Ability: Parental Bond
-
-Innate Ability: Uses Cosmic Power on switch in.
-
-EVs: 248 HP, 4 Def, 252 Spe, Nature: Timid
-
-- Cosmic Power
-- Recover
-- Nuzzle
-- RKO Outta Nowhere - 35 PP, Water-type equivalent of Psywave.
-
 ### Spy
 Hydreigon @ Life Orb
 
@@ -1639,6 +1618,20 @@ Other Possible Moves:
 - Dark Pulse
 - Aura Sphere
 - Autotomize
+
+### Starmei
+Staryu @ Leftovers
+
+Ability: Parental Bond
+
+Innate Ability: Uses Cosmic Power on switch in.
+
+EVs: 248 HP, 4 Def, 252 Spe, Nature: Timid
+
+- Cosmic Power
+- Recover
+- Nuzzle
+- RKO Outta Nowhere - 35 PP, Water-type equivalent of Psywave.
 
 ### Steamroll
 Growlithe @ Life Orb
@@ -1676,7 +1669,7 @@ EVs: 252 SpA, 4 SpD, 252 Spe, Nature: Modest
 - Earth Power
 - Shell Smash
 - Ice Beam
-- (wave( - 35 PP Water\Special 100\100%. 20% flinch.
+- (wave( - 35 PP Water\Special 120\100%. 20% flinch.
 
 ### talkingtree
 Trevenant @ Sitrus Berry \ Custap Berry
@@ -1747,7 +1740,7 @@ Whimsicott @ Quick Claw
 
 Ability: Illuminate
 
-Innate Ability: Swaps boosts on switch in.
+Innate Ability: Swaps stat changes with opponent on switch in.
 
 EVs: 252 HP, 4 Def, 252 Spe, Nature: Timid
 
@@ -1808,7 +1801,7 @@ EVs: 252 HP, 4 Def, 252 SpA, IVs: 0 Spe, Nature: Quiet
 - Scald
 - Water Spout
 - Ice Beam
-- Wetwork - 10 PP, heals half of user's health, adds Trick Room.
+- Wetwork - 10 PP, heals 40% of user's health, adds Trick Room.
 
 ### Vexen IV
 Politoed @ Life Orb
@@ -1875,7 +1868,7 @@ EVs: 248 HP, 252 Atk, 8 Spe, Nature: Adamant
 - Go Inda Like Linda - 30 PP. Boosts Atk and Speed by 3 stages.
 
 ### Zarel
-Meloetta @ Your Mom
+Meloetta <s>@ Your Mom</s>
 
 Ability: Serene Grace
 
