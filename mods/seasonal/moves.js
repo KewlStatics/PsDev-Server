@@ -4118,7 +4118,7 @@ exports.BattleMovedex = {
 		},
 		secondary: {
 			chance: 100,
-			onHit: function (target, source) {
+			onHit: function (target) {
 				if (this.random(2) === 1) {
 					const status = ['par', 'brn', 'frz', 'psn', 'tox', 'slp'][this.random(6)];
 					if (status === 'frz') {
@@ -4133,13 +4133,6 @@ exports.BattleMovedex = {
 					}
 				}
 				if (this.random(2) === 1) target.addVolatile('confusion');
-				const boosts = {};
-				const stats = ['atk', 'def', 'spa', 'spd', 'spe', 'accuracy'];
-				const increase = stats[this.random(6)];
-				const decrease = stats[this.random(6)];
-				boosts[increase] = 1;
-				boosts[decrease] = -1;
-				this.boost(boosts, source, source);
 			},
 		},
 		target: "normal",
