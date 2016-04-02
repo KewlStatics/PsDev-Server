@@ -211,7 +211,7 @@ exports.BattleStatuses = {
 		name: 'Gonna Make You Sweat',
 		onResidual: function (pokemon) {
 			if (!pokemon.hp) return;
-			this.heal(this.modify(pokemon.maxhp, 0.15));
+			this.heal(this.modify(pokemon.maxhp, 0.33));
 		},
 	},
 	// Winry
@@ -380,8 +380,8 @@ exports.BattleStatuses = {
 		name: 'White Magic',
 		onTryHit: function (target, source, move) {
 			if (target !== source && move.type === 'Fairy') {
-				if (!this.boost({spe:1})) {
-					this.add('-immune', target, '[msg]', '[from] ability: White Magic');
+				if (!this.heal(target.maxhp / 4)) {
+					this.add('-immune', target, '[msg]', '[from] ability: Amity Absorb');
 				}
 				return null;
 			}

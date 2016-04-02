@@ -1187,7 +1187,7 @@ exports.Formats = [
 				}
 			}
 			if (name === 'juanma') {
-				this.add('c|+Juanma|I gaze into the abyss.');
+				this.add("c|+Juanma|Okay, well, sometimes, science is more art than science, " + pokemon.side.name + ". A lot of people don't get that.");
 			}
 			if (name === 'kalalokki') {
 				this.add('c|+Kalalokki|(•_•)');
@@ -1690,7 +1690,7 @@ exports.Formats = [
 				this.add('c|~Joim|' + sentences[this.random(4)]);
 			}
 			if (name === 'juanma') {
-				this.add('c|+Juanma|Your mom gazed back into me.');
+				this.add("c|+Juanma|I guess you were right, now you must be the happiest person in the world, " + pokemon.side.name + "! You get to be major of 'I-told-you-so' town!");
 			}
 			if (name === 'kalalokki') {
 				this.add('c|+Kalalokki|(•_•)');

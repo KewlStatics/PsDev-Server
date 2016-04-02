@@ -621,6 +621,7 @@ exports.BattleMovedex = {
 		pp: 15,
 		priority: 0,
 		flags: {protect: 1, mirror: 1},
+		drain: [1, 2],
 		onPrepareHit: function (target, source) {
 			this.attrLastMove('[still]');
 			this.add('-anim', source, "Psyshock", target);
@@ -1480,8 +1481,8 @@ exports.BattleMovedex = {
 	},
 	// Joim
 	gasterblaster: {
-		accuracy: 90,
-		basePower: 150,
+		accuracy: 100,
+		basePower: 165,
 		category: "Special",
 		id: "gasterblaster",
 		isNonstandard: true,
@@ -1499,6 +1500,8 @@ exports.BattleMovedex = {
 		onAfterHit: function (target, source) {
 			if (target.hp > 0) {
 				source.addVolatile('mustrecharge');
+			} else {
+				this.add("c|~Joim|You are wearing the expression of someone who's fainted a few times. Let's make it one more.");
 			}
 		},
 		secondary: false,
@@ -2712,19 +2715,17 @@ exports.BattleMovedex = {
 			this.add('-anim', source, "Grudge", source);
 			this.add('-anim', source, "Explosion", source);
 		},
-		self: {sideCondition: 'ofcurse'},
 		effect: {
-			onSwitchIn: function (pokemon) {
-				pokemon.side.removeSideCondition('ofcurse');
+			duration: 2,
+			onStart: function (pokemon) {
+				this.add('-start', pokemon, 'Of Curse');
+				this.add('message', 'Of curse you cannot switch.');
 			},
-			onResidual: function (side) {
-				if (side.active.length && side.active[0].hp) side.removeSideCondition('ofcurse');
+			onEnd: function (pokemon) {
+				this.add('-end', pokemon, 'Of Curse');
 			},
-			onEnd: function (side) {
-				const foes = side.foe.active;
-				if (side.active.length && side.active[0].hp && foes.length && foes[0].hp) {
-					foes[0].addVolatile('trapped', side.active[0], 'meanlook', 'trapper');
-				}
+			onTrapPokemon: function (pokemon) {
+				pokemon.tryTrap();
 			},
 		},
 		boosts: {
